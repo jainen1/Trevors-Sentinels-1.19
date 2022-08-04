@@ -1,6 +1,7 @@
 package net.trevorskullcrafter.trevorssentinels;
 
 import net.fabricmc.api.ModInitializer;
+import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ public class trevorssentinels implements ModInitializer {
 	public void onInitialize() {
 
 		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
 
 	}
 }
