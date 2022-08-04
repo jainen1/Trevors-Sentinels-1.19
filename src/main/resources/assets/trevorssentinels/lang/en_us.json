@@ -1,5 +1,10 @@
 {
+  "itemGroup.trevorssentinels.sentinels": "Trevor's Sentinels",
+
   "item.trevorssentinels.sentinum_shard": "Sentinum Shard",
   "item.trevorssentinels.blood_diamond": "Blood Diamond",
-  "item.trevorssentinels.violent_catalyst": "Violent Catalyst"
+  "item.trevorssentinels.violent_catalyst": "Violent Catalyst",
+
+  "block.trevorssentinels.sentinum_block": "Sentinum Block",
+  "block.trevorssentinels.steel_block": "Steel Block"
 }

@@ -10,11 +10,11 @@ import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 
 public class ModItems {
     public static final Item SENTINUM_SHARD = registerItem("sentinum_shard",
-            new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
     public static final Item BLOOD_DIAMOND = registerItem("blood_diamond",
-            new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
     public static final Item VIOLENT_CATALYST = registerItem("violent_catalyst",
-            new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
 
     private static Item registerItem(String name, Item item){
