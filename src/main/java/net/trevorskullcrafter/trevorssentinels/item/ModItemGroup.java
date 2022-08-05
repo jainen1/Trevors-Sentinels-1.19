@@ -12,4 +12,7 @@ public class ModItemGroup {
 
     public static final ItemGroup ARMORY = FabricItemGroupBuilder.build(new Identifier(trevorssentinels.MOD_ID, "armory"),
             () -> new ItemStack(ModItems.BLOOD_DIAMOND));
+
+    public static final ItemGroup KITCHEN = FabricItemGroupBuilder.build(new Identifier(trevorssentinels.MOD_ID, "kitchen"),
+            () -> new ItemStack(ModItems.PEARFRUIT));
 }

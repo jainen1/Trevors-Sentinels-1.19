@@ -1,10 +1,15 @@
 {
   "itemGroup.trevorssentinels.sentinels": "Trevor's Sentinels",
+  "itemGroup.trevorssentinels.armory": "Trevor's Armory",
+  "itemGroup.trevorssentinels.kitchen": "Trevor's Kitchen",
 
   "item.trevorssentinels.sentinum_shard": "Sentinum Shard",
   "item.trevorssentinels.blood_diamond": "Blood Diamond",
   "item.trevorssentinels.violent_catalyst": "Violent Catalyst",
+  "item.trevorssentinels.fried_egg": "Fried Egg",
+  "item.trevorssentinels.pearfruit": "Pearfruit",
+  "item.trevorssentinels.brownie": "Brownie",
 
   "block.trevorssentinels.sentinum_block": "Sentinum Block",
-  "block.trevorssentinels.steel_block": "Steel Block"
+  "block.trevorssentinels.steel_block": "Block of Steel"
 }
