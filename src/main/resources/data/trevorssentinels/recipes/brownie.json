@@ -3,16 +3,26 @@
   "ingredients": [
     {
       "item": "minecraft:cocoa_beans",
-      "count": 3,
+      "count": 3
+    },
+    {
       "item": "minecraft:sweet_berries",
-      "count": 1,
+      "count": 1
+    },
+    {
       "item": "minecraft:wheat",
-      "count": 1,
+      "count": 1
+    },
+    {
       "item": "minecraft:egg",
-      "count": 1,
+      "count": 1
+    },
+    {
       "item": "minecraft:sugar",
-      "count": 2,
-      "item": "minecraft:milk",
+      "count": 2
+    },
+    {
+      "item": "minecraft:milk_bucket",
       "count": 1
     }
   ],
