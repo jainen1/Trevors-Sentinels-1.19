@@ -3,8 +3,16 @@
   "ingredients": [
     {
       "item": "minecraft:cocoa_beans",
-      "count": 2,
+      "count": 3,
       "item": "minecraft:sweet_berries",
+      "count": 1,
+      "item": "minecraft:wheat",
+      "count": 1,
+      "item": "minecraft:egg",
+      "count": 1,
+      "item": "minecraft:sugar",
+      "count": 2,
+      "item": "minecraft:milk",
       "count": 1
     }
   ],

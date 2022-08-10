@@ -9,7 +9,14 @@
   "item.trevorssentinels.fried_egg": "Fried Egg",
   "item.trevorssentinels.pearfruit": "Pearfruit",
   "item.trevorssentinels.brownie": "Brownie",
+  "item.trevorssentinels.antimilk": "Doctor Chadd's Ultimate Anti-Milk of Curious Yet Wonderful Effects",
+  "item.trevorssentinels.ash": "Ash",
+  "item.trevorssentinels.copper_iron_ingot": "Copper-Iron Ingot",
+  "item.trevorssentinels.rose_gold_ingot": "Rose Gold Ingot",
+  "item.trevorssentinels.iron_gold_ingot": "Iron-Gold Ingot",
+  "item.trevorssentinels.darksteel_ingot": "Darksteel Ingot",
 
   "block.trevorssentinels.sentinum_block": "Sentinum Block",
-  "block.trevorssentinels.steel_block": "Block of Steel"
+  "block.trevorssentinels.steel_block": "Block of Steel",
+  "block.trevorssentinels.caution_steel_block": "Caution-Pattern Block of Steel"
 }

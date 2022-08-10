@@ -17,13 +17,31 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
     public static final Item FRIED_EGG = registerItem("fried_egg",
-            new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN).food(ModFoodComponents.FRIED_EGG)));
+            new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN).food(ModFoodComponents.FRIED_EGG).maxCount(128)));
 
     public static final Item PEARFRUIT = registerItem("pearfruit",
             new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN).food(ModFoodComponents.PEARFRUIT)));
 
     public static final Item BROWNIE = registerItem("brownie",
             new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN).food(ModFoodComponents.BROWNIE)));
+
+    public static final Item ANTIMILK = registerItem("antimilk",
+            new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN).food(ModFoodComponents.ANTIMILK)));
+
+    public static final Item ASH = registerItem("ash",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
+    public static final Item COPPER_IRON_INGOT = registerItem("copper_iron_ingot",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
+    public static final Item DARKSTEEL_INGOT = registerItem("darksteel_ingot",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
+    public static final Item ROSE_GOLD_INGOT = registerItem("rose_gold_ingot",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
+    public static final Item IRON_GOLD_INGOT = registerItem("iron_gold_ingot",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
 
     private static Item registerItem(String name, Item item){

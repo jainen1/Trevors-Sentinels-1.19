@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "trevorssentinels:steel_block",
-    "trevorssentinels:sentinum_block"
+    "trevorssentinels:sentinum_block",
+    "trevorssentinels:caution_steel_block"
   ]
 }
