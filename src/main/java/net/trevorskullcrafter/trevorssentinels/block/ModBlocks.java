@@ -1,6 +1,7 @@
 package net.trevorskullcrafter.trevorssentinels.block;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.BlastFurnaceBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.PillarBlock;
@@ -22,6 +23,9 @@ public class ModBlocks {
 
     public static final Block CAUTION_STEEL_BLOCK = registerBlock("caution_steel_block",
             new PillarBlock(FabricBlockSettings.of(Material.METAL).strength(6f,8f).requiresTool()), ModItemGroup.SENTINELS);
+
+    public static final Block FORGE = registerBlock("forge",
+            new BlastFurnaceBlock(FabricBlockSettings.of(Material.STONE).strength(3.5f,3.5f).requiresTool()), ModItemGroup.SENTINELS);
 
     private static Block registerBlock(String name, Block block, ItemGroup group){
         registerBlockItem(name, block, group);

@@ -18,5 +18,7 @@
 
   "block.trevorssentinels.sentinum_block": "Sentinum Block",
   "block.trevorssentinels.steel_block": "Block of Steel",
-  "block.trevorssentinels.caution_steel_block": "Caution-Pattern Block of Steel"
+  "block.trevorssentinels.caution_steel_block": "Caution-Pattern Block of Steel",
+  "block.trevorssentinels.forge": "Forge",
+  "block.trevorssentinels.superforge": "Sentinel Superforge"
 }

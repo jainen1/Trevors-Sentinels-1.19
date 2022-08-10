@@ -2,32 +2,35 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:cocoa_beans",
-      "count": 3
+      "item": "minecraft:cocoa_beans"
     },
     {
-      "item": "minecraft:sweet_berries",
-      "count": 1
+      "item": "minecraft:cocoa_beans"
     },
     {
-      "item": "minecraft:wheat",
-      "count": 1
+      "item": "minecraft:cocoa_beans"
     },
     {
-      "item": "minecraft:egg",
-      "count": 1
+      "item": "minecraft:sweet_berries"
     },
     {
-      "item": "minecraft:sugar",
-      "count": 2
+      "item": "minecraft:wheat"
     },
     {
-      "item": "minecraft:milk_bucket",
-      "count": 1
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:milk_bucket"
     }
   ],
   "result": {
     "item": "trevorssentinels:brownie",
-    "count": 2
+    "count": 8
   }
 }
