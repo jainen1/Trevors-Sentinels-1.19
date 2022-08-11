@@ -11,10 +11,10 @@ import net.minecraft.util.BlockRotation;
 
 import javax.annotation.Nullable;
 
-public class ForgeBlock extends Block {
+public class SuperforgeBlock extends ForgeBlock {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
-    public ForgeBlock(Settings settings){
+    public SuperforgeBlock(Settings settings){
         super(settings);
     }
 

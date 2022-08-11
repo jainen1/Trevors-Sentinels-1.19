@@ -10,6 +10,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.trevorskullcrafter.trevorssentinels.block.custom.ForgeBlock;
+import net.trevorskullcrafter.trevorssentinels.block.custom.SuperforgeBlock;
 import net.trevorskullcrafter.trevorssentinels.item.ModItemGroup;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
 
@@ -25,7 +27,10 @@ public class ModBlocks {
             new PillarBlock(FabricBlockSettings.of(Material.METAL).strength(6f,8f).requiresTool()), ModItemGroup.SENTINELS);
 
     public static final Block FORGE = registerBlock("forge",
-            new BlastFurnaceBlock(FabricBlockSettings.of(Material.STONE).strength(3.5f,3.5f).requiresTool()), ModItemGroup.SENTINELS);
+            new ForgeBlock(FabricBlockSettings.of(Material.STONE).strength(3.5f,3.5f).requiresTool()), ModItemGroup.SENTINELS);
+
+    public static final Block SUPERFORGE = registerBlock("superforge",
+            new SuperforgeBlock(FabricBlockSettings.of(Material.METAL).strength(6f,1200f).nonOpaque().requiresTool()), ModItemGroup.SENTINELS);
 
     private static Block registerBlock(String name, Block block, ItemGroup group){
         registerBlockItem(name, block, group);

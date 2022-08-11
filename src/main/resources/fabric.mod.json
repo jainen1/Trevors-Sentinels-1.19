@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "net.trevorskullcrafter.trevorssentinels.trevorssentinels"
+    ],
+    "client": [
+      "net.trevorskullcrafter.trevorssentinels.trevorssentinelsClient"
     ]
   },
   "mixins": [
