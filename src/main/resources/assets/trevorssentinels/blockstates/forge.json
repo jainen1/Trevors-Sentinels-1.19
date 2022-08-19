@@ -1,8 +1,8 @@
 {
   "variants": {
-    "facing=north": { "model": "minecraft:block/forge" },
-    "facing=east": { "model": "minecraft:block/forge", "y": 90 },
-    "facing=south": { "model": "minecraft:block/forge", "y": 180 },
-    "facing=west": { "model": "minecraft:block/forge", "y": 270 }
+    "facing=north": { "model": "trevorssentinels:block/forge" },
+    "facing=east": { "model": "trevorssentinels:block/forge", "y": 90 },
+    "facing=south": { "model": "trevorssentinels:block/forge", "y": 180 },
+    "facing=west": { "model": "trevorssentinels:block/forge", "y": 270 }
   }
 }

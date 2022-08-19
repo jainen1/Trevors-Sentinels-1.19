@@ -4,6 +4,10 @@
     "trevorssentinels:sentinum_block",
     "trevorssentinels:steel_block",
     "trevorssentinels:caution_steel_block",
+    "trevorssentinels:steel_lamp_block",
+    "trevorssentinels:steel_fan",
+    "trevorssentinels:steel_battery",
+    "trevorssentinels:steel_fusebox",
     "trevorssentinels:forge",
     "trevorssentinels:superforge"
   ]

@@ -1,6 +1,5 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "block",
 	"textures": {
 		"0": "trevorssentinels:block/steel_block",
 		"3": "trevorssentinels:block/uranium_block",

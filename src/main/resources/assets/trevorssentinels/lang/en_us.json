@@ -11,14 +11,18 @@
   "item.trevorssentinels.brownie": "Brownie",
   "item.trevorssentinels.antimilk": "Doctor Chadd's Ultimate Anti-Milk of Curious Yet Wonderful Effects",
   "item.trevorssentinels.ash": "Ash",
-  "item.trevorssentinels.copper_iron_ingot": "Copper-Iron Ingot",
+  "item.trevorssentinels.copper_iron_ingot": "Eutectoid Cuprum-Ferrite Alloy",
   "item.trevorssentinels.rose_gold_ingot": "Rose Gold Ingot",
-  "item.trevorssentinels.iron_gold_ingot": "Iron-Gold Ingot",
+  "item.trevorssentinels.iron_gold_ingot": "Nanocrystalline Ferro-Aurum Alloy",
   "item.trevorssentinels.darksteel_ingot": "Darksteel Ingot",
 
   "block.trevorssentinels.sentinum_block": "Sentinum Block",
   "block.trevorssentinels.steel_block": "Block of Steel",
   "block.trevorssentinels.caution_steel_block": "Caution-Pattern Block of Steel",
+  "block.trevorssentinels.steel_lamp_block": "Steel Lamp",
+  "block.trevorssentinels.steel_fan": "Industrial Fan",
+  "block.trevorssentinels.battery": "Battery",
+  "block.trevorssentinels.fusebox": "Fusebox",
   "block.trevorssentinels.forge": "Forge",
   "block.trevorssentinels.superforge": "Sentinel Superforge"
 }

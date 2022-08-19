@@ -1,7 +1,6 @@
 package net.trevorskullcrafter.trevorssentinels.block;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.BlastFurnaceBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.PillarBlock;
@@ -10,7 +9,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.trevorskullcrafter.trevorssentinels.block.custom.DirectionalBlock;
 import net.trevorskullcrafter.trevorssentinels.block.custom.ForgeBlock;
+import net.trevorskullcrafter.trevorssentinels.block.custom.SteelLampBlock;
 import net.trevorskullcrafter.trevorssentinels.block.custom.SuperforgeBlock;
 import net.trevorskullcrafter.trevorssentinels.item.ModItemGroup;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
@@ -25,6 +26,19 @@ public class ModBlocks {
 
     public static final Block CAUTION_STEEL_BLOCK = registerBlock("caution_steel_block",
             new PillarBlock(FabricBlockSettings.of(Material.METAL).strength(6f,8f).requiresTool()), ModItemGroup.SENTINELS);
+
+    public static final Block STEEL_LAMP_BLOCK = registerBlock("steel_lamp_block",
+            new SteelLampBlock(FabricBlockSettings.of(Material.METAL).strength(6f,8f).requiresTool()
+                    .luminance((state) -> state.get(SteelLampBlock.CLICKED) ? 15 : 0)), ModItemGroup.SENTINELS);
+
+    public static final Block STEEL_FAN = registerBlock("steel_fan",
+            new Block(FabricBlockSettings.of(Material.METAL).strength(6f,8f).requiresTool()), ModItemGroup.SENTINELS);
+
+    public static final Block BATTERY = registerBlock("battery",
+            new DirectionalBlock(FabricBlockSettings.of(Material.METAL).strength(6f,8f).requiresTool()), ModItemGroup.SENTINELS);
+
+    public static final Block FUSEBOX = registerBlock("fusebox",
+            new DirectionalBlock(FabricBlockSettings.of(Material.METAL).strength(6f,8f).requiresTool()), ModItemGroup.SENTINELS);
 
     public static final Block FORGE = registerBlock("forge",
             new ForgeBlock(FabricBlockSettings.of(Material.STONE).strength(3.5f,3.5f).requiresTool()), ModItemGroup.SENTINELS);

@@ -11,10 +11,10 @@ import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import org.jetbrains.annotations.Nullable;
 
-public class SuperforgeBlock extends HorizontalFacingBlock {
+public class DirectionalBlock extends HorizontalFacingBlock {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
-    public SuperforgeBlock(Settings settings){
+    public DirectionalBlock(Settings settings){
         super(settings);
     }
 
