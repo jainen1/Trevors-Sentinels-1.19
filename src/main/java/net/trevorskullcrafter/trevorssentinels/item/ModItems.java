@@ -13,6 +13,7 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
     public static final Item BLOOD_DIAMOND = registerItem("blood_diamond",
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
     public static final Item VIOLENT_CATALYST = registerItem("violent_catalyst",
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
@@ -41,6 +42,9 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
     public static final Item IRON_GOLD_INGOT = registerItem("iron_gold_ingot",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
+    public static final Item URANIUM_CRYSTAL = registerItem("uranium_crystal",
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
 

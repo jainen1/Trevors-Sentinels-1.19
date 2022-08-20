@@ -2,6 +2,7 @@ package net.trevorskullcrafter.trevorssentinels;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.minecraft.client.render.RenderLayer;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 

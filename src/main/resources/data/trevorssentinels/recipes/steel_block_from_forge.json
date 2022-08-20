@@ -1,0 +1,22 @@
+{
+  "type": "trevorssentinels:forge",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_block"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:coal"
+    }
+  ],
+  "result": "trevorssentinels:steel_block",
+  "count": 2
+}

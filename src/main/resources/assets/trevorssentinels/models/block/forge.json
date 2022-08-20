@@ -3,6 +3,7 @@
   "textures": {
     "front": "trevorssentinels:block/forge_front",
     "side": "trevorssentinels:block/forge_side",
-    "top": "trevorssentinels:block/forge_top"
+    "top": "trevorssentinels:block/forge_top",
+    "bottom": "minecraft:block/furnace_top"
   }
 }
