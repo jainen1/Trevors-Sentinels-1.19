@@ -5,6 +5,7 @@ import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 import net.trevorskullcrafter.trevorssentinels.recipe.ModRecipes;
+import net.trevorskullcrafter.trevorssentinels.screen.ModScreenHandlers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +20,7 @@ public class trevorssentinels implements ModInitializer {
 		ModBlocks.registerModBlocks();
 
 		ModBlockEntities.registerAllBlockEntities();
+		ModScreenHandlers.registerAllScreenHandlers();
 		ModRecipes.registerRecipes();
-
 	}
 }
