@@ -1,6 +1,7 @@
 package net.trevorskullcrafter.trevorssentinels;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
@@ -22,5 +23,7 @@ public class trevorssentinels implements ModInitializer {
 		ModBlockEntities.registerAllBlockEntities();
 		ModScreenHandlers.registerAllScreenHandlers();
 		ModRecipes.registerRecipes();
+
+		//ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
 	}
 }

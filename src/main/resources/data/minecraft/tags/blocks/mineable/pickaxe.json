@@ -10,7 +10,17 @@
     "trevorssentinels:steel_fan",
     "trevorssentinels:battery",
     "trevorssentinels:fusebox",
+    "trevorssentinels:chiseled_snowstone",
+    "trevorssentinels:cut_snowstone",
+    "trevorssentinels:snowstone",
+    "trevorssentinels:smooth_snowstone",
+    "trevorssentinels:darkened_steel_block",
+    "trevorssentinels:darksteel_block",
+    "trevorssentinels:iron_gold_block",
+    "trevorssentinels:black_agility_block",
+
     "trevorssentinels:uranium_block",
+    "trevorssentinels:hanging_decommissioned_sentinel",
     "trevorssentinels:forge",
     "trevorssentinels:superforge"
   ]

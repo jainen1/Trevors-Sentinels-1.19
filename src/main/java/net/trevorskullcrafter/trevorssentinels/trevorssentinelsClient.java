@@ -9,10 +9,10 @@ import net.trevorskullcrafter.trevorssentinels.screen.ForgeScreen;
 import net.trevorskullcrafter.trevorssentinels.screen.ModScreenHandlers;
 
 public class trevorssentinelsClient implements ClientModInitializer {
-
     @Override
     public void onInitializeClient(){
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SUPERFORGE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.RICE_PLANT, RenderLayer.getCutout());
         HandledScreens.register(ModScreenHandlers.FORGE_SCREEN_HANDLER, ForgeScreen::new);
     }
 }

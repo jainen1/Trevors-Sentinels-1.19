@@ -27,7 +27,7 @@ public class ForgeRecipe implements Recipe<SimpleInventory> {
         if(world.isClient()) { return false; }
 
         if(recipeItems.get(0).test(inventory.getStack(1))) {
-            return recipeItems.get(1).test(inventory.getStack(2));
+            return recipeItems.get(1).test(inventory.getStack(11));
         }
 
         return false;
@@ -63,19 +63,19 @@ public class ForgeRecipe implements Recipe<SimpleInventory> {
         return Type.INSTANCE;
     }
 
-    public static class Type implements RecipeType<net.trevorskullcrafter.trevorssentinels.recipe.ForgeRecipe> {
+    public static class Type implements RecipeType<ForgeRecipe> {
         private Type() { }
         public static final Type INSTANCE = new Type();
         public static final String ID = "forge";
     }
 
-    public static class Serializer implements RecipeSerializer<net.trevorskullcrafter.trevorssentinels.recipe.ForgeRecipe> {
+    public static class Serializer implements RecipeSerializer<ForgeRecipe> {
         public static final Serializer INSTANCE = new Serializer();
         public static final String ID = "forge";
         // this is the name given in the json file
 
         @Override
-        public net.trevorskullcrafter.trevorssentinels.recipe.ForgeRecipe read(Identifier id, JsonObject json) {
+        public ForgeRecipe read(Identifier id, JsonObject json) {
             ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
 
             JsonArray ingredients = JsonHelper.getArray(json, "ingredients");
@@ -85,23 +85,21 @@ public class ForgeRecipe implements Recipe<SimpleInventory> {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 
-            return new net.trevorskullcrafter.trevorssentinels.recipe.ForgeRecipe(id, output, inputs);
+            return new ForgeRecipe(id, output, inputs);
         }
 
         @Override
-        public net.trevorskullcrafter.trevorssentinels.recipe.ForgeRecipe read(Identifier id, PacketByteBuf buf) {
+        public ForgeRecipe read(Identifier id, PacketByteBuf buf) {
             DefaultedList<Ingredient> inputs = DefaultedList.ofSize(buf.readInt(), Ingredient.EMPTY);
 
-            for (int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromPacket(buf));
-            }
+            inputs.replaceAll(ignored -> Ingredient.fromPacket(buf));
 
             ItemStack output = buf.readItemStack();
-            return new net.trevorskullcrafter.trevorssentinels.recipe.ForgeRecipe(id, output, inputs);
+            return new ForgeRecipe(id, output, inputs);
         }
 
         @Override
-        public void write(PacketByteBuf buf, net.trevorskullcrafter.trevorssentinels.recipe.ForgeRecipe recipe) {
+        public void write(PacketByteBuf buf, ForgeRecipe recipe) {
             buf.writeInt(recipe.getIngredients().size());
             for (Ingredient ing : recipe.getIngredients()) {
                 ing.write(buf);

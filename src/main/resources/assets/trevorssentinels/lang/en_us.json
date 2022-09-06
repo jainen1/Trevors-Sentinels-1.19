@@ -6,12 +6,15 @@
   "item.trevorssentinels.sentinum_shard": "Sentinum Shard",
   "item.trevorssentinels.blood_diamond": "Blood Diamond",
   "item.trevorssentinels.violent_catalyst": "Violent Catalyst",
+  "item.trevorssentinels.ash": "Ash",
+
+  "item.trevorssentinels.rice": "Rice Seeds",
   "item.trevorssentinels.fried_egg": "Fried Egg",
   "item.trevorssentinels.pearfruit": "Pearfruit",
   "item.trevorssentinels.brownie": "Brownie",
   "item.trevorssentinels.antimilk": "Doctor Chadd's Ultimate Anti-Milk of Curious Yet Wonderful Effects",
-  "item.trevorssentinels.ash": "Ash",
-  "item.trevorssentinels.copper_iron_ingot": "Cuprum-Ferrite Trialloy Ingot",
+
+  "item.trevorssentinels.copper_iron_ingot": "Dnilvar Ingot",
   "item.trevorssentinels.rose_gold_ingot": "Rose Gold Ingot",
   "item.trevorssentinels.iron_gold_ingot": "Nanocrystalline Ferraurium Ingot",
   "item.trevorssentinels.darksteel_ingot": "Darksteel Ingot",
@@ -20,13 +23,28 @@
   "block.trevorssentinels.sentinum_block": "Sentinum Block",
   "block.trevorssentinels.chiseled_sentinum_block": "Chiseled Sentinum Block",
   "block.trevorssentinels.sentinum_pillar": "Sentinum Pillar",
+  "block.trevorssentinels.orange_agility_block": "Orange Agility Block",
+  "block.trevorssentinels.blue_agility_block": "Blue Agility Block",
+  "block.trevorssentinels.black_agility_block": "Steel Magno-Repulsion Block",
+
   "block.trevorssentinels.steel_block": "Block of Steel",
   "block.trevorssentinels.caution_steel_block": "Caution-Pattern Block of Steel",
   "block.trevorssentinels.steel_lamp_block": "Steel Lamp",
   "block.trevorssentinels.steel_fan": "Industrial Fan",
   "block.trevorssentinels.battery": "Battery",
   "block.trevorssentinels.fusebox": "Fusebox",
+  "block.trevorssentinels.darkened_steel_block": "Darkened Steel Block",
+  "block.trevorssentinels.darksteel_block": "Darksteel Block",
+  "block.trevorssentinels.iron_gold_block": "Nanocrystalline Ferraurium Block",
+
+  "block.trevorssentinels.snowstone": "Snowstone",
+  "block.trevorssentinels.chiseled_snowstone": "Chiseled Snowstone",
+  "block.trevorssentinels.cut_snowstone": "Cut Snowstone",
+  "block.trevorssentinels.smooth_snowstone": "Smooth Snowstone",
+
   "block.trevorssentinels.uranium_block": "Block of Uranium",
+  "block.trevorssentinels.rice_plant": "Rice Plant",
   "block.trevorssentinels.forge": "Forge",
-  "block.trevorssentinels.superforge": "Sentinel Superforge"
+  "block.trevorssentinels.superforge": "Sentinel Superforge",
+  "block.trevorssentinels.hanging_decommissioned_sentinel": "Hanging Decommissioned Sentinel"
 }
