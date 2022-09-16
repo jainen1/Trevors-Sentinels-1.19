@@ -4,12 +4,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class OrangeAgilityBlock extends Block {
+public class OrangeAgilityBlock extends FallDamagelessBlock {
     public OrangeAgilityBlock(Settings settings) {
         super(settings);
     }

@@ -4,28 +4,46 @@
   "itemGroup.trevorssentinels.kitchen": "Trevor's Kitchen",
 
   "item.trevorssentinels.sentinum_shard": "Sentinum Shard",
+  "item.trevorssentinels.sentinum_lens": "Sentinum Lens",
+  "item.trevorssentinels.sentinum_holoprojector": "Sentinum Hard Light Projector",
   "item.trevorssentinels.blood_diamond": "Blood Diamond",
   "item.trevorssentinels.violent_catalyst": "Violent Catalyst",
   "item.trevorssentinels.ash": "Ash",
 
   "item.trevorssentinels.rice": "Rice Seeds",
+  "item.trevorssentinels.rice_cake": "Rice Cake",
+  "item.trevorssentinels.golden_rice": "Golden Rice Seeds",
+  "item.trevorssentinels.golden_rice_cake": "Golden Rice Cake",
   "item.trevorssentinels.fried_egg": "Fried Egg",
   "item.trevorssentinels.pearfruit": "Pearfruit",
   "item.trevorssentinels.brownie": "Brownie",
+  "item.trevorssentinels.sandfish": "Sandfish",
   "item.trevorssentinels.antimilk": "Doctor Chadd's Ultimate Anti-Milk of Curious Yet Wonderful Effects",
 
+  "item.trevorssentinels.steel_sheet": "Steel Sheet",
   "item.trevorssentinels.copper_iron_ingot": "Dnilvar Ingot",
   "item.trevorssentinels.rose_gold_ingot": "Rose Gold Ingot",
   "item.trevorssentinels.iron_gold_ingot": "Nanocrystalline Ferraurium Ingot",
   "item.trevorssentinels.darksteel_ingot": "Darksteel Ingot",
   "item.trevorssentinels.uranium_crystal": "Uranium Crystal",
 
+  "item.trevorssentinels.flimsy_sentinum_shiv": "Flimsy Sentinum Shiv",
+  "item.trevorssentinels.sentinum_dirk": "Sentinum Dirk",
+  "item.trevorssentinels.rose_gold_dagger": "Rose Gold Dagger",
+  "item.trevorssentinels.trimetal_cleaver": "Trimetal Cleaver",
+  "item.trevorssentinels.hunters_vibroblade": "Hunter's Vibroblade",
+  "item.trevorssentinels.pappym_blade": "Demon's Bane",
+  "item.trevorssentinels.portkey": "Portkey",
+
   "block.trevorssentinels.sentinum_block": "Sentinum Block",
   "block.trevorssentinels.chiseled_sentinum_block": "Chiseled Sentinum Block",
   "block.trevorssentinels.sentinum_pillar": "Sentinum Pillar",
+  "block.trevorssentinels.data_block": "Data Block",
   "block.trevorssentinels.orange_agility_block": "Orange Agility Block",
   "block.trevorssentinels.blue_agility_block": "Blue Agility Block",
   "block.trevorssentinels.black_agility_block": "Steel Magno-Repulsion Block",
+  "block.trevorssentinels.light_chamber_block": "Light Chamber Block",
+  "block.trevorssentinels.dark_chamber_block": "Dark Chamber Block",
 
   "block.trevorssentinels.steel_block": "Block of Steel",
   "block.trevorssentinels.caution_steel_block": "Caution-Pattern Block of Steel",
@@ -33,9 +51,12 @@
   "block.trevorssentinels.steel_fan": "Industrial Fan",
   "block.trevorssentinels.battery": "Battery",
   "block.trevorssentinels.fusebox": "Fusebox",
-  "block.trevorssentinels.darkened_steel_block": "Darkened Steel Block",
-  "block.trevorssentinels.darksteel_block": "Darksteel Block",
-  "block.trevorssentinels.iron_gold_block": "Nanocrystalline Ferraurium Block",
+  "block.trevorssentinels.holobarrier": "Hard Light Block",
+  "block.trevorssentinels.darkened_steel_block": "Darkened Block of Steel",
+  "block.trevorssentinels.darksteel_block": "Block of Darksteel",
+  "block.trevorssentinels.iron_gold_block": "Block of Nanocrystalline Ferraurium",
+  "block.trevorssentinels.copper_iron_block": "Block of Dnilvar",
+  "block.trevorssentinels.rose_gold_block": "Block of Rose Gold",
 
   "block.trevorssentinels.snowstone": "Snowstone",
   "block.trevorssentinels.chiseled_snowstone": "Chiseled Snowstone",
@@ -46,5 +67,14 @@
   "block.trevorssentinels.rice_plant": "Rice Plant",
   "block.trevorssentinels.forge": "Forge",
   "block.trevorssentinels.superforge": "Sentinel Superforge",
-  "block.trevorssentinels.hanging_decommissioned_sentinel": "Hanging Decommissioned Sentinel"
+  "block.trevorssentinels.hanging_decommissioned_sentinel": "Hanging Decommissioned Sentinel",
+
+  "entity.minecraft.villager.attendant": "Engineer",
+  "entity.minecraft.villager.demolitionist": "Demolitionist",
+
+  "trevorssentinels:steel_break": "Block broken",
+  "trevorssentinels:steel_step": "Footsteps",
+  "trevorssentinels:steel_placed": "Block placed",
+  "trevorssentinels:steel_hit": "Block breaking",
+  "trevorssentinels:steel_fall": "Steel falls"
 }

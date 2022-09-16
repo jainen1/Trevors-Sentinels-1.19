@@ -3,6 +3,8 @@
   "values": [
     "trevorssentinels:iron_gold_block",
     "trevorssentinels:darkened_steel_block",
-    "trevorssentinels:darksteel_block"
+    "trevorssentinels:darksteel_block",
+    "trevorssentinels:rose_gold_block",
+    "trevorssentinels:copper_iron_block"
   ]
 }

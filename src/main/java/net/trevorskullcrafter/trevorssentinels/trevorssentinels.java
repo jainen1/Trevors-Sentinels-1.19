@@ -7,6 +7,7 @@ import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 import net.trevorskullcrafter.trevorssentinels.recipe.ModRecipes;
 import net.trevorskullcrafter.trevorssentinels.screen.ModScreenHandlers;
+import net.trevorskullcrafter.trevorssentinels.villager.ModVillagers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +24,8 @@ public class trevorssentinels implements ModInitializer {
 		ModBlockEntities.registerAllBlockEntities();
 		ModScreenHandlers.registerAllScreenHandlers();
 		ModRecipes.registerRecipes();
+		ModVillagers.registerVillagers();
+		ModVillagers.registerTrades();
 
 		//ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
 	}

@@ -15,11 +15,17 @@ public class ForgeRecipe implements Recipe<SimpleInventory> {
     private final Identifier id;
     private final ItemStack output;
     private final DefaultedList<Ingredient> recipeItems;
+    private final int width;
+    private final int height;
+    private final DefaultedList<ItemStack> stacks;
 
-    public ForgeRecipe(Identifier id, ItemStack output, DefaultedList<Ingredient> recipeItems) {
+    public ForgeRecipe(Identifier id, ItemStack output, DefaultedList<Ingredient> recipeItems, int width, int height) {
         this.id = id;
         this.output = output;
         this.recipeItems = recipeItems;
+        this.width = width;
+        this.height = height;
+        this.stacks = DefaultedList.ofSize(width * height, ItemStack.EMPTY);
     }
 
     @Override
@@ -29,7 +35,6 @@ public class ForgeRecipe implements Recipe<SimpleInventory> {
         if(recipeItems.get(0).test(inventory.getStack(1))) {
             return recipeItems.get(1).test(inventory.getStack(11));
         }
-
         return false;
     }
 
@@ -66,12 +71,14 @@ public class ForgeRecipe implements Recipe<SimpleInventory> {
     public static class Type implements RecipeType<ForgeRecipe> {
         private Type() { }
         public static final Type INSTANCE = new Type();
-        public static final String ID = "forge";
+        public static final String ID = "forge_recipe";
     }
 
     public static class Serializer implements RecipeSerializer<ForgeRecipe> {
         public static final Serializer INSTANCE = new Serializer();
-        public static final String ID = "forge";
+        public static final String ID = "forge_recipe";
+        private int width;
+        private int height;
         // this is the name given in the json file
 
         @Override
@@ -79,13 +86,13 @@ public class ForgeRecipe implements Recipe<SimpleInventory> {
             ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
 
             JsonArray ingredients = JsonHelper.getArray(json, "ingredients");
-            DefaultedList<Ingredient> inputs = DefaultedList.ofSize(2, Ingredient.EMPTY);
+            DefaultedList<Ingredient> inputs = DefaultedList.ofSize(10, Ingredient.EMPTY);
 
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 
-            return new ForgeRecipe(id, output, inputs);
+            return new ForgeRecipe(id, output, inputs, width, height);
         }
 
         @Override
@@ -95,7 +102,7 @@ public class ForgeRecipe implements Recipe<SimpleInventory> {
             inputs.replaceAll(ignored -> Ingredient.fromPacket(buf));
 
             ItemStack output = buf.readItemStack();
-            return new ForgeRecipe(id, output, inputs);
+            return new ForgeRecipe(id, output, inputs, width, height);
         }
 
         @Override

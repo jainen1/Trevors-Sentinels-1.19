@@ -1,0 +1,40 @@
+{
+  "dowsing_rod_found_ore": {
+    "subtitle": "tutorialmod.dowsing_rod_found_ore",
+    "sounds": [
+      "tutorialmod:dowsing_rod_found_ore"
+    ]
+  },
+  "steel_break": {
+    "subtitle": "trevorssentinels:steel_break",
+    "sounds": [
+      "trevorssentinels:clatter3",
+      "trevorssentinels:clatter2"
+    ]
+  },
+  "steel_step": {
+    "subtitle": "trevorssentinels:steel_step",
+    "sounds": [
+      "trevorssentinels:clatter4"
+    ]
+  },
+  "steel_place": {
+    "subtitle": "trevorssentinels:steel_place",
+    "sounds": [
+      "trevorssentinels:clatter1",
+      "trevorssentinels:clatter2"
+    ]
+  },
+  "steel_hit": {
+    "subtitle": "trevorssentinels:steel_hit",
+    "sounds": [
+      "trevorssentinels:clatter4"
+    ]
+  },
+  "steel_fall": {
+    "subtitle": "trevorssentinels:steel_fall",
+    "sounds": [
+      "trevorssentinels:steel_fall"
+    ]
+  }
+}
