@@ -1,5 +1,6 @@
 package net.trevorskullcrafter.trevorssentinels.block.entity;
 
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -55,7 +56,7 @@ public class ForgeBlockEntity extends BlockEntity implements NamedScreenHandlerF
 
             @Override
             public int size() {
-                return 3;
+                return 4;
             }
         };
     }
@@ -81,6 +82,9 @@ public class ForgeBlockEntity extends BlockEntity implements NamedScreenHandlerF
         super.writeNbt(nbt);
         Inventories.writeNbt(nbt, inventory);
         nbt.putInt("forge.progress", progress);
+        nbt.putInt("forge.maxProgess", maxProgress);
+        nbt.putInt("forge.fuelTime", fuelTime);
+        nbt.putInt("forge.maxFuelTime", maxFuelTime);
     }
 
     @Override
@@ -88,23 +92,46 @@ public class ForgeBlockEntity extends BlockEntity implements NamedScreenHandlerF
         Inventories.readNbt(nbt, inventory);
         super.readNbt(nbt);
         progress = nbt.getInt("forge.progress");
+        maxProgress = nbt.getInt("forge.maxProgress");
+        fuelTime = nbt.getInt("forge.fuelTime");
+        maxFuelTime = nbt.getInt("forge.maxFuelTime");
     }
 
     public static void tick(World world, BlockPos blockPos, BlockState blockState, ForgeBlockEntity entity) {
-        if(world.isClient()){
-            return;
+        if(isConsumingFuel(entity)){
+            entity.fuelTime--;
         }
 
         if(hasRecipe(entity)){
-            entity.progress++;
-            markDirty(world, blockPos, blockState);
-            if(entity.progress >= entity.maxProgress){
-                craftItem(entity);
+            if(hasFuelInFuelSlot(entity) && !isConsumingFuel(entity)){
+                entity.consumeFuel();
+            }
+            if(isConsumingFuel(entity)){
+                entity.progress++;
+                markDirty(world, blockPos, blockState);
+                if(entity.progress >= entity.maxProgress){
+                    craftItem(entity);
+                }
             }
         } else {
             entity.progress = 0;
             markDirty(world, blockPos, blockState);
         }
+    }
+
+    private void consumeFuel() {
+        if(!getStack(0).isEmpty()) {
+            this.fuelTime = FuelRegistry.INSTANCE.get(this.removeStack(0, 1).getItem());
+            this.maxFuelTime = this.fuelTime;
+        }
+    }
+
+    private static boolean hasFuelInFuelSlot(ForgeBlockEntity entity){
+        return !entity.getStack(0).isEmpty();
+    }
+
+    private static boolean isConsumingFuel(ForgeBlockEntity entity){
+        return entity.fuelTime > 0;
     }
 
     private static void craftItem(ForgeBlockEntity entity) {

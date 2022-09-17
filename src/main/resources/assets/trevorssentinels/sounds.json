@@ -1,10 +1,4 @@
 {
-  "dowsing_rod_found_ore": {
-    "subtitle": "tutorialmod.dowsing_rod_found_ore",
-    "sounds": [
-      "tutorialmod:dowsing_rod_found_ore"
-    ]
-  },
   "steel_break": {
     "subtitle": "trevorssentinels:steel_break",
     "sounds": [
@@ -34,7 +28,13 @@
   "steel_fall": {
     "subtitle": "trevorssentinels:steel_fall",
     "sounds": [
-      "trevorssentinels:steel_fall"
+      "trevorssentinels:clatter1"
+    ]
+  },
+  "assassination_upload": {
+    "subtitle": "trevorssentinels:assassination_upload",
+    "sounds": [
+      "trevorssentinels:assassination_upload"
     ]
   }
 }

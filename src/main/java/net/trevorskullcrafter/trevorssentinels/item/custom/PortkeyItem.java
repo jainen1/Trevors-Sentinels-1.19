@@ -33,7 +33,7 @@ public class PortkeyItem extends Item {
         if(!world.isClient() && hand == Hand.MAIN_HAND){
             if(!Screen.hasShiftDown()){
                 if (!this.recorded) {
-                    user.sendMessage(Text.literal("You must first bind this item to a location!").formatted(Formatting.YELLOW));
+                    user.sendMessage(Text.literal("You must first bind this item to a location!").formatted(Formatting.YELLOW),true);
                 } else {
                     user.teleport(recordedX, recordedY, recordedZ, true);
 
@@ -46,7 +46,7 @@ public class PortkeyItem extends Item {
                 recordedY = (user.getY());
                 recordedZ = (user.getZ());
                 recorded = true;
-                user.sendMessage(Text.literal("Item bound to "+floor(this.recordedX)+", "+floor(this.recordedY)+", "+floor(this.recordedZ)).formatted(Formatting.DARK_PURPLE));
+                user.sendMessage(Text.literal("Item bound to "+floor(this.recordedX)+", "+floor(this.recordedY)+", "+floor(this.recordedZ)).formatted(Formatting.DARK_PURPLE),true);
                 world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_WARDEN_SONIC_CHARGE, SoundCategory.BLOCKS, 2.0F, 2.0F);
             }
         }

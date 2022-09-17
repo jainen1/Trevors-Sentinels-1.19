@@ -52,7 +52,7 @@ public class ModVillagers {
                     ));
                     factories.add((entity, random) -> new TradeOffer(
                             new ItemStack(ModItems.URANIUM_CRYSTAL, 3),
-                            new ItemStack(Items.BUCKET,1),
+                            new ItemStack(Items.MILK_BUCKET,1),
                             new ItemStack(ModItems.ANTIMILK,1),
                             6,2,0.02f
                     ));

@@ -13,6 +13,8 @@ public class ModSounds {
     public static SoundEvent STEEL_HIT = registerSoundEvent("steel_hit");
     public static SoundEvent STEEL_FALL = registerSoundEvent("steel_fall");
 
+    public static SoundEvent ASSASSINATION_UPLOAD = registerSoundEvent("assassination_upload");
+
 
     public static final BlockSoundGroup STEEL_SOUNDS = new BlockSoundGroup(1f,1f,
             ModSounds.STEEL_BREAK, ModSounds.STEEL_STEP, ModSounds.STEEL_PLACE, ModSounds.STEEL_HIT, ModSounds.STEEL_FALL);

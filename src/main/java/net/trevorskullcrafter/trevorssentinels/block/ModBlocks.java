@@ -6,9 +6,12 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import net.trevorskullcrafter.trevorssentinels.block.custom.*;
+import net.trevorskullcrafter.trevorssentinels.fluid.ModFluids;
 import net.trevorskullcrafter.trevorssentinels.item.ModItemGroup;
 import net.trevorskullcrafter.trevorssentinels.sound.ModSounds;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
@@ -58,6 +61,9 @@ public class ModBlocks {
     public static final Block URANIUM_BLOCK = registerBlock("uranium_block",
             new UraniumBlock(FabricBlockSettings.of(Material.STONE).sounds(BlockSoundGroup.AMETHYST_BLOCK).strength(50f,1200f).requiresTool()), ModItemGroup.SENTINELS);
 
+    public static final Block URANIUM_ORE = registerBlock("uranium_ore",
+            new OreBlock(FabricBlockSettings.of(Material.STONE).sounds(BlockSoundGroup.STONE).strength(50f,1200f).requiresTool()),ModItemGroup.SENTINELS);
+
     public static final Block CHISELED_SNOWSTONE = registerBlock("chiseled_snowstone",
             new DirectionalBlock(FabricBlockSettings.of(Material.STONE).strength(0.8f,0.8f).requiresTool()), ModItemGroup.SENTINELS);
 
@@ -69,6 +75,18 @@ public class ModBlocks {
 
     public static final Block SMOOTH_SNOWSTONE = registerBlock("smooth_snowstone",
             new Block(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.SENTINELS);
+
+    public static final Block SNOWSTONE_SLAB = registerBlock("snowstone_slab",
+            new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.SENTINELS);
+
+    public static final Block CUT_SNOWSTONE_SLAB = registerBlock("cut_snowstone_slab",
+            new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.SENTINELS);
+
+    public static final Block SMOOTH_SNOWSTONE_STAIRS = registerBlock("smooth_snowstone_stairs",
+            new Block(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.SENTINELS);
+
+    public static final Block SMOOTH_SNOWSTONE_SLAB = registerBlock("smooth_snowstone_slab",
+            new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.SENTINELS);
 
     public static final Block DARKENED_STEEL_BLOCK = registerBlock("darkened_steel_block",
             new Block(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.NETHERITE).strength(8f,12f).requiresTool()), ModItemGroup.SENTINELS);
@@ -89,7 +107,7 @@ public class ModBlocks {
             new FallDamagelessBlock(FabricBlockSettings.of(Material.SHULKER_BOX).strength(2f,4f).sounds(BlockSoundGroup.SLIME).jumpVelocityMultiplier(2.7f).slipperiness(0.989f)), ModItemGroup.SENTINELS);
 
     public static final Block ORANGE_AGILITY_BLOCK = registerBlock("orange_agility_block",
-            new OrangeAgilityBlock(FabricBlockSettings.of(Material.SHULKER_BOX).sounds(BlockSoundGroup.SLIME).strength(2f,4f)/*.velocityMultiplier(1.3f)*/.slipperiness(1.05f)), ModItemGroup.SENTINELS);
+            new Block(FabricBlockSettings.of(Material.SHULKER_BOX).sounds(BlockSoundGroup.SLIME).strength(2f,4f).velocityMultiplier(1.4f).slipperiness(0.75f)), ModItemGroup.SENTINELS);
 
     public static final Block BLACK_AGILITY_BLOCK = registerBlock("black_agility_block",
             new Block(FabricBlockSettings.of(Material.METAL).strength(6f,8f).sounds(ModSounds.STEEL_SOUNDS).slipperiness(/*1.098*/1.2f)), ModItemGroup.SENTINELS);
@@ -102,6 +120,9 @@ public class ModBlocks {
 
     public static final Block HANGING_DECOMMISSIONED_SENTINEL = registerBlock("hanging_decommissioned_sentinel",
             new DirectionalBlock(FabricBlockSettings.of(Material.STONE).strength(3.5f,3.5f).requiresTool()), ModItemGroup.SENTINELS);
+
+    public static final Block QUICKSAND_FLUID_BLOCK = registerBlockWithoutBlockItem("quicksand",
+            new FluidBlock(ModFluids.QUICKSAND_STILL, FabricBlockSettings.of(Material.WATER).noCollision().nonOpaque()));
 
     public static final Block FORGE = registerBlock("forge",
             new ForgeBlock(FabricBlockSettings.of(Material.STONE).strength(3.5f,3.5f).requiresTool()), ModItemGroup.SENTINELS);

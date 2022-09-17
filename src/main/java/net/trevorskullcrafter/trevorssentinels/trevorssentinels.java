@@ -8,6 +8,8 @@ import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 import net.trevorskullcrafter.trevorssentinels.recipe.ModRecipes;
 import net.trevorskullcrafter.trevorssentinels.screen.ModScreenHandlers;
 import net.trevorskullcrafter.trevorssentinels.villager.ModVillagers;
+import net.trevorskullcrafter.trevorssentinels.world.feature.ModConfiguredFeatures;
+import net.trevorskullcrafter.trevorssentinels.world.gen.ModOreGeneration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,8 +19,10 @@ public class trevorssentinels implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModConfiguredFeatures.registerConfiguredFeatures();
 
 		ModItems.registerModItems();
+		ModOreGeneration.generateOres();
 		ModBlocks.registerModBlocks();
 
 		ModBlockEntities.registerAllBlockEntities();

@@ -3,6 +3,9 @@
   "itemGroup.trevorssentinels.armory": "Trevor's Armory",
   "itemGroup.trevorssentinels.kitchen": "Trevor's Kitchen",
 
+  "item.trevorssentinels.music_disc_assassination_upload": "Music Disc",
+  "item.trevorssentinels.music_disc_assassination_upload.desc": "Kristoffer Kaufmann - Assassination Upload",
+
   "item.trevorssentinels.sentinum_shard": "Sentinum Shard",
   "item.trevorssentinels.sentinum_lens": "Sentinum Lens",
   "item.trevorssentinels.sentinum_holoprojector": "Sentinum Hard Light Projector",
@@ -33,7 +36,9 @@
   "item.trevorssentinels.trimetal_cleaver": "Trimetal Cleaver",
   "item.trevorssentinels.hunters_vibroblade": "Hunter's Vibroblade",
   "item.trevorssentinels.pappym_blade": "Demon's Bane",
+  "item.trevorssentinels.pappyd_blade": "Thanatu's Bane",
   "item.trevorssentinels.portkey": "Portkey",
+  "item.trevorssentinels.quicksand_bucket": "Quicksand Bucket",
 
   "block.trevorssentinels.sentinum_block": "Sentinum Block",
   "block.trevorssentinels.chiseled_sentinum_block": "Chiseled Sentinum Block",
@@ -63,6 +68,7 @@
   "block.trevorssentinels.cut_snowstone": "Cut Snowstone",
   "block.trevorssentinels.smooth_snowstone": "Smooth Snowstone",
 
+  "block.trevorssentinels.uranium_ore": "Uranium Ore",
   "block.trevorssentinels.uranium_block": "Block of Uranium",
   "block.trevorssentinels.rice_plant": "Rice Plant",
   "block.trevorssentinels.forge": "Forge",

@@ -14,6 +14,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -29,24 +30,31 @@ public class PappyMSwordItem extends SwordItem {
         ItemStack itemStack = user.getStackInHand(hand);
         if(!world.isClient() && hand == Hand.MAIN_HAND){
             if(!Screen.hasShiftDown()){
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 10, 255));
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,10,3));
-                world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 2.0F, -5.0F);
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 5, 255,false,false,false));
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,5,3,false,false,false));
+                world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 2.0F, getRandom());
+                user.sendMessage(Text.literal("Parry!").formatted(Formatting.GRAY),true);
                 user.getItemCooldownManager().set(this, 100);
-                return TypedActionResult.success(itemStack);
             }else {
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,200,1));
-                world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.EVENT_RAID_HORN, SoundCategory.BLOCKS, 2.0F, 0.0F);
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,200,1,false,false,false));
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED,200,2,false,false,false));
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.HUNGER,200,2,false,false,false));
+                world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_WARDEN_SONIC_CHARGE, SoundCategory.BLOCKS, 2.0F, 5.0F);
+                user.sendMessage(Text.literal("Energized!").formatted(Formatting.GREEN),true);
                 user.getItemCooldownManager().set(this,200);
-                return TypedActionResult.success(itemStack);
             }
+            return TypedActionResult.success(itemStack);
         }
         return super.use(world, user, hand);
+    }
+
+    public float getRandom(){
+        return Random.createLocal().nextFloat();
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
             tooltip.add(Text.literal("Right click to parry!").formatted(Formatting.GREEN));
-            tooltip.add(Text.literal("Shift + right click to gain a buff!").formatted(Formatting.GREEN));
+            tooltip.add(Text.literal("Shift + right click to gain a burst of energy!").formatted(Formatting.DARK_GREEN));
     }
 }

@@ -5,12 +5,12 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Rarity;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
-import net.trevorskullcrafter.trevorssentinels.item.custom.HoloprojectorItem;
-import net.trevorskullcrafter.trevorssentinels.item.custom.ModAxeItem;
-import net.trevorskullcrafter.trevorssentinels.item.custom.PappyMSwordItem;
-import net.trevorskullcrafter.trevorssentinels.item.custom.PortkeyItem;
+import net.trevorskullcrafter.trevorssentinels.fluid.ModFluids;
+import net.trevorskullcrafter.trevorssentinels.item.custom.*;
+import net.trevorskullcrafter.trevorssentinels.sound.ModSounds;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -28,13 +28,18 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
     public static final Item SENTINUM_HOLOPROJECTOR = registerItem("sentinum_holoprojector",
-            new HoloprojectorItem(ModToolMaterials.URANIUM, new FabricItemSettings().maxDamage(129).rarity(Rarity.RARE).group(ModItemGroup.SENTINELS)));
+            new HoloprojectorItem(
+                    new FabricItemSettings().maxDamage(129).rarity(Rarity.RARE).group(ModItemGroup.SENTINELS)));
+
+    public static final Item MUSIC_DISC_ASSASSINATION_UPLOAD = registerItem("music_disc_assassination_upload",
+            new ModMusicDiscItem(7, ModSounds.ASSASSINATION_UPLOAD,
+                    new FabricItemSettings().maxCount(1).group(ModItemGroup.SENTINELS).rarity(Rarity.RARE)));
 
     public static final Item STEEL_SHEET = registerItem("steel_sheet",
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
     public static final Item BLOOD_DIAMOND = registerItem("blood_diamond",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS).fireproof().rarity(Rarity.EPIC)));
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS).fireproof().rarity(Rarity.RARE)));
 
     public static final Item VIOLENT_CATALYST = registerItem("violent_catalyst",
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
@@ -63,7 +68,8 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN)
                     .food(new FoodComponent.Builder().hunger(4).saturationModifier(1.0f)
                             .statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 2400, 1), 1.0f)
-                            .statusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 2400, 1), 1.0f).alwaysEdible().build())));
+                            .statusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 2400, 1), 1.0f)
+                            .alwaysEdible().build())));
 
     public static final Item BROWNIE = registerItem("brownie",
             new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN)
@@ -74,21 +80,35 @@ public class ModItems {
                     .food(new FoodComponent.Builder().hunger(6).saturationModifier(0.6f).build())));
 
     public static final Item ANTIMILK = registerItem("antimilk",
-            new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN).food(new FoodComponent.Builder().statusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 1, 0), 1.0f).statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.WITHER, 1, 0), 1.0f).statusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 1, 0), 1.0f).statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 1, 0), 1.0f).statusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE, 1, 0), 1.0f).statusEffect(new StatusEffectInstance(StatusEffects.POISON, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 1, 0), 1.0f).statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.CONDUIT_POWER, 1, 0), 1.0f).statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 1, 0), 1.0f).statusEffect(new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 1, 0), 1.0f).statusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 1, 0), 1.0f).statusEffect(new StatusEffectInstance(StatusEffects.HASTE, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.BAD_OMEN, 1, 0), 1.0f).statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1, 0), 1.0f).statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 1, 0), 1.0f).statusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 1, 0), 1.0f).alwaysEdible().build())
-                    .rarity(Rarity.EPIC)));
+            new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN).food(new FoodComponent.Builder()
+                            .statusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 1, 0), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 1, 0), 1.0f)
+                            .statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 1, 0), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.WITHER, 1, 0), 1.0f)
+                            .statusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 1, 0), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 1, 0), 1.0f)
+                            .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 1, 0), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 1, 0), 1.0f)
+                            .statusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 1, 0), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE, 1, 0), 1.0f)
+                            .statusEffect(new StatusEffectInstance(StatusEffects.POISON, 1, 0), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 1, 0), 1.0f)
+                            .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 1, 0), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.CONDUIT_POWER, 1, 0), 1.0f)
+                            .statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 1, 0), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 1, 0), 1.0f)
+                            .statusEffect(new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 1, 0), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 1, 0), 1.0f)
+                            .statusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 1, 0), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 1, 0), 1.0f)
+                            .statusEffect(new StatusEffectInstance(StatusEffects.HASTE, 1, 0), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.BAD_OMEN, 1, 0), 1.0f)
+                            .statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 1, 0), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1, 0), 1.0f)
+                            .statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 1, 0), 1.0f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 1, 0), 1.0f)
+                            .statusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 1, 0), 1.0f)
+                            .alwaysEdible().build()).rarity(Rarity.EPIC)));
 
     public static final Item ASH = registerItem("ash",
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
@@ -109,28 +129,41 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS).rarity(Rarity.RARE)));
 
     public static final Item FLIMSY_SENTINUM_SHIV = registerItem("flimsy_sentinum_shiv",
-            new SwordItem(ModToolMaterials.FLIMSY_SENTINUM, 0, -1f, new FabricItemSettings().group(ModItemGroup.ARMORY)));
+            new SwordItem(ModToolMaterials.FLIMSY_SENTINUM, 0, -1f,
+                    new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item SENTINUM_DIRK = registerItem("sentinum_dirk",
-            new SwordItem(ModToolMaterials.SENTINUM, 0, -1f, new FabricItemSettings().group(ModItemGroup.ARMORY)));
+            new SwordItem(ModToolMaterials.SENTINUM, 0, -1f,
+                    new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item ROSE_GOLD_DAGGER = registerItem("rose_gold_dagger",
-            new SwordItem(ModToolMaterials.ROSE_GOLD, 1, -1f, new FabricItemSettings().group(ModItemGroup.ARMORY)));
+            new SwordItem(ModToolMaterials.ROSE_GOLD, 1, -1f,
+                    new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item TRIMETAL_CLEAVER = registerItem("trimetal_cleaver",
-            new ModAxeItem(ModToolMaterials.TRIMETAL, 3, -2.8f, new FabricItemSettings().group(ModItemGroup.ARMORY)));
+            new ModAxeItem(ModToolMaterials.TRIMETAL, 3, -2.8f,
+                    new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item HUNTERS_VIBROBLADE = registerItem("hunters_vibroblade",
-            new SwordItem(ModToolMaterials.DARKSTEEL, -3, -1f, new FabricItemSettings().group(ModItemGroup.ARMORY).rarity(Rarity.RARE)));
+            new SwordItem(ModToolMaterials.DARKSTEEL, -3, -1f,
+                    new FabricItemSettings().group(ModItemGroup.ARMORY).rarity(Rarity.RARE)));
 
     public static final Item PAPPYM_BLADE = registerItem("pappym_blade",
-            new PappyMSwordItem(ModToolMaterials.URANIUM,0,-2.4f, new FabricItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(ModItemGroup.ARMORY)));
+            new PappyMSwordItem(ModToolMaterials.URANIUM,0,-2.4f,
+                    new FabricItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(ModItemGroup.ARMORY)));
+
+    public static final Item PAPPYD_BLADE = registerItem("pappyd_blade",
+            new PappyDSwordItem(ModToolMaterials.URANIUM,0,-2.4f,
+                    new FabricItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(ModItemGroup.ARMORY)));
 
     public static final Item HUNTERS_PISTOL = registerItem("hunters_pistol",
             new CrossbowItem(new FabricItemSettings().maxDamage(465).group(ModItemGroup.ARMORY)));
 
     public static final Item PORTKEY = registerItem("portkey",
             new PortkeyItem(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
+    public static final Item QUICKSAND_BUCKET = registerItem("quicksand_bucket",
+            new BucketItem(ModFluids.QUICKSAND_STILL, new FabricItemSettings().group(ModItemGroup.SENTINELS).maxCount(1)));
 
 
     private static Item registerItem(String name, Item item){
