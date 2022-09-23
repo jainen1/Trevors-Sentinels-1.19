@@ -28,15 +28,15 @@ public class ForgeScreen extends HandledScreen<ForgeScreenHandler>{
         RenderSystem.setShaderTexture(0, TEXTURE);
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
-        drawTexture(matrices, x, y, 0, 0 , backgroundWidth, backgroundHeight);
+        drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
 
         renderProgressArrow(matrices, x, y);
     }
 
     private void renderProgressArrow(MatrixStack matrices, int x, int y){
         if(handler.isCrafting()){
-            drawTexture(matrices, x + 9, y + 20, 178, 0, 5, handler.getScaledProgress());
-            drawTexture(matrices, x + 9, y + 20, 178, 0, 5, handler.getScaledFuel());
+            drawTexture(matrices, x + 90, y + 20, 178, 0, 23, handler.getScaledProgress());
+            drawTexture(matrices, x + 8, y + 19, 178, 0, 13, handler.getScaledFuel());
         }
     }
 

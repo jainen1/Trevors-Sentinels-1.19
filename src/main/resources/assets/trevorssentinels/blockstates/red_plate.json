@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "minecraft:block/red_plate"
+    },
+    "powered=true": {
+      "model": "minecraft:block/red_plate_down"
+    }
+  }
+}

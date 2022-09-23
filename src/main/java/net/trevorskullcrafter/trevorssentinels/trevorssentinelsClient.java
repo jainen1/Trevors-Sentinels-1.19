@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.util.Identifier;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.fluid.ModFluids;
 import net.trevorskullcrafter.trevorssentinels.screen.ForgeScreen;
@@ -17,16 +18,16 @@ public class trevorssentinelsClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SUPERFORGE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.RICE_PLANT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GOLDEN_RICE_PLANT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.HOLOBARRIER, RenderLayer.getTranslucent());
+
         HandledScreens.register(ModScreenHandlers.FORGE_SCREEN_HANDLER, ForgeScreen::new);
 
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.HOLOBARRIER, RenderLayer.getTranslucent());
-        FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.QUICKSAND_STILL,
-                new SimpleFluidRenderHandler(SimpleFluidRenderHandler.WATER_STILL,
-                        SimpleFluidRenderHandler.WATER_FLOWING,
-                        SimpleFluidRenderHandler.WATER_OVERLAY, 0xe9860));
-        FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.QUICKSAND_FLOWING,
-                new SimpleFluidRenderHandler(SimpleFluidRenderHandler.WATER_STILL,
-                        SimpleFluidRenderHandler.WATER_FLOWING,
-                        SimpleFluidRenderHandler.WATER_OVERLAY, 0xe9860));
+        FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.QUICKSAND_STILL, ModFluids.QUICKSAND_FLOWING,
+        new SimpleFluidRenderHandler(
+                new Identifier("trevorssentinels:block/quicksand_still"),
+                new Identifier("trevorssentinels:block/quicksand_flow")
+        ));
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
+                ModFluids.QUICKSAND_STILL, ModFluids.QUICKSAND_FLOWING);
     }
 }

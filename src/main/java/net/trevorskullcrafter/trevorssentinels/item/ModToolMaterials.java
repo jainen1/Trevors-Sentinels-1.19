@@ -1,6 +1,7 @@
 package net.trevorskullcrafter.trevorssentinels.item;
 
 import net.fabricmc.yarn.constants.MiningLevels;
+import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Lazy;
@@ -18,7 +19,7 @@ public enum ModToolMaterials implements ToolMaterial{
       //DIAMOND(MiningLevels.DIAMOND, 1561, 8.0f, 3.0f, 10, () -> Ingredient.ofItems(Items.DIAMOND)),
         DARKSTEEL(MiningLevels.NETHERITE, 1738, 9.0f, 5.0f, 12, () -> Ingredient.ofItems(ModItems.BLOOD_DIAMOND)),
       //NETHERITE(MiningLevels.NETHERITE, 2031, 9.0f, 4.0f, 15, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)),
-        URANIUM(MiningLevels./*URANIUM*/NETHERITE, 2642, 11.0f, 6.5f, 0, () -> Ingredient.ofItems(ModItems.URANIUM_CRYSTAL));;
+        URANIUM(MiningLevels./*URANIUM*/NETHERITE, 2642, 11.0f, 6.5f, 0, () -> Ingredient.ofItems(ModItems.URANIUM_CRYSTAL));
 
         private final int miningLevel;
         private final int itemDurability;

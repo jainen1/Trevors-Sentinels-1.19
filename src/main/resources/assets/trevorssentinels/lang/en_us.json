@@ -1,7 +1,8 @@
 {
-  "itemGroup.trevorssentinels.sentinels": "Trevor's Sentinels",
+  "itemGroup.trevorssentinels.sentinels": "Trevor's Workshop",
   "itemGroup.trevorssentinels.armory": "Trevor's Armory",
   "itemGroup.trevorssentinels.kitchen": "Trevor's Kitchen",
+  "itemGroup.trevorssentinels.world": "Trevor's World",
 
   "item.trevorssentinels.music_disc_assassination_upload": "Music Disc",
   "item.trevorssentinels.music_disc_assassination_upload.desc": "Kristoffer Kaufmann - Assassination Upload",
@@ -38,6 +39,7 @@
   "item.trevorssentinels.pappym_blade": "Demon's Bane",
   "item.trevorssentinels.pappyd_blade": "Thanatu's Bane",
   "item.trevorssentinels.portkey": "Portkey",
+  "item.trevorssentinels.nuclear_rocket": "Nuclear Rocket",
   "item.trevorssentinels.quicksand_bucket": "Quicksand Bucket",
 
   "block.trevorssentinels.sentinum_block": "Sentinum Block",
@@ -52,6 +54,9 @@
 
   "block.trevorssentinels.steel_block": "Block of Steel",
   "block.trevorssentinels.caution_steel_block": "Caution-Pattern Block of Steel",
+  "block.trevorssentinels.rusted_steel_block": "Rusted Steel Block",
+  "block.trevorssentinels.stainless_steel_block": "Stainless Steel Block",
+  "block.trevorssentinels.wax_infused_copper_block": "Wax-Infused Copper Block",
   "block.trevorssentinels.steel_lamp_block": "Steel Lamp",
   "block.trevorssentinels.steel_fan": "Industrial Fan",
   "block.trevorssentinels.battery": "Battery",
@@ -62,11 +67,19 @@
   "block.trevorssentinels.iron_gold_block": "Block of Nanocrystalline Ferraurium",
   "block.trevorssentinels.copper_iron_block": "Block of Dnilvar",
   "block.trevorssentinels.rose_gold_block": "Block of Rose Gold",
+  "block.trevorssentinels.red_button": "Big Red Button",
+  "block.trevorssentinels.red_plate": "Big Red Pressure Plate",
 
   "block.trevorssentinels.snowstone": "Snowstone",
   "block.trevorssentinels.chiseled_snowstone": "Chiseled Snowstone",
   "block.trevorssentinels.cut_snowstone": "Cut Snowstone",
   "block.trevorssentinels.smooth_snowstone": "Smooth Snowstone",
+  "block.trevorssentinels.snowstone_slab": "Snowstone Slab",
+  "block.trevorssentinels.cut_snowstone_slab": "Cut Snowstone Slab",
+  "block.trevorssentinels.snowstone_stairs": "Snowstone Stairs",
+  "block.trevorssentinels.snowstone_wall": "Snowstone Wall",
+  "block.trevorssentinels.smooth_snowstone_stairs": "Smooth Snowstone Stairs",
+  "block.trevorssentinels.smooth_snowstone_slab": "Smooth Snowstone Slab",
 
   "block.trevorssentinels.uranium_ore": "Uranium Ore",
   "block.trevorssentinels.uranium_block": "Block of Uranium",
@@ -80,7 +93,7 @@
 
   "trevorssentinels:steel_break": "Block broken",
   "trevorssentinels:steel_step": "Footsteps",
-  "trevorssentinels:steel_placed": "Block placed",
+  "trevorssentinels:steel_place": "Block placed",
   "trevorssentinels:steel_hit": "Block breaking",
   "trevorssentinels:steel_fall": "Steel falls"
 }

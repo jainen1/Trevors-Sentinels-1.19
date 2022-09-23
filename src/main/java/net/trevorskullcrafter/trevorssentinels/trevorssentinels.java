@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
+import net.trevorskullcrafter.trevorssentinels.fluid.ModFluids;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 import net.trevorskullcrafter.trevorssentinels.recipe.ModRecipes;
 import net.trevorskullcrafter.trevorssentinels.screen.ModScreenHandlers;
@@ -30,6 +31,8 @@ public class trevorssentinels implements ModInitializer {
 		ModRecipes.registerRecipes();
 		ModVillagers.registerVillagers();
 		ModVillagers.registerTrades();
+
+		ModFluids.register();
 
 		//ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
 	}

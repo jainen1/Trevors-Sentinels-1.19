@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "trevorssentinels:snowstone_bottom"
+          "name": "trevorssentinels:smooth_snowstone"
         }
       ],
       "conditions": [

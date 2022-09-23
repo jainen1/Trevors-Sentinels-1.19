@@ -65,6 +65,7 @@ public class PappyDSwordItem extends PappyMSwordItem {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(Text.literal("Chaos").formatted(Formatting.ITALIC));
             tooltip.add(Text.literal("Right click to parry!").formatted(Formatting.RED));
             tooltip.add(Text.literal("Shift + right click to become enraged!").formatted(Formatting.DARK_RED));
     }

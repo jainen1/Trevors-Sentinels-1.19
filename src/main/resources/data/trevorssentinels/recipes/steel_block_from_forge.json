@@ -1,22 +1,20 @@
 {
   "type": "trevorssentinels:forge",
-  "ingredients": [
-    {
-      "item": "minecraft:iron_block"
-    },
-    {
+  "key": {
+    "#": {
       "item": "minecraft:coal"
     },
-    {
-      "item": "minecraft:coal"
-    },
-    {
-      "item": "minecraft:coal"
-    },
-    {
-      "item": "minecraft:coal"
+    "$": {
+      "item": "minecraft:iron_ingot"
     }
+  },
+  "pattern": [
+    " # ",
+    "#$#",
+    " # "
   ],
-  "result": "trevorssentinels:steel_block",
-  "count": 2
+  "result": {
+    "item": "trevorssentinels:steel_sheet",
+    "count": 2
+  }
 }

@@ -16,7 +16,7 @@ public class ModBlockEntities {
         FORGE = Registry.register(Registry.BLOCK_ENTITY_TYPE,
                 new Identifier(MOD_ID, "forge"),
                 FabricBlockEntityTypeBuilder.create(ForgeBlockEntity::new,
-                        ModBlocks.FORGE).build(null));
+                        ModBlocks.FORGE, ModBlocks.SUPERFORGE).build(null));
         /*SUPERFORGE = Registry.register(Registry.BLOCK_ENTITY_TYPE,
                 new Identifier(MOD_ID, "superforge"),
                 FabricBlockEntityTypeBuilder.create(SuperforgeBlockEntity::new,

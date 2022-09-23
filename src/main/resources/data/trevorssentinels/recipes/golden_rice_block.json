@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "trevorssentinels:golden_rice"
+    }
+  },
+  "result": {
+    "item": "trevorssentinels:golden_rice_block"
+  }
+}

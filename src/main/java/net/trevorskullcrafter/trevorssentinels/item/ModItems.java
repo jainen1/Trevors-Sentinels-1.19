@@ -46,7 +46,7 @@ public class ModItems {
 
     public static final Item FRIED_EGG = registerItem("fried_egg",
             new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN)
-                    .food(new FoodComponent.Builder().hunger(2).saturationModifier(0.3f).build()).maxCount(128)));
+                    .food(new FoodComponent.Builder().hunger(2).saturationModifier(0.3f).build())));
 
     public static final Item RICE = registerItem("rice",
             new AliasedBlockItem(ModBlocks.RICE_PLANT, new FabricItemSettings().group(ModItemGroup.KITCHEN)
@@ -111,7 +111,8 @@ public class ModItems {
                             .alwaysEdible().build()).rarity(Rarity.EPIC)));
 
     public static final Item ASH = registerItem("ash",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)
+                    .food(new FoodComponent.Builder().hunger(-2).saturationModifier(0.2f).build())));
 
     public static final Item COPPER_IRON_INGOT = registerItem("copper_iron_ingot",
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
@@ -160,10 +161,10 @@ public class ModItems {
             new CrossbowItem(new FabricItemSettings().maxDamage(465).group(ModItemGroup.ARMORY)));
 
     public static final Item PORTKEY = registerItem("portkey",
-            new PortkeyItem(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+            new PortkeyItem(new FabricItemSettings().maxDamage(11).group(ModItemGroup.SENTINELS)));
 
-    public static final Item QUICKSAND_BUCKET = registerItem("quicksand_bucket",
-            new BucketItem(ModFluids.QUICKSAND_STILL, new FabricItemSettings().group(ModItemGroup.SENTINELS).maxCount(1)));
+    public static final Item NUCLEAR_ROCKET = registerItem("nuclear_rocket",
+            new NuclearFireworkItem(new FabricItemSettings().maxCount(1).maxDamage(65).rarity(Rarity.UNCOMMON).group(ModItemGroup.SENTINELS)));
 
 
     private static Item registerItem(String name, Item item){

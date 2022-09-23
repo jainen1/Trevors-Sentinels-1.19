@@ -27,7 +27,6 @@ public class ForgeRecipe extends ShapedRecipe {
         super(id, group, width, height, input, output);
     }
 
-    @Override
     public boolean matches(CraftingInventory craftingInventory, World world) {
         for (int i = 0; i <= craftingInventory.getWidth() - getWidth(); ++i) {
             for (int j = 0; j <= craftingInventory.getHeight() - getHeight(); ++j) {
@@ -57,12 +56,10 @@ public class ForgeRecipe extends ShapedRecipe {
         return true;
     }
 
-    @Override
     public ItemStack getOutput() {
         return super.getOutput().copy();
     }
 
-    @Override
     public String getGroup() {
         return super.getGroup();
     }
@@ -71,12 +68,10 @@ public class ForgeRecipe extends ShapedRecipe {
         return super.getIngredients();
     }
 
-    @Override
     public RecipeSerializer<?> getSerializer() {
         return Serializer.INSTANCE;
     }
 
-    @Override
     public RecipeType<?> getType() {
         return Type.INSTANCE;
     }

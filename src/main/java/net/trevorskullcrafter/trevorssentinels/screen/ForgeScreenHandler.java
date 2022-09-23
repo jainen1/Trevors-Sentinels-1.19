@@ -2,15 +2,23 @@ package net.trevorskullcrafter.trevorssentinels.screen;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.CraftingInventory;
+import net.minecraft.inventory.CraftingResultInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
 import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.world.World;
+import net.trevorskullcrafter.trevorssentinels.recipe.ForgeRecipe;
 import net.trevorskullcrafter.trevorssentinels.screen.slot.ModFuelSlot;
 import net.trevorskullcrafter.trevorssentinels.screen.slot.ModResultSlot;
+
+import java.util.Optional;
 
 public class ForgeScreenHandler extends ScreenHandler{
     private final Inventory inventory;
@@ -18,6 +26,22 @@ public class ForgeScreenHandler extends ScreenHandler{
 
     public ForgeScreenHandler(int syncId, PlayerInventory inventory){
         this(syncId, inventory, new SimpleInventory(11), new ArrayPropertyDelegate(4));
+    }
+
+    public static void updateResult(ScreenHandler handler, World world, PlayerEntity player, CraftingInventory craftingInventory, CraftingResultInventory resultInventory) {
+        ForgeRecipe recipe;
+        if (world.isClient) {
+            return;
+        }
+        ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
+        ItemStack itemStack = ItemStack.EMPTY;
+        Optional<ForgeRecipe> match = world.getServer().getRecipeManager().getFirstMatch(ForgeRecipe.Type.INSTANCE, craftingInventory, world);
+        if (match.isPresent() && resultInventory.shouldCraftRecipe(world, serverPlayerEntity, recipe = match.get())) {
+            itemStack = recipe.craft(craftingInventory);
+        }
+        resultInventory.setStack(10, itemStack);
+        handler.setPreviousTrackedSlot(10, itemStack);
+        serverPlayerEntity.networkHandler.sendPacket(new ScreenHandlerSlotUpdateS2CPacket(handler.syncId, handler.nextRevision(), 0, itemStack));
     }
 
     public ForgeScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, PropertyDelegate delegate){
