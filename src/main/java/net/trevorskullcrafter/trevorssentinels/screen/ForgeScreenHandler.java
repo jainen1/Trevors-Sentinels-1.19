@@ -25,7 +25,7 @@ public class ForgeScreenHandler extends ScreenHandler{
     private final PropertyDelegate propertyDelegate;
 
     public ForgeScreenHandler(int syncId, PlayerInventory inventory){
-        this(syncId, inventory, new SimpleInventory(11), new ArrayPropertyDelegate(4));
+        this(syncId, inventory, new SimpleInventory(10), new ArrayPropertyDelegate(4));
     }
 
     public static void updateResult(ScreenHandler handler, World world, PlayerEntity player, CraftingInventory craftingInventory, CraftingResultInventory resultInventory) {

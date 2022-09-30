@@ -80,12 +80,14 @@
   "block.trevorssentinels.snowstone_wall": "Snowstone Wall",
   "block.trevorssentinels.smooth_snowstone_stairs": "Smooth Snowstone Stairs",
   "block.trevorssentinels.smooth_snowstone_slab": "Smooth Snowstone Slab",
+  "block.trevorssentinels.rice_block": "Block of Rice",
+  "block.trevorssentinels.golden_rice_block": "Block of Golden Rice",
 
   "block.trevorssentinels.uranium_ore": "Uranium Ore",
   "block.trevorssentinels.uranium_block": "Block of Uranium",
   "block.trevorssentinels.rice_plant": "Rice Plant",
   "block.trevorssentinels.forge": "Forge",
-  "block.trevorssentinels.superforge": "Sentinel Superforge",
+  "block.trevorssentinels.superforge": "Nuclear Superforge",
   "block.trevorssentinels.hanging_decommissioned_sentinel": "Hanging Decommissioned Sentinel",
 
   "entity.minecraft.villager.attendant": "Engineer",

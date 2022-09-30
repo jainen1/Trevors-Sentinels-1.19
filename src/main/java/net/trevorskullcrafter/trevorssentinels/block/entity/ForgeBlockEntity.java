@@ -2,6 +2,7 @@ package net.trevorskullcrafter.trevorssentinels.block.entity;
 
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.player.PlayerEntity;
@@ -124,7 +125,7 @@ public class ForgeBlockEntity extends BlockEntity implements NamedScreenHandlerF
         maxFuelTime = nbt.getInt("forge.maxFuelTime");
     }
 
-    public static void tick(World world, BlockPos blockPos, BlockState blockState, ForgeBlockEntity entity) {
+    /*public static void tick(World world, BlockPos blockPos, BlockState blockState, ForgeBlockEntity entity) {
         if(isConsumingFuel(entity)){
             entity.fuelTime--;
         }
@@ -162,7 +163,7 @@ public class ForgeBlockEntity extends BlockEntity implements NamedScreenHandlerF
     }
 
     private static void craftItem(ForgeBlockEntity entity) {
-        CraftingInventory inventory = new CraftingInventory(ForgeScreenHandler,3,3);
+        SimpleInventory inventory = new SimpleInventory(10);
         for(int i = 0; i < entity.size(); i++) {
             inventory.setStack(i, entity.getStack(i));
         }
@@ -185,7 +186,7 @@ public class ForgeBlockEntity extends BlockEntity implements NamedScreenHandlerF
     }
 
     private static boolean hasRecipe(ForgeBlockEntity entity){
-        CraftingInventory inventory = new CraftingInventory(Screen,3,3);
+        SimpleInventory inventory = new SimpleInventory(10);
         for(int i = 0; i < entity.size(); i++){
             inventory.setStack(i, entity.getStack(i));
         }
@@ -198,11 +199,11 @@ public class ForgeBlockEntity extends BlockEntity implements NamedScreenHandlerF
         return false;
     }
 
-    private static boolean canInsertItemIntoOutputSlot(CraftingInventory inventory) {
+    private static boolean canInsertItemIntoOutputSlot(SimpleInventory inventory) {
         return inventory.getStack(10).getMaxCount() > inventory.getStack(10).getCount();
     }
 
-    private static boolean canInsertAmountIntoOutputSlot(CraftingInventory inventory, Item output) {
+    private static boolean canInsertAmountIntoOutputSlot(SimpleInventory inventory, Item output) {
         return inventory.getStack(10).getItem() == output || inventory.getStack(10).isEmpty();
-    }
+    }*/
 }

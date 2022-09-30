@@ -96,8 +96,8 @@ public class ModBlocks {
     public static final Block CUT_SNOWSTONE_SLAB = registerBlock("cut_snowstone_slab",
             new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.WORLD);
 
-    //public static final Block SNOWSTONE_STAIRS = registerBlock("snowstone_stairs",
-    //        new StairsBlock(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.WORLD);
+    public static final Block SNOWSTONE_STAIRS = registerBlock("snowstone_stairs",
+            new Block(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.WORLD);
 
     public static final Block SNOWSTONE_WALL = registerBlock("snowstone_wall",
             new WallBlock(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.WORLD);
@@ -153,8 +153,8 @@ public class ModBlocks {
     public static final Block FORGE = registerBlock("forge",
             new ForgeBlock(FabricBlockSettings.of(Material.STONE).strength(3.5f,3.5f).requiresTool()), ModItemGroup.SENTINELS);
 
-    public static final Block SUPERFORGE = registerBlock("superforge",
-            new ForgeBlock(FabricBlockSettings.of(Material.METAL).sounds(ModSounds.STEEL_SOUNDS).strength(50f,1200f).nonOpaque().requiresTool()), ModItemGroup.SENTINELS);
+    public static final Block SUPERFORGE = registerBlockWithoutBlockItem("superforge",
+            new SuperforgeBlock(FabricBlockSettings.of(Material.METAL).sounds(ModSounds.STEEL_SOUNDS).strength(50f,1200f).nonOpaque().requiresTool()));
 
     private static Block registerBlock(String name, Block block, ItemGroup group){
         registerBlockItem(name, block, group);

@@ -166,6 +166,9 @@ public class ModItems {
     public static final Item NUCLEAR_ROCKET = registerItem("nuclear_rocket",
             new NuclearFireworkItem(new FabricItemSettings().maxCount(1).maxDamage(65).rarity(Rarity.UNCOMMON).group(ModItemGroup.SENTINELS)));
 
+    public static final Item SUPERFORGE_ITEM = registerItem("superforge_item",
+            new AnimatedBlockItem(ModBlocks.SUPERFORGE, new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
 
     private static Item registerItem(String name, Item item){
         return Registry.register(Registry.ITEM, new Identifier(trevorssentinels.MOD_ID, name), item);
