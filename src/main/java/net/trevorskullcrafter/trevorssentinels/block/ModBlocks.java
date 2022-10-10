@@ -76,7 +76,7 @@ public class ModBlocks {
             new OreBlock(FabricBlockSettings.of(Material.STONE).sounds(BlockSoundGroup.STONE).strength(50f,1200f).requiresTool()),ModItemGroup.SENTINELS);
 
     public static final Block NUCLEAR_CHARGE = registerBlock("nuclear_charge",
-            new TntBlock(FabricBlockSettings.of(Material.TNT).sounds(BlockSoundGroup.GRASS)), ModItemGroup.SENTINELS);
+            new TntBlock(FabricBlockSettings.of(Material.TNT).sounds(ModSounds.STEEL_SOUNDS)), ModItemGroup.SENTINELS);
 
     public static final Block CHISELED_SNOWSTONE = registerBlock("chiseled_snowstone",
             new DirectionalBlock(FabricBlockSettings.of(Material.STONE).strength(0.8f,0.8f).requiresTool()), ModItemGroup.WORLD);
@@ -107,6 +107,18 @@ public class ModBlocks {
 
     public static final Block SMOOTH_SNOWSTONE_SLAB = registerBlock("smooth_snowstone_slab",
             new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.WORLD);
+
+    public static final Block DIRT_STAIRS = registerBlock("dirt_stairs",
+            new Block(FabricBlockSettings.of(Material.SOIL).strength(0.5f).sounds(BlockSoundGroup.GRAVEL)), ModItemGroup.WORLD);
+
+    public static final Block DIRT_SLAB = registerBlock("dirt_slab",
+            new SlabBlock(FabricBlockSettings.of(Material.SOIL).strength(0.5f).sounds(BlockSoundGroup.GRAVEL)), ModItemGroup.WORLD);
+
+    public static final Block COARSE_DIRT_STAIRS = registerBlock("coarse_dirt_stairs",
+            new Block(FabricBlockSettings.of(Material.SOIL).strength(0.5f).sounds(BlockSoundGroup.GRAVEL)), ModItemGroup.WORLD);
+
+    public static final Block COARSE_DIRT_SLAB = registerBlock("coarse_dirt_slab",
+            new SlabBlock(FabricBlockSettings.of(Material.SOIL).strength(0.5f).sounds(BlockSoundGroup.GRAVEL)), ModItemGroup.WORLD);
 
     public static final Block RED_BUTTON = registerBlock("red_button",
             new StoneButtonBlock(FabricBlockSettings.of(Material.METAL).sounds(ModSounds.STEEL_SOUNDS)

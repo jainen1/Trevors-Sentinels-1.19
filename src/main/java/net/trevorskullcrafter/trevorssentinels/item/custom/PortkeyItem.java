@@ -21,6 +21,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 import static java.lang.Math.floor;
+import static java.lang.Math.round;
 
 public class PortkeyItem extends Item {
     public PortkeyItem(Settings settings) {
@@ -58,15 +59,12 @@ public class PortkeyItem extends Item {
                     itemStack.damage(-1, user, p -> p.sendToolBreakStatus(hand));
                     user.getItemCooldownManager().set(this,100);
                 }else {
-                    //if(user.getStackInHand(hand).hasNbt()){
-                    //  user.getStackInHand(hand).setNbt(new NbtCompound());
-                    //}
                     NbtCompound nbtData = new NbtCompound();
                     nbtData.putDouble("trevorssentinels:playerPosX", user.getX());
                     nbtData.putDouble("trevorssentinels:playerPosY", user.getY());
                     nbtData.putDouble("trevorssentinels:playerPosZ", user.getZ());
                     nbtData.putString("trevorssentinels:boundText",
-                            "Bound to " + floor(user.getX()) + ", " + floor(user.getY()) + ", " + floor(user.getZ()));
+                            "Bound to " + round(user.getX()) + ", " + round(user.getY()) + ", " + round(user.getZ()));
                     itemStack.setSubNbt("trevorssentinels:teleportData", nbtData);
 
                     user.sendMessage(Text.literal(itemStack.getSubNbt("trevorssentinels:teleportData").getString("trevorssentinels:boundText"))

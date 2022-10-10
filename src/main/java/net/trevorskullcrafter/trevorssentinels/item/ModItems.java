@@ -1,6 +1,7 @@
 package net.trevorskullcrafter.trevorssentinels.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
@@ -29,7 +30,7 @@ public class ModItems {
 
     public static final Item SENTINUM_HOLOPROJECTOR = registerItem("sentinum_holoprojector",
             new HoloprojectorItem(
-                    new FabricItemSettings().maxDamage(129).rarity(Rarity.RARE).group(ModItemGroup.SENTINELS)));
+                    new FabricItemSettings().maxDamage(129).group(ModItemGroup.SENTINELS)));
 
     public static final Item MUSIC_DISC_ASSASSINATION_UPLOAD = registerItem("music_disc_assassination_upload",
             new ModMusicDiscItem(7, ModSounds.ASSASSINATION_UPLOAD,
@@ -39,7 +40,7 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
     public static final Item BLOOD_DIAMOND = registerItem("blood_diamond",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS).fireproof().rarity(Rarity.RARE)));
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS).fireproof()));
 
     public static final Item VIOLENT_CATALYST = registerItem("violent_catalyst",
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
@@ -47,6 +48,10 @@ public class ModItems {
     public static final Item FRIED_EGG = registerItem("fried_egg",
             new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN)
                     .food(new FoodComponent.Builder().hunger(2).saturationModifier(0.3f).build())));
+
+    public static final Item TORTILLA = registerItem("tortilla",
+            new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN)
+                    .food(new FoodComponent.Builder().hunger(6).saturationModifier(0.8f).build())));
 
     public static final Item RICE = registerItem("rice",
             new AliasedBlockItem(ModBlocks.RICE_PLANT, new FabricItemSettings().group(ModItemGroup.KITCHEN)
@@ -56,13 +61,21 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN)
                     .food(new FoodComponent.Builder().hunger(3).saturationModifier(0.6f).build())));
 
+    public static final Item SUSHI_ROLL = registerItem("sushi_roll",
+            new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN)
+                    .food(new FoodComponent.Builder().hunger(8).saturationModifier(0.8f).build())));
+
     public static final Item GOLDEN_RICE = registerItem("golden_rice",
             new AliasedBlockItem(ModBlocks.GOLDEN_RICE_PLANT, new FabricItemSettings().group(ModItemGroup.KITCHEN)
                     .food(new FoodComponent.Builder().hunger(2).saturationModifier(0.4f).build())));
 
     public static final Item GOLDEN_RICE_CAKE = registerItem("golden_rice_cake",
             new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN)
-                    .food(new FoodComponent.Builder().hunger(6).saturationModifier(1.2f).build())));
+                    .food(new FoodComponent.Builder().hunger(4).saturationModifier(1f).build())));
+
+    public static final Item BURRITO = registerItem("burrito",
+            new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN)
+                    .food(new FoodComponent.Builder().hunger(12).saturationModifier(2.4f).build())));
 
     public static final Item PEARFRUIT = registerItem("pearfruit",
             new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN)
@@ -118,7 +131,7 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
     public static final Item DARKSTEEL_INGOT = registerItem("darksteel_ingot",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS).rarity(Rarity.UNCOMMON)));
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
     public static final Item ROSE_GOLD_INGOT = registerItem("rose_gold_ingot",
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
@@ -127,18 +140,34 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
     public static final Item URANIUM_CRYSTAL = registerItem("uranium_crystal",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS).rarity(Rarity.RARE)));
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
     public static final Item FLIMSY_SENTINUM_SHIV = registerItem("flimsy_sentinum_shiv",
-            new SwordItem(ModToolMaterials.FLIMSY_SENTINUM, 0, -1f,
+            new DaggerItem(ModToolMaterials.FLIMSY_SENTINUM, 0, -1f,
+                    new FabricItemSettings().group(ModItemGroup.ARMORY)));
+
+    public static final Item SENTINUM_VISOR = registerItem("sentinum_visor",
+            new SentinumArmorItem(ModArmorMaterials.SENTINUM, EquipmentSlot.HEAD,
+                    new FabricItemSettings().group(ModItemGroup.ARMORY)));
+
+    public static final Item SENTINUM_CUIRASS = registerItem("sentinum_cuirass",
+            new SentinumArmorItem(ModArmorMaterials.SENTINUM, EquipmentSlot.CHEST,
+                    new FabricItemSettings().group(ModItemGroup.ARMORY)));
+
+    public static final Item SENTINUM_KILT = registerItem("sentinum_kilt",
+            new SentinumArmorItem(ModArmorMaterials.SENTINUM, EquipmentSlot.LEGS,
+                    new FabricItemSettings().group(ModItemGroup.ARMORY)));
+
+    public static final Item SENTINUM_SABATONS = registerItem("sentinum_sabatons",
+            new SentinumArmorItem(ModArmorMaterials.SENTINUM, EquipmentSlot.FEET,
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item SENTINUM_DIRK = registerItem("sentinum_dirk",
-            new SwordItem(ModToolMaterials.SENTINUM, 0, -1f,
+            new DaggerItem(ModToolMaterials.SENTINUM, 0, -1f,
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item ROSE_GOLD_DAGGER = registerItem("rose_gold_dagger",
-            new SwordItem(ModToolMaterials.ROSE_GOLD, 1, -1f,
+            new DaggerItem(ModToolMaterials.ROSE_GOLD, 1, -1f,
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item TRIMETAL_CLEAVER = registerItem("trimetal_cleaver",
@@ -146,25 +175,52 @@ public class ModItems {
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item HUNTERS_VIBROBLADE = registerItem("hunters_vibroblade",
-            new SwordItem(ModToolMaterials.DARKSTEEL, -3, -1f,
-                    new FabricItemSettings().group(ModItemGroup.ARMORY).rarity(Rarity.RARE)));
+            new DaggerItem(ModToolMaterials.DARKSTEEL, -3, -1f,
+                    new FabricItemSettings().group(ModItemGroup.ARMORY)));
+
+    public static final Item HUNTERS_PISTOL = registerItem("hunters_pistol",
+            new CrossbowItem(new FabricItemSettings().maxDamage(465).group(ModItemGroup.ARMORY)));
 
     public static final Item PAPPYM_BLADE = registerItem("pappym_blade",
             new PappyMSwordItem(ModToolMaterials.URANIUM,0,-2.4f,
-                    new FabricItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(ModItemGroup.ARMORY)));
+                    new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item PAPPYD_BLADE = registerItem("pappyd_blade",
             new PappyDSwordItem(ModToolMaterials.URANIUM,0,-2.4f,
-                    new FabricItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(ModItemGroup.ARMORY)));
+                    new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
-    public static final Item HUNTERS_PISTOL = registerItem("hunters_pistol",
+    public static final Item THANATU_BLADE = registerItem("thanatu_blade",
+            new ThanatuBladeItem(ModToolMaterials.URANIUM, -5,-2.4f,
+                    new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
+
+    public static final Item MORPHEUS_BLADE = registerItem("morpheus_blade",
+            new MorpheusBladeItem(ModToolMaterials.URANIUM,0,-2.4f,
+                    new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
+
+    public static final Item SKYLAR_BLADE = registerItem("skylar_blade",
+            new SkylarBladeItem(ModToolMaterials.URANIUM,0,-2.4f,
+                    new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
+
+    public static final Item LILITH_BLADE = registerItem("lilith_blade",
+            new LilithBladeItem(ModToolMaterials.URANIUM,-6,-2.4f,
+                    new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
+
+    public static final Item TREVOR_BLADE = registerItem("trevor_blade",
+            new TrevorBladeItem(ModToolMaterials.URANIUM,0,-2.4f,
+                    new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
+
+    public static final Item KINGS_BLADE = registerItem("kings_blade",
+            new KingsBladeItem(ModToolMaterials.URANIUM,0,-2.4f,
+                    new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
+
+    public static final Item COPPER_ARM = registerItem("copper_arm",
             new CrossbowItem(new FabricItemSettings().maxDamage(465).group(ModItemGroup.ARMORY)));
 
     public static final Item PORTKEY = registerItem("portkey",
             new PortkeyItem(new FabricItemSettings().maxDamage(11).group(ModItemGroup.SENTINELS)));
 
     public static final Item NUCLEAR_ROCKET = registerItem("nuclear_rocket",
-            new NuclearFireworkItem(new FabricItemSettings().maxCount(1).maxDamage(65).rarity(Rarity.UNCOMMON).group(ModItemGroup.SENTINELS)));
+            new NuclearFireworkItem(new FabricItemSettings().maxCount(1).maxDamage(65).rarity(Rarity.RARE).group(ModItemGroup.SENTINELS)));
 
     public static final Item SUPERFORGE_ITEM = registerItem("superforge_item",
             new AnimatedBlockItem(ModBlocks.SUPERFORGE, new FabricItemSettings().group(ModItemGroup.SENTINELS)));

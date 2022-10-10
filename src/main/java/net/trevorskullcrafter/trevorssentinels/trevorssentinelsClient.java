@@ -11,11 +11,13 @@ import net.minecraft.util.Identifier;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
 import net.trevorskullcrafter.trevorssentinels.block.entity.client.AnimatedBlockRenderer;
+import net.trevorskullcrafter.trevorssentinels.block.entity.client.armor.SentinumArmorRenderer;
 import net.trevorskullcrafter.trevorssentinels.fluid.ModFluids;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 import net.trevorskullcrafter.trevorssentinels.item.client.AnimatedBlockItemRenderer;
 import net.trevorskullcrafter.trevorssentinels.screen.ForgeScreen;
 import net.trevorskullcrafter.trevorssentinels.screen.ModScreenHandlers;
+import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 import software.bernie.geckolib3.renderers.geo.GeoBlockRenderer;
 import software.bernie.geckolib3.renderers.geo.GeoItemRenderer;
 
@@ -40,5 +42,7 @@ public class trevorssentinelsClient implements ClientModInitializer {
         GeoItemRenderer.registerItemRenderer(ModItems.SUPERFORGE_ITEM, new AnimatedBlockItemRenderer());
         BlockEntityRendererRegistry.register(ModBlockEntities.ANIMATED_BLOCK_ENTITY, AnimatedBlockRenderer::new);
 
+        GeoArmorRenderer.registerArmorRenderer(new SentinumArmorRenderer(),
+                ModItems.SENTINUM_SABATONS, ModItems.SENTINUM_KILT, ModItems.SENTINUM_CUIRASS, ModItems.SENTINUM_VISOR);
     }
 }

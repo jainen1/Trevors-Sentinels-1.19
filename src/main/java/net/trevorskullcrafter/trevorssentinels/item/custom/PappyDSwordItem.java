@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class PappyDSwordItem extends PappyMSwordItem {
+public class PappyDSwordItem extends TwinBladeItem {
     public PappyDSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
@@ -58,15 +58,30 @@ public class PappyDSwordItem extends PappyMSwordItem {
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.damage(1, attacker, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-        attacker.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION,1,1,false,false,false));
+        int stabby = Random.createLocal().nextBetween(1,12);
+        if(stabby >= 1 && stabby <= 8){
+            attacker.sendMessage(Text.literal("SPIN!").formatted(Formatting.DARK_GRAY));
+            target.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS,20,0,false,false,false));
+            attacker.world.playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(),
+                    SoundEvents.ITEM_TRIDENT_RIPTIDE_1, SoundCategory.BLOCKS, 1.0F, 1.0F);
+        }else if(stabby >= 9 && stabby <= 11){
+            attacker.sendMessage(Text.literal("SPIIIIIIIN!").formatted(Formatting.GRAY));
+            target.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS,20,1,false,false,false));
+            attacker.world.playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(),
+                    SoundEvents.ITEM_TRIDENT_RIPTIDE_1, SoundCategory.BLOCKS, 1.5F, 3.0F);
+        }else{
+            attacker.sendMessage(Text.literal("SPIIIIIIIIIIIIIN!").formatted(Formatting.WHITE));
+            target.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS,20,2,false,false,false));
+            attacker.world.playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(),
+                    SoundEvents.ITEM_TRIDENT_RIPTIDE_1, SoundCategory.BLOCKS, 2.0F, 5.0F);
+        }
         return true;
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.literal("Chaos").formatted(Formatting.ITALIC));
-            tooltip.add(Text.literal("Right click to parry!").formatted(Formatting.RED));
-            tooltip.add(Text.literal("Shift + right click to become enraged!").formatted(Formatting.DARK_RED));
+            tooltip.add(Text.literal("Right click to parry!").formatted(Formatting.GRAY));
+            tooltip.add(Text.literal("Shift + right click to become enraged!").formatted(Formatting.RED));
+        tooltip.add(Text.literal("Chaos").formatted(Formatting.ITALIC, Formatting.DARK_RED));
     }
 }

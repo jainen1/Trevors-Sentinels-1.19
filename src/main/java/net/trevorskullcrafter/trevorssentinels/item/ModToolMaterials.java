@@ -5,17 +5,18 @@ import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Lazy;
+import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 
 import java.util.function.Supplier;
 
 public enum ModToolMaterials implements ToolMaterial{
         FLIMSY_SENTINUM(MiningLevels.WOOD, 37, 1.5f, 0.0f, 8, () -> Ingredient.ofItems(ModItems.SENTINUM_SHARD)),
       //WOOD(MiningLevels.WOOD, 59, 2.0f, 0.0f, 15, () -> Ingredient.fromTag(ItemTags.PLANKS)),
-        SENTINUM(MiningLevels.STONE, 131, 4.0f, 0.5f, 6, () -> Ingredient.ofItems(ModItems.SENTINUM_SHARD)),
       //STONE(MiningLevels.STONE, 131, 4.0f, 1.0f, 5, () -> Ingredient.fromTag(ItemTags.STONE_TOOL_MATERIALS)),
+        SENTINUM(MiningLevels.STONE, 131, 4.0f, 0.5f, 6, () -> Ingredient.ofItems(ModBlocks.SENTINUM_BLOCK)),
         ROSE_GOLD(MiningLevels.STONE, 94, 14.0f, 0.0f, 25, () -> Ingredient.ofItems(ModItems.ROSE_GOLD_INGOT)),
       //IRON(MiningLevels.IRON, 250, 6.0f, 2.0f, 14, () -> Ingredient.ofItems(Items.IRON_INGOT)),
-        TRIMETAL(MiningLevels.DIAMOND, 532, 6.0f, 2.5f, 7, () -> Ingredient./*fromTag(ModItemTags.TRIMETAL_MATERIALS*/ofItems(ModItems.STEEL_SHEET)),
+        TRIMETAL(MiningLevels.DIAMOND, 532, 6.0f, 2.5f, 7, () -> Ingredient.ofItems(ModItems.STEEL_SHEET, ModItems.COPPER_IRON_INGOT)),
       //DIAMOND(MiningLevels.DIAMOND, 1561, 8.0f, 3.0f, 10, () -> Ingredient.ofItems(Items.DIAMOND)),
         DARKSTEEL(MiningLevels.NETHERITE, 1738, 9.0f, 5.0f, 12, () -> Ingredient.ofItems(ModItems.BLOOD_DIAMOND)),
       //NETHERITE(MiningLevels.NETHERITE, 2031, 9.0f, 4.0f, 15, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)),
