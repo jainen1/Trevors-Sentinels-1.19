@@ -9,6 +9,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.trevorskullcrafter.trevorssentinels.block.custom.*;
+import net.trevorskullcrafter.trevorssentinels.block.entity.ModSignTypes;
 import net.trevorskullcrafter.trevorssentinels.item.ModItemGroup;
 import net.trevorskullcrafter.trevorssentinels.sound.ModSounds;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
@@ -62,6 +63,12 @@ public class ModBlocks {
 
     public static final Block FUSEBOX = registerBlock("fusebox",
             new DirectionalBlock(FabricBlockSettings.of(Material.METAL).sounds(ModSounds.STEEL_SOUNDS).strength(6f,8f).requiresTool()), ModItemGroup.SENTINELS);
+
+    public static final Block HOLOGRAPHIC_WALL_SIGN_BLOCK = registerBlockWithoutBlockItem("holographic_wall_sign",
+            new WallSignBlock(FabricBlockSettings.copy(Blocks.OAK_WALL_SIGN), ModSignTypes.HOLOGRAPHIC));
+
+    public static final Block HOLOGRAPHIC_SIGN_BLOCK = registerBlockWithoutBlockItem("holographic_sign",
+            new SignBlock(FabricBlockSettings.copy(Blocks.OAK_SIGN), ModSignTypes.HOLOGRAPHIC));
 
     public static final Block WAX_INFUSED_COPPER_BLOCK = registerBlock("wax_infused_copper_block",
             new DirectionalBlock(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.COPPER).strength(6f,8f).requiresTool()), ModItemGroup.SENTINELS);

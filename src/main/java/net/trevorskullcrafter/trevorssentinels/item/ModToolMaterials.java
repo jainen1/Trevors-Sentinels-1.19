@@ -10,24 +10,19 @@ import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import java.util.function.Supplier;
 
 public enum ModToolMaterials implements ToolMaterial{
-        FLIMSY_SENTINUM(MiningLevels.WOOD, 37, 1.5f, 0.0f, 8, () -> Ingredient.ofItems(ModItems.SENTINUM_SHARD)),
-      //WOOD(MiningLevels.WOOD, 59, 2.0f, 0.0f, 15, () -> Ingredient.fromTag(ItemTags.PLANKS)),
-      //STONE(MiningLevels.STONE, 131, 4.0f, 1.0f, 5, () -> Ingredient.fromTag(ItemTags.STONE_TOOL_MATERIALS)),
-        SENTINUM(MiningLevels.STONE, 131, 4.0f, 0.5f, 6, () -> Ingredient.ofItems(ModBlocks.SENTINUM_BLOCK)),
-        ROSE_GOLD(MiningLevels.STONE, 94, 14.0f, 0.0f, 25, () -> Ingredient.ofItems(ModItems.ROSE_GOLD_INGOT)),
-      //IRON(MiningLevels.IRON, 250, 6.0f, 2.0f, 14, () -> Ingredient.ofItems(Items.IRON_INGOT)),
-        TRIMETAL(MiningLevels.DIAMOND, 532, 6.0f, 2.5f, 7, () -> Ingredient.ofItems(ModItems.STEEL_SHEET, ModItems.COPPER_IRON_INGOT)),
-      //DIAMOND(MiningLevels.DIAMOND, 1561, 8.0f, 3.0f, 10, () -> Ingredient.ofItems(Items.DIAMOND)),
-        DARKSTEEL(MiningLevels.NETHERITE, 1738, 9.0f, 5.0f, 12, () -> Ingredient.ofItems(ModItems.BLOOD_DIAMOND)),
-      //NETHERITE(MiningLevels.NETHERITE, 2031, 9.0f, 4.0f, 15, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)),
-        URANIUM(MiningLevels./*URANIUM*/NETHERITE, 2642, 11.0f, 6.5f, 0, () -> Ingredient.ofItems(ModItems.URANIUM_CRYSTAL));
+        FLIMSY_SENTINUM(0, 37, 1.5f, 0.0f, 8, () -> Ingredient.ofItems(ModItems.SENTINUM_SHARD)),
+        SENTINUM(1, 131, 4.0f, 0.5f, 6, () -> Ingredient.ofItems(ModBlocks.SENTINUM_BLOCK)),
+        ROSE_GOLD(1, 94, 14.0f, 0.0f, 25, () -> Ingredient.ofItems(ModItems.ROSE_GOLD_INGOT)),
+        TRIMETAL(3, 532, 6.0f, 2.5f, 7, () -> Ingredient.ofItems(ModItems.STEEL_SHEET, ModItems.COPPER_IRON_INGOT)),
+        DARKSTEEL(4, 1738, 9.0f, 5.0f, 12, () -> Ingredient.ofItems(ModItems.BLOOD_DIAMOND)),
+        URANIUM(4, 2642, 11.0f, 6.5f, 0, () -> Ingredient.ofItems(ModItems.URANIUM_CRYSTAL));
 
         private final int miningLevel;
         private final int itemDurability;
         private final float miningSpeed;
         private final float attackDamage;
         private final int enchantability;
-        private final Lazy<Ingredient> repairIngredient;
+        private final Supplier<Ingredient> repairIngredient;
 
     private ModToolMaterials(int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
         this.miningLevel = miningLevel;
@@ -35,7 +30,7 @@ public enum ModToolMaterials implements ToolMaterial{
         this.miningSpeed = miningSpeed;
         this.attackDamage = attackDamage;
         this.enchantability = enchantability;
-        this.repairIngredient = new Lazy<Ingredient>(repairIngredient);
+        this.repairIngredient = repairIngredient;
     }
 
         @Override

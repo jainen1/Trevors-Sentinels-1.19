@@ -1,6 +1,10 @@
 {
   "values": [
     "trevorssentinels:superforge_poi",
-    "trevorssentinels:demolitionist_poi"
+    "trevorssentinels:demolitionist_poi",
+    "trevorssentinels:monk_poi",
+    "trevorssentinels:officer_poi",
+    "trevorssentinels:astronomer_poi",
+    "trevorssentinels:cultist_merchant_poi"
   ]
 }

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-
+    "trevorssentinels:midas_log",
+    "trevorssentinels:yggdrasil_log"
   ]
 }
