@@ -77,8 +77,8 @@
   "block.trevorssentinels.orange_agility_block": "§6Orange Agility Block",
   "block.trevorssentinels.blue_agility_block": "§3Blue Agility Block",
   "block.trevorssentinels.black_agility_block": "Steel Magno-Repulsion Block",
-  "block.trevorssentinels.light_chamber_block": "Light Chamber Block",
-  "block.trevorssentinels.dark_chamber_block": "Dark Chamber Block",
+  "block.trevorssentinels.light_chamber_block": "Light Chamber Panel",
+  "block.trevorssentinels.dark_chamber_block": "Dark Chamber Panel",
 
   "block.trevorssentinels.steel_block": "Block of Steel",
   "block.trevorssentinels.caution_steel_block": "Caution-Pattern Block of Steel",

@@ -66,6 +66,6 @@ public class SkylarBladeItem extends SwordItem {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
             tooltip.add(Text.literal("Right click to parry!").formatted(Formatting.GRAY));
             tooltip.add(Text.literal("Shift + right click to become energized!").formatted(Formatting.GREEN));
-        tooltip.add(Text.literal("Balance").formatted(Formatting.ITALIC, Formatting.DARK_GREEN));
+        tooltip.add(Text.literal("Justice").formatted(Formatting.ITALIC, Formatting.YELLOW));
     }
 }

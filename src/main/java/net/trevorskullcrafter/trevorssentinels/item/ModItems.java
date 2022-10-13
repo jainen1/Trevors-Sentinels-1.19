@@ -27,7 +27,7 @@ public class ModItems {
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
     public static final Item SENTINUM_LENS = registerItem("sentinum_lens",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+            new LensItem(new FabricItemSettings().maxCount(1).group(ModItemGroup.SENTINELS)));
 
     public static final Item SENTINUM_HOLOPROJECTOR = registerItem("sentinum_holoprojector",
             new HoloprojectorItem(
@@ -156,11 +156,11 @@ public class ModItems {
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item FLIMSY_SENTINUM_PICKAXE = registerItem("flimsy_sentinum_pickaxe",
-            new ModPickaxeItem(ModToolMaterials.FLIMSY_SENTINUM, 1, 0f,
+            new ModPickaxeItem(ModToolMaterials.FLIMSY_SENTINUM, 0, -2.8f,
                     new FabricItemSettings().group(ModItemGroup.ARMORY).maxCount(1)));
 
     public static final Item FLIMSY_SENTINUM_HATCHET = registerItem("flimsy_sentinum_hatchet",
-            new ModAxeItem(ModToolMaterials.FLIMSY_SENTINUM, 1, 0f,
+            new ModAxeItem(ModToolMaterials.FLIMSY_SENTINUM, 3, -3.2f,
                     new FabricItemSettings().group(ModItemGroup.ARMORY).maxCount(1)));
 
     public static final Item SENTINUM_VISOR = registerItem("sentinum_visor",
@@ -184,7 +184,7 @@ public class ModItems {
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item SENTINUM_PICKAXE = registerItem("sentinum_pickaxe",
-            new ModPickaxeItem(ModToolMaterials.SENTINUM, 1, 0f,
+            new ModPickaxeItem(ModToolMaterials.SENTINUM, 0, -2.8f,
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item SENTINUM_CHAINSAW = registerItem("sentinum_chainsaw",

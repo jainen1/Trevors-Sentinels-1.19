@@ -100,12 +100,18 @@ public class LilithBladeItem extends SwordItem {
         tooltip.add(Text.literal("Ctrl + right click to switch style.").formatted(Formatting.DARK_GRAY));
         if(itemStack.getSubNbt("trevorssentinels:raptureMode") != null) {
             if (itemStack.getSubNbt("trevorssentinels:raptureMode").getInt("trevorssentinels:raptureModeInt") == 1) {
-                tooltip.add(Text.literal("Justice").formatted(Formatting.ITALIC, Formatting.GOLD));
+                tooltip.add(Text.literal("Justice").formatted(Formatting.ITALIC, Formatting.YELLOW));
             } else {
-                if (world.getTime() % 2 == 0) {
-                    tooltip.add(Text.literal("Power").formatted(Formatting.ITALIC, Formatting.GOLD));
-                } else {
-                    tooltip.add(Text.literal("Power").formatted(Formatting.ITALIC, Formatting.DARK_RED));
+                if(world.getTime() % 10 == 0){
+                    tooltip.add(Text.literal("Power").formatted(Formatting.DARK_GRAY, Formatting.ITALIC));
+                }else if(world.getTime() % 12 == 0){
+                    tooltip.add(Text.literal("Power").formatted(Formatting.DARK_RED, Formatting.ITALIC));
+                }else if((world.getTime() & 13) == 0) {
+                    tooltip.add(Text.literal("Power").formatted(Formatting.YELLOW, Formatting.ITALIC));
+                }else if((world.getTime() % 4 == 0)){
+                    tooltip.add(Text.literal("Power").formatted(Formatting.YELLOW, Formatting.ITALIC,Formatting.OBFUSCATED));
+                }else{
+                    tooltip.add(Text.literal("Power" ).formatted(Formatting.DARK_GRAY, Formatting.ITALIC, Formatting.OBFUSCATED));
                 }
             }
         }
