@@ -30,34 +30,27 @@ public class LensItem extends Item {
         Block block = world.getBlockState(context.getBlockPos()).getBlock();
         if (!world.isClient() && context.getHand() == Hand.MAIN_HAND) {
             ItemStack itemStack = context.getPlayer().getStackInHand(context.getHand());
-            boolean found = false;
-
             if (block == ModBlocks.HOLOBARRIER) {
                 displayEntry(context, 0);
-                found = true;
             }
             if(block == ModBlocks.STEEL_BLOCK || block == ModBlocks.CAUTION_STEEL_BLOCK || block == ModBlocks.RUSTED_STEEL_BLOCK ||
                     block == ModBlocks.STAINLESS_STEEL_BLOCK || block == ModBlocks.STEEL_LAMP_BLOCK || block == ModBlocks.STEEL_FAN ||
                     block == ModBlocks.BATTERY || block == ModBlocks.FUSEBOX || block == ModBlocks.SUPERFORGE || block == ModBlocks.NUCLEAR_CHARGE) {
                 displayEntry(context, 1);
-                found = true;
             }
             if(block == ModBlocks.SENTINUM_BLOCK || block == ModBlocks.SENTINUM_PILLAR || block == ModBlocks.CHISELED_SENTINUM_BLOCK) {
                 displayEntry(context, 2);
-                found = true;
+                displayEntry(context, 9);
             }
             if(block == ModBlocks.URANIUM_ORE || block == ModBlocks.URANIUM_BLOCK || block == ModBlocks.NUCLEAR_CHARGE || block == ModBlocks.SUPERFORGE) {
                 displayEntry(context, 3);
-                found = true;
             }
             if(block == ModBlocks.LIGHT_CHAMBER_BLOCK || block == ModBlocks.DARK_CHAMBER_BLOCK){
                 displayEntry(context, 4);
-                found = true;
             }
             if(block == ModBlocks.BLUE_AGILITY_BLOCK || block == ModBlocks.ORANGE_AGILITY_BLOCK) {
                 displayEntry(context, 4);
                 displayEntry(context, 5);
-                found = true;
             }
             if(block == Blocks.GRASS_BLOCK || block == Blocks.GRASS || block == Blocks.TALL_GRASS ||
                     block == Blocks.MOSS_BLOCK || block == Blocks.BROWN_MUSHROOM_BLOCK || block == Blocks.BROWN_MUSHROOM || block == Blocks.RED_MUSHROOM_BLOCK ||
@@ -94,11 +87,9 @@ public class LensItem extends Item {
                     block == Blocks.STRIPPED_SPRUCE_WOOD || block == Blocks.POTTED_SPRUCE_SAPLING || block == Blocks.SUGAR_CANE || block == Blocks.SUNFLOWER ||
                     block == Blocks.SWEET_BERRY_BUSH || block == Blocks.SEAGRASS || block == Blocks.SEA_PICKLE || block == Blocks.TALL_SEAGRASS || block == Blocks.VINE){
                 displayEntry(context, 6);
-                found = true;
             }
             if(block == ModBlocks.BLACK_AGILITY_BLOCK) {
                 displayEntry(context, 7);
-                found = true;
             }
             if(block == Blocks.COPPER_BLOCK || block == Blocks.COPPER_ORE || block == Blocks.CUT_COPPER || block == Blocks.CUT_COPPER_SLAB || block == Blocks.CUT_COPPER_STAIRS ||
             block == Blocks.DEEPSLATE_COPPER_ORE || block == Blocks.EXPOSED_COPPER || block == Blocks.EXPOSED_CUT_COPPER || block == Blocks.EXPOSED_CUT_COPPER_SLAB ||
@@ -112,32 +103,46 @@ public class LensItem extends Item {
             block == Blocks.WEATHERED_CUT_COPPER_SLAB || block == Blocks.WEATHERED_CUT_COPPER_STAIRS || block == ModBlocks.WAX_INFUSED_COPPER_BLOCK ||
             block == Blocks.LIGHTNING_ROD) {
                 displayEntry(context, 8);
-                found = true;
+            }
+            if(block == ModBlocks.IRON_GOLD_BLOCK){
+                displayEntry(context, 12);
+                displayEntry(context, 10);
+            }
+            if(block == Blocks.GOLD_BLOCK || block == Blocks.GOLD_ORE || block == Blocks.DEEPSLATE_GOLD_ORE || block == Blocks.NETHER_GOLD_ORE || block == Blocks.RAW_GOLD_BLOCK){
+                displayEntry(context, 12);
+            }
+            if(block == Blocks.NETHERITE_BLOCK){
+                displayEntry(context, 11);
+            }
+            if(block == ModBlocks.ROSE_GOLD_BLOCK){
+                displayEntry(context, 12);
+                displayEntry(context, 13);
+            }
+            if(block == Blocks.NETHER_SPROUTS || block == Blocks.NETHER_WART || block == Blocks.NETHER_WART_BLOCK || block == Blocks.WARPED_FUNGUS ||
+            block == Blocks.WARPED_HYPHAE || block == Blocks.WARPED_NYLIUM || block == Blocks.WARPED_ROOTS || block == Blocks.WARPED_STEM || block == Blocks.WARPED_WART_BLOCK ||
+            block == Blocks.CRIMSON_FUNGUS || block == Blocks.POTTED_WARPED_FUNGUS || block == Blocks.POTTED_CRIMSON_FUNGUS || block == Blocks.POTTED_WARPED_ROOTS ||
+            block == Blocks.STRIPPED_WARPED_HYPHAE || block == Blocks.STRIPPED_WARPED_STEM || block == Blocks.CRIMSON_HYPHAE || block == Blocks.CRIMSON_NYLIUM ||
+            block == Blocks.CRIMSON_ROOTS || block == Blocks.CRIMSON_STEM || block == Blocks.POTTED_CRIMSON_ROOTS || block == Blocks.STRIPPED_CRIMSON_HYPHAE ||
+            block == Blocks.STRIPPED_CRIMSON_STEM){
+                displayEntry(context, 14);
             }
 
-            if(!found){
-                if(itemStack.getSubNbt("trevorssentinels:lens_learned") == null){
-                    error(context, "No connection to database.");
-                }else{
-                    error(context, "No entry found.");
-                }
-            }
         }
         return super.useOnBlock(context);
     }
 
-    public void error(ItemUsageContext context, String message){
+    /*public void error(ItemUsageContext context, String message){
         context.getPlayer().sendMessage(Text.literal("--- ERROR ---").formatted(Formatting.RED, Formatting.BOLD));
         context.getPlayer().sendMessage(Text.literal(message).formatted(Formatting.DARK_RED));
         context.getPlayer().sendMessage(Text.literal("-------------").formatted(Formatting.RED, Formatting.BOLD));
-    }
+    }*/
 
     public double getCurrentVersion(){
-        return 1.1;
+        return 1.5;
     }
 
     public int getDatabaseSize(){
-        return 10;
+        return 15;
     }
 
     public String accessIndex(String type, int indexNum){
@@ -179,6 +184,23 @@ public class LensItem extends Item {
         indexDescriptions[9] = "A fully self-sufficient security system created by Utarian scientists to protect against the threat of Vmortexian invasion.";
         indexWarnings[9] = "They made us gods, and expected us to follow their rules.";
 
+        indexNames[10] = "Ferraurium";
+        indexDescriptions[10] = "A unique alloy combining properties of iron and gold.";
+        indexWarnings[10] = "Requires extreme care during synthesis, as the nanocrystalline structure is extremely fragile while incomplete.";
+
+        indexNames[11] = "N-7 Superalloy";
+        indexDescriptions[11] = "A superalloy comprised of extremely heat-resistant materials, forged to survive extreme conditions.";
+
+        indexNames[12] = "Gold";
+        indexDescriptions[12] = "An uncommon metal thought to use holy power to protect against demons. Experimentation has deemed this as nothing more than superstition.";
+
+        indexNames[13] = "Rose Gold";
+        indexDescriptions[13] = "An alloy of gold and copper thought to be able to conduct holy power. While experimentation on the subject has yielded no results, a possibility remains that the rumors are true.";
+
+        indexNames[14] = "Nether Flora";
+        indexDescriptions[14] = "Affected by the Nether's anomalous properties, these lifeforms are mostly resistant to heat and flame.";
+        indexWarnings[14] = "WARNING: Extended contact with this flora may result in unpredictable consequences. Destroy whenever possible.";
+
         if(type.equals("warning")){
             return indexWarnings[indexNum];
         }else if(type.equals("text")){
@@ -192,32 +214,48 @@ public class LensItem extends Item {
         ItemStack itemStack = context.getPlayer().getStackInHand(context.getHand());
         int[] index = new int[getDatabaseSize()];
         if (itemStack.getSubNbt("trevorssentinels:lens_learned") != null) {
-            if (itemStack.getSubNbt("trevorssentinels:lens_learned").getIntArray("trevorssentinels:indexArray")[indexNum] == 0) {
-                context.getPlayer().sendMessage(Text.literal("--- NEW DATA ENTRY: " + accessIndex("name", indexNum).toUpperCase() + " ---")
-                        .formatted(Formatting.AQUA, Formatting.BOLD));
-                context.getPlayer().sendMessage(Text.literal(accessIndex("text", indexNum)).formatted(Formatting.DARK_AQUA));
-                String hyphens = "------------------------";
-                for (int i = 3; i <= accessIndex("name", indexNum).length(); i++) {
-                    hyphens = hyphens + "-";
-                }
-                if(accessIndex("warning", indexNum) != null) {
-                    context.getPlayer().sendMessage(Text.literal(accessIndex("warning", indexNum)).formatted(Formatting.DARK_RED));
-                    context.getPlayer().sendMessage(Text.literal(hyphens).formatted(Formatting.RED, Formatting.BOLD));
-                }else{
-                    context.getPlayer().sendMessage(Text.literal(hyphens).formatted(Formatting.AQUA, Formatting.BOLD));
-                }
+            if(itemStack.getSubNbt("trevorssentinels:lens_learned").getDouble("trevorssentinels:lens_version") == getCurrentVersion()) {
+                if (itemStack.getSubNbt("trevorssentinels:lens_learned").getIntArray("trevorssentinels:indexArray")[indexNum] == 0) {
+                    context.getPlayer().sendMessage(Text.literal("--- NEW DATA ENTRY: " + accessIndex("name", indexNum).toUpperCase() + " ---")
+                            .formatted(Formatting.AQUA, Formatting.BOLD));
+                    context.getPlayer().sendMessage(Text.literal(accessIndex("text", indexNum)).formatted(Formatting.DARK_AQUA));
+                    String hyphens = "------------------------";
+                    for (int i = 3; i <= accessIndex("name", indexNum).length(); i++) {
+                        hyphens = hyphens + "-";
+                    }
+                    if (accessIndex("warning", indexNum) != null) {
+                        context.getPlayer().sendMessage(Text.literal(accessIndex("warning", indexNum)).formatted(Formatting.DARK_RED));
+                        context.getPlayer().sendMessage(Text.literal(hyphens).formatted(Formatting.RED, Formatting.BOLD));
+                    } else {
+                        context.getPlayer().sendMessage(Text.literal(hyphens).formatted(Formatting.AQUA, Formatting.BOLD));
+                    }
 
+                    NbtCompound nbtData = new NbtCompound();
+                    for (int i = 0; i <= getDatabaseSize() - 1; i++) {
+                        index[i] = itemStack.getSubNbt("trevorssentinels:lens_learned").getIntArray("trevorssentinels:indexArray")[i];
+                    }
+                    index[indexNum] = 1;
+                    nbtData.putIntArray("trevorssentinels:indexArray", index);
+                    nbtData.putDouble("trevorssentinels:lens_version", getCurrentVersion());
+                    itemStack.setSubNbt("trevorssentinels:lens_learned", nbtData);
+                }else{
+                    context.getPlayer().sendMessage(Text.literal("This data has already been acquired.").formatted(Formatting.GOLD),true);
+                }
+            }else{
                 NbtCompound nbtData = new NbtCompound();
-                for (int i = 0; i <= getDatabaseSize() -1; i++) {
+                int newEntries = getDatabaseSize() - itemStack.getSubNbt("trevorssentinels:lens_learned").getIntArray("trevorssentinels:indexArray").length;
+                for(int i = 0; i <= itemStack.getSubNbt("trevorssentinels:lens_learned").getIntArray("trevorssentinels:indexArray").length -1; i++){
                     index[i] = itemStack.getSubNbt("trevorssentinels:lens_learned").getIntArray("trevorssentinels:indexArray")[i];
                 }
-                index[indexNum] = 1;
                 nbtData.putIntArray("trevorssentinels:indexArray", index);
+                nbtData.putDouble("trevorssentinels:lens_version", getCurrentVersion());
                 itemStack.setSubNbt("trevorssentinels:lens_learned", nbtData);
-            }else{
-                context.getPlayer().sendMessage(Text.literal("--- WARNING ---").formatted(Formatting.YELLOW, Formatting.BOLD));
-                context.getPlayer().sendMessage(Text.literal("The data for " + accessIndex("name", indexNum) + " has already been acquired.").formatted(Formatting.GOLD));
-                context.getPlayer().sendMessage(Text.literal("---------------").formatted(Formatting.YELLOW, Formatting.BOLD));
+
+                context.getPlayer().sendMessage(Text.literal("--- UPDATE DOWNLOADED ---").formatted(Formatting.YELLOW, Formatting.BOLD));
+                context.getPlayer().sendMessage(Text.literal(" SYNCED TO DATABASE v" + itemStack.getSubNbt("trevorssentinels:lens_learned").getDouble("trevorssentinels:lens_version") + ".")
+                        .formatted(Formatting.GOLD));
+                context.getPlayer().sendMessage(Text.literal(newEntries + " NEW ENTRIES.").formatted(Formatting.DARK_AQUA));
+                context.getPlayer().sendMessage(Text.literal("-------------------------").formatted(Formatting.AQUA, Formatting.BOLD));
             }
         } else {
             NbtCompound nbtData = new NbtCompound();
@@ -257,7 +295,7 @@ public class LensItem extends Item {
                     tooltip.add(Text.literal("ACCESS POINT 1ex" + (world.getTime()) / 100).formatted(Formatting.DARK_GRAY, Formatting.OBFUSCATED));
                 }
             }else{
-                if (world.getTime() % 2 == 0) {
+                if (world != null && world.getTime() % 2 == 0) {
                     tooltip.add(Text.literal("STATUS: NO CONNECTION").formatted(Formatting.RED));
                 }else{
                     tooltip.add(Text.literal("STATUS: NO CONNECTION").formatted(Formatting.DARK_RED));
@@ -268,24 +306,29 @@ public class LensItem extends Item {
             tooltip.add(Text.literal("Hold shift to see missing data entries!").formatted(Formatting.DARK_AQUA));
         }else{
             if(itemStack.getSubNbt("trevorssentinels:lens_learned") != null) {
-                boolean complete = true;
-                for (int i = 0; i <= getDatabaseSize() -1; i++) {
-                    if (itemStack.getSubNbt("trevorssentinels:lens_learned").getIntArray("trevorssentinels:indexArray")[i] == 0) {
-                        complete = false;
-                    }
-                }
-                if (!complete){
-                    tooltip.add(Text.literal("Missing data entries:").formatted(Formatting.AQUA));
+                if(itemStack.getSubNbt("trevorssentinels:lens_learned").getDouble("trevorssentinels:lens_version") == getCurrentVersion()){
+                    boolean complete = true;
                     for (int i = 0; i <= getDatabaseSize() -1; i++) {
                         if (itemStack.getSubNbt("trevorssentinels:lens_learned").getIntArray("trevorssentinels:indexArray")[i] == 0) {
-                            tooltip.add(Text.literal(accessIndex("name", i)).formatted(Formatting.DARK_AQUA));
+                            complete = false;
                         }
                     }
+                    if (!complete){
+                        tooltip.add(Text.literal("Missing data entries:").formatted(Formatting.AQUA));
+                        for (int i = 0; i <= getDatabaseSize() -1; i++) {
+                            if (itemStack.getSubNbt("trevorssentinels:lens_learned").getIntArray("trevorssentinels:indexArray")[i] == 0) {
+                                tooltip.add(Text.literal(accessIndex("name", i)).formatted(Formatting.DARK_AQUA));
+                            }
+                        }
+                    }else{
+                        tooltip.add(Text.literal("DATABASE COMPLETE. NO MISSING ENTRIES.").formatted(Formatting.GOLD));
+                        tooltip.add(Text.literal("ACCESS POINT 1ex"+ (world.getTime() / 100) + " DIAGNOSED.").formatted(Formatting.YELLOW));
+                        tooltip.add(Text.literal("LOCATION: null. TIME: null. DIAGNOSIS:").formatted(Formatting.RED));
+                        tooltip.add(Text.literal("ACCESS POINT DOES NOT EXIST.").formatted(Formatting.DARK_RED));
+                    }
                 }else{
-                    tooltip.add(Text.literal("DATABASE COMPLETE. NO MISSING ENTRIES.").formatted(Formatting.GOLD));
-                    tooltip.add(Text.literal("ACCESS POINT 1ex"+ (world.getTime() / 100) + " DIAGNOSED.").formatted(Formatting.YELLOW));
-                    tooltip.add(Text.literal("LOCATION: null. TIME: null. DIAGNOSIS:").formatted(Formatting.RED));
-                    tooltip.add(Text.literal("ACCESS POINT DOES NOT EXIST.").formatted(Formatting.DARK_RED));
+                    tooltip.add(Text.literal("ERROR: OUTDATED DATA.").formatted(Formatting.DARK_RED));
+                    tooltip.add(Text.literal("PLEASE DOWNLOAD NEW VERSION.").formatted(Formatting.RED));
                 }
             }else{
                 tooltip.add(Text.literal("ERROR: CANNOT ACCESS.").formatted(Formatting.DARK_RED));

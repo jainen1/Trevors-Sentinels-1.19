@@ -1,0 +1,6 @@
+{
+  "parent": "trevorssentinels:item/sentinum_holoprojector",
+  "textures": {
+    "layer0": "trevorssentinels:item/holoprojector2"
+  }
+}

@@ -23,9 +23,31 @@ public class ModVillagers {
     public static final PointOfInterestType SUPERFORGE_POI = registerPOI("superforge_poi", ModBlocks.SUPERFORGE);
     public static final VillagerProfession ATTENDANT = registerProfession("attendant",
             RegistryKey.of(Registry.POINT_OF_INTEREST_TYPE_KEY, new Identifier(trevorssentinels.MOD_ID, "superforge_poi")));
+
     public static final PointOfInterestType DEMOLITIONIST_POI = registerPOI("demolitionist_poi", Blocks.TNT);
     public static final VillagerProfession DEMOLITIONIST = registerProfession("demolitionist",
             RegistryKey.of(Registry.POINT_OF_INTEREST_TYPE_KEY, new Identifier(trevorssentinels.MOD_ID,"demolitionist_poi")));
+
+    public static final PointOfInterestType CULTIST_MERCHANT_POI = registerPOI("cultist_merchant_poi", Blocks.RESPAWN_ANCHOR);
+    public static final VillagerProfession CULTIST_MERHANT = registerProfession("cultist_merchant",
+            RegistryKey.of(Registry.POINT_OF_INTEREST_TYPE_KEY, new Identifier(trevorssentinels.MOD_ID,"cultist_merchant_poi")));
+
+    public static final PointOfInterestType MONK_POI = registerPOI("monk_poi", Blocks.DRAGON_HEAD);
+    public static final VillagerProfession MONK = registerProfession("monk",
+            RegistryKey.of(Registry.POINT_OF_INTEREST_TYPE_KEY, new Identifier(trevorssentinels.MOD_ID,"monk_poi")));
+
+    public static final PointOfInterestType OFFICER_POI = registerPOI("officer_poi", Blocks.TARGET);
+    public static final VillagerProfession OFFICER = registerProfession("officer",
+            RegistryKey.of(Registry.POINT_OF_INTEREST_TYPE_KEY, new Identifier(trevorssentinels.MOD_ID,"officer_poi")));
+
+    public static final PointOfInterestType CARPENTER_POI = registerPOI("carpenter_poi", Blocks.CRAFTING_TABLE);
+    public static final VillagerProfession CARPENTER = registerProfession("carpenter",
+            RegistryKey.of(Registry.POINT_OF_INTEREST_TYPE_KEY, new Identifier(trevorssentinels.MOD_ID,"carpenter_poi")));
+
+    public static final PointOfInterestType ASTRONOMER_POI = registerPOI("astronomer_poi", Blocks.DRAGON_EGG);
+    public static final VillagerProfession ASTRONOMER = registerProfession("astronomer",
+            RegistryKey.of(Registry.POINT_OF_INTEREST_TYPE_KEY, new Identifier(trevorssentinels.MOD_ID,"astronomer_poi")));
+
 
     public static VillagerProfession registerProfession(String name, RegistryKey<PointOfInterestType> type) {
         return Registry.register(Registry.VILLAGER_PROFESSION, new Identifier(trevorssentinels.MOD_ID, name),

@@ -2,14 +2,11 @@ package net.trevorskullcrafter.trevorssentinels.block.custom;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Items;
+import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.tag.EntityTypeTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
@@ -23,7 +20,6 @@ public class DataBlock extends Block {
     public DataBlock(Settings settings) {
         super(settings);
     }
-
     private static final float field_31216 = 0.083333336f;
     private static final float HORIZONTAL_MOVEMENT_MULTIPLIER = 0.9f;
     private static final float VERTICAL_MOVEMENT_MULTIPLIER = 1.5f;
@@ -48,7 +44,7 @@ public class DataBlock extends Block {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!(entity instanceof LivingEntity) || entity.getBlockStateAtPos().isOf(this)) {
-            entity.slowMovement(state, new Vec3d(0.9f, 1.5, 0.9f));
+            entity.slowMovement(state, new Vec3d(0.9f, 0.9f, 0.9f));
             if (world.isClient) {
                 boolean bl;
                 Random random = world.getRandom();
@@ -59,6 +55,9 @@ public class DataBlock extends Block {
                             MathHelper.nextBetween(random, -1.0f, 1.0f) * 0.083333336f);
                 }
             }
+        }
+        if (!world.isClient) {
+            entity.setOnFire(false);
         }
     }
 
@@ -92,5 +91,10 @@ public class DataBlock extends Block {
     @Override
     public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VoxelShapes.empty();
+    }
+
+    @Override
+    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
+        return true;
     }
 }

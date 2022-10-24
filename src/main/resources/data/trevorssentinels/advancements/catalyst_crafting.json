@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "trevorssentinels:violent_catalyst"
+    },
+    "title": "Catalyst Crafting",
+    "description": "Acquire any catalyst from the Superforge",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "trevorssentinels:superforge",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:violent_catalyst"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

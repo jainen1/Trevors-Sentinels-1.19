@@ -25,7 +25,7 @@ public class ModBlocks {
             new PillarBlock(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.CALCITE).strength(3.5f,3f).requiresTool()), ModItemGroup.SENTINELS);
 
     public static final Block DATA_BLOCK = registerBlock("data_block",
-            new DataBlock(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).sounds(BlockSoundGroup.HONEY).strength(0f,0f).nonOpaque()), ModItemGroup.SENTINELS);
+            new DataBlock(FabricBlockSettings.copy(Blocks.HONEY_BLOCK).sounds(BlockSoundGroup.HONEY).luminance((state) -> 5).strength(0f,0f).nonOpaque()), ModItemGroup.SENTINELS);
 
     public static final Block RICE_PLANT = registerBlockWithoutBlockItem("rice_plant",
             new RiceCropBlock(FabricBlockSettings.copy(Blocks.WHEAT).nonOpaque()));
@@ -63,6 +63,12 @@ public class ModBlocks {
 
     public static final Block FUSEBOX = registerBlock("fusebox",
             new DirectionalBlock(FabricBlockSettings.of(Material.METAL).sounds(ModSounds.STEEL_SOUNDS).strength(6f,8f).requiresTool()), ModItemGroup.SENTINELS);
+
+    public static final Block STEEL_WALL_SIGN_BLOCK = registerBlockWithoutBlockItem("steel_wall_sign",
+            new WallSignBlock(FabricBlockSettings.copy(Blocks.OAK_WALL_SIGN), ModSignTypes.STEEL));
+
+    public static final Block STEEL_SIGN_BLOCK = registerBlockWithoutBlockItem("steel_sign",
+            new SignBlock(FabricBlockSettings.copy(Blocks.OAK_SIGN), ModSignTypes.STEEL));
 
     public static final Block HOLOGRAPHIC_WALL_SIGN_BLOCK = registerBlockWithoutBlockItem("holographic_wall_sign",
             new WallSignBlock(FabricBlockSettings.copy(Blocks.OAK_WALL_SIGN), ModSignTypes.HOLOGRAPHIC));

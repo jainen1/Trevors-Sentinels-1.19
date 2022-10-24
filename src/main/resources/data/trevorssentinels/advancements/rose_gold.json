@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "trevorssentinels:rose_gold_ingot"
+    },
+    "title": "False Belief",
+    "description": "Acquire an ingot of Rose Gold",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "trevorssentinels:forge",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:rose_gold_ingot"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

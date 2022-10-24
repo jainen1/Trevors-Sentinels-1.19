@@ -12,9 +12,10 @@ import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    FLIMSY_SENTINUM("flimsy_sentinum", 3, new int[]{1, 2, 3, 1}, 8,
+    FLIMSY_SENTINUM("flimsy_sentinum", 3, new int[]{1, 1, 2, 1}, 8,
             SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0f, 0.0f, () -> Ingredient.ofItems(ModItems.SENTINUM_SHARD)),
     //LEATHER("leather", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0f, 0.0f, () -> Ingredient.ofItems(Items.LEATHER)),
+    BONE("bone", 5, new int[]{1, 2, 3, 2}, 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0f, 0.0f, () -> Ingredient.ofItems(Items.BONE)),
     //CHAIN("chainmail", 15, new int[]{1, 4, 5, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0f, 0.0f, () -> Ingredient.ofItems(Items.IRON_INGOT)),
     SENTINUM("sentinum", 14, new int[]{2, 3, 5, 2}, 6,
             SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0f, 0.1f, () -> Ingredient.ofItems(ModBlocks.SENTINUM_BLOCK)),
@@ -28,7 +29,9 @@ public enum ModArmorMaterials implements ArmorMaterial {
             SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.5f, 0.2f, () -> Ingredient.ofItems(ModItems.BLOOD_DIAMOND)),
     //NETHERITE("netherite", 37, new int[]{3, 6, 8, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0f, 0.1f, () -> Ingredient.ofItems(Items.NETHERITE_INGOT));
     URANIUM("uranium", 42, new int[]{4, 7, 9, 3}, 0,
-            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.5f, 0.4f, () -> Ingredient.ofItems(ModItems.URANIUM_CRYSTAL));
+            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.5f, 0.4f, () -> Ingredient.ofItems(ModItems.URANIUM_CRYSTAL)),
+    ZENITHIUM("zenithite", 47, new int[]{5, 8, 12, 4}, 0,
+    SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 5f, 0.6f, () -> Ingredient.ofItems(ModItems.URANIUM_CRYSTAL));
 
     private static final int[] BASE_DURABILITY;
     private final String name;

@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "trevorssentinels:rose_gold_helm"
+    },
+    "title": "False Hope",
+    "description": "Craft equipment made from Rose Gold",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "trevorssentinels:rose_gold",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:rose_gold_dagger",
+              "trevorssentinels:rose_gold_pickaxe",
+              "trevorssentinels:rose_gold_battleaxe",
+              "trevorssentinels:rose_gold_spade",
+              "trevorssentinels:rose_gold_scythe",
+              "trevorssentinels:rose_gold_helm",
+              "trevorssentinels:rose_gold_cuirass",
+              "trevorssentinels:rose_gold_leggings",
+              "trevorssentinels:rose_gold_sabatons"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

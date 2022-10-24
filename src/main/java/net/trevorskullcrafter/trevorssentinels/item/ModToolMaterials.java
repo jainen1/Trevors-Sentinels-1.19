@@ -1,10 +1,7 @@
 package net.trevorskullcrafter.trevorssentinels.item;
 
-import net.fabricmc.yarn.constants.MiningLevels;
-import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.util.Lazy;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 
 import java.util.function.Supplier;
@@ -15,7 +12,8 @@ public enum ModToolMaterials implements ToolMaterial{
         ROSE_GOLD(1, 94, 14.0f, 0.0f, 25, () -> Ingredient.ofItems(ModItems.ROSE_GOLD_INGOT)),
         TRIMETAL(3, 532, 6.0f, 2.5f, 7, () -> Ingredient.ofItems(ModItems.STEEL_SHEET, ModItems.COPPER_IRON_INGOT)),
         DARKSTEEL(4, 1738, 9.0f, 5.0f, 12, () -> Ingredient.ofItems(ModItems.BLOOD_DIAMOND)),
-        URANIUM(4, 2642, 11.0f, 6.5f, 0, () -> Ingredient.ofItems(ModItems.URANIUM_CRYSTAL));
+        URANIUM(5, 2642, 11.0f, 6.5f, 0, () -> Ingredient.ofItems(ModItems.URANIUM_CRYSTAL)),
+        ZENITHIUM(6, 3333, 13.0f, 8f, 0, () -> Ingredient.ofItems(ModItems.URANIUM_CRYSTAL));
 
         private final int miningLevel;
         private final int itemDurability;

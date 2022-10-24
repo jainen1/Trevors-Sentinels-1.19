@@ -1,4 +1,4 @@
-package net.trevorskullcrafter.trevorssentinels.block.entity;
+package net.trevorskullcrafter.trevorssentinels.entity.custom;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;

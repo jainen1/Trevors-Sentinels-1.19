@@ -14,6 +14,7 @@ public class ModSounds {
     public static SoundEvent STEEL_FALL = registerSoundEvent("steel_fall");
 
     public static SoundEvent ASSASSINATION_UPLOAD = registerSoundEvent("assassination_upload");
+    public static SoundEvent ODE_TO_TRANQUILITY = registerSoundEvent("ode_to_tranquility");
 
 
     public static final BlockSoundGroup STEEL_SOUNDS = new BlockSoundGroup(1f,1f,

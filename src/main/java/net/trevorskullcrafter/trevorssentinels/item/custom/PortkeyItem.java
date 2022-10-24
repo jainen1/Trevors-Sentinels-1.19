@@ -2,12 +2,9 @@ package net.trevorskullcrafter.trevorssentinels.item.custom;
 
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.client.sound.Sound;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ToolItem;
-import net.minecraft.item.ToolMaterial;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -19,8 +16,6 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-
-import static java.lang.Math.floor;
 import static java.lang.Math.round;
 
 public class PortkeyItem extends Item {
@@ -43,6 +38,10 @@ public class PortkeyItem extends Item {
                                 SoundEvents.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.BLOCKS, 2.0f, 2.0f);
                         user.getItemCooldownManager().set(this, /*200*/20);
                         itemStack.damage(itemStack.getMaxDamage()-1, user, p -> p.sendToolBreakStatus(hand));
+                        if(itemStack.getDamage() >= 0){
+                            world.playSound(null, user.getBlockPos(),
+                                    SoundEvents.BLOCK_RESPAWN_ANCHOR_DEPLETE, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                        }
                         return TypedActionResult.success(itemStack);
                     }else{
                         user.sendMessage(Text.literal("This item must be repaired!")
@@ -57,6 +56,10 @@ public class PortkeyItem extends Item {
                     world.playSound(null, user.getBlockPos(),
                             SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK, SoundCategory.BLOCKS, 1.0f,-2.0f);
                     itemStack.damage(-1, user, p -> p.sendToolBreakStatus(hand));
+                    if(itemStack.getDamage() <= 0){
+                        world.playSound(null, user.getBlockPos(),
+                                SoundEvents.BLOCK_RESPAWN_ANCHOR_SET_SPAWN, SoundCategory.BLOCKS, 1.0f,1.0f);
+                    }
                     user.getItemCooldownManager().set(this,100);
                 }else {
                     NbtCompound nbtData = new NbtCompound();

@@ -21,7 +21,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import net.minecraft.world.explosion.Explosion;
-import net.trevorskullcrafter.trevorssentinels.block.entity.NuclearChargeEntity;
+import net.trevorskullcrafter.trevorssentinels.entity.custom.NuclearChargeEntity;
 import org.jetbrains.annotations.Nullable;
 
 public class NuclearChargeBlock extends TntBlock {

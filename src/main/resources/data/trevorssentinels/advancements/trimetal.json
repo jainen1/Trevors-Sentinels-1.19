@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "trevorssentinels:copper_iron_ingot"
+    },
+    "title": "Detrimetal",
+    "description": "Acquire any trimetal item",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "trevorssentinels:forge",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:trimetal_helmet",
+              "trevorssentinels:trimetal_harness",
+              "trevorssentinels:trimetal_leg_guards",
+              "trevorssentinels:trimetal_boots",
+              "trevorssentinels:trimetal_twinblade",
+              "trevorssentinels:trimetal_drill",
+              "trevorssentinels:trimetal_cleaver",
+              "trevorssentinels:trimetal_shovel",
+              "trevorssentinels:trimetal_hoe"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

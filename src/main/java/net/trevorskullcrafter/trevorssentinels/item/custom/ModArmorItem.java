@@ -1,6 +1,7 @@
 package net.trevorskullcrafter.trevorssentinels.item.custom;
 
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.item.Items;
 import net.trevorskullcrafter.trevorssentinels.item.ModArmorMaterials;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -17,7 +18,7 @@ import java.util.Map;
 public class ModArmorItem extends ArmorItem {
     private static final Map<ArmorMaterial, StatusEffectInstance> MATERIAL_TO_EFFECT_MAP =
             (new ImmutableMap.Builder<ArmorMaterial, StatusEffectInstance>()).put(ModArmorMaterials.SENTINUM,
-                            new StatusEffectInstance(StatusEffects.NIGHT_VISION, 50, 0, false, false, false)).build();
+                    new StatusEffectInstance(StatusEffects.NIGHT_VISION, 50, 0, false, false, false)).build();
 
     public ModArmorItem(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
         super(material, slot, settings);
@@ -25,11 +26,11 @@ public class ModArmorItem extends ArmorItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if(!world.isClient()) {
-            if(entity instanceof PlayerEntity) {
-                PlayerEntity player = (PlayerEntity)entity;
+        if (!world.isClient()) {
+            if (entity instanceof PlayerEntity) {
+                PlayerEntity player = (PlayerEntity) entity;
 
-                if(hasFullSuitOfArmorOn(player)) {
+                if (hasFullSuitOfArmorOn(player)) {
                     evaluateArmorEffects(player);
                 }
             }
@@ -43,7 +44,7 @@ public class ModArmorItem extends ArmorItem {
             ArmorMaterial mapArmorMaterial = entry.getKey();
             StatusEffectInstance mapStatusEffect = entry.getValue();
 
-            if(hasCorrectArmorOn(mapArmorMaterial, player)) {
+            if (hasCorrectArmorOn(mapArmorMaterial, player)) {
                 addStatusEffectForMaterial(player, mapArmorMaterial, mapStatusEffect);
             }
         }
@@ -52,7 +53,7 @@ public class ModArmorItem extends ArmorItem {
     private void addStatusEffectForMaterial(PlayerEntity player, ArmorMaterial mapArmorMaterial, StatusEffectInstance mapStatusEffect) {
         boolean hasPlayerEffect = player.hasStatusEffect(mapStatusEffect.getEffectType());
 
-        if(hasCorrectArmorOn(mapArmorMaterial, player) && !hasPlayerEffect) {
+        if (hasCorrectArmorOn(mapArmorMaterial, player) && !hasPlayerEffect) {
             player.addStatusEffect(new StatusEffectInstance(mapStatusEffect.getEffectType(),
                     mapStatusEffect.getDuration(), mapStatusEffect.getAmplifier()));
 
@@ -73,12 +74,16 @@ public class ModArmorItem extends ArmorItem {
     }
 
     private boolean hasCorrectArmorOn(ArmorMaterial material, PlayerEntity player) {
-        ArmorItem boots = ((ArmorItem)player.getInventory().getArmorStack(0).getItem());
-        ArmorItem leggings = ((ArmorItem)player.getInventory().getArmorStack(1).getItem());
-        //ArmorItem breastplate = ((ArmorItem)player.getInventory().getArmorStack(2).getItem());
-        ArmorItem helmet = ((ArmorItem)player.getInventory().getArmorStack(3).getItem());
+        if (player.getInventory().getArmorStack(2).getItem() != Items.ELYTRA) {
+            ArmorItem boots = ((ArmorItem) player.getInventory().getArmorStack(0).getItem());
+            ArmorItem leggings = ((ArmorItem) player.getInventory().getArmorStack(1).getItem());
+            ArmorItem breastplate = (ArmorItem) player.getInventory().getArmorStack(2).getItem();
+            ArmorItem helmet = ((ArmorItem) player.getInventory().getArmorStack(3).getItem());
 
-        return helmet.getMaterial() == /*material && breastplate.getMaterial() ==*/ material &&
-                leggings.getMaterial() == material && boots.getMaterial() == material;
+            return helmet.getMaterial() == material && breastplate.getMaterial() == material &&
+                    leggings.getMaterial() == material && boots.getMaterial() == material;
+        } else {
+            return false;
+        }
     }
 }

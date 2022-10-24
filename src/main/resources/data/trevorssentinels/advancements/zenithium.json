@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "item": "trevorssentinels:zenithium_pickaxe"
+    },
+    "title": "Infinity Squared",
+    "description": "Acquire any zenithium item",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "trevorssentinels:catalyst_crafting",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:zenithium_pickaxe",
+              "trevorssentinels:zenithium_axe",
+              "trevorssentinels:zenithium_shovel",
+              "trevorssentinels:zenithium_hoe",
+              "trevorssentinels:zenithium_bodysuit_torso",
+              "trevorssentinels:zenithium_bodysuit_pants"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

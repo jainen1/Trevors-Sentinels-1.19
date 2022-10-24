@@ -36,5 +36,11 @@
     "sounds": [
       "trevorssentinels:assassination_upload"
     ]
+  },
+  "ode_to_tranquility": {
+    "subtitle": "trevorssentinels:ode_to_tranquility",
+    "sounds": [
+      "trevorssentinels:ode_to_tranquility"
+    ]
   }
 }

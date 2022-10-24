@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "trevorssentinels:superforge_item"
+    },
+    "title": "Master Forger",
+    "description": "Acquire a superforge",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "trevorssentinels:uranium",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:superforge_item"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
