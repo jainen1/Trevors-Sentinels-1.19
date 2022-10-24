@@ -11,6 +11,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
+import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -46,11 +47,16 @@ public class SentinelEntity extends HostileEntity implements IAnimatable {
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event){
-        if(event.isMoving()){
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
-        }
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
+        return PlayState.CONTINUE;
+    }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("adjust", true));
+    private PlayState attackPredicate(AnimationEvent event) {
+        if(this.handSwinging && event.getController().getAnimationState().equals(AnimationState.Stopped)){
+            event.getController().markNeedsReload();
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("attack", false));
+            this.handSwinging = false;
+        }
         return PlayState.CONTINUE;
     }
 
@@ -58,7 +64,10 @@ public class SentinelEntity extends HostileEntity implements IAnimatable {
     public void registerControllers(AnimationData animationData) {
         animationData.addAnimationController(new AnimationController(this, "controller",
                 0, this::predicate));
+        animationData.addAnimationController(new AnimationController(this, "attackController",
+                0, this::attackPredicate));
     }
+
 
     @Override
     public AnimationFactory getFactory() {

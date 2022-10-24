@@ -6,6 +6,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.util.Rarity;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
+import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
 import net.trevorskullcrafter.trevorssentinels.item.custom.*;
 import net.trevorskullcrafter.trevorssentinels.sound.ModSounds;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
@@ -122,6 +123,10 @@ public class ModItems {
                     .statusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 1, 0), 1.0f)
                             .statusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 1, 0), 1.0f)
                             .alwaysEdible().build()).rarity(Rarity.EPIC)));
+
+    public static final Item SENTINEL_SPAWN_EGG = registerItem("sentinel_spawn_egg",
+            new SpawnEggItem(ModEntities.SENTINEL, 0xffffff, 0xffffff,
+                    new FabricItemSettings().group(ModItemGroup.WORLD)));
 
     public static final Item COPPER_IRON_INGOT = registerItem("copper_iron_ingot",
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
