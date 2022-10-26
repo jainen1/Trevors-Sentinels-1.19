@@ -26,7 +26,8 @@
   "item.trevorssentinels.fried_egg": "Fried Egg",
   "item.trevorssentinels.pearfruit": "§aPearfruit",
   "item.trevorssentinels.brownie": "Brownie",
-  "item.trevorssentinels.sandfish": "§eSandfish",
+  "item.trevorssentinels.sandfish": "§eDunefish",
+  "item.trevorssentinels.sandeel": "§eSandeel",
   "item.trevorssentinels.antimilk": "§aDoctor Chadd's Ultimate Anti-Milk of Curious Yet Wonderful Effects",
 
   "item.trevorssentinels.steel_sheet": "Steel Sheet",
@@ -174,6 +175,8 @@
   "block.trevorssentinels.superforge": "§bNuclear Superforge",
   "block.trevorssentinels.hanging_decommissioned_sentinel": "§7Hanging Decommissioned Sentinel",
 
+  "entity.trevorssentinels.sentinel": "Sentinel",
+  "entity.trevorssentinels.sentinum_roomba": "Sentinum Cleaning Unit",
   "entity.minecraft.villager.attendant": "§6Engineer",
   "entity.minecraft.villager.demolitionist": "§cDemolitionist",
   "entity.minecraft.villager.astronomer": "§bAstronomer",

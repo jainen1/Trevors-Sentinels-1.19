@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "trevorssentinels:block/snowstone_top",
+    "side": "trevorssentinels:block/snowstone_top",
+    "top": "trevorssentinels:block/snowstone_top"
+  }
+}

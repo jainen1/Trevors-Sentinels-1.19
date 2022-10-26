@@ -62,7 +62,7 @@ public class ModLootTableModifiers {
                 tableBuilder.pool(poolBuilder.build());
             }
 
-            if(VINDICATOR_ID.equals(id)){
+            /*if(VINDICATOR_ID.equals(id)){
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f))
@@ -72,7 +72,7 @@ public class ModLootTableModifiers {
                                         .mainhand(ItemPredicate.Builder.create().items(Items.GOLDEN_SWORD).build()).build())))
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 3.0f)).build());
                 tableBuilder.pool(poolBuilder.build());
-            }
+            }*/
 
         });
     }

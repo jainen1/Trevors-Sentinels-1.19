@@ -44,7 +44,7 @@ public class DataBlock extends Block {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!(entity instanceof LivingEntity) || entity.getBlockStateAtPos().isOf(this)) {
-            entity.slowMovement(state, new Vec3d(0.9f, 0.9f, 0.9f));
+            entity.slowMovement(state, new Vec3d(0.9f, 1.5f, 0.9f));
             if (world.isClient) {
                 boolean bl;
                 Random random = world.getRandom();
@@ -81,7 +81,7 @@ public class DataBlock extends Block {
                 return FALLING_SHAPE;
             }
             boolean bl = entity instanceof FallingBlockEntity;
-            if (bl || context.isAbove(VoxelShapes.fullCube(), pos, false) && !context.isDescending()) {
+            if (bl || DataBlock.canWalkOnDataBlock(entity) && context.isAbove(VoxelShapes.fullCube(), pos, false) && !context.isDescending()) {
                 return super.getCollisionShape(state, world, pos, context);
             }
         }
@@ -93,8 +93,12 @@ public class DataBlock extends Block {
         return VoxelShapes.empty();
     }
 
+    public static boolean canWalkOnDataBlock(Entity entity) {
+        return true;
+    }
+
     @Override
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
-        return true;
+        return false;
     }
 }

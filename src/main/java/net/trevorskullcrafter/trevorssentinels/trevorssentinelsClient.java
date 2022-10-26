@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
 import net.trevorskullcrafter.trevorssentinels.block.entity.client.AnimatedBlockRenderer;
+import net.trevorskullcrafter.trevorssentinels.block.entity.client.RoombaRenderer;
 import net.trevorskullcrafter.trevorssentinels.block.entity.client.SentinelRenderer;
 import net.trevorskullcrafter.trevorssentinels.block.entity.client.armor.SentinumArmorRenderer;
 import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
@@ -51,5 +52,6 @@ public class trevorssentinelsClient implements ClientModInitializer {
 
         ModModelPredicateProvider.registerModModels();
         EntityRendererRegistry.register(ModEntities.SENTINEL, SentinelRenderer::new);
+        EntityRendererRegistry.register(ModEntities.SENTINUM_ROOMBA, RoombaRenderer::new);
     }
 }

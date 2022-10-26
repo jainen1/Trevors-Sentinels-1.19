@@ -110,25 +110,25 @@ public class ModBlocks {
             new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.WORLD);
 
     public static final Block SNOWSTONE_STAIRS = registerBlock("snowstone_stairs",
-            new Block(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.WORLD);
+            new StairsBlock(ModBlocks.SNOWSTONE.getDefaultState(), FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.WORLD);
 
     public static final Block SNOWSTONE_WALL = registerBlock("snowstone_wall",
             new WallBlock(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.WORLD);
 
     public static final Block SMOOTH_SNOWSTONE_STAIRS = registerBlock("smooth_snowstone_stairs",
-            new Block(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.WORLD);
+            new StairsBlock(ModBlocks.SMOOTH_SNOWSTONE.getDefaultState(), FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.WORLD);
 
     public static final Block SMOOTH_SNOWSTONE_SLAB = registerBlock("smooth_snowstone_slab",
             new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(2f,6f).requiresTool()), ModItemGroup.WORLD);
 
     public static final Block DIRT_STAIRS = registerBlock("dirt_stairs",
-            new Block(FabricBlockSettings.of(Material.SOIL).strength(0.5f).sounds(BlockSoundGroup.GRAVEL)), ModItemGroup.WORLD);
+            new StairsBlock(Blocks.DIRT.getDefaultState(), FabricBlockSettings.of(Material.SOIL).strength(0.5f).sounds(BlockSoundGroup.GRAVEL)), ModItemGroup.WORLD);
 
     public static final Block DIRT_SLAB = registerBlock("dirt_slab",
             new SlabBlock(FabricBlockSettings.of(Material.SOIL).strength(0.5f).sounds(BlockSoundGroup.GRAVEL)), ModItemGroup.WORLD);
 
     public static final Block COARSE_DIRT_STAIRS = registerBlock("coarse_dirt_stairs",
-            new Block(FabricBlockSettings.of(Material.SOIL).strength(0.5f).sounds(BlockSoundGroup.GRAVEL)), ModItemGroup.WORLD);
+            new StairsBlock(Blocks.COARSE_DIRT.getDefaultState(), FabricBlockSettings.of(Material.SOIL).strength(0.5f).sounds(BlockSoundGroup.GRAVEL)), ModItemGroup.WORLD);
 
     public static final Block COARSE_DIRT_SLAB = registerBlock("coarse_dirt_slab",
             new SlabBlock(FabricBlockSettings.of(Material.SOIL).strength(0.5f).sounds(BlockSoundGroup.GRAVEL)), ModItemGroup.WORLD);
