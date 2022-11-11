@@ -8,12 +8,16 @@ import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.RoombaEntity;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.SentinelEntity;
 import net.trevorskullcrafter.trevorssentinels.fluid.ModFluids;
+import net.trevorskullcrafter.trevorssentinels.item.ModArmory;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 import net.trevorskullcrafter.trevorssentinels.recipe.ModRecipes;
 import net.trevorskullcrafter.trevorssentinels.screen.ModScreenHandlers;
+import net.trevorskullcrafter.trevorssentinels.util.ModFlammableBlocks;
+import net.trevorskullcrafter.trevorssentinels.util.ModStrippableBlocks;
 import net.trevorskullcrafter.trevorssentinels.villager.ModVillagers;
 import net.trevorskullcrafter.trevorssentinels.world.feature.ModConfiguredFeatures;
 import net.trevorskullcrafter.trevorssentinels.world.gen.ModOreGeneration;
+import net.trevorskullcrafter.trevorssentinels.world.gen.ModWorldGen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import software.bernie.geckolib3.GeckoLib;
@@ -27,8 +31,9 @@ public class trevorssentinels implements ModInitializer {
 		ModConfiguredFeatures.registerConfiguredFeatures();
 
 		ModItems.registerModItems();
-		ModOreGeneration.generateOres();
+		ModArmory.registerArmory();
 		ModBlocks.registerModBlocks();
+		ModWorldGen.generateWorldGen();
 
 		ModBlockEntities.registerAllBlockEntities();
 		ModScreenHandlers.registerAllScreenHandlers();
@@ -37,6 +42,8 @@ public class trevorssentinels implements ModInitializer {
 		ModVillagers.registerTrades();
 
 		ModFluids.register();
+		ModFlammableBlocks.registerFlammableBlocks();
+		ModStrippableBlocks.registerStrippables();
 
 		GeckoLib.initialize();
 		FabricDefaultAttributeRegistry.register(ModEntities.SENTINEL, SentinelEntity.setAttributes());

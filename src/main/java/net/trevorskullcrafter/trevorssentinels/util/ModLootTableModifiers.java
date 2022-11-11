@@ -31,6 +31,7 @@ public class ModLootTableModifiers {
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f))
                         .with(ItemEntry.builder(ModItems.RICE))
+                        .with(ItemEntry.builder(ModItems.SENTINUM_SHARD))
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f)).build());
                 tableBuilder.pool(poolBuilder.build());
             }

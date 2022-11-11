@@ -32,21 +32,14 @@ public class KingsBladeItem extends SwordItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
         ItemStack itemStack = user.getStackInHand(hand);
         if(!world.isClient() && hand == Hand.MAIN_HAND){
-            if(!Screen.hasShiftDown()){
+            if(!Screen.hasAltDown()){
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 5, 255,false,false,false));
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,5,3,false,false,false));
                 world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 2.0F, getRandom());
                 user.sendMessage(Text.literal("Parry!").formatted(Formatting.GRAY),true);
                 user.getItemCooldownManager().set(this, 100);
             }else {
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,200,1,false,false,false));
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED,200,2,false,false,false));
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.HUNGER,200,2,false,false,false));
-                itemStack.addEnchantment(Enchantments.KNOCKBACK,2);
-                world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_WARDEN_SONIC_CHARGE, SoundCategory.BLOCKS, 2.0F, 5.0F);
-                user.sendMessage(Text.literal("Energized!").formatted(Formatting.GREEN),true);
-                user.getItemCooldownManager().set(this,200);
-                itemStack.setNbt(new NbtCompound());
+
             }
             return TypedActionResult.success(itemStack);
         }
@@ -62,10 +55,31 @@ public class KingsBladeItem extends SwordItem {
         return true;
     }
 
+    boolean iceShield(ItemStack stack){
+        return stack.getSubNbt("trevorssentinels:runes").getString("trevorssentinels:rune1").equals("ᚾ") &&
+                stack.getSubNbt("trevorssentinels:runes").getString("trevorssentinels:rune2").equals("ᛁ") &&
+                stack.getSubNbt("trevorssentinels:runes").getString("trevorssentinels:rune3").equals("ᛉ");
+    }
+
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-            tooltip.add(Text.literal("Right click to parry!").formatted(Formatting.GRAY));
-            tooltip.add(Text.literal("Shift + right click to become energized!").formatted(Formatting.GREEN));
-        tooltip.add(Text.literal("Balance").formatted(Formatting.ITALIC, Formatting.DARK_GREEN));
+        if(stack.getSubNbt("trevorssentinels:runes") != null){
+            tooltip.add(Text.literal("" + stack.getSubNbt("trevorssentinels:runes").getString("trevorssentinels:rune1") + " " +
+                    stack.getSubNbt("trevorssentinels:runes").getString("trevorssentinels:rune2") + " " +
+                    stack.getSubNbt("trevorssentinels:runes").getString("trevorssentinels:rune3").formatted(Formatting.DARK_RED)));
+            if(iceShield(stack)){
+                tooltip.add(Text.literal("Ice Shield"));
+                tooltip.add(Text.literal("Right click to parry!").formatted(Formatting.AQUA));
+            }else{
+                tooltip.add(Text.literal("NaN"));
+            }
+        }else{
+            NbtCompound nbtData = new NbtCompound();
+            nbtData.putString("trevorssentinels:rune1", "ᚾ");
+            nbtData.putString("trevorssentinels:rune2", "ᛁ");
+            nbtData.putString("trevorssentinels:rune3", "ᛉ");
+            stack.setSubNbt("trevorssentinels:runes", nbtData);
+        }
+        tooltip.add(Text.literal("Purity").formatted(Formatting.ITALIC, Formatting.WHITE));
     }
 }

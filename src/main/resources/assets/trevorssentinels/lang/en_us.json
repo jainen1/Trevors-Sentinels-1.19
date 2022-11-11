@@ -30,6 +30,14 @@
   "item.trevorssentinels.sandeel": "§eSandeel",
   "item.trevorssentinels.antimilk": "§aDoctor Chadd's Ultimate Anti-Milk of Curious Yet Wonderful Effects",
 
+  "block.trevorssentinels.yggdrasil_log": "Yggdrasil Log",
+  "block.trevorssentinels.yggdrasil_wood": "Yggdrasil Wood",
+  "block.trevorssentinels.stripped_yggdrasil_log": "Stripped Yggdrasil Log",
+  "block.trevorssentinels.stripped_yggdrasil_wood": "Stripped Yggdrasil Wood",
+  "block.trevorssentinels.yggdrasil_planks": "Yggdrasil Planks",
+  "block.trevorssentinels.yggdrasil_leaves": "Yggdrasil Leaves",
+  "block.trevorssentinels.yggdrasil_sapling": "Yggdrasil Sapling",
+
   "item.trevorssentinels.steel_sheet": "Steel Sheet",
   "item.trevorssentinels.copper_iron_ingot": "Dnilvar Ingot",
   "item.trevorssentinels.rose_gold_ingot": "Rose Gold Ingot",
@@ -118,6 +126,9 @@
   "item.trevorssentinels.nuclear_rocket": "§aNuclear Rocket",
   "item.trevorssentinels.quicksand_bucket": "Quicksand Bucket",
   "item.trevorssentinels.sentinel_spawn_egg": "§7Sentinel Spawn Beacon",
+  "item.trevorssentinels.one_pence": "The One Pence",
+  "item.trevorssentinels.sentinum_stomach": "§7Sentinum Stomach",
+  "item.trevorssentinels.jump_drive": "Jump Jets",
   "block.trevorssentinels.nuclear_charge": "§aNuclear Charge",
 
   "block.trevorssentinels.sentinum_block": "§7Sentinum Block",

@@ -5,7 +5,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
-import net.trevorskullcrafter.trevorssentinels.item.ModItems;
+import net.trevorskullcrafter.trevorssentinels.item.ModArmory;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -54,8 +54,8 @@ public class SentinumArmorItem extends ModArmorItem implements IAnimatable {
 
         // Make sure the player is wearing all the armor. If they are, continue playing
         // the animation, otherwise stop
-        boolean isWearingAll = armorList.containsAll(Arrays.asList(ModItems.SENTINUM_SABATONS,
-                ModItems.SENTINUM_KILT, ModItems.SENTINUM_CUIRASS, ModItems.SENTINUM_VISOR));
+        boolean isWearingAll = armorList.containsAll(Arrays.asList(ModArmory.SENTINUM_SABATONS,
+                ModArmory.SENTINUM_KILT, ModArmory.SENTINUM_CUIRASS, ModArmory.SENTINUM_VISOR));
         return isWearingAll ? PlayState.CONTINUE : PlayState.STOP;
     }
 

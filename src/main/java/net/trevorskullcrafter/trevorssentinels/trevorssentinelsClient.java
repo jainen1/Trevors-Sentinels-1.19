@@ -17,6 +17,7 @@ import net.trevorskullcrafter.trevorssentinels.block.entity.client.SentinelRende
 import net.trevorskullcrafter.trevorssentinels.block.entity.client.armor.SentinumArmorRenderer;
 import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
 import net.trevorskullcrafter.trevorssentinels.fluid.ModFluids;
+import net.trevorskullcrafter.trevorssentinels.item.ModArmory;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 import net.trevorskullcrafter.trevorssentinels.item.client.AnimatedBlockItemRenderer;
 import net.trevorskullcrafter.trevorssentinels.screen.ForgeScreen;
@@ -31,6 +32,8 @@ public class trevorssentinelsClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SUPERFORGE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.RICE_PLANT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GOLDEN_RICE_PLANT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.YGGDRASIL_LEAVES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.YGGDRASIL_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.HOLOBARRIER, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DATA_BLOCK, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
@@ -48,7 +51,7 @@ public class trevorssentinelsClient implements ClientModInitializer {
         BlockEntityRendererRegistry.register(ModBlockEntities.ANIMATED_BLOCK_ENTITY, AnimatedBlockRenderer::new);
 
         GeoArmorRenderer.registerArmorRenderer(new SentinumArmorRenderer(),
-                ModItems.SENTINUM_SABATONS, ModItems.SENTINUM_KILT, ModItems.SENTINUM_CUIRASS, ModItems.SENTINUM_VISOR);
+                ModArmory.SENTINUM_SABATONS, ModArmory.SENTINUM_KILT, ModArmory.SENTINUM_CUIRASS, ModArmory.SENTINUM_VISOR);
 
         ModModelPredicateProvider.registerModModels();
         EntityRendererRegistry.register(ModEntities.SENTINEL, SentinelRenderer::new);

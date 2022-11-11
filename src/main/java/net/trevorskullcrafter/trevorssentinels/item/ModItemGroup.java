@@ -12,7 +12,7 @@ public class ModItemGroup {
             () -> new ItemStack(ModItems.SENTINUM_HOLOPROJECTOR));
 
     public static final ItemGroup ARMORY = FabricItemGroupBuilder.build(new Identifier(trevorssentinels.MOD_ID, "armory"),
-            () -> new ItemStack(ModItems.HUNTERS_VIBROBLADE));
+            () -> new ItemStack(ModArmory.HUNTERS_VIBROBLADE));
 
     public static final ItemGroup KITCHEN = FabricItemGroupBuilder.build(new Identifier(trevorssentinels.MOD_ID, "kitchen"),
             () -> new ItemStack(ModItems.PEARFRUIT));

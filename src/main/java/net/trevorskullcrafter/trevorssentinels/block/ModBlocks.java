@@ -13,6 +13,7 @@ import net.trevorskullcrafter.trevorssentinels.block.entity.ModSignTypes;
 import net.trevorskullcrafter.trevorssentinels.item.ModItemGroup;
 import net.trevorskullcrafter.trevorssentinels.sound.ModSounds;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
+import net.trevorskullcrafter.trevorssentinels.world.feature.tree.YggdrasilSaplingGenerator;
 
 public class ModBlocks {
     public static final Block SENTINUM_BLOCK = registerBlock("sentinum_block",
@@ -141,6 +142,21 @@ public class ModBlocks {
             new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
                     FabricBlockSettings.of(Material.METAL).sounds(ModSounds.STEEL_SOUNDS)
                             .strength(6f,8f).requiresTool()), ModItemGroup.SENTINELS);
+
+    public static final Block YGGDRASIL_LOG = registerBlock("yggdrasil_log",
+            new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG)), ModItemGroup.WORLD);
+    public static final Block YGGDRASIL_WOOD = registerBlock("yggdrasil_wood",
+            new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_WOOD)), ModItemGroup.WORLD);
+    public static final Block STRIPPED_YGGDRASIL_LOG = registerBlock("stripped_yggdrasil_log",
+            new PillarBlock(FabricBlockSettings.copy(Blocks.STRIPPED_OAK_LOG)), ModItemGroup.WORLD);
+    public static final Block STRIPPED_YGGDRASIL_WOOD = registerBlock("stripped_yggdrasil_wood",
+            new PillarBlock(FabricBlockSettings.copy(Blocks.STRIPPED_OAK_WOOD)), ModItemGroup.WORLD);
+    public static final Block YGGDRASIL_PLANKS = registerBlock("yggdrasil_planks",
+            new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS)), ModItemGroup.WORLD);
+    public static final Block YGGDRASIL_LEAVES = registerBlock("yggdrasil_leaves",
+            new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES)), ModItemGroup.WORLD);
+    public static final Block YGGDRASIL_SAPLING = registerBlock("yggdrasil_sapling",
+            new SaplingBlock(new YggdrasilSaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING)), ModItemGroup.WORLD);
 
     public static final Block DARKENED_STEEL_BLOCK = registerBlock("darkened_steel_block",
             new Block(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.NETHERITE).strength(8f,12f).requiresTool()), ModItemGroup.SENTINELS);
