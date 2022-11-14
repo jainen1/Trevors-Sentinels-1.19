@@ -78,7 +78,6 @@ public class RoombaEntity extends PassiveEntity implements IAnimatable {
                 0, this::predicate));
     }
 
-
     @Override
     public AnimationFactory getFactory() {
         return factory;

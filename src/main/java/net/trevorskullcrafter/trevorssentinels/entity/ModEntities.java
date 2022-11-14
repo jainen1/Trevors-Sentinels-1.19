@@ -6,6 +6,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.trevorskullcrafter.trevorssentinels.entity.custom.FlorbusEntity;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.RoombaEntity;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.SentinelEntity;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
@@ -19,4 +20,8 @@ public class ModEntities {
             Registry.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "sentinum_roomba"),
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, RoombaEntity::new)
                     .dimensions(EntityDimensions.fixed(0.75f, 0.2f)).build());
+    public static final EntityType<FlorbusEntity> FLORBUS = Registry.register(
+            Registry.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "florbus"),
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, FlorbusEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.8f, 1.25f)).build());
 }

@@ -11,28 +11,35 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+	maven {
+		name = "CurseMaven"
+		url "https://www.cursemaven.com"
+	}
+	maven { url "https://maven.shedaniel.me/" }
+	maven { url "https://maven.terraformersmc.com/releases/" }
+	maven {
+		name "KosmX's maven"
+		url 'https://maven.kosmx.dev/'
+	}
+	maven { url 'https://api.modrinth.com/maven' }
 }
 
 dependencies {
-	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
-	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
-	// Uncomment the following line to enable the deprecated Fabric API modules. 
-	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
-
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 	modImplementation 'software.bernie.geckolib:geckolib-fabric-1.19:3.1.6'
+	modImplementation "curse.maven:prism-665526:3997155"
+	modApi("me.shedaniel.cloth:cloth-config-fabric:8.2.88") {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
+	include modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${project.player_anim}")
+	modImplementation "maven.modrinth:better-combat:1.4.5+1.19-fabric"
 }
 
 processResources {
@@ -44,14 +51,10 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
 	it.options.release = 17
 }
 
 java {
-	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-	// if it is present.
-	// If you remove this line, sources will not be generated.
 	withSourcesJar()
 }
 
@@ -61,7 +64,6 @@ jar {
 	}
 }
 
-// configure the maven publication
 publishing {
 	publications {
 		mavenJava(MavenPublication) {

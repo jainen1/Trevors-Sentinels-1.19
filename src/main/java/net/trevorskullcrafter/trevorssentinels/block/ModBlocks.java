@@ -13,6 +13,7 @@ import net.trevorskullcrafter.trevorssentinels.block.entity.ModSignTypes;
 import net.trevorskullcrafter.trevorssentinels.item.ModItemGroup;
 import net.trevorskullcrafter.trevorssentinels.sound.ModSounds;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
+import net.trevorskullcrafter.trevorssentinels.world.feature.tree.MidasSaplingGenerator;
 import net.trevorskullcrafter.trevorssentinels.world.feature.tree.YggdrasilSaplingGenerator;
 
 public class ModBlocks {
@@ -157,6 +158,32 @@ public class ModBlocks {
             new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES)), ModItemGroup.WORLD);
     public static final Block YGGDRASIL_SAPLING = registerBlock("yggdrasil_sapling",
             new SaplingBlock(new YggdrasilSaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING)), ModItemGroup.WORLD);
+
+    public static final Block CHARRED_OAK_LOG = registerBlock("charred_oak_log",
+            new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG)), ModItemGroup.WORLD);
+    public static final Block CHARRED_OAK_WOOD = registerBlock("charred_oak_wood",
+            new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_WOOD)), ModItemGroup.WORLD);
+    public static final Block STRIPPED_CHARRED_OAK_LOG = registerBlock("stripped_charred_oak_log",
+            new PillarBlock(FabricBlockSettings.copy(Blocks.STRIPPED_OAK_LOG)), ModItemGroup.WORLD);
+    public static final Block STRIPPED_CHARRED_OAK_WOOD = registerBlock("stripped_charred_oak_wood",
+            new PillarBlock(FabricBlockSettings.copy(Blocks.STRIPPED_OAK_WOOD)), ModItemGroup.WORLD);
+    public static final Block CHARRED_OAK_PLANKS = registerBlock("charred_oak_planks",
+            new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS)), ModItemGroup.WORLD);
+
+    public static final Block MIDAS_LOG = registerBlock("midas_log",
+            new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG)), ModItemGroup.WORLD);
+    public static final Block MIDAS_WOOD = registerBlock("midas_wood",
+            new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_WOOD)), ModItemGroup.WORLD);
+    public static final Block STRIPPED_MIDAS_LOG = registerBlock("stripped_midas_log",
+            new PillarBlock(FabricBlockSettings.copy(Blocks.STRIPPED_OAK_LOG)), ModItemGroup.WORLD);
+    public static final Block STRIPPED_MIDAS_WOOD = registerBlock("stripped_midas_wood",
+            new PillarBlock(FabricBlockSettings.copy(Blocks.STRIPPED_OAK_WOOD)), ModItemGroup.WORLD);
+    public static final Block MIDAS_PLANKS = registerBlock("midas_planks",
+            new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS)), ModItemGroup.WORLD);
+    public static final Block MIDAS_LEAVES = registerBlock("midas_leaves",
+            new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES)), ModItemGroup.WORLD);
+    public static final Block MIDAS_SAPLING = registerBlock("midas_sapling",
+            new SaplingBlock(new MidasSaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING)), ModItemGroup.WORLD);
 
     public static final Block DARKENED_STEEL_BLOCK = registerBlock("darkened_steel_block",
             new Block(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.NETHERITE).strength(8f,12f).requiresTool()), ModItemGroup.SENTINELS);

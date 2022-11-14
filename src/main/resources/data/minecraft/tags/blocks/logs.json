@@ -4,6 +4,14 @@
     "trevorssentinels:yggdrasil_log",
     "trevorssentinels:yggdrasil_wood",
     "trevorssentinels:stripped_yggdrasil_log",
-    "trevorssentinels:stripped_yggdrasil_wood"
+    "trevorssentinels:stripped_yggdrasil_wood",
+    "trevorssentinels:charred_oak_log",
+    "trevorssentinels:charred_oak_wood",
+    "trevorssentinels:stripped_charred_oak_log",
+    "trevorssentinels:stripped_charred_oak_wood",
+    "trevorssentinels:midas_log",
+    "trevorssentinels:midas_wood",
+    "trevorssentinels:stripped_midas_log",
+    "trevorssentinels:stripped_midas_wood"
   ]
 }
