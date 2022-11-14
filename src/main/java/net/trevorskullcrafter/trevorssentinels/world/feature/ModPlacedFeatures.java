@@ -18,6 +18,10 @@ public class ModPlacedFeatures {
             ModConfiguredFeatures.YGGDRASIL_SPAWN,
             VegetationPlacedFeatures.modifiers(PlacedFeatures.createCountExtraModifier(1, 0.5f, 2)));
 
+    public static final RegistryEntry<PlacedFeature> MIDAS_PLACED = PlacedFeatures.register("midas_placed",
+            ModConfiguredFeatures.MIDAS_SPAWN,
+            VegetationPlacedFeatures.modifiers(PlacedFeatures.createCountExtraModifier(1, 0.5f, 2)));
+
     private static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier){
         return List.of(countModifier, SquarePlacementModifier.of(), heightModifier, BiomePlacementModifier.of());
     }

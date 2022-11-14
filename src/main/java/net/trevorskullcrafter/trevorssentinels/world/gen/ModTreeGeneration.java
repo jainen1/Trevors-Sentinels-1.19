@@ -10,5 +10,8 @@ public class ModTreeGeneration {
     public static void generateTrees(){
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SNOWY_PLAINS),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.YGGDRASIL_PLACED.getKey().get());
+
+        /*BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SNOWY_PLAINS),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.YGGDRASIL_PLACED.getKey().get());*/
     }
 }

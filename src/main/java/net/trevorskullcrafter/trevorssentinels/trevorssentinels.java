@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
 import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
+import net.trevorskullcrafter.trevorssentinels.entity.custom.FlorbusEntity;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.RoombaEntity;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.SentinelEntity;
 import net.trevorskullcrafter.trevorssentinels.fluid.ModFluids;
@@ -48,6 +49,7 @@ public class trevorssentinels implements ModInitializer {
 		GeckoLib.initialize();
 		FabricDefaultAttributeRegistry.register(ModEntities.SENTINEL, SentinelEntity.setAttributes());
 		FabricDefaultAttributeRegistry.register(ModEntities.SENTINUM_ROOMBA, RoombaEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.FLORBUS, FlorbusEntity.setAttributes());
 
 		//ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
 	}

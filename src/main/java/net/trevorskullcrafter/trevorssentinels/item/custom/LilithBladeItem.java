@@ -119,10 +119,6 @@ public class LilithBladeItem extends SwordItem {
 
     @Override
     public boolean hasGlint(ItemStack itemStack){
-        if(itemStack.getSubNbt("trevorssentinels:raptureMode") != null) {
-            return itemStack.getSubNbt("trevorssentinels:raptureMode").getInt("trevorssentinels:raptureModeInt") == 2;
-        }else{
-            return false;
-        }
+            return itemStack.getSubNbt("trevorssentinels:raptureMode") != null && itemStack.getSubNbt("trevorssentinels:raptureMode").getInt("trevorssentinels:raptureModeInt") == 2;
     }
 }

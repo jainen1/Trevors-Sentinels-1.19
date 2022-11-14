@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
 import net.trevorskullcrafter.trevorssentinels.block.entity.client.AnimatedBlockRenderer;
+import net.trevorskullcrafter.trevorssentinels.block.entity.client.FlorbusRenderer;
 import net.trevorskullcrafter.trevorssentinels.block.entity.client.RoombaRenderer;
 import net.trevorskullcrafter.trevorssentinels.block.entity.client.SentinelRenderer;
 import net.trevorskullcrafter.trevorssentinels.block.entity.client.armor.SentinumArmorRenderer;
@@ -34,6 +35,8 @@ public class trevorssentinelsClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GOLDEN_RICE_PLANT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.YGGDRASIL_LEAVES, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.YGGDRASIL_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MIDAS_LEAVES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MIDAS_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.HOLOBARRIER, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DATA_BLOCK, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
@@ -56,5 +59,6 @@ public class trevorssentinelsClient implements ClientModInitializer {
         ModModelPredicateProvider.registerModModels();
         EntityRendererRegistry.register(ModEntities.SENTINEL, SentinelRenderer::new);
         EntityRendererRegistry.register(ModEntities.SENTINUM_ROOMBA, RoombaRenderer::new);
+        EntityRendererRegistry.register(ModEntities.FLORBUS, FlorbusRenderer::new);
     }
 }

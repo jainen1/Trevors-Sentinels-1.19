@@ -35,7 +35,41 @@ public class ModItems {
             new ModMusicDiscItem(7, ModSounds.ODE_TO_TRANQUILITY,
                     new FabricItemSettings().maxCount(1).group(ModItemGroup.WORLD).rarity(Rarity.RARE)));
 
+    public static final Item SENTINUM_INGOT = registerItem("sentinum_ingot",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
+    public static final Item GUNMETAL_INGOT = registerItem("gunmetal_ingot",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
     public static final Item STEEL_SHEET = registerItem("steel_sheet",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
+    public static final Item COPPER_IRON_INGOT = registerItem("copper_iron_ingot",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
+    public static final Item ROSE_GOLD_INGOT = registerItem("rose_gold_ingot",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
+    public static final Item IRON_GOLD_INGOT = registerItem("iron_gold_ingot",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
+    public static final Item TRANSITITE_SHARDS = registerItem("transitite_shards",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
+    public static final Item ASH = registerItem("ash",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)
+                    .food(new FoodComponent.Builder().hunger(-2).saturationModifier(0.2f).build())));
+
+    public static final Item DARKSTEEL_INGOT = registerItem("darksteel_ingot",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+
+    public static final Item BLOOD_DIAMOND = registerItem("blood_diamond",
+            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS).fireproof()));
+
+    public static final Item VIOLENT_CATALYST = registerItem("violent_catalyst",
+            new ViolentCatalystItem(new FabricItemSettings().group(ModItemGroup.SENTINELS).fireproof()));
+
+    public static final Item URANIUM_CRYSTAL = registerItem("uranium_crystal",
             new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
 
     public static final Item STEEL_SIGN = registerItem("steel_sign",
@@ -49,6 +83,18 @@ public class ModItems {
     public static final Item FRIED_EGG = registerItem("fried_egg",
             new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN)
                     .food(new FoodComponent.Builder().hunger(2).saturationModifier(0.3f).build())));
+
+    public static final Item BANANA = registerItem("banana",
+            new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN)
+                    .food(new FoodComponent.Builder().hunger(3).saturationModifier(0.4f).build())));
+
+    public static final Item RED_BANANA = registerItem("red_banana",
+            new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN)
+                    .food(new FoodComponent.Builder().hunger(4).saturationModifier(0.5f).build())));
+
+    public static final Item BLUE_JAVA_BANANA = registerItem("blue_java_banana",
+            new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN)
+                    .food(new FoodComponent.Builder().hunger(5).saturationModifier(0.6f).build())));
 
     public static final Item RICE = registerItem("rice",
             new AliasedBlockItem(ModBlocks.RICE_PLANT, new FabricItemSettings().group(ModItemGroup.KITCHEN)
@@ -94,76 +140,28 @@ public class ModItems {
                     .food(new FoodComponent.Builder().hunger(6).saturationModifier(0.6f).build())));
 
     public static final Item ANTIMILK = registerItem("antimilk",
-            new Item(new FabricItemSettings().group(ModItemGroup.KITCHEN).food(new FoodComponent.Builder()
-                            .statusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 1, 0), 1.0f)
-                            .statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.WITHER, 1, 0), 1.0f)
-                            .statusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 1, 0), 1.0f)
-                            .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 1, 0), 1.0f)
-                            .statusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE, 1, 0), 1.0f)
-                            .statusEffect(new StatusEffectInstance(StatusEffects.POISON, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 1, 0), 1.0f)
-                            .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.CONDUIT_POWER, 1, 0), 1.0f)
-                            .statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 1, 0), 1.0f)
-                            .statusEffect(new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 1, 0), 1.0f)
-                            .statusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 1, 0), 1.0f)
-                            .statusEffect(new StatusEffectInstance(StatusEffects.HASTE, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.BAD_OMEN, 1, 0), 1.0f)
-                            .statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1, 0), 1.0f)
-                            .statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 1, 0), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 1, 0), 1.0f)
-                            .statusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 1, 0), 1.0f)
-                            .alwaysEdible().build()).rarity(Rarity.EPIC)));
+            new ChaddBucketItem(new FabricItemSettings().group(ModItemGroup.KITCHEN).rarity(Rarity.EPIC)));
 
     public static final Item SENTINEL_SPAWN_EGG = registerItem("sentinel_spawn_egg",
             new SpawnEggItem(ModEntities.SENTINEL, 0xffffff, 0xffffff,
                     new FabricItemSettings().group(ModItemGroup.WORLD)));
 
+    public static final Item ROOMBA_SPAWN_EGG = registerItem("roomba_spawn_egg",
+            new SpawnEggItem(ModEntities.SENTINUM_ROOMBA, 0xffffff, 0xffffff,
+                    new FabricItemSettings().group(ModItemGroup.WORLD)));
+
+    public static final Item FLORBUS_SPAWN_EGG = registerItem("florbus_spawn_egg",
+            new SpawnEggItem(ModEntities.FLORBUS, 0xd9c996, 0xb6a269,
+                    new FabricItemSettings().group(ModItemGroup.WORLD)));
+
     public static final Item ONE_PENCE = registerItem("one_pence",
-            new InfiniteEffectItem(StatusEffects.LUCK, 9, new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+            new OnePenceItem(StatusEffects.LUCK, 9, new FabricItemSettings().maxCount(1).group(ModItemGroup.SENTINELS)));
 
     public static final Item SENTINUM_STOMACH = registerItem("sentinum_stomach",
-            new InfiniteEffectItem(StatusEffects.SATURATION, 0, new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+            new InfiniteEffectItem(StatusEffects.SATURATION, 0, new FabricItemSettings().maxCount(1).group(ModItemGroup.SENTINELS)));
 
     public static final Item JUMP_DRIVE = registerItem("jump_drive",
-            new JumpItem(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
-
-    public static final Item COPPER_IRON_INGOT = registerItem("copper_iron_ingot",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
-
-    public static final Item ROSE_GOLD_INGOT = registerItem("rose_gold_ingot",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
-
-    public static final Item IRON_GOLD_INGOT = registerItem("iron_gold_ingot",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
-
-    public static final Item TRANSITITE_SHARDS = registerItem("transitite_shards",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
-
-    public static final Item ASH = registerItem("ash",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)
-                    .food(new FoodComponent.Builder().hunger(-2).saturationModifier(0.2f).build())));
-
-    public static final Item DARKSTEEL_INGOT = registerItem("darksteel_ingot",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
-
-    public static final Item BLOOD_DIAMOND = registerItem("blood_diamond",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS).fireproof()));
-
-    public static final Item VIOLENT_CATALYST = registerItem("violent_catalyst",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS).fireproof()));
-
-    public static final Item URANIUM_CRYSTAL = registerItem("uranium_crystal",
-            new Item(new FabricItemSettings().group(ModItemGroup.SENTINELS)));
+            new JumpItem(new FabricItemSettings().maxCount(1).group(ModItemGroup.SENTINELS)));
 
     public static final Item PORTKEY = registerItem("portkey",
             new PortkeyItem(new FabricItemSettings().maxDamage(11).group(ModItemGroup.SENTINELS)));

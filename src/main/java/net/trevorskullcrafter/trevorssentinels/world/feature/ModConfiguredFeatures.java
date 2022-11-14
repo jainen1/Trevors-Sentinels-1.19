@@ -37,6 +37,22 @@ public class ModConfiguredFeatures {
                     new RandomFeatureConfig(List.of(new RandomFeatureEntry(YGGDRASIL_CHECKED, 0.5f)),
                             YGGDRASIL_CHECKED));
 
+    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> MIDAS_TREE =
+            ConfiguredFeatures.register("midas_tree", Feature.TREE, new TreeFeatureConfig.Builder(
+                    BlockStateProvider.of(ModBlocks.MIDAS_LOG),
+                    new StraightTrunkPlacer(5, 6, 3),
+                    BlockStateProvider.of(ModBlocks.MIDAS_LEAVES),
+                    new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 4),
+                    new TwoLayersFeatureSize(1, 0, 2)).build());
+
+    public static final RegistryEntry<PlacedFeature> MIDAS_CHECKED = PlacedFeatures.register("midas_checked",
+            ModConfiguredFeatures.MIDAS_TREE, List.of(PlacedFeatures.wouldSurvive(ModBlocks.MIDAS_SAPLING)));
+
+    public static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> MIDAS_SPAWN =
+            ConfiguredFeatures.register("midas_spawn", Feature.RANDOM_SELECTOR,
+                    new RandomFeatureConfig(List.of(new RandomFeatureEntry(MIDAS_CHECKED, 0.2f)),
+                            MIDAS_CHECKED));
+
     public static void registerConfiguredFeatures(){
         trevorssentinels.LOGGER.debug("Registering the ModConfiguredFeatures for "+ trevorssentinels.MOD_ID);
     }

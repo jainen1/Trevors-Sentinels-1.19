@@ -12,7 +12,7 @@ import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 public class ModArmory {
 
     public static final Item FLIMSY_SENTINUM_SHIV = registerItem("flimsy_sentinum_shiv",
-            new DaggerItem(ModToolMaterials.FLIMSY_SENTINUM, 0, -1f,
+            new SwordItem(ModToolMaterials.FLIMSY_SENTINUM, 0, -1f,
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item FLIMSY_SENTINUM_PICKAXE = registerItem("flimsy_sentinum_pickaxe",
@@ -48,7 +48,7 @@ public class ModArmory {
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item SENTINUM_DIRK = registerItem("sentinum_dirk",
-            new DaggerItem(ModToolMaterials.SENTINUM, 0, -1f,
+            new SwordItem(ModToolMaterials.SENTINUM, 0, -1f,
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item SENTINUM_PICKAXE = registerItem("sentinum_pickaxe",
@@ -84,7 +84,7 @@ public class ModArmory {
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item ROSE_GOLD_DAGGER = registerItem("rose_gold_dagger",
-            new DaggerItem(ModToolMaterials.ROSE_GOLD, 1, -1f,
+            new SwordItem(ModToolMaterials.ROSE_GOLD, 1, -1f,
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item ROSE_GOLD_PICKAXE = registerItem("rose_gold_pickaxe",
@@ -120,7 +120,7 @@ public class ModArmory {
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item TRIMETAL_TWINBLADE = registerItem("trimetal_twinblade",
-            new TwinBladeItem(ModToolMaterials.TRIMETAL, 3, -2f,
+            new SwordItem(ModToolMaterials.TRIMETAL, 3, -2f,
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item TRIMETAL_DRILL = registerItem("trimetal_drill",
@@ -156,7 +156,7 @@ public class ModArmory {
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item HUNTERS_VIBROBLADE = registerItem("hunters_vibroblade",
-            new DaggerItem(ModToolMaterials.DARKSTEEL, -3, -1f,
+            new SwordItem(ModToolMaterials.DARKSTEEL, -3, -1f,
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item HUNTERS_DRILL = registerItem("hunters_drill",
@@ -190,7 +190,7 @@ public class ModArmory {
                     new FabricItemSettings().group(ModItemGroup.ARMORY)));
 
     public static final Item CRYSTAL_DAGGER = registerItem("crystal_dagger",
-            new DaggerItem(ModToolMaterials.URANIUM, -3, -1f,
+            new SwordItem(ModToolMaterials.URANIUM, -3, -1f,
                     new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item NUCLEAR_DRILL = registerItem("nuclear_drill",
@@ -198,7 +198,7 @@ public class ModArmory {
                     new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item NUCLEAR_AXE = registerItem("nuclear_axe",
-            new ModAxeItem(ModToolMaterials.URANIUM, 3, -3.2f,
+            new ModAxeItem(ModToolMaterials.URANIUM, 3, -3.1f,
                     new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item NUCLEAR_SHOVEL = registerItem("nuclear_shovel",
@@ -230,11 +230,11 @@ public class ModArmory {
                     new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item PAPPYD_BLADE = registerItem("pappyd_blade",
-            new PappyDSwordItem(ModToolMaterials.ZENITHIUM,3,-2.4f,
+            new PappyDSwordItem(ModToolMaterials.ZENITHIUM,3,-2.6f,
                     new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item THANATU_BLADE = registerItem("thanatu_blade",
-            new ThanatuBladeItem(ModToolMaterials.ZENITHIUM, -6,-2.4f,
+            new ThanatuBladeItem(ModToolMaterials.ZENITHIUM, -6,-2.8f,
                     new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item MORPHEUS_BLADE = registerItem("morpheus_blade",
@@ -265,7 +265,7 @@ public class ModArmory {
                     new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item ZENITHIUM_AXE = registerItem("zenithium_axe",
-            new ModAxeItem(ModToolMaterials.ZENITHIUM, 6, -3.2f,
+            new ModAxeItem(ModToolMaterials.ZENITHIUM, 6, -3f,
                     new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item ZENITHIUM_SHOVEL = registerItem("zenithium_shovel",

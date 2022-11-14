@@ -1,4 +1,6 @@
 package net.trevorskullcrafter.trevorssentinels.item.custom;
+import com.anthonyhilyard.prism.util.ConfigHelper;
+import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
@@ -8,11 +10,8 @@ import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
+import net.minecraft.text.*;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import org.jetbrains.annotations.Nullable;
@@ -176,4 +175,108 @@ public class HoloprojectorItem extends Item {
                                     " / " + (itemStack.getMaxDamage()-1)).formatted(Formatting.RED));
         }
     }
+
+    @Override
+    public Text getName(ItemStack stack) {
+        if(stack.getSubNbt("holoprojector") != null){
+            if(stack.getSubNbt("holoprojector").getInt("holoMode") == 1){
+                return name;
+            }else if(stack.getSubNbt("holoprojector").getInt("holoMode") == 2){
+                return name2;
+            }else{
+                return name3;
+            }
+        }
+        return name;
+    }
+
+    private final Text name = new Text() {
+        private final TextContent content = new TranslatableTextContent("item.trevorssentinels.sentinum_holoprojector");
+        private final Style style = Style.EMPTY.withColor((TextColor)(Object) ConfigHelper.parseColor("3_#55FFFF_#55FF55_#FF5555"));
+
+        @Nullable
+        private Language decomposedWith;
+        private OrderedText visualOrderText = OrderedText.EMPTY;
+
+        @Override
+        public Style getStyle() { return style; }
+
+        @Override
+        public TextContent getContent() { return content; }
+
+        @Override
+        public List<Text> getSiblings() { return Lists.newArrayList(); }
+
+        @Override
+        public OrderedText asOrderedText()
+        {
+            Language language = Language.getInstance();
+            if (this.decomposedWith != language)
+            {
+                this.visualOrderText = language.reorder(this);
+                this.decomposedWith = language;
+            }
+            return this.visualOrderText;
+        }
+    };
+
+    private final Text name2 = new Text() {
+        private final TextContent content = new TranslatableTextContent("item.trevorssentinels.sentinum_holoprojector2");
+        private final Style style = Style.EMPTY.withColor((TextColor)(Object) ConfigHelper.parseColor("3_#55FFFF_#55FF55_#FF5555"));
+
+        @Nullable
+        private Language decomposedWith;
+        private OrderedText visualOrderText = OrderedText.EMPTY;
+
+        @Override
+        public Style getStyle() { return style; }
+
+        @Override
+        public TextContent getContent() { return content; }
+
+        @Override
+        public List<Text> getSiblings() { return Lists.newArrayList(); }
+
+        @Override
+        public OrderedText asOrderedText()
+        {
+            Language language = Language.getInstance();
+            if (this.decomposedWith != language)
+            {
+                this.visualOrderText = language.reorder(this);
+                this.decomposedWith = language;
+            }
+            return this.visualOrderText;
+        }
+    };
+
+    private final Text name3 = new Text() {
+        private final TextContent content = new TranslatableTextContent("item.trevorssentinels.sentinum_holoprojector3");
+        private final Style style = Style.EMPTY.withColor((TextColor)(Object) ConfigHelper.parseColor("#FF5555"));
+
+        @Nullable
+        private Language decomposedWith;
+        private OrderedText visualOrderText = OrderedText.EMPTY;
+
+        @Override
+        public Style getStyle() { return style; }
+
+        @Override
+        public TextContent getContent() { return content; }
+
+        @Override
+        public List<Text> getSiblings() { return Lists.newArrayList(); }
+
+        @Override
+        public OrderedText asOrderedText()
+        {
+            Language language = Language.getInstance();
+            if (this.decomposedWith != language)
+            {
+                this.visualOrderText = language.reorder(this);
+                this.decomposedWith = language;
+            }
+            return this.visualOrderText;
+        }
+    };
 }
