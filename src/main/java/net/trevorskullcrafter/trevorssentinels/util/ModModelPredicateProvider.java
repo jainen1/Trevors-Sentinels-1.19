@@ -23,9 +23,7 @@ public class ModModelPredicateProvider {
                 (stack, world, entity, seed) -> {
             if (stack.getSubNbt("trevorssentinels:style") != null) {
                 if (stack.getSubNbt("trevorssentinels:style").getInt("trevorssentinels:styleInt") == 1 || stack.getSubNbt("trevorssentinels:style").getInt("trevorssentinels:styleInt") == 3) {
-                    return 0.5f;
-                } else {
-                    return 0f;
+                    return 0.2f;
                 }
             }
             return 0f;

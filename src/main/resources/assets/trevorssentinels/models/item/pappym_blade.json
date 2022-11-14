@@ -472,7 +472,7 @@
 	"overrides": [
 		{
 			"predicate": {
-				"trevorssentinels:bad": 0.5
+				"trevorssentinels:bad": 0.2
 			},
 			"model": "trevorssentinels:item/pappym_blade2"
 		}
