@@ -12,7 +12,6 @@ import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-import static net.minecraft.entity.effect.StatusEffects.LUCK;
 import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 
 public class ModItems {
@@ -178,6 +177,6 @@ public class ModItems {
     }
 
     public static void registerModItems(){
-        trevorssentinels.LOGGER.info("Registering Mod Items for "+ MOD_ID);
+        trevorssentinels.LOGGER.info("Registering items... ("+ MOD_ID + ")");
     }
 }

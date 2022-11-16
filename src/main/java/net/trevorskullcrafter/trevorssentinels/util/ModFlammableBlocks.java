@@ -2,9 +2,13 @@ package net.trevorskullcrafter.trevorssentinels.util;
 
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
+import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
+
+import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 
 public class ModFlammableBlocks {
     public static void registerFlammableBlocks(){
+        trevorssentinels.LOGGER.info("Committing arson... ("+ MOD_ID + ")");
         FlammableBlockRegistry registry = FlammableBlockRegistry.getDefaultInstance();
 
         registry.add(ModBlocks.YGGDRASIL_LOG, 5, 5);

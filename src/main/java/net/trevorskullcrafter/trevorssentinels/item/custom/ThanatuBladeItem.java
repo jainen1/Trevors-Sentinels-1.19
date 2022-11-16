@@ -2,7 +2,6 @@ package net.trevorskullcrafter.trevorssentinels.item.custom;
 
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -18,11 +17,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 
 import java.util.List;
 
@@ -117,7 +113,7 @@ public class ThanatuBladeItem extends SwordItem {
                 target.world.playSound(null, target.getBlockPos(),
                         SoundEvents.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.BLOCKS, 2.0F, 2.0F);
             }else{
-                target.requestTeleportAndDismount(target.getX(), target.getY() + 10, target.getZ());
+                target.requestTeleportAndDismount(target.getX(), target.getY() + 1, target.getZ());
             }
         }else{
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER,60,0,true,true,false));

@@ -14,10 +14,10 @@ import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 import net.trevorskullcrafter.trevorssentinels.recipe.ModRecipes;
 import net.trevorskullcrafter.trevorssentinels.screen.ModScreenHandlers;
 import net.trevorskullcrafter.trevorssentinels.util.ModFlammableBlocks;
+import net.trevorskullcrafter.trevorssentinels.util.ModLootTableModifiers;
 import net.trevorskullcrafter.trevorssentinels.util.ModStrippableBlocks;
 import net.trevorskullcrafter.trevorssentinels.villager.ModVillagers;
 import net.trevorskullcrafter.trevorssentinels.world.feature.ModConfiguredFeatures;
-import net.trevorskullcrafter.trevorssentinels.world.gen.ModOreGeneration;
 import net.trevorskullcrafter.trevorssentinels.world.gen.ModWorldGen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +45,7 @@ public class trevorssentinels implements ModInitializer {
 		ModFluids.register();
 		ModFlammableBlocks.registerFlammableBlocks();
 		ModStrippableBlocks.registerStrippables();
+		ModLootTableModifiers.modifyLootTables();
 
 		GeckoLib.initialize();
 		FabricDefaultAttributeRegistry.register(ModEntities.SENTINEL, SentinelEntity.setAttributes());

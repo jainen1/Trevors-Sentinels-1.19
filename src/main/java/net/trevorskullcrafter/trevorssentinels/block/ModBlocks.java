@@ -239,6 +239,6 @@ public class ModBlocks {
     }
 
     public static void registerModBlocks(){
-        trevorssentinels.LOGGER.info("Registering ModBlocks for " + trevorssentinels.MOD_ID);
+        trevorssentinels.LOGGER.info("Registering blocks... (" + trevorssentinels.MOD_ID + ")");
     }
 }

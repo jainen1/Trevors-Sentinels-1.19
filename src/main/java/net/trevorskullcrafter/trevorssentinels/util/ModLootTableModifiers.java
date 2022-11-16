@@ -1,29 +1,27 @@
 package net.trevorskullcrafter.trevorssentinels.util;
 
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
-import net.minecraft.loot.condition.EntityPropertiesLootCondition;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
-import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
-import net.minecraft.predicate.entity.EntityEquipmentPredicate;
-import net.minecraft.predicate.entity.EntityPredicate;
-import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.util.Identifier;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
+import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
+
+import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 
 public class ModLootTableModifiers {
     private static final Identifier GRASS_BLOCK_ID = new Identifier("minecraft", "blocks/grass");
     private static final Identifier IGLOO_STRUCTURE_CHEST_ID = new Identifier("minecraft", "chests/igloo/chest");
     private static final Identifier WITHER_SKELETON_ID = new Identifier("minecraft", "entities/wither_skeleton");
 
-    private static final Identifier VINDICATOR_ID = new Identifier("minecraft","entities/vindicator");
+    //private static final Identifier VINDICATOR_ID = new Identifier("minecraft","entities/vindicator");
 
     public static void modifyLootTables(){
+        trevorssentinels.LOGGER.info("Placing shards in grass... (" + MOD_ID + ")");
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 
             if(GRASS_BLOCK_ID.equals(id)){

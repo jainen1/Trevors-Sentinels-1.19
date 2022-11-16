@@ -2,5 +2,19 @@
   "parent": "item/handheld",
   "textures": {
     "layer0": "trevorssentinels:item/sentinum_lens"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "trevorssentinels:on": 0.5
+      },
+      "model": "trevorssentinels:item/sentinum_lens2"
+    },
+    {
+      "predicate": {
+        "trevorssentinels:on": 1
+      },
+      "model": "trevorssentinels:item/sentinum_lens3"
+    }
+  ]
 }

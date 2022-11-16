@@ -14,6 +14,8 @@ import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
+
 public class ModFluids {
     public static FlowableFluid QUICKSAND_STILL;
     public static FlowableFluid QUICKSAND_FLOWING;
@@ -21,6 +23,7 @@ public class ModFluids {
     public static Item QUICKSAND_BUCKET;
 
     public static void register(){
+        trevorssentinels.LOGGER.info("Registering fluids... ("+ MOD_ID + ")");
         QUICKSAND_STILL = Registry.register(Registry.FLUID,
                 new Identifier(trevorssentinels.MOD_ID, "quicksand"), new QuicksandFluid.Still());
         QUICKSAND_FLOWING = Registry.register(Registry.FLUID,

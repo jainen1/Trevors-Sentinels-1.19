@@ -226,15 +226,15 @@ public class ModArmory {
                     new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item PAPPYM_BLADE = registerItem("pappym_blade",
-            new PappyMSwordItem(ModToolMaterials.ZENITHIUM,3,-2.5f,
+            new PappyMSwordItem(ModToolMaterials.ZENITHIUM,0,-2.5f,
                     new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item PAPPYD_BLADE = registerItem("pappyd_blade",
-            new PappyDSwordItem(ModToolMaterials.ZENITHIUM,3,-2.5f,
+            new PappyDSwordItem(ModToolMaterials.ZENITHIUM,0,-2.5f,
                     new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item THANATU_BLADE = registerItem("thanatu_blade",
-            new ThanatuBladeItem(ModToolMaterials.ZENITHIUM, -6,-2.8f,
+            new ThanatuBladeItem(ModToolMaterials.ZENITHIUM, 3,-2.8f,
                     new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item MORPHEUS_BLADE = registerItem("morpheus_blade",
@@ -242,7 +242,7 @@ public class ModArmory {
                     new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item SKYLAR_BLADE = registerItem("skylar_blade",
-            new SkylarBladeItem(ModToolMaterials.ZENITHIUM,3,-2.4f,
+            new SkylarBladeItem(ModToolMaterials.ZENITHIUM,0,-2.4f,
                     new FabricItemSettings().fireproof().group(ModItemGroup.ARMORY)));
 
     public static final Item LILITH_BLADE = registerItem("lilith_blade",
@@ -309,6 +309,6 @@ public class ModArmory {
     }
 
     public static void registerArmory(){
-        trevorssentinels.LOGGER.info("Registering Armory for "+ MOD_ID);
+        trevorssentinels.LOGGER.info("Registering weapons... (" + MOD_ID + ")");
     }
 }

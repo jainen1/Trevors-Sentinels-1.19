@@ -1,5 +1,5 @@
 {
   "variants": {
-    "": { "model": "trevorssentinels:block/yggdrasil_leaves" }
+    "": [{ "model": "trevorssentinels:block/yggdrasil_leaves", "weight": 6 }, {"model": "trevorssentinels:block/yggdrasil_leaves2", "weight": 1}]
   }
 }

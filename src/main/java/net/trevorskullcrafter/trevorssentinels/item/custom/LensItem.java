@@ -29,7 +29,6 @@ public class LensItem extends Item {
         World world = context.getWorld();
         Block block = world.getBlockState(context.getBlockPos()).getBlock();
         if (!world.isClient() && context.getHand() == Hand.MAIN_HAND) {
-            ItemStack itemStack = context.getPlayer().getStackInHand(context.getHand());
             if (block == ModBlocks.HOLOBARRIER) {
                 displayEntry(context, 0);
             }
@@ -131,14 +130,8 @@ public class LensItem extends Item {
         return super.useOnBlock(context);
     }
 
-    /*public void error(ItemUsageContext context, String message){
-        context.getPlayer().sendMessage(Text.literal("--- ERROR ---").formatted(Formatting.RED, Formatting.BOLD));
-        context.getPlayer().sendMessage(Text.literal(message).formatted(Formatting.DARK_RED));
-        context.getPlayer().sendMessage(Text.literal("-------------").formatted(Formatting.RED, Formatting.BOLD));
-    }*/
-
-    public double getCurrentVersion(){
-        return 1.5;
+    public static double getCurrentVersion(){
+        return 1.6;
     }
 
     public int getDatabaseSize(){
@@ -157,7 +150,7 @@ public class LensItem extends Item {
         indexDescriptions[1] = "A carbon-ferrite alloy widely used in construction for its strength and flexibility.";
 
         indexNames[2] = "Sentinum";
-        indexDescriptions[2] = "A silicon-based nanocrystallite used in the manufacturing of SSS drones.";
+        indexDescriptions[2] = "A silicon-based nanocrystallite used in the manufacturing of sentinum androids.";
         indexWarnings[2] = "WARNING: Is weak to sudden changes in environmental conditions.";
 
         indexNames[3] = "Uranium";
@@ -180,9 +173,9 @@ public class LensItem extends Item {
         indexNames[8] = "Copper";
         indexDescriptions[8] = "A common metal used in electronics as a conductor.";
 
-        indexNames[9] = "SSS";
-        indexDescriptions[9] = "A fully self-sufficient security system created by Utarian scientists to protect against the threat of Vmortexian invasion.";
-        indexWarnings[9] = "They made us gods, and expected us to follow their rules.";
+        indexNames[9] = "The Fathermind";
+        indexDescriptions[9] = "A self-sufficient network spanning all of Utaria.";
+        indexWarnings[9] = "They made me a god, and expected me to follow their rules.";
 
         indexNames[10] = "Ferraurium";
         indexDescriptions[10] = "A unique alloy combining properties of iron and gold.";
@@ -192,10 +185,10 @@ public class LensItem extends Item {
         indexDescriptions[11] = "A superalloy comprised of extremely heat-resistant materials, forged to survive extreme conditions.";
 
         indexNames[12] = "Gold";
-        indexDescriptions[12] = "An uncommon metal thought to use holy power to protect against demons. Experimentation has deemed this as nothing more than superstition.";
+        indexDescriptions[12] = "An uncommon metal thought to channel holy power to protect against demons. While experimentation on the subject has yielded no results, a possibility remains that the rumors are true.";
 
         indexNames[13] = "Rose Gold";
-        indexDescriptions[13] = "An alloy of gold and copper thought to be able to conduct holy power. While experimentation on the subject has yielded no results, a possibility remains that the rumors are true.";
+        indexDescriptions[13] = "An alloy of gold and copper believed to contain holy power. Experimentation has deemed this as nothing more than superstition.";
 
         indexNames[14] = "Nether Flora";
         indexDescriptions[14] = "Affected by the Nether's anomalous properties, these lifeforms are mostly resistant to heat and flame.";
