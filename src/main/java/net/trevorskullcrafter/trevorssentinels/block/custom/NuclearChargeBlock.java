@@ -3,6 +3,7 @@ package net.trevorskullcrafter.trevorssentinels.block.custom;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.Item;
@@ -24,7 +25,7 @@ import net.minecraft.world.explosion.Explosion;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.NuclearChargeEntity;
 import org.jetbrains.annotations.Nullable;
 
-public class NuclearChargeBlock extends TntBlock {
+public class NuclearChargeBlock extends Block {
     public static final BooleanProperty UNSTABLE = Properties.UNSTABLE;
 
     public NuclearChargeBlock(AbstractBlock.Settings settings) {
@@ -53,7 +54,7 @@ public class NuclearChargeBlock extends TntBlock {
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        if (!world.isClient() && !player.isCreative() && state.get(UNSTABLE).booleanValue()) {
+        if (!world.isClient() && !player.isCreative() && state.get(UNSTABLE)) {
             NuclearChargeBlock.primeTnt(world, pos);
         }
         super.onBreak(world, pos, state, player);
@@ -64,7 +65,8 @@ public class NuclearChargeBlock extends TntBlock {
         if (world.isClient) {
             return;
         }
-        NuclearChargeEntity tntEntity = new NuclearChargeEntity(world, (double)pos.getX() + 0.5, pos.getY(), (double)pos.getZ() + 0.5, explosion.getCausingEntity());
+        //NuclearChargeEntity tntEntity = new NuclearChargeEntity(world, (double)pos.getX() + 0.5, pos.getY(), (double)pos.getZ() + 0.5, explosion.getCausingEntity());
+        TntEntity tntEntity = new TntEntity(world, (double)pos.getX() + 0.5, pos.getY(), (double)pos.getZ() + 0.5, explosion.getCausingEntity());
         int i = tntEntity.getFuse();
         tntEntity.setFuse((short)(world.random.nextInt(i / 4) + i / 8));
         world.spawnEntity(tntEntity);
@@ -78,7 +80,8 @@ public class NuclearChargeBlock extends TntBlock {
         if (world.isClient) {
             return;
         }
-        NuclearChargeEntity tntEntity = new NuclearChargeEntity(world, (double)pos.getX() + 0.5, pos.getY(), (double)pos.getZ() + 0.5, igniter);
+        //NuclearChargeEntity tntEntity = new NuclearChargeEntity(world, (double)pos.getX() + 0.5, pos.getY(), (double)pos.getZ() + 0.5, igniter);
+        TntEntity tntEntity = new TntEntity(world, (double)pos.getX() + 0.5, pos.getY(), (double)pos.getZ() + 0.5, igniter);
         world.spawnEntity(tntEntity);
         world.playSound(null, tntEntity.getX(), tntEntity.getY(), tntEntity.getZ(), SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0f, 1.0f);
         world.emitGameEvent((Entity)igniter, GameEvent.PRIME_FUSE, pos);

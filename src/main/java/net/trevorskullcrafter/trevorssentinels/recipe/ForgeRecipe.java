@@ -12,6 +12,7 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.ShapedRecipe;
+import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
@@ -23,8 +24,8 @@ import java.util.Map;
 
 public class ForgeRecipe extends ShapedRecipe {
 
-    public ForgeRecipe(Identifier id, String group, int width, int height, DefaultedList<Ingredient> input, ItemStack output) {
-        super(id, group, width, height, input, output);
+    public ForgeRecipe(Identifier id, String group, CraftingRecipeCategory category, int width, int height, DefaultedList<Ingredient> input, ItemStack output) {
+        super(id, group, category, width, height, input, output);
     }
 
     public boolean matches(CraftingInventory craftingInventory, World world) {
@@ -222,7 +223,7 @@ public class ForgeRecipe extends ShapedRecipe {
             int j = strings.length;
             DefaultedList<Ingredient> defaultedList = ForgeRecipe.createPatternMatrix(strings, map, i, j);
             ItemStack itemStack = ForgeRecipe.outputFromJson(JsonHelper.getObject(jsonObject, "result"));
-            return new ForgeRecipe(identifier, string, i, j, defaultedList, itemStack);
+            return new ForgeRecipe(identifier, string, CraftingRecipeCategory.MISC, i, j, defaultedList, itemStack);
         }
 
         @Override
@@ -235,7 +236,7 @@ public class ForgeRecipe extends ShapedRecipe {
                 defaultedList.set(k, Ingredient.fromPacket(packetByteBuf));
             }
             ItemStack itemStack = packetByteBuf.readItemStack();
-            return new ForgeRecipe(identifier, string, i, j, defaultedList, itemStack);
+            return new ForgeRecipe(identifier, string, CraftingRecipeCategory.MISC, i, j, defaultedList, itemStack);
         }
 
         @Override

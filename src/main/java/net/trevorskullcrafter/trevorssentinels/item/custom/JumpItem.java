@@ -1,9 +1,5 @@
 package net.trevorskullcrafter.trevorssentinels.item.custom;
 
-import com.anthonyhilyard.prism.item.ItemColors;
-import com.anthonyhilyard.prism.text.DynamicColor;
-import com.anthonyhilyard.prism.util.ConfigHelper;
-import com.google.common.collect.Lists;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -18,7 +14,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Language;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -59,7 +54,7 @@ public class JumpItem extends Item {
                     user.sendMessage(Text.literal("JETS: ON").formatted(Formatting.DARK_GREEN, Formatting.BOLD), true);
                 }
             }else{
-                world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.UI_BUTTON_CLICK, SoundCategory.MASTER, 1.0f, 1.0f);
+                world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON, SoundCategory.MASTER, 1.0f, 1.0f);
             }
         }
         return TypedActionResult.success(itemStack);
@@ -94,7 +89,7 @@ public class JumpItem extends Item {
                             }
                         } else {
                             if ((jumpTime % 20 == 0 && !dirty && jumpTime != 0)) {
-                                world.playSound((PlayerEntity) entity, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.UI_BUTTON_CLICK, SoundCategory.MASTER, 1.0f, (float) ((double) jumpTime / 100));
+                                world.playSound((PlayerEntity) entity, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON, SoundCategory.MASTER, 1.0f, (float) ((double) jumpTime / 100));
                                 if (jumpTime == 100) {
                                     dirty = true;
                                 }
@@ -144,5 +139,6 @@ public class JumpItem extends Item {
             itemStack.setSubNbt("trevorssentinels:power", nbtData);
         }
         tooltip.add(Text.literal("Ctrl + right click to toggle.").formatted(Formatting.DARK_GRAY));
+        super.appendTooltip(itemStack, world, tooltip, context);
     }
 }

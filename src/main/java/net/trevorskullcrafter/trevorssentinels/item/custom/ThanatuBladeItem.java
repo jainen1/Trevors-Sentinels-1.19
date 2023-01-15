@@ -8,7 +8,6 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
@@ -18,15 +17,17 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import net.trevorskullcrafter.trevorssentinels.util.ColoredTextUtil;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 import static java.lang.Math.round;
 
-public class ThanatuBladeItem extends SwordItem {
-    public ThanatuBladeItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+public class ThanatuBladeItem extends ModSwordItem {
+    public ThanatuBladeItem(String color, ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
+        super(color, toolMaterial, attackDamage, attackSpeed, settings);
+        doDashes = true;
     }
 
     @Override
@@ -39,7 +40,7 @@ public class ThanatuBladeItem extends SwordItem {
                     nbtData.putInt("trevorssentinels:raptureModeInt", 2);
                     itemStack.setSubNbt("trevorssentinels:raptureMode", nbtData);
 
-                    user.sendMessage(Text.literal("Style: Riftcaller").formatted(Formatting.DARK_PURPLE), true);
+                    user.sendMessage(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("Riftcaller").formatted(Formatting.DARK_PURPLE)), true);
                     world.playSound(null, user.getX(), user.getY(),
                             user.getZ(), SoundEvents.BLOCK_END_PORTAL_FRAME_FILL,
                             SoundCategory.BLOCKS, 1.0F, 1.0F);
@@ -48,7 +49,7 @@ public class ThanatuBladeItem extends SwordItem {
                     nbtData.putInt("trevorssentinels:raptureModeInt", 1);
                     itemStack.setSubNbt("trevorssentinels:raptureMode", nbtData);
 
-                    user.sendMessage(Text.literal("Style: Riftwalker").formatted(Formatting.DARK_PURPLE), true);
+                    user.sendMessage(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("Riftwalker").formatted(Formatting.DARK_PURPLE)), true);
                     world.playSound(null, user.getX(), user.getY(),
                             user.getZ(), SoundEvents.BLOCK_END_PORTAL_FRAME_FILL,
                             SoundCategory.BLOCKS, 1.0F, 0.8F);
@@ -132,10 +133,30 @@ public class ThanatuBladeItem extends SwordItem {
     }
 
     @Override
+    public int getItemBarColor(ItemStack stack) {
+        return 11141290;
+    }
+
+    @Override
+    public boolean isItemBarVisible(ItemStack stack) {
+        return stack.getSubNbt("trevorssentinels:timerHolder") != null;
+    }
+
+    @Override
+    public int getItemBarStep(ItemStack stack) {
+        if (stack.getHolder() != null && isItemBarVisible(stack)) {
+            return (int) Math.min(((stack.getSubNbt("trevorssentinels:timerHolder").getLong("trevorssentinels:timer") - stack.getHolder().getWorld().getTime()) / 200) * 13, 13);
+        }
+        else{
+            return super.getItemBarStep(stack);
+        }
+    }
+
+    @Override
     public void appendTooltip(ItemStack itemStack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if(itemStack.getSubNbt("trevorssentinels:raptureMode") != null) {
             if (itemStack.getSubNbt("trevorssentinels:raptureMode").getInt("trevorssentinels:raptureModeInt") == 1) {
-                tooltip.add(Text.literal("Style: Riftwalker").formatted(Formatting.ITALIC, Formatting.DARK_PURPLE));
+                tooltip.add(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("Riftwalker").formatted(Formatting.DARK_PURPLE)));
 
                 if(itemStack.getSubNbt("trevorssentinels:harmoniousTeleportData") != null) {
                     tooltip.add(Text.literal(itemStack.getSubNbt("trevorssentinels:harmoniousTeleportData").
@@ -154,7 +175,7 @@ public class ThanatuBladeItem extends SwordItem {
                 }
 
             } else {
-                tooltip.add(Text.literal("Style: Riftcaller").formatted(Formatting.ITALIC, Formatting.DARK_PURPLE));
+                tooltip.add(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("Riftcaller").formatted(Formatting.DARK_PURPLE)));
                 tooltip.add(Text.literal("Alt + right click to summon allies! (WIP)").formatted(Formatting.LIGHT_PURPLE));
 
                 tooltip.add(Text.literal("Attacks will also apply").formatted(Formatting.ITALIC, Formatting.GRAY));
@@ -166,8 +187,9 @@ public class ThanatuBladeItem extends SwordItem {
             nbtData.putInt("trevorssentinels:raptureModeInt", 1);
             itemStack.setSubNbt("trevorssentinels:raptureMode", nbtData);
         }
-        tooltip.add(Text.literal("Ctrl + right click to switch style.").formatted(Formatting.DARK_GRAY));
-        tooltip.add(Text.literal("Tranquility").formatted(Formatting.ITALIC, Formatting.DARK_PURPLE));
+        tooltip.add(Text.translatable("tooltip.trevorssentinels.style_switch").formatted(Formatting.DARK_GRAY));
+        tooltip.add(Text.translatable("pillar.trevorssentinels.tranquility").formatted(Formatting.DARK_PURPLE, Formatting.ITALIC));
+        super.appendTooltip(itemStack, world, tooltip, context);
     }
 
     @Override

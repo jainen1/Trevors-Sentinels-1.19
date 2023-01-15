@@ -3,7 +3,6 @@ package net.trevorskullcrafter.trevorssentinels.item.custom;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
@@ -12,15 +11,16 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import static java.lang.Math.round;
 
-public class PortkeyItem extends Item {
-    public PortkeyItem(Settings settings) {
-        super(settings);
+public class PortkeyItem extends NamedItem {
+    public PortkeyItem(String color, boolean doDashes, Settings settings) {
+        super(color, doDashes, settings);
     }
 
     @Override
@@ -39,8 +39,8 @@ public class PortkeyItem extends Item {
                         user.getItemCooldownManager().set(this, /*200*/20);
                         itemStack.damage(itemStack.getMaxDamage()-1, user, p -> p.sendToolBreakStatus(hand));
                         if(itemStack.getDamage() >= 0){
-                            world.playSound(null, user.getBlockPos(),
-                                    SoundEvents.BLOCK_RESPAWN_ANCHOR_DEPLETE, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                            world.playSound(user.getPos().x, user.getPos().y, user.getPos().z,
+                                    SoundEvents.BLOCK_RESPAWN_ANCHOR_SET_SPAWN, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
                         }
                         return TypedActionResult.success(itemStack);
                     }else{
@@ -101,8 +101,13 @@ public class PortkeyItem extends Item {
         }else{
             tooltip.add(Text.literal("Hold shift and right click").formatted(Formatting.YELLOW));
             tooltip.add(Text.literal("to bind to a location!").formatted(Formatting.YELLOW));
-
         }
+        super.appendTooltip(itemStack, world, tooltip, context);
+    }
+
+    @Override
+    public int getItemBarColor(ItemStack stack) {
+        return 11141290;
     }
 
     @Override

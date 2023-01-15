@@ -3,9 +3,9 @@
 	"parent": "netherite_sword",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "minecraft:block/nether_portal",
-		"3": "trevorssentinels:misc/thanatu_blade",
-		"particle": "minecraft:block/nether_portal"
+		"0": "trevorssentinels:item/tranquility_essence",
+		"3": "trevorssentinels:item/thanatu_blade",
+		"particle": "trevorssentinels:item/tranquility_essence"
 	},
 	"elements": [
 		{

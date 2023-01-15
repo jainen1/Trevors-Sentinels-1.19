@@ -14,4 +14,6 @@ public class ModSignTypes {
             SignTypeAccessor.registerNew(SignTypeAccessor.newSignType("yggdrasil"));
     public static final SignType CHARRED_OAK =
             SignTypeAccessor.registerNew(SignTypeAccessor.newSignType("charred_oak"));
+    public static final SignType BANANA =
+            SignTypeAccessor.registerNew(SignTypeAccessor.newSignType("banana"));
 }

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "trevorssentinels:block/yggdrasil_slab"
+    },
+    "type=double": {
+      "model": "trevorssentinels:block/yggdrasil_planks"
+    },
+    "type=top": {
+      "model": "trevorssentinels:block/yggdrasil_slab_top"
+    }
+  }
+}

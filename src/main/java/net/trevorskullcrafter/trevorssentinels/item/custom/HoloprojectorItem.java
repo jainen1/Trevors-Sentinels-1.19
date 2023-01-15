@@ -1,6 +1,4 @@
 package net.trevorskullcrafter.trevorssentinels.item.custom;
-import com.anthonyhilyard.prism.util.ConfigHelper;
-import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
@@ -14,15 +12,14 @@ import net.minecraft.text.*;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
+import net.trevorskullcrafter.trevorssentinels.util.ColoredTextUtil;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-import static java.lang.Math.floor;
-
-public class HoloprojectorItem extends Item {
-    public HoloprojectorItem(Settings settings) {
-        super(settings);
+public class HoloprojectorItem extends NamedItem {
+    public HoloprojectorItem(String color, boolean doDashes, Settings settings) {
+        super(color, doDashes, settings);
     }
 
     @Override
@@ -61,9 +58,9 @@ public class HoloprojectorItem extends Item {
                             world.setBlockState(context.getBlockPos(), Blocks.AIR.getDefaultState());
                             itemStack.damage(-1, context.getPlayer(),
                                     p -> p.sendToolBreakStatus(context.getHand()));
-                            world.playSound(null, context.getPlayer().getX(), context.getPlayer().getY(),
-                                    context.getPlayer().getZ(), SoundEvents.BLOCK_RESPAWN_ANCHOR_DEPLETE,
-                                    SoundCategory.BLOCKS, 0.5F, 2.0F);
+                            world.playSound(context.getPlayer().getX(), context.getPlayer().getY(),
+                                    context.getPlayer().getZ(), SoundEvents.BLOCK_RESPAWN_ANCHOR_CHARGE,
+                                    SoundCategory.BLOCKS, 0.5F, 2.0F, false);
 
                         }else{
                             context.getPlayer().sendMessage(Text.literal("Cannot fit block in storage!")
@@ -82,9 +79,9 @@ public class HoloprojectorItem extends Item {
                                     .formatted(Formatting.GOLD),true);
                         }else{
                             world.setBlockState(context.getBlockPos(), Blocks.AIR.getDefaultState());
-                            world.playSound(null, context.getPlayer().getX(), context.getPlayer().getY(),
-                                    context.getPlayer().getZ(), SoundEvents.BLOCK_RESPAWN_ANCHOR_DEPLETE,
-                                    SoundCategory.BLOCKS, 0.5F, -2.0F);
+                            world.playSound(context.getPlayer().getX(), context.getPlayer().getY(),
+                                    context.getPlayer().getZ(), SoundEvents.BLOCK_RESPAWN_ANCHOR_CHARGE,
+                                    SoundCategory.BLOCKS, 0.5F, -2.0F, false);
                         }
                     }else{
                         context.getPlayer().sendMessage(Text.literal("This is not a hard light block!")
@@ -106,8 +103,8 @@ public class HoloprojectorItem extends Item {
                 itemStack.setSubNbt("trevorssentinels:holoprojector", nbtData);
 
                 user.sendMessage(Text.literal("Mode: Recall").formatted(Formatting.YELLOW),true);
-                world.playSound(null, user.getX(), user.getY(),
-                        user.getZ(), SoundEvents.UI_BUTTON_CLICK,
+                world.playSound(user, user.getX(), user.getY(),
+                        user.getZ(), SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON,
                         SoundCategory.BLOCKS, 0.5F, 1.0F);
             }else if(itemStack.getSubNbt("trevorssentinels:holoprojector").getInt("trevorssentinels:holoMode") == 2){
                 NbtCompound nbtData = new NbtCompound();
@@ -115,8 +112,8 @@ public class HoloprojectorItem extends Item {
                 itemStack.setSubNbt("trevorssentinels:holoprojector", nbtData);
 
                 user.sendMessage(Text.literal("Mode: Destroy").formatted(Formatting.RED),true);
-                world.playSound(null, user.getX(), user.getY(),
-                        user.getZ(), SoundEvents.UI_BUTTON_CLICK,
+                world.playSound(user, user.getX(), user.getY(),
+                        user.getZ(), SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON,
                         SoundCategory.BLOCKS, 0.5F, 0.5F);
             }else{
                 NbtCompound nbtData = new NbtCompound();
@@ -124,8 +121,8 @@ public class HoloprojectorItem extends Item {
                 itemStack.setSubNbt("trevorssentinels:holoprojector", nbtData);
 
                 user.sendMessage(Text.literal("Mode: Deploy").formatted(Formatting.AQUA),true);
-                world.playSound(null, user.getX(), user.getY(),
-                        user.getZ(), SoundEvents.UI_BUTTON_CLICK,
+                world.playSound(user, user.getX(), user.getY(),
+                        user.getZ(), SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON,
                         SoundCategory.BLOCKS, 0.5F, 1.5F);
             }
         }
@@ -174,6 +171,7 @@ public class HoloprojectorItem extends Item {
                     Text.literal("Blocks remaining: "+(itemStack.getMaxDamage() - itemStack.getDamage() - 1)+
                                     " / " + (itemStack.getMaxDamage()-1)).formatted(Formatting.RED));
         }
+        super.appendTooltip(itemStack, world, tooltip, context);
     }
 
     @Override
@@ -190,93 +188,7 @@ public class HoloprojectorItem extends Item {
         return name;
     }
 
-    private final Text name = new Text() {
-        private final TextContent content = new TranslatableTextContent("item.trevorssentinels.sentinum_holoprojector");
-        private final Style style = Style.EMPTY.withColor((TextColor)(Object) ConfigHelper.parseColor("3_#55FFFF_#55FF55_#FF5555"));
-
-        @Nullable
-        private Language decomposedWith;
-        private OrderedText visualOrderText = OrderedText.EMPTY;
-
-        @Override
-        public Style getStyle() { return style; }
-
-        @Override
-        public TextContent getContent() { return content; }
-
-        @Override
-        public List<Text> getSiblings() { return Lists.newArrayList(); }
-
-        @Override
-        public OrderedText asOrderedText()
-        {
-            Language language = Language.getInstance();
-            if (this.decomposedWith != language)
-            {
-                this.visualOrderText = language.reorder(this);
-                this.decomposedWith = language;
-            }
-            return this.visualOrderText;
-        }
-    };
-
-    private final Text name2 = new Text() {
-        private final TextContent content = new TranslatableTextContent("item.trevorssentinels.sentinum_holoprojector2");
-        private final Style style = Style.EMPTY.withColor((TextColor)(Object) ConfigHelper.parseColor("3_#55FFFF_#55FF55_#FF5555"));
-
-        @Nullable
-        private Language decomposedWith;
-        private OrderedText visualOrderText = OrderedText.EMPTY;
-
-        @Override
-        public Style getStyle() { return style; }
-
-        @Override
-        public TextContent getContent() { return content; }
-
-        @Override
-        public List<Text> getSiblings() { return Lists.newArrayList(); }
-
-        @Override
-        public OrderedText asOrderedText()
-        {
-            Language language = Language.getInstance();
-            if (this.decomposedWith != language)
-            {
-                this.visualOrderText = language.reorder(this);
-                this.decomposedWith = language;
-            }
-            return this.visualOrderText;
-        }
-    };
-
-    private final Text name3 = new Text() {
-        private final TextContent content = new TranslatableTextContent("item.trevorssentinels.sentinum_holoprojector3");
-        private final Style style = Style.EMPTY.withColor((TextColor)(Object) ConfigHelper.parseColor("#FF5555"));
-
-        @Nullable
-        private Language decomposedWith;
-        private OrderedText visualOrderText = OrderedText.EMPTY;
-
-        @Override
-        public Style getStyle() { return style; }
-
-        @Override
-        public TextContent getContent() { return content; }
-
-        @Override
-        public List<Text> getSiblings() { return Lists.newArrayList(); }
-
-        @Override
-        public OrderedText asOrderedText()
-        {
-            Language language = Language.getInstance();
-            if (this.decomposedWith != language)
-            {
-                this.visualOrderText = language.reorder(this);
-                this.decomposedWith = language;
-            }
-            return this.visualOrderText;
-        }
-    };
+    private final Text name = ColoredTextUtil.getColoredText("item.trevorssentinels.sentinum_holoprojector", "#189DBB");
+    private final Text name2 = ColoredTextUtil.getColoredText("item.trevorssentinels.sentinum_holoprojector", "#FFAA00");
+    private final Text name3 = ColoredTextUtil.getColoredText("item.trevorssentinels.sentinum_holoprojector", "#D31400");
 }

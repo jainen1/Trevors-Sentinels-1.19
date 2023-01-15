@@ -2,8 +2,6 @@ package net.trevorskullcrafter.trevorssentinels.item.custom;
 
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -18,15 +16,11 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.trevorskullcrafter.trevorssentinels.util.ColoredTextUtil;
 import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 
 import java.util.List;
-
-import static java.lang.Math.round;
 
 public class LilithBladeItem extends SwordItem {
     public LilithBladeItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
@@ -43,7 +37,7 @@ public class LilithBladeItem extends SwordItem {
                     nbtData.putInt("trevorssentinels:raptureModeInt", 2);
                     itemStack.setSubNbt("trevorssentinels:raptureMode", nbtData);
 
-                    user.sendMessage(Text.literal("Style: LEAVE NOTHING ALIVE.").formatted(Formatting.RED), true);
+                    user.sendMessage(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("LEAVE NOTHING ALIVE.").formatted(Formatting.RED)), true);
                     world.playSound(null, user.getX(), user.getY(),
                             user.getZ(), SoundEvents.BLOCK_END_PORTAL_FRAME_FILL,
                             SoundCategory.BLOCKS, 1.0F, 0.8F);
@@ -52,7 +46,7 @@ public class LilithBladeItem extends SwordItem {
                     nbtData.putInt("trevorssentinels:raptureModeInt", 1);
                     itemStack.setSubNbt("trevorssentinels:raptureMode", nbtData);
 
-                    user.sendMessage(Text.literal("Style: Holy Retribution").formatted(Formatting.YELLOW), true);
+                    user.sendMessage(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("Holy Retribution").formatted(Formatting.YELLOW)), true);
                     world.playSound(null, user.getX(), user.getY(),
                             user.getZ(), SoundEvents.BLOCK_END_PORTAL_FRAME_FILL,
                             SoundCategory.BLOCKS, 1.0F, 1.0F);
@@ -85,10 +79,11 @@ public class LilithBladeItem extends SwordItem {
     public void appendTooltip(ItemStack itemStack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if(itemStack.getSubNbt("trevorssentinels:raptureMode") != null) {
             if (itemStack.getSubNbt("trevorssentinels:raptureMode").getInt("trevorssentinels:raptureModeInt") == 1) {
-                tooltip.add(Text.literal("Style: Holy Retribution").formatted(Formatting.ITALIC, Formatting.YELLOW));
+                tooltip.add(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("Holy Retribution").formatted(Formatting.YELLOW)));
+
                 tooltip.add(Text.literal("Hits heal those blessed by the sun!").formatted(Formatting.GOLD));
             } else {
-                tooltip.add(Text.literal("Style: LEAVE NOTHING ALIVE.").formatted(Formatting.ITALIC, Formatting.RED));
+                tooltip.add(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("LEAVE NOTHING ALIVE.").formatted(Formatting.RED)));
                 tooltip.add(Text.literal("Hits deal a fuckton of damage.").formatted(Formatting.GOLD));
                 tooltip.add(Text.literal("Right click to channel your rage.").formatted(Formatting.DARK_RED));
             }
@@ -97,10 +92,10 @@ public class LilithBladeItem extends SwordItem {
             nbtData.putInt("trevorssentinels:raptureModeInt", 1);
             itemStack.setSubNbt("trevorssentinels:raptureMode", nbtData);
         }
-        tooltip.add(Text.literal("Ctrl + right click to switch style.").formatted(Formatting.DARK_GRAY));
+        tooltip.add(Text.translatable("tooltip.trevorssentinels.style_switch").formatted(Formatting.DARK_GRAY));
         if(itemStack.getSubNbt("trevorssentinels:raptureMode") != null) {
             if (itemStack.getSubNbt("trevorssentinels:raptureMode").getInt("trevorssentinels:raptureModeInt") == 1) {
-                tooltip.add(Text.literal("Justice").formatted(Formatting.ITALIC, Formatting.YELLOW));
+                tooltip.add(Text.translatable("pillar.trevorssentinels.justice").formatted(Formatting.ITALIC, Formatting.YELLOW));
             } else {
                 if(world.getTime() % 10 == 0){
                     tooltip.add(Text.literal("Power").formatted(Formatting.DARK_GRAY, Formatting.ITALIC));

@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.nbt.NbtCompound;
@@ -17,9 +16,9 @@ import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
-public class LensItem extends Item {
-    public LensItem(Settings settings) {
-        super(settings);
+public class LensItem extends NamedItem {
+    public LensItem(String color, boolean doDashes, Settings settings) {
+        super(color, doDashes, settings);
     }
 
     @Override
@@ -328,6 +327,7 @@ public class LensItem extends Item {
                 tooltip.add(Text.literal("PLEASE CONNECT TO SSS DATABASE.").formatted(Formatting.RED));
             }
         }
+        super.appendTooltip(itemStack, world, tooltip, context);
     }
 
     @Override

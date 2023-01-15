@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "trevorssentinels:ash"
+  },
+  "base": {
+    "item": "minecraft:iron_ingot"
+  },
+  "result": {
+    "item": "trevorssentinels:darksteel_ingot"
+  }
+}

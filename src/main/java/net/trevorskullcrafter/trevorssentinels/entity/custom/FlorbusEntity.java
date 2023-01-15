@@ -1,7 +1,6 @@
 package net.trevorskullcrafter.trevorssentinels.entity.custom;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -15,17 +14,15 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib.constant.DefaultAnimations;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class FlorbusEntity extends PassiveEntity implements IAnimatable {
-    private AnimationFactory factory = new AnimationFactory(this);
-
+public class FlorbusEntity extends PassiveEntity implements GeoAnimatable {
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public FlorbusEntity(EntityType<? extends PassiveEntity> entityType, World world) {
         super(entityType, world);
@@ -56,22 +53,6 @@ public class FlorbusEntity extends PassiveEntity implements IAnimatable {
         this.targetSelector.add(3, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
     }
 
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event){
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this, "controller",
-                0, this::predicate));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return factory;
-    }
-
     @Override
     protected SoundEvent getAmbientSound(){
         return SoundEvents.ENTITY_STRIDER_AMBIENT;
@@ -90,5 +71,20 @@ public class FlorbusEntity extends PassiveEntity implements IAnimatable {
     @Override
     protected void playStepSound(BlockPos pos, BlockState state){
         this.playSound(SoundEvents.ENTITY_STRIDER_STEP, 0.25f, 0.0f);
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "idle", 5, state -> state.setAndContinue(DefaultAnimations.IDLE)));
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.cache;
+    }
+
+    @Override
+    public double getTick(Object o) {
+        return 0;
     }
 }

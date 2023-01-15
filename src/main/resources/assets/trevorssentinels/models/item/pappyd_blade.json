@@ -1,10 +1,10 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "trevorssentinels:misc/red_essence",
+		"0": "trevorssentinels:item/red_essence",
 		"1": "minecraft:block/netherite_block",
 		"2": "minecraft:block/polished_basalt_side",
-		"particle": "trevorssentinels:misc/red_essence"
+		"particle": "trevorssentinels:item/red_essence"
 	},
 	"elements": [
 		{

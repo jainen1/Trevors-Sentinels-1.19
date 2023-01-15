@@ -12,6 +12,6 @@ public class ExampleMixin {
 	@Inject(at = @At("HEAD"), method = "init()V")
 	private void init(CallbackInfo info) {
 
-		trevorssentinels.LOGGER.info("ay yo the pizza here");
+		trevorssentinels.LOGGER.info("ay yo, the pizza here");
 	}
 }

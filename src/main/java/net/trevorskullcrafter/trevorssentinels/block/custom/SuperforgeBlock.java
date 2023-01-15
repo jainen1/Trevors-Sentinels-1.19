@@ -9,7 +9,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
-import net.trevorskullcrafter.trevorssentinels.block.entity.AnimatedBlockEntity;
+import net.trevorskullcrafter.trevorssentinels.block.entity.SuperforgeBlockEntity;
 import org.jetbrains.annotations.Nullable;
 
 public class SuperforgeBlock extends BlockWithEntity implements BlockEntityProvider {
@@ -43,7 +43,7 @@ public class SuperforgeBlock extends BlockWithEntity implements BlockEntityProvi
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new AnimatedBlockEntity(pos, state);
+        return new SuperforgeBlockEntity(pos, state);
     }
 
     @Override

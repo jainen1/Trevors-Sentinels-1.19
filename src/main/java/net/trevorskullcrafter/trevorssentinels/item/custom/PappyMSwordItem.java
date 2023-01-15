@@ -1,7 +1,5 @@
 package net.trevorskullcrafter.trevorssentinels.item.custom;
 
-import com.anthonyhilyard.prism.util.ConfigHelper;
-import com.google.common.collect.Lists;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -10,7 +8,6 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
@@ -18,79 +15,22 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Language;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.trevorskullcrafter.trevorssentinels.util.ColoredTextUtil;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class PappyMSwordItem extends SwordItem {
-    public PappyMSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+public class PappyMSwordItem extends ModSwordItem {
+    public PappyMSwordItem(String color, ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
+        super(color, toolMaterial, attackDamage, attackSpeed, settings);
+        doDashes = true;
     }
 
-    private final Text goodName = new Text() {
-        private final TextContent content = new TranslatableTextContent("item.trevorssentinels.pappym_blade");
-        private final Style style = Style.EMPTY.withColor((TextColor)(Object) ConfigHelper.parseColor("4_#55FF55_#FFFF55"));
-
-        @Nullable
-        private Language decomposedWith;
-        private OrderedText visualOrderText = OrderedText.EMPTY;
-
-        @Override
-        public Style getStyle() { return style; }
-
-        @Override
-        public TextContent getContent() { return content; }
-
-        @Override
-        public List<Text> getSiblings() { return Lists.newArrayList(); }
-
-        @Override
-        public OrderedText asOrderedText()
-        {
-            Language language = Language.getInstance();
-            if (this.decomposedWith != language)
-            {
-                this.visualOrderText = language.reorder(this);
-                this.decomposedWith = language;
-            }
-            return this.visualOrderText;
-        }
-    };
-
-    private final Text badName = new Text() {
-        private final TextContent content = new TranslatableTextContent("item.trevorssentinels.pappym_blade2");
-        private final Style style = Style.EMPTY.withColor((TextColor)(Object) ConfigHelper.parseColor("4_#FF5555_#FFFF55"));
-
-        @Nullable
-        private Language decomposedWith;
-        private OrderedText visualOrderText = OrderedText.EMPTY;
-
-        @Override
-        public Style getStyle() { return style; }
-
-        @Override
-        public TextContent getContent() { return content; }
-
-        @Override
-        public List<Text> getSiblings() { return Lists.newArrayList(); }
-
-        @Override
-        public OrderedText asOrderedText()
-        {
-            Language language = Language.getInstance();
-            if (this.decomposedWith != language)
-            {
-                this.visualOrderText = language.reorder(this);
-                this.decomposedWith = language;
-            }
-            return this.visualOrderText;
-        }
-    };
-
+    private final Text goodName = ColoredTextUtil.getColoredText("item.trevorssentinels.pappym_blade", "4_#55FF55_#FFFF55");
+    private final Text badName = ColoredTextUtil.getColoredText("item.trevorssentinels.pappym_blade2", "4_#FF5555_#FFFF55");
 
     @Override
     public Text getName(ItemStack stack) {
@@ -109,25 +49,25 @@ public class PappyMSwordItem extends SwordItem {
                 if (Screen.hasControlDown()) {
                     if (itemStack.getSubNbt("trevorssentinels:style").getInt("trevorssentinels:styleInt") == 1) {
                         switchStyle(itemStack, 2, 0);
-                        user.sendMessage(Text.literal("Style: Paladin").formatted(Formatting.GREEN), true);
+                        user.sendMessage(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("Paladin").formatted(Formatting.GREEN)), true);
                         world.playSound(null, user.getX(), user.getY(),
                                 user.getZ(), SoundEvents.BLOCK_END_PORTAL_FRAME_FILL,
                                 SoundCategory.BLOCKS, 1.0F, 1.1F);
                     }else if(itemStack.getSubNbt("trevorssentinels:style").getInt("trevorssentinels:styleInt") == 2) {
                         switchStyle(itemStack, 3, 0);
-                        user.sendMessage(Text.literal("Style: Predator").formatted(Formatting.RED), true);
+                        user.sendMessage(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("Predator").formatted(Formatting.RED)), true);
                         world.playSound(null, user.getX(), user.getY(),
                                 user.getZ(), SoundEvents.BLOCK_END_PORTAL_FRAME_FILL,
                                 SoundCategory.BLOCKS, 1.0F, 1.0F);
                     }else if(itemStack.getSubNbt("trevorssentinels:style").getInt("trevorssentinels:styleInt") == 3) {
                         switchStyle(itemStack, 4, 0);
-                        user.sendMessage(Text.literal("Style: Guardian").formatted(Formatting.GREEN), true);
+                        user.sendMessage(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("Guardian").formatted(Formatting.GREEN)), true);
                         world.playSound(null, user.getX(), user.getY(),
                                 user.getZ(), SoundEvents.BLOCK_END_PORTAL_FRAME_FILL,
                                 SoundCategory.BLOCKS, 1.0F, 0.9F);
                     } else {
                         switchStyle(itemStack, 1, 0);
-                        user.sendMessage(Text.literal("Style: Trickster").formatted(Formatting.RED), true);
+                        user.sendMessage(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("Trickster").formatted(Formatting.RED)), true);
                         world.playSound(null, user.getX(), user.getY(),
                                 user.getZ(), SoundEvents.BLOCK_END_PORTAL_FRAME_FILL,
                                 SoundCategory.BLOCKS, 1.0F, 1.2F);
@@ -175,8 +115,8 @@ public class PappyMSwordItem extends SwordItem {
 
             }else{
                 ((PlayerEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 1, 0, false, false, false));
-
             }
+            stack.setDamage(0);
         }
     }
 
@@ -243,12 +183,12 @@ public class PappyMSwordItem extends SwordItem {
     public void appendTooltip(ItemStack itemStack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if(notNull(itemStack)) {
             if (itemStack.getSubNbt("trevorssentinels:style").getInt("trevorssentinels:styleInt") == 1) {
-                tooltip.add(Text.literal("Style: Trickster").formatted(Formatting.ITALIC, Formatting.RED));
+                tooltip.add(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("Trickster").formatted(Formatting.RED)));
                 tooltip.add(Text.literal("You feel more agile than usual.").formatted(Formatting.DARK_RED));
                 tooltip.add(Text.literal("Right click to become energized!").formatted(Formatting.GRAY));
 
             } else if(itemStack.getSubNbt("trevorssentinels:style").getInt("trevorssentinels:styleInt") == 2){
-                tooltip.add(Text.literal("Style: Paladin").formatted(Formatting.ITALIC, Formatting.GREEN));
+                tooltip.add(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("Paladin").formatted(Formatting.GREEN)));
                 tooltip.add(Text.literal("You feel heavier than usual.").formatted(Formatting.DARK_GREEN));
                 tooltip.add(Text.literal("Every seventh strike is incredibly powerful.").formatted(Formatting.GRAY));
 
@@ -272,18 +212,19 @@ public class PappyMSwordItem extends SwordItem {
                     tooltip.add(Text.literal("◇ ◇ ◇ ◇ ◇ ◇").formatted(Formatting.GRAY));
                 }
             }else if(itemStack.getSubNbt("trevorssentinels:style").getInt("trevorssentinels:styleInt") == 3){
-                tooltip.add(Text.literal("Style: Predator").formatted(Formatting.ITALIC, Formatting.RED));
+                tooltip.add(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("Predator").formatted(Formatting.RED)));
                 tooltip.add(Text.literal("You feel hungrier than usual.").formatted(Formatting.DARK_RED));
-                tooltip.add(Text.literal("Hitting enemies satiates you.").formatted(Formatting.GRAY));
+                tooltip.add(Text.literal("Striking enemies satiates you.").formatted(Formatting.GRAY));
 
             }else{
-                tooltip.add(Text.literal("Style: Guardian").formatted(Formatting.ITALIC, Formatting.GREEN));
+                tooltip.add(Text.empty().append(ColoredTextUtil.styleText).append(Text.literal("Guardian").formatted(Formatting.GREEN)));
                 tooltip.add(Text.literal("You feel more resilient than usual.").formatted(Formatting.DARK_GREEN));
                 tooltip.add(Text.literal("Right click to parry!").formatted(Formatting.GRAY));
 
             }
         }
-        tooltip.add(Text.literal("Ctrl + right click to switch style.").formatted(Formatting.DARK_GRAY));
-        tooltip.add(Text.literal("Balance").formatted(Formatting.ITALIC, Formatting.DARK_GREEN));
+        tooltip.add(Text.translatable("tooltip.trevorssentinels.style_switch").formatted(Formatting.DARK_GRAY));
+        tooltip.add(Text.translatable("pillar.trevorssentinels.balance").formatted(Formatting.DARK_GREEN, Formatting.ITALIC));
+        super.appendTooltip(itemStack, world, tooltip, context);
     }
 }

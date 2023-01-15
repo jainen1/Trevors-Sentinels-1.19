@@ -80,6 +80,7 @@ public class KingsBladeItem extends SwordItem {
             nbtData.putString("trevorssentinels:rune3", "ᛉ");
             stack.setSubNbt("trevorssentinels:runes", nbtData);
         }
-        tooltip.add(Text.literal("Purity").formatted(Formatting.ITALIC, Formatting.WHITE));
+        tooltip.add(Text.translatable("pillar.trevorssentinels.purity").formatted(Formatting.ITALIC, Formatting.WHITE));
+        super.appendTooltip(stack, world, tooltip, context);
     }
 }

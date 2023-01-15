@@ -1,9 +1,7 @@
 package net.trevorskullcrafter.trevorssentinels.entity.custom;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -12,23 +10,15 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
-import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
-import software.bernie.geckolib3.core.AnimationState;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib.constant.DefaultAnimations;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
-import java.util.function.Predicate;
-
-import static net.trevorskullcrafter.trevorssentinels.entity.ModEntities.SENTINUM_ROOMBA;
-
-public class SentinelEntity extends HostileEntity implements IAnimatable {
-    private AnimationFactory factory = new AnimationFactory(this);
-
+public class SentinelEntity extends HostileEntity implements GeoAnimatable {
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public SentinelEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
@@ -51,34 +41,6 @@ public class SentinelEntity extends HostileEntity implements IAnimatable {
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, LivingEntity.class, true/*, Predicate.not(Predicate<ActiveTargetGoal> SENTINUM_ROOMBA)*/));
     }
 
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event){
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
-        return PlayState.CONTINUE;
-    }
-
-    private PlayState attackPredicate(AnimationEvent event) {
-        if(this.handSwinging && event.getController().getAnimationState().equals(AnimationState.Stopped)){
-            event.getController().markNeedsReload();
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("attack", false));
-            this.handSwinging = false;
-        }
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this, "controller",
-                0, this::predicate));
-        animationData.addAnimationController(new AnimationController(this, "attackController",
-                0, this::attackPredicate));
-    }
-
-
-    @Override
-    public AnimationFactory getFactory() {
-        return factory;
-    }
-
     @Override
     protected SoundEvent getAmbientSound(){
         return SoundEvents.ENTITY_BEE_LOOP;
@@ -92,5 +54,20 @@ public class SentinelEntity extends HostileEntity implements IAnimatable {
     @Override
     protected SoundEvent getDeathSound(){
         return SoundEvents.ENTITY_BEE_DEATH;
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        controllerRegistrar.add(new AnimationController<>(this, "idle", 5, state -> state.setAndContinue(DefaultAnimations.IDLE)));
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.cache;
+    }
+
+    @Override
+    public double getTick(Object o) {
+        return 0;
     }
 }

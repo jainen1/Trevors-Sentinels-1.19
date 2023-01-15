@@ -12,6 +12,10 @@
     "trevorssentinels:midas_log",
     "trevorssentinels:midas_wood",
     "trevorssentinels:stripped_midas_log",
-    "trevorssentinels:stripped_midas_wood"
+    "trevorssentinels:stripped_midas_wood",
+    "trevorssentinels:banana_log",
+    "trevorssentinels:banana_wood",
+    "trevorssentinels:stripped_banana_log",
+    "trevorssentinels:stripped_banana_wood"
   ]
 }

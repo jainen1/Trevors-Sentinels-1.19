@@ -8,12 +8,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class FallDamagelessBlock extends Block {
-    public FallDamagelessBlock(Settings settings) {
+    float damageMultiplier;
+    public FallDamagelessBlock(float damageMultiplier, Settings settings) {
         super(settings);
+        this.damageMultiplier = damageMultiplier;
     }
 
     @Override
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-        entity.handleFallDamage(fallDistance, 0.0f, DamageSource.FALL);
+        entity.handleFallDamage(fallDistance, damageMultiplier, DamageSource.FALL);
     }
 }

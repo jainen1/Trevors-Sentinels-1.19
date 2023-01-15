@@ -12,14 +12,11 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
 public abstract class QuicksandFluid extends FlowableFluid {
-    @Override
-    protected boolean isInfinite() {
-        return false;
-    }
 
     @Override
     protected void beforeBreakingBlock(WorldAccess world, BlockPos pos, BlockState state) {
@@ -34,7 +31,7 @@ public abstract class QuicksandFluid extends FlowableFluid {
 
     @Override
     protected int getLevelDecreasePerBlock(WorldView world) {
-        return 1;
+        return 2;
     }
 
     @Override
@@ -49,7 +46,7 @@ public abstract class QuicksandFluid extends FlowableFluid {
 
     @Override
     public int getTickRate(WorldView world) {
-        return 5;
+        return 15;
     }
 
     @Override
@@ -79,7 +76,7 @@ public abstract class QuicksandFluid extends FlowableFluid {
 
     @Override
     protected BlockState toBlockState(FluidState state) {
-        return ModFluids.QUICKSAND_BLOCK.getDefaultState().with(Properties.LEVEL_15, getBlockStateLevel(state));
+        return ModFluids.QUICKSAND_BLOCK.getDefaultState().with(Properties.LEVEL_8, getBlockStateLevel(state));
     }
 
     @Override
@@ -87,11 +84,17 @@ public abstract class QuicksandFluid extends FlowableFluid {
         return false;
     }
 
+
     public static class Flowing extends QuicksandFluid {
         @Override
         protected void appendProperties(StateManager.Builder<Fluid, FluidState> builder) {
             super.appendProperties(builder);
             builder.add(LEVEL);
+        }
+
+        @Override
+        protected boolean isInfinite(World world) {
+            return false;
         }
 
         @Override
@@ -105,10 +108,16 @@ public abstract class QuicksandFluid extends FlowableFluid {
         }
     }
 
+
     public static class Still extends QuicksandFluid {
         @Override
+        protected boolean isInfinite(World world) {
+            return false;
+        }
+
+        @Override
         public int getLevel(FluidState state) {
-            return 8;
+            return state.get(LEVEL);
         }
 
         @Override

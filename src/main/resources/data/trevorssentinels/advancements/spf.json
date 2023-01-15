@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "trevorssentinels:banana_boat"
+    },
+    "title": "SPF 50+",
+    "description": "Obtain a Banana Boat",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "trevorssentinels:trevorssentinels",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:banana_boat",
+              "trevorssentinels:banana_chest_boat"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

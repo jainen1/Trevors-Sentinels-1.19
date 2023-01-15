@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "trevorssentinels:block/yggdrasil_planks",
+    "side": "trevorssentinels:block/yggdrasil_planks",
+    "top": "trevorssentinels:block/yggdrasil_planks"
+  }
+}

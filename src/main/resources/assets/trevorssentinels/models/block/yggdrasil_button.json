@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "trevorssentinels:block/yggdrasil_planks"
+  }
+}

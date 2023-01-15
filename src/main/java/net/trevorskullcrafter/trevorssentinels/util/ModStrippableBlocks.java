@@ -11,9 +11,14 @@ public class ModStrippableBlocks {
         trevorssentinels.LOGGER.info("Stripping logs... ("+ MOD_ID + ")");
         StrippableBlockRegistry.register(ModBlocks.YGGDRASIL_LOG, ModBlocks.STRIPPED_YGGDRASIL_LOG);
         StrippableBlockRegistry.register(ModBlocks.YGGDRASIL_WOOD, ModBlocks.STRIPPED_YGGDRASIL_WOOD);
+
         StrippableBlockRegistry.register(ModBlocks.CHARRED_OAK_LOG, ModBlocks.STRIPPED_CHARRED_OAK_LOG);
         StrippableBlockRegistry.register(ModBlocks.CHARRED_OAK_WOOD, ModBlocks.STRIPPED_CHARRED_OAK_WOOD);
+
         StrippableBlockRegistry.register(ModBlocks.MIDAS_LOG, ModBlocks.STRIPPED_MIDAS_LOG);
         StrippableBlockRegistry.register(ModBlocks.MIDAS_WOOD, ModBlocks.STRIPPED_MIDAS_WOOD);
+
+        StrippableBlockRegistry.register(ModBlocks.BANANA_LOG, ModBlocks.STRIPPED_BANANA_LOG);
+        StrippableBlockRegistry.register(ModBlocks.BANANA_WOOD, ModBlocks.STRIPPED_BANANA_WOOD);
     }
 }

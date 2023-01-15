@@ -42,5 +42,17 @@
     "sounds": [
       "trevorssentinels:ode_to_tranquility"
     ]
+  },
+  "lapse_in_judgement": {
+    "subtitle": "trevorssentinels:lapse_in_judgement",
+    "sounds": [
+      "trevorssentinels:lapse_in_judgement"
+    ]
+  },
+  "recital": {
+    "subtitle": "trevorssentinels:recital",
+    "sounds": [
+      "trevorssentinels:recital"
+    ]
   }
 }

@@ -7,7 +7,6 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Lazy;
-import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 
 import java.util.function.Supplier;
 
@@ -18,7 +17,7 @@ public enum ModArmorMaterials implements ArmorMaterial {
     BONE("bone", 5, new int[]{1, 2, 3, 2}, 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0f, 0.0f, () -> Ingredient.ofItems(Items.BONE)),
     //CHAIN("chainmail", 15, new int[]{1, 4, 5, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0f, 0.0f, () -> Ingredient.ofItems(Items.IRON_INGOT)),
     SENTINUM("sentinum", 14, new int[]{2, 3, 5, 2}, 6,
-            SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0f, 0.1f, () -> Ingredient.ofItems(ModBlocks.SENTINUM_BLOCK)),
+            SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0f, 0.1f, () -> Ingredient.ofItems(ModItems.SENTINUM_INGOT)),
     ROSE_GOLD("rose_gold", 8, new int[]{1, 4, 6, 2}, 25,
             SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0f, 0.0f, () -> Ingredient.ofItems(ModItems.ROSE_GOLD_INGOT)),
     //IRON("iron", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0f, 0.0f, () -> Ingredient.ofItems(Items.IRON_INGOT)),

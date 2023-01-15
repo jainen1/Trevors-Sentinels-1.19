@@ -14,6 +14,9 @@
     "trevorssentinels:battery",
     "trevorssentinels:fusebox",
 
+    "trevorssentinels:red_button",
+    "trevorssentinels:red_plate",
+
     "trevorssentinels:chiseled_snowstone",
     "trevorssentinels:cut_snowstone",
     "trevorssentinels:snowstone",
@@ -25,6 +28,10 @@
     "trevorssentinels:smooth_snowstone_stairs",
     "trevorssentinels:smooth_snowstone_slab",
 
+    "trevorssentinels:chiseled_end_stone_bricks",
+    "trevorssentinels:cracked_end_stone_bricks",
+    "trevorssentinels:end_stone_brick_column",
+
     "trevorssentinels:darkened_steel_block",
     "trevorssentinels:darksteel_block",
     "trevorssentinels:iron_gold_block",
@@ -34,7 +41,6 @@
 
     "trevorssentinels:uranium_ore",
     "trevorssentinels:uranium_block",
-    "trevorssentinels:hanging_decommissioned_sentinel",
     "trevorssentinels:forge",
     "trevorssentinels:superforge"
   ]

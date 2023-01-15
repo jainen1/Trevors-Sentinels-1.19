@@ -1,7 +1,12 @@
 package net.trevorskullcrafter.trevorssentinels.item.custom;
 
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
+import net.minecraft.text.*;
+import net.minecraft.util.Formatting;
+import net.minecraft.util.Util;
 import net.trevorskullcrafter.trevorssentinels.item.ModArmorMaterials;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -12,16 +17,70 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.trevorskullcrafter.trevorssentinels.util.ColoredTextUtil;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
 
 public class ModArmorItem extends ArmorItem {
     private static final Map<ArmorMaterial, StatusEffectInstance> MATERIAL_TO_EFFECT_MAP =
             (new ImmutableMap.Builder<ArmorMaterial, StatusEffectInstance>()).put(ModArmorMaterials.SENTINUM,
                     new StatusEffectInstance(StatusEffects.NIGHT_VISION, 50, 0, false, false, false)).build();
-
-    public ModArmorItem(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
+    public String tooltipText;
+    public boolean doDashes;
+    public Text tooltipDashes;
+    boolean halfDash;
+    public String dashes = "";
+    public String color;
+    public Text name;
+    public ModArmorItem(String color, ArmorMaterial material, EquipmentSlot slot, Settings settings) {
         super(material, slot, settings);
+        this.color = color;
+        this.doDashes = false;
+    }
+
+    public ModArmorItem(String color, boolean doDashes, ArmorMaterial material, EquipmentSlot slot, Settings settings) {
+        super(material, slot, settings);
+        this.color = color;
+        this.doDashes = doDashes;
+    }
+
+    @Override
+    public Text getName(ItemStack stack) {
+        if(name == null) name = ColoredTextUtil.getColoredText(getTranslationKey(stack), color);
+        return name;
+    }
+
+    public Text getSecondaryText(ItemStack stack, String string){
+        if(tooltipDashes == null) tooltipDashes = ColoredTextUtil.getColoredText(string, getName(stack).getStyle());
+        return tooltipDashes;
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        if (this.tooltipText == null) this.tooltipText = Util.createTranslationKey("tooltip.item", Registries.ITEM.getId(this));
+        if(!tooltipText.equals(Text.translatable(tooltipText).getString()) || doDashes) {
+            if(!tooltipText.equals(Text.translatable(tooltipText).getString())) tooltip.add(Text.translatable(tooltipText).formatted(Formatting.ITALIC));
+            if(dashes.equals("")){
+                for(int i = 0; i < getName(stack).getString().length(); i++){
+                    if(getName(stack).getString().charAt(i) != ' '
+                            && getName(stack).getString().charAt(i) != 'i'
+                            && getName(stack).getString().charAt(i) != 't'){
+                        dashes = dashes + "-";
+                    }else{
+                        if(!halfDash){
+                            halfDash = true;
+                        }else{
+                            dashes = dashes + "-";
+                            halfDash = false;
+                        }
+                    }
+                }
+            }
+            tooltip.add(getSecondaryText(stack, dashes));
+        }
+        super.appendTooltip(stack, world, tooltip, context);
     }
 
     @Override

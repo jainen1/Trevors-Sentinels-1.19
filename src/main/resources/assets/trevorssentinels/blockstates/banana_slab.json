@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "trevorssentinels:block/banana_slab"
+    },
+    "type=double": {
+      "model": "trevorssentinels:block/banana_planks"
+    },
+    "type=top": {
+      "model": "trevorssentinels:block/banana_slab_top"
+    }
+  }
+}

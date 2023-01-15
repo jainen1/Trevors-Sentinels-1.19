@@ -4,6 +4,7 @@ import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.util.Identifier;
 import net.trevorskullcrafter.trevorssentinels.item.ModArmory;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
+import net.trevorskullcrafter.trevorssentinels.item.custom.DistanceTrackerItem;
 import net.trevorskullcrafter.trevorssentinels.item.custom.LensItem;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
 
@@ -40,6 +41,18 @@ public class ModModelPredicateProvider {
                     return 1f;
                 }
             }
+        });
+        ModelPredicateProviderRegistry.register(ModItems.DISTANCE_TRACKER, new Identifier(trevorssentinels.MOD_ID, "model"), (stack, world, entity, seed) -> {
+            if (stack.getSubNbt("trevorssentinels:model") != null && stack.getSubNbt("trevorssentinels:model").getInt("trevorssentinels:modelNum") != 0) {
+                if (stack.getSubNbt("trevorssentinels:model").getInt("trevorssentinels:modelNum") == 1) {
+                    return 0.5f;
+                } else if (stack.getSubNbt("trevorssentinels:model").getInt("trevorssentinels:modelNum") == 2) {
+                    return 0.7f;
+                } else if (stack.getSubNbt("trevorssentinels:model").getInt("trevorssentinels:modelNum") == 3) {
+                    return 1.0f;
+                }
+            }
+            return 0.0f;
         });
     }
 }
