@@ -15,8 +15,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 
-import java.util.List;
-
 public class CannedItem extends Item {
     public CannedItem(Settings settings) {
         super(settings);
@@ -32,19 +30,9 @@ public class CannedItem extends Item {
         if (playerEntity != null) {
             playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
-        if(stack.getCount() > 1){
-            ItemUsage.exchangeStack(stack, playerEntity, new ItemStack(ModItems.EMPTY_CAN), true);
-        }else{
-            stack.decrement(1);
-            playerEntity.giveItemStack(new ItemStack(ModItems.EMPTY_CAN));
-        }
+        playerEntity.giveItemStack(new ItemStack(ModItems.EMPTY_CAN));
         user.emitGameEvent(GameEvent.DRINK);
-        return stack;
-    }
-
-    @Override
-    public int getMaxUseTime(ItemStack stack) {
-        return 24;
+        return super.finishUsing(stack, world, user);
     }
 
     @Override

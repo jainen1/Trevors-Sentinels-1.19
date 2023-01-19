@@ -52,22 +52,16 @@ public class trevorssentinels implements ModInitializer {
 
 	private static final Text groupName = new Text() {
 		private final TextContent content = new TranslatableTextContent("itemGroup.trevorssentinels.sentinels");
-		private final Style style = Style.EMPTY.withColor((TextColor)(Object) ConfigHelper.parseColor(
-				ColoredTextUtil.sentinel_accent));
-
+		private final Style style = Style.EMPTY.withColor((TextColor)(Object) ConfigHelper.parseColor(ColoredTextUtil.sentinel_accent));
 		@Nullable
 		private Language decomposedWith;
 		private OrderedText visualOrderText = OrderedText.EMPTY;
-
 		@Override
 		public Style getStyle() { return style; }
-
 		@Override
 		public TextContent getContent() { return content; }
-
 		@Override
 		public List<Text> getSiblings() { return Lists.newArrayList(); }
-
 		@Override
 		public OrderedText asOrderedText()
 		{
@@ -81,9 +75,7 @@ public class trevorssentinels implements ModInitializer {
 		}
 	};
 	public static ItemGroup SENTINELS = FabricItemGroup.builder(new Identifier(trevorssentinels.MOD_ID, "sentinels"))
-			.displayName(groupName)
-			.icon(() -> new ItemStack(ModItems.SENTINUM_HOLOPROJECTOR))
-			.build();
+			.displayName(groupName).icon(() -> new ItemStack(ModItems.SENTINUM_HOLOPROJECTOR)).build();
 
 	@Override
 	public void onInitialize() {
