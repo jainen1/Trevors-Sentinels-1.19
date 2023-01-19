@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.12-SNAPSHOT'
+	id 'fabric-loom' version '1.0-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -35,13 +35,13 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 	// modImplementation "vazkii.patchouli:Patchouli:1.19.2-77-FABRIC"
-	modImplementation "software.bernie.geckolib:${project.gecko_lib}"
-	modImplementation "curse.maven:prism-665526:${project.prism}"
+	modApi "software.bernie.geckolib:${project.gecko_lib}"
+	modApi "curse.maven:prism-665526:${project.prism}"
 	modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	include modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${project.player_anim}")
-	modImplementation "maven.modrinth:better-combat:${project.bettercombat}"
+	modApi "dev.kosmx.player-anim:player-animation-lib-fabric:${project.player_anim}"
+	modApi "maven.modrinth:better-combat:${project.bettercombat}"
 }
 
 processResources {
