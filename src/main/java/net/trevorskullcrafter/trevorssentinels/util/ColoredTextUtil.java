@@ -39,10 +39,24 @@ public class ColoredTextUtil {
     public static String sentinel_accent = "3_"+accent_blue+"_"+flimsy_sentinum+"_"+accent_gold+"_"+flimsy_sentinum+"_"+accent_red+"_"+flimsy_sentinum;
 
     public static final Text groupName = getColoredText("itemGroup.trevorssentinels.sentinels", sentinel_accent);
+    public static final Text groupName2 = getColoredText("itemGroup.trevorssentinels.effects", rainbow);
     public static final Text styleText = getColoredText("tooltip.trevorssentinels.style", rainbow);
 
-    public static Text getColoredText(String textContent, String color){
+    /*public static Text getColoredText(String textContent, String color){
         final Style style = Style.EMPTY.withColor((TextColor) (Object) com.anthonyhilyard.prism.util.ConfigHelper.parseColor(color));
+        return getColoredText(textContent, style);
+    }*/
+
+    public static Text getColoredText(String textContent, String color)
+    {
+        Style style = Style.EMPTY;
+        try
+        {
+            TextColor textColor = (TextColor) Class.forName("com.anthonyhilyard.prism.util.ConfigHelper").getMethod("parseColor", Object.class).invoke(null, color);
+            style = style.withColor(textColor);
+        } catch (Exception e) {
+            // Prism not present.
+        }
         return getColoredText(textContent, style);
     }
 

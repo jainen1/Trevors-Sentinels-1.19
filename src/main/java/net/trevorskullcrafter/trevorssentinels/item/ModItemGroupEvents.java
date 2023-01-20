@@ -55,7 +55,6 @@ public class ModItemGroupEvents {
 
     public static void installColoredBlocks(ItemGroup group){
         logInstall(group);
-
     }
 
     public static void installNaturalBlocks(ItemGroup group){
@@ -96,6 +95,19 @@ public class ModItemGroupEvents {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.WOODEN_HOE,
                 ModArmory.SENTINUM_SPADE, ModArmory.SENTINUM_PICKAXE, ModArmory.SENTINUM_CHAINSAW, ModArmory.SENTINUM_SCYTHE));
 
+        //hunter
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.DIAMOND_HOE,
+                ModArmory.HUNTERS_SPADE, ModArmory.HUNTERS_DRILL, ModArmory.HUNTERS_CHAINSAW, ModArmory.HUNTERS_SCYTHE));
+
+        //nuclear
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.NETHERITE_HOE,
+                ModArmory.NUCLEAR_SHOVEL, ModArmory.NUCLEAR_DRILL, ModArmory.NUCLEAR_AXE, ModArmory.NUCLEAR_SCYTHE));
+
+        //zenithium
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(ModArmory.NUCLEAR_SCYTHE,
+                ModArmory.ZENITHIUM_SHOVEL, ModArmory.ZENITHIUM_PICKAXE, ModArmory.ZENITHIUM_AXE, ModArmory.ZENITHIUM_HOE));
+
+        //music discs
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.MUSIC_DISC_PIGSTEP,
                 ModItems.MUSIC_DISC_ASSASSINATION_UPLOAD, ModItems.MUSIC_DISC_ODE_TO_TRANQUILITY, ModItems.MUSIC_DISC_LAPSE_IN_JUDGEMENT,
                 ModItems.MUSIC_DISC_RECITAL));
@@ -105,11 +117,14 @@ public class ModItemGroupEvents {
         logInstall(group);
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addBefore(Items.WOODEN_SWORD, ModArmory.FLIMSY_SENTINUM_SHIV));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.WOODEN_SWORD, ModArmory.SENTINUM_DIRK));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModArmory.ROSE_GOLD_DAGGER));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModArmory.HUNTERS_VIBROBLADE));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModArmory.CRYSTAL_DAGGER));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModArmory.ZENITHIUM_AXE));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModArmory.PAPPYM_BLADE));
+
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.GOLDEN_SWORD, ModArmory.ROSE_GOLD_DAGGER));
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.DIAMOND_SWORD, ModArmory.HUNTERS_VIBROBLADE));
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.NETHERITE_SWORD, ModArmory.CRYSTAL_DAGGER));
+
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.DIAMOND_AXE, ModArmory.HUNTERS_CHAINSAW));
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.NETHERITE_AXE, ModArmory.NUCLEAR_AXE, ModArmory.ZENITHIUM_AXE));
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModArmory.PAPPYM_BLADE));
     }
 
     public static void installFoods(ItemGroup group){
@@ -122,9 +137,12 @@ public class ModItemGroupEvents {
                 ModItems.SANDFISH, ModItems.COOKED_SANDFISH, ModItems.DUNE_EEL));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.COOKIE, ModItems.BROWNIE));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.DRIED_KELP, ModItems.SUSHI_ROLL));
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.MUSHROOM_STEW, ModItems.MUSHROOM_STEW_CAN));
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.BEETROOT_SOUP, ModItems.BEETROOT_SOUP_CAN));
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.RABBIT_STEW, ModItems.RABBIT_STEW_CAN));
 
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.SPIDER_EYE, ModItems.ASH));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.MILK_BUCKET, ModItems.ANTIMILK));
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.MILK_BUCKET, ModItems.MILK_CAN, ModItems.ANTIMILK));
     }
 
     public static void installIngredients(ItemGroup group){
@@ -148,7 +166,7 @@ public class ModItemGroupEvents {
         registerInGroup(group, ModBlocks.SENTINUM_BLOCK);
         registerInGroup(group, ModBlocks.CHISELED_SENTINUM_BLOCK);
         registerInGroup(group, ModBlocks.SENTINUM_PILLAR);
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.DATA_BLOCK));
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.DATA_BLOCK));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.STEEL_BLOCK));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.CAUTION_STEEL_BLOCK));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.STAINLESS_STEEL_BLOCK));
@@ -157,11 +175,11 @@ public class ModItemGroupEvents {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.RUSTED_STEEL_BLOCK));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.BATTERY));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.FUSEBOX));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.VENDOR));
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.VENDOR));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.WAX_INFUSED_COPPER_BLOCK));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.URANIUM_BLOCK));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.URANIUM_ORE));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.NUCLEAR_CHARGE));
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.NUCLEAR_CHARGE));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.CHISELED_END_STONE_BRICKS));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.CRACKED_END_STONE_BRICKS));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.END_STONE_BRICK_COLUMN));
@@ -179,9 +197,9 @@ public class ModItemGroupEvents {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.DIRT_SLAB));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.COARSE_DIRT_STAIRS));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.COARSE_DIRT_SLAB));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.OVERGROWN_GRASS_BLOCK));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.GRASS_STAIRS));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.GRASS_SLAB));
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.OVERGROWN_GRASS_BLOCK));
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.GRASS_STAIRS));
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.GRASS_SLAB));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.MOSS_STAIRS));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.MOSS_SLAB));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.FLESH_BLOCK));
@@ -202,7 +220,7 @@ public class ModItemGroupEvents {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.YGGDRASIL_DOOR));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.YGGDRASIL_TRAPDOOR));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.YGGDRASIL_FENCE_GATE));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModItems.YGGDRASIL_SIGN));
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModItems.YGGDRASIL_SIGN));
 
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.CHARRED_OAK_PLANKS));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.CHARRED_OAK_LOG));
@@ -217,7 +235,7 @@ public class ModItemGroupEvents {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.CHARRED_OAK_DOOR));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.CHARRED_OAK_TRAPDOOR));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.CHARRED_OAK_FENCE_GATE));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModItems.CHARRED_OAK_SIGN));
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModItems.CHARRED_OAK_SIGN));
 
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.MIDAS_PLANKS));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.MIDAS_LOG));
@@ -233,7 +251,7 @@ public class ModItemGroupEvents {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.MIDAS_DOOR));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.MIDAS_TRAPDOOR));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.MIDAS_FENCE_GATE));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModItems.MIDAS_SIGN));
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModItems.MIDAS_SIGN));
 
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.BANANA_PLANKS));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.BANANA_LOG));
@@ -249,7 +267,7 @@ public class ModItemGroupEvents {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.BANANA_DOOR));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.BANANA_TRAPDOOR));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.BANANA_FENCE_GATE));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModItems.BANANA_SIGN));
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModItems.BANANA_SIGN));
 
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.DARKSTEEL_BLOCK));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.DARKENED_STEEL_BLOCK));
@@ -261,13 +279,13 @@ public class ModItemGroupEvents {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.BLUE_AGILITY_BLOCK));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.ORANGE_AGILITY_BLOCK));
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.BLACK_AGILITY_BLOCK));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.FORGE));
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.SUPERFORGE));
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.FORGE));
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(ModBlocks.SUPERFORGE));
 
         //items
         registerInGroup(group, ModItems.SENTINUM_SHARD);
-        registerInGroup(group, ModItems.SENTINUM_LENS);
-        registerInGroup(group, ModItems.SENTINUM_HOLOPROJECTOR);
+        //registerInGroup(group, ModItems.SENTINUM_LENS);
+        //registerInGroup(group, ModItems.SENTINUM_HOLOPROJECTOR);
         registerInGroup(group, ModItems.MUSIC_DISC_ASSASSINATION_UPLOAD);
         registerInGroup(group, ModItems.MUSIC_DISC_ODE_TO_TRANQUILITY);
         registerInGroup(group, ModItems.MUSIC_DISC_LAPSE_IN_JUDGEMENT);
@@ -291,33 +309,34 @@ public class ModItemGroupEvents {
         registerInGroup(group, ModItems.SENTINEL_SPAWN_EGG);
         registerInGroup(group, ModItems.ROOMBA_SPAWN_EGG);
         registerInGroup(group, ModItems.FLORBUS_SPAWN_EGG);
-        registerInGroup(group, ModItems.YGGDRASIL_BOAT);
-        registerInGroup(group, ModItems.YGGDRASIL_CHEST_BOAT);
-        registerInGroup(group, ModItems.CHARRED_OAK_BOAT);
-        registerInGroup(group, ModItems.CHARRED_OAK_CHEST_BOAT);
-        registerInGroup(group, ModItems.MIDAS_BOAT);
-        registerInGroup(group, ModItems.MIDAS_CHEST_BOAT);
-        registerInGroup(group, ModItems.BANANA_BOAT);
-        registerInGroup(group, ModItems.BANANA_CHEST_BOAT);
-        registerInGroup(group, ModItems.JUMP_DRIVE);
-        registerInGroup(group, ModItems.PORTKEY);
-        registerInGroup(group, ModItems.DISTANCE_TRACKER);
+        //registerInGroup(group, ModItems.YGGDRASIL_BOAT);
+        //registerInGroup(group, ModItems.YGGDRASIL_CHEST_BOAT);
+        //registerInGroup(group, ModItems.CHARRED_OAK_BOAT);
+        //registerInGroup(group, ModItems.CHARRED_OAK_CHEST_BOAT);
+        //registerInGroup(group, ModItems.MIDAS_BOAT);
+        //registerInGroup(group, ModItems.MIDAS_CHEST_BOAT);
+        //registerInGroup(group, ModItems.BANANA_BOAT);
+        //registerInGroup(group, ModItems.BANANA_CHEST_BOAT);
+        //registerInGroup(group, ModItems.JUMP_DRIVE);
+        //registerInGroup(group, ModItems.JETPACK);
+        //registerInGroup(group, ModItems.PORTKEY);
+        //registerInGroup(group, ModItems.DISTANCE_TRACKER);
         registerInGroup(group, ModItems.EMPTY_CAN);
-        registerInGroup(group, ModItems.VENDOR_TOKEN);
-        registerInGroup(group, ModItems.LEGENDARY_TOKEN);
+        //registerInGroup(group, ModItems.VENDOR_TOKEN);
+        //registerInGroup(group, ModItems.LEGENDARY_TOKEN);
         registerInGroup(group, ModItems.NUCLEAR_ROCKET);
-        registerInGroup(group, ModItems.SUPERFORGE_ITEM);
+        //registerInGroup(group, ModItems.SUPERFORGE_ITEM);
 
         //food
         registerInGroup(group, ModItems.FRIED_EGG);
         registerInGroup(group, ModItems.BANANA);
         registerInGroup(group, ModItems.RED_BANANA);
         registerInGroup(group, ModItems.BLUE_JAVA_BANANA);
-        registerInGroup(group, ModBlocks.RICE_BLOCK);
+        //registerInGroup(group, ModBlocks.RICE_BLOCK);
         registerInGroup(group, ModItems.RICE);
         registerInGroup(group, ModItems.RICE_CAKE);
         registerInGroup(group, ModItems.SUSHI_ROLL);
-        registerInGroup(group, ModBlocks.GOLDEN_RICE_BLOCK);
+        //registerInGroup(group, ModBlocks.GOLDEN_RICE_BLOCK);
         registerInGroup(group, ModItems.GOLDEN_RICE);
         registerInGroup(group, ModItems.GOLDEN_RICE_CAKE);
         registerInGroup(group, ModItems.TORTILLA);
@@ -397,15 +416,15 @@ public class ModItemGroupEvents {
         registerInGroup(group, ModArmory.HARDENED_N7_LEGGINGS);
         registerInGroup(group, ModArmory.HARDENED_N7_SABATONS);
 
-        registerInGroup(group, ModArmory.PAPPYM_BLADE);
-        registerInGroup(group, ModArmory.PAPPYD_BLADE);
-        registerInGroup(group, ModArmory.THANATU_BLADE);
-        registerInGroup(group, ModArmory.MORPHEUS_BLADE);
-        registerInGroup(group, ModArmory.SKYLAR_BLADE);
-        registerInGroup(group, ModArmory.LILITH_BLADE);
-        registerInGroup(group, ModArmory.TREVOR_BLADE);
-        registerInGroup(group, ModArmory.KINGS_BLADE);
-        registerInGroup(group, ModArmory.COPPER_ARM);
+        //registerInGroup(group, ModArmory.PAPPYM_BLADE);
+        //registerInGroup(group, ModArmory.PAPPYD_BLADE);
+        //registerInGroup(group, ModArmory.THANATU_BLADE);
+        //registerInGroup(group, ModArmory.MORPHEUS_BLADE);
+        //registerInGroup(group, ModArmory.SKYLAR_BLADE);
+        //registerInGroup(group, ModArmory.LILITH_BLADE);
+        //registerInGroup(group, ModArmory.TREVOR_BLADE);
+        //registerInGroup(group, ModArmory.KINGS_BLADE);
+        //registerInGroup(group, ModArmory.COPPER_ARM);
 
         registerInGroup(group, ModArmory.ZENITHIUM_PICKAXE);
         registerInGroup(group, ModArmory.ZENITHIUM_AXE);
@@ -420,6 +439,17 @@ public class ModItemGroupEvents {
         registerInGroup(group, ModArmory.SKYHOPPERS);
     }
 
+    public static void installEffectItems(ItemGroup group){
+        logInstall(group);
+        registerInGroup(group, ModEffectItems.RESISTANCE_ITEM);
+        registerInGroup(group, ModEffectItems.JUMP_BOOST_ITEM);
+        registerInGroup(group, ModEffectItems.DOLPHINS_GRACE_ITEM);
+        registerInGroup(group, ModEffectItems.HERO_OF_THE_VILLAGE_ITEM);
+        registerInGroup(group, ModEffectItems.SENTINUM_STOMACH);
+        registerInGroup(group, ModEffectItems.ONE_PENCE);
+        registerInGroup(group, ModEffectItems.REDSTONE_BONG);
+    }
+
     public static void logInstall(ItemGroup group){
         trevorssentinels.LOGGER.info("Installing unit [" + group.getDisplayName().getString() + "]... (" + MOD_ID + ")");
     }
@@ -431,6 +461,7 @@ public class ModItemGroupEvents {
 
     public static void registerAllGroupEvents(){
         installSentinels(trevorssentinels.SENTINELS);
+        installEffectItems(trevorssentinels.EFFECTS);
         installBuildingBlocks(ItemGroups.BUILDING_BLOCKS); //00
         //installColoredBlocks(ItemGroups.COLORED_BLOCKS); //01
         installNaturalBlocks(ItemGroups.NATURAL); //02

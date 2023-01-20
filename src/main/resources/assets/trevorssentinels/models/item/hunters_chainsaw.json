@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "trevorssentinels:item/perfectly_generic_item"
+    "layer0": "trevorssentinels:item/hunters_chainsaw"
   }
 }

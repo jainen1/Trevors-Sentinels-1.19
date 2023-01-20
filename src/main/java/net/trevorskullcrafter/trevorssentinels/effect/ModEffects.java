@@ -18,7 +18,7 @@ public class ModEffects {
 
     public static void registerStatusEffects(){
         REDSTONED = registerStatusEffect("redstoned", new RedstonedStatusEffect(StatusEffectCategory.NEUTRAL, 0xd90012));
-        FLIGHT = registerStatusEffect("flight", new FlightStatusEffect(StatusEffectCategory.BENEFICIAL, 0x5c7bc1));
+        //FLIGHT = registerStatusEffect("flight", new FlightStatusEffect(StatusEffectCategory.BENEFICIAL, 0x5c7bc1));
         COSMIC_FIRE = registerStatusEffect("cosmic_fire", new FireStatusEffect(StatusEffectCategory.HARMFUL, 0xFFAA00));
     }
 }

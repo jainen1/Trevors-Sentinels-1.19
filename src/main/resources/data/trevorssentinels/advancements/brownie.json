@@ -20,7 +20,7 @@
       "conditions": {
         "item": {
           "items": [
-            "trevorssentinels.brownie"
+            "trevorssentinels:brownie"
           ]
         }
       }

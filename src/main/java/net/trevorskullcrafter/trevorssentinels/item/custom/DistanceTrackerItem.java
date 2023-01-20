@@ -51,7 +51,7 @@ public class DistanceTrackerItem extends NamedItem {
                         if(selected) {
                             if ((world.getTime() & 20) == 0) {
                                 ((PlayerEntity) entity).sendMessage(Text.literal(distance + "m").formatted(Formatting.DARK_GREEN), true);
-                                world.playSound((PlayerEntity) entity, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON, SoundCategory.MASTER, 0.2f, 0.9f);
+                                world.playSound((PlayerEntity) entity, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, SoundCategory.MASTER, 0.2f, 0.9f);
                             }else{
                                 ((PlayerEntity) entity).sendMessage(Text.literal(distance + "m").formatted(Formatting.GREEN), true);
                             }
@@ -61,7 +61,7 @@ public class DistanceTrackerItem extends NamedItem {
                         if(selected) {
                             if ((world.getTime() & 10) == 0) {
                                 ((PlayerEntity) entity).sendMessage(Text.literal(distance + "m").formatted(Formatting.GOLD), true);
-                                world.playSound((PlayerEntity) entity, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON, SoundCategory.MASTER, 0.2f, 1.0f);
+                                world.playSound((PlayerEntity) entity, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, SoundCategory.MASTER, 0.2f, 1.0f);
                             }else{
                                 ((PlayerEntity) entity).sendMessage(Text.literal(distance + "m").formatted(Formatting.YELLOW), true);
                             }
@@ -71,7 +71,7 @@ public class DistanceTrackerItem extends NamedItem {
                         if(selected) {
                             if ((world.getTime() & 2) == 0) {
                                 ((PlayerEntity) entity).sendMessage(Text.literal("0" + distance + "m").formatted(Formatting.DARK_RED), true);
-                                world.playSound((PlayerEntity) entity, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON, SoundCategory.MASTER, 0.2f, 1.2f);
+                                world.playSound((PlayerEntity) entity, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, SoundCategory.MASTER, 0.2f, 1.2f);
                             } else {
                                 ((PlayerEntity) entity).sendMessage(Text.literal("0" + distance + "m").formatted(Formatting.RED), true);
                             }

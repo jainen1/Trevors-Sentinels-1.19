@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.fabricmc.fabric.impl.client.rendering.ColorProviderRegistryImpl;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -45,6 +46,8 @@ public class trevorssentinels implements ModInitializer {
 
 	public static ItemGroup SENTINELS = FabricItemGroup.builder(new Identifier(trevorssentinels.MOD_ID, "sentinels"))
 			.displayName(ColoredTextUtil.groupName).icon(() -> new ItemStack(ModItems.SENTINUM_HOLOPROJECTOR)).build();
+	public static ItemGroup EFFECTS = FabricItemGroup.builder(new Identifier(trevorssentinels.MOD_ID, "effects"))
+			.displayName(ColoredTextUtil.groupName2).icon(() -> new ItemStack(ModEffectItems.ONE_PENCE)).build();
 
 	@Override
 	public void onInitialize() {
@@ -54,8 +57,10 @@ public class trevorssentinels implements ModInitializer {
 		ModEffectItems.registerModItems();
 		ModPotions.registerPotions();
 		ModBlocks.registerModBlocks();
-		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xCFF8FF, ModItems.VENDOR_TOKEN);
-		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xaa00aa, ModItems.LEGENDARY_TOKEN);
+		//ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xCFF8FF, ModItems.VENDOR_TOKEN);
+		//ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xaa00aa, ModItems.LEGENDARY_TOKEN);
+		//ColorProviderRegistryImpl.ITEM.register((stack, tintIndex) -> 0xCFF8FF, ModItems.VENDOR_TOKEN);
+		//ColorProviderRegistryImpl.ITEM.register((stack, tintIndex) -> 0xaa00aa, ModItems.LEGENDARY_TOKEN);
 
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandlers.registerScreenHandlers();
