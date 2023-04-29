@@ -1,0 +1,68 @@
+{
+  "parent": "trevorssentinels:rose_gold_2",
+  "criteria": {
+    "got_armory": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:thanatu_shoulderpads"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_skull": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:thanatu_skull"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:thanatu_blade"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.trevorssentinels.thanatu.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "trevorssentinels:thanatu_skull",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.trevorssentinels.thanatu.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_sword"
+    ],
+    [
+      "got_skull"
+    ],
+    [
+      "got_armory"
+    ]
+  ]
+}

@@ -1,3 +1,6 @@
 {
-  "parent": "trevorssentinels:block/red_button_inventory"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "trevorssentinels:item/red_button"
+  }
 }

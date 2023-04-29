@@ -11,26 +11,24 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 public class UraniumBlock extends Block {
-    public UraniumBlock(Settings settings) {
-        super(settings);
-    }
+    public UraniumBlock(Settings settings) { super(settings); }
 
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit){
+    @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit){
         player.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 20));
-        //player.sendMessage(Text.literal("I hope that was worth it."));
         return super.onUse(state, world, pos, player, hand, hit);
     }
 
-    @Override
-    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity){
+    @Override public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity){
         if(entity instanceof LivingEntity livingEntity){
             livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 200));
-        }
+        } super.onSteppedOn(world, pos, state, entity);
+    }
 
-        super.onSteppedOn(world, pos, state, entity);
+    @Override public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        super.randomDisplayTick(state, world, pos, random);
     }
 }

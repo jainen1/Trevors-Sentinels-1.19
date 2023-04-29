@@ -1,6 +1,5 @@
 package net.trevorskullcrafter.trevorssentinels.event;
 
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
@@ -32,9 +31,6 @@ public class KeyInputHandler {
                 GLFW.GLFW_KEY_SPACE,
                 KEY_CATEGORY_FLYING
         ));
-
         //registerKeyInputs();
     }
 }
-
-

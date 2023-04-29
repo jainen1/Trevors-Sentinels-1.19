@@ -44,5 +44,14 @@ public class ModFlammableBlocks {
 
         registry.add(ModBlocks.BANANA_PLANKS, 5, 20);
         registry.add(ModBlocks.BANANA_LEAVES, 30, 60);
+
+
+        registry.add(ModBlocks.CERULII_LOG, 5, 5);
+        registry.add(ModBlocks.CERULII_WOOD, 5, 5);
+        registry.add(ModBlocks.STRIPPED_CERULII_LOG, 5, 5);
+        registry.add(ModBlocks.STRIPPED_CERULII_WOOD, 5, 5);
+
+        registry.add(ModBlocks.CERULII_PLANKS, 5, 20);
+        registry.add(ModBlocks.CERULII_LEAVES, 30, 60);
     }
 }

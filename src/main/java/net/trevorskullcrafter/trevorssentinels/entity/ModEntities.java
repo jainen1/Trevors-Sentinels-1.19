@@ -12,8 +12,8 @@ public class ModEntities {
     public static final EntityType<SentinelEntity> SENTINEL = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "sentinel"),
             FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, SentinelEntity::new)
-                    .dimensions(EntityDimensions.fixed(0.4f, 0.4f)).build());
-    public static final EntityType<RoombaEntity> SENTINUM_ROOMBA = Registry.register(
+                    .dimensions(EntityDimensions.fixed(0.7f, 0.6f)).build());
+    public static final EntityType<RoombaEntity> GALINITE_ROOMBA = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "sentinum_roomba"),
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, RoombaEntity::new)
                     .dimensions(EntityDimensions.fixed(0.75f, 0.2f)).build());
@@ -21,7 +21,30 @@ public class ModEntities {
             Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "florbus"),
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, FlorbusEntity::new)
                     .dimensions(EntityDimensions.fixed(0.8f, 1.25f)).build());
-    /*public static final EntityType<NuclearChargeEntity> NUCLEAR_CHARGE = Registry.register(
-            "nuclear_charge", FabricEntityTypeBuilder.create(SpawnGroup.MISC, NuclearChargeEntity::new)
-                    .makeFireImmune().setDimensions(0.98f, 0.98f).maxTrackingRange(10).trackingTickInterval(10));*/
+    public static final EntityType<NuclearChargeEntity> NUCLEAR_CHARGE = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "nuclear_charge"),
+            FabricEntityTypeBuilder.<NuclearChargeEntity>create(SpawnGroup.MISC, NuclearChargeEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.98f, 0.98f)).fireImmune().build());
+    public static final EntityType<ShardEntity> GALINITE_SHARD = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "galinite_shard"),
+            FabricEntityTypeBuilder.<ShardEntity>create(SpawnGroup.MISC, ShardEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.25F, 0.25F)) // dimensions in Minecraft units of the projectile
+                    .trackRangeBlocks(8).trackedUpdateRate(10) // necessary for all thrown projectiles (as it prevents it from breaking, lol)
+                    .build());
+    public static final EntityType<DaggerEntity> DAGGER = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "dagger"),
+            FabricEntityTypeBuilder.<DaggerEntity>create(SpawnGroup.MISC, DaggerEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.35F, 0.15F)) // dimensions in Minecraft units of the projectile
+                    .trackRangeBlocks(8).trackedUpdateRate(10) // necessary for all thrown projectiles (as it prevents it from breaking, lol)
+                    .build());
+    public static final EntityType<GrenadeEntity> GRENADE = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "grenade"),
+            FabricEntityTypeBuilder.<GrenadeEntity>create(SpawnGroup.MISC, GrenadeEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.25F, 0.25F)) // dimensions in Minecraft units of the projectile
+                    .trackRangeBlocks(8).trackedUpdateRate(10) // necessary for all thrown projectiles (as it prevents it from breaking, lol)
+                    .build());
+    public static final EntityType<LaserEntity> LASER = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "laser_bolt"),
+            FabricEntityTypeBuilder.<LaserEntity>create(SpawnGroup.MISC, LaserEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.1F, 0.1F)).trackRangeBlocks(32).trackedUpdateRate(20).build());
 }

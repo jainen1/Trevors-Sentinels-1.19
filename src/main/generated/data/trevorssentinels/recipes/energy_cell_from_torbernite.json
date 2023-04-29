@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "trevorssentinels:steel_ingot"
+    },
+    "$": {
+      "item": "trevorssentinels:uranium_crystal"
+    }
+  },
+  "pattern": [
+    "#  ",
+    " $ ",
+    "  #"
+  ],
+  "result": {
+    "item": "trevorssentinels:energy_cell"
+  }
+}

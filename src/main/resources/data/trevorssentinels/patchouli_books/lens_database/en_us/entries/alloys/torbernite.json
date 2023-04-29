@@ -1,0 +1,13 @@
+{
+  "name": "Torbernite",
+  "icon": "trevorssentinels:uranium_crystal",
+  "category": "trevorssentinels:alloys",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "trevorssentinels:uranium_crystal",
+      "title": "Torbernite",
+      "text": "A rare crystal mineral mostly found in asteroid belts. A product of uraninite, it can contain heavy amounts of uranium and can therefore be harnessed in high-energy systems."
+    }
+  ]
+}

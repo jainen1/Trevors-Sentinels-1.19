@@ -37,9 +37,7 @@ public interface ImplementedInventory extends SidedInventory {
      * @param items the item list
      * @return a new inventory
      */
-    static ImplementedInventory of(DefaultedList<ItemStack> items) {
-        return () -> items;
-    }
+    static ImplementedInventory of(DefaultedList<ItemStack> items) { return () -> items; }
 
     /**
      * Creates a new inventory with the size.
@@ -47,9 +45,7 @@ public interface ImplementedInventory extends SidedInventory {
      * @param size the inventory size
      * @return a new inventory
      */
-    static ImplementedInventory ofSize(int size) {
-        return of(DefaultedList.ofSize(size, ItemStack.EMPTY));
-    }
+    static ImplementedInventory ofSize(int size) { return of(DefaultedList.ofSize(size, ItemStack.EMPTY)); }
 
     // SidedInventory
 
@@ -82,9 +78,7 @@ public interface ImplementedInventory extends SidedInventory {
      * @return true if the stack can be inserted
      */
     @Override
-    default boolean canInsert(int slot, ItemStack stack, @Nullable Direction side) {
-        return true;
-    }
+    default boolean canInsert(int slot, ItemStack stack, @Nullable Direction side) { return true; }
 
     /**
      * Returns true if the stack can be extracted from the slot at the side.
@@ -97,9 +91,7 @@ public interface ImplementedInventory extends SidedInventory {
      * @return true if the stack can be extracted
      */
     @Override
-    default boolean canExtract(int slot, ItemStack stack, Direction side) {
-        return true;
-    }
+    default boolean canExtract(int slot, ItemStack stack, Direction side) { return true; }
 
     // Inventory
 
@@ -111,9 +103,7 @@ public interface ImplementedInventory extends SidedInventory {
      * @return the inventory size
      */
     @Override
-    default int size() {
-        return getItems().size();
-    }
+    default int size() { return getItems().size(); }
 
     /**
      * @return true if this inventory has only empty stacks, false otherwise
@@ -137,14 +127,12 @@ public interface ImplementedInventory extends SidedInventory {
      * @return the item in the slot
      */
     @Override
-    default ItemStack getStack(int slot) {
-        return getItems().get(slot);
-    }
+    default ItemStack getStack(int slot) { return getItems().get(slot); }
 
     /**
      * Takes a stack of the size from the slot.
      *
-     * <p>(default implementation) If there are less items in the slot than what are requested,
+     * <p>(default implementation) If there are fewer items in the slot than what is requested,
      * takes all items in that slot.
      *
      * @param slot the slot
@@ -170,9 +158,7 @@ public interface ImplementedInventory extends SidedInventory {
      * @return the removed stack
      */
     @Override
-    default ItemStack removeStack(int slot) {
-        return Inventories.removeStack(getItems(), slot);
-    }
+    default ItemStack removeStack(int slot) { return Inventories.removeStack(getItems(), slot); }
 
     /**
      * Replaces the current stack in the {@code slot} with the provided stack.
@@ -195,9 +181,7 @@ public interface ImplementedInventory extends SidedInventory {
      * Clears {@linkplain #getItems() the item list}}.
      */
     @Override
-    default void clear() {
-        getItems().clear();
-    }
+    default void clear() { getItems().clear(); }
 
     @Override
     default void markDirty() {
@@ -205,7 +189,5 @@ public interface ImplementedInventory extends SidedInventory {
     }
 
     @Override
-    default boolean canPlayerUse(PlayerEntity player) {
-        return true;
-    }
+    default boolean canPlayerUse(PlayerEntity player) { return true; }
 }

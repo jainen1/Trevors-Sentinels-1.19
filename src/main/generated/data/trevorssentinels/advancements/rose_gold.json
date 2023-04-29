@@ -1,0 +1,37 @@
+{
+  "parent": "trevorssentinels:forge",
+  "criteria": {
+    "got_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:rose_gold_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.trevorssentinels.rose_gold.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "trevorssentinels:rose_gold_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.trevorssentinels.rose_gold.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_ingot"
+    ]
+  ]
+}

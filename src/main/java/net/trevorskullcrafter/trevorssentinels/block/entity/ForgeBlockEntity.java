@@ -42,36 +42,20 @@ public class ForgeBlockEntity extends BlockEntity implements NamedScreenHandlerF
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                    case 0 -> {
-                        ForgeBlockEntity.this.progress = value;
-                        break;
-                    }
-                    case 1 -> {
-                        ForgeBlockEntity.this.maxProgress = value;
-                        break;
-                    }
-                    case 2 -> {
-                        ForgeBlockEntity.this.fuelTime = value;
-                        break;
-                    }
-                    case 3 -> {
-                        ForgeBlockEntity.this.maxFuelTime = value;
-                        break;
-                    }
+                    case 0 -> ForgeBlockEntity.this.progress = value;
+                    case 1 -> ForgeBlockEntity.this.maxProgress = value;
+                    case 2 -> ForgeBlockEntity.this.fuelTime = value;
+                    case 3 -> ForgeBlockEntity.this.maxFuelTime = value;
                 }
             }
 
             @Override
-            public int size() {
-                return 4;
-            }
+            public int size() { return 4; }
         };
     }
 
     @Override
-    public Text getDisplayName() {
-        return Text.literal("Forge Metals and Alloys");
-    }
+    public Text getDisplayName() { return Text.literal("Forge Metals and Alloys"); }
 
     @Nullable
     @Override
@@ -80,9 +64,7 @@ public class ForgeBlockEntity extends BlockEntity implements NamedScreenHandlerF
     }
 
     @Override
-    public DefaultedList<ItemStack> getItems() {
-        return this.inventory;
-    }
+    public DefaultedList<ItemStack> getItems() { return this.inventory; }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {

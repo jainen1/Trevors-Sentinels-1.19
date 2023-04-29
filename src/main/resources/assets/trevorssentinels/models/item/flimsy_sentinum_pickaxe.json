@@ -1,6 +1,0 @@
-{
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "trevorssentinels:item/flimsy_sentinum_pickaxe"
-  }
-}

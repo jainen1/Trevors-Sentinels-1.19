@@ -31,14 +31,11 @@ public class ForgeRecipe extends ShapedRecipe {
     public boolean matches(CraftingInventory craftingInventory, World world) {
         for (int i = 0; i <= craftingInventory.getWidth() - getWidth(); ++i) {
             for (int j = 0; j <= craftingInventory.getHeight() - getHeight(); ++j) {
-                if (this.matchesPattern(craftingInventory, i, j, true)) {
-                    return true;
-                }
+                if (this.matchesPattern(craftingInventory, i, j, true)) return true;
                 if (!this.matchesPattern(craftingInventory, i, j, false)) continue;
                 return true;
             }
-        }
-        return false;
+        } return false;
     }
 
     private boolean matchesPattern(CraftingInventory inv, int offsetX, int offsetY, boolean flipped) {
@@ -53,42 +50,25 @@ public class ForgeRecipe extends ShapedRecipe {
                 if (ingredient.test(inv.getStack(i + j * inv.getWidth()))) continue;
                 return false;
             }
-        }
-        return true;
+        } return true;
     }
 
-    public ItemStack getOutput() {
-        return super.getOutput().copy();
-    }
+    public ItemStack getOutput() { return super.getOutput().copy(); }
 
-    public String getGroup() {
-        return super.getGroup();
-    }
+    public String getGroup() { return super.getGroup(); }
 
-    public DefaultedList<Ingredient> getInput() {
-        return super.getIngredients();
-    }
+    public DefaultedList<Ingredient> getInput() { return super.getIngredients(); }
 
-    public RecipeSerializer<?> getSerializer() {
-        return Serializer.INSTANCE;
-    }
+    public RecipeSerializer<?> getSerializer() { return Serializer.INSTANCE;}
 
-    public RecipeType<?> getType() {
-        return Type.INSTANCE;
-    }
+    public RecipeType<?> getType() { return Type.INSTANCE; }
 
     @Override
-    public ItemStack craft(CraftingInventory craftingInventory) {
-        return super.getOutput().copy();
-    }
+    public ItemStack craft(CraftingInventory craftingInventory) { return super.getOutput().copy(); }
 
-    public int getWidth() {
-        return super.getWidth();
-    }
+    public int getWidth() { return super.getWidth(); }
 
-    public int getHeight() {
-        return super.getHeight();
-    }
+    public int getHeight() { return super.getHeight(); }
 
     public static class Type implements RecipeType<ForgeRecipe> {
         private Type() { }
@@ -104,22 +84,17 @@ public class ForgeRecipe extends ShapedRecipe {
         int i = JsonHelper.getInt(json, "count", 1);
         if (i < 1) {
             throw new JsonSyntaxException("Invalid output count: " + i);
-        }
-        return new ItemStack(item, i);
+        } return new ItemStack(item, i);
     }
 
     private static int findFirstSymbol(String line) {
-        int i;
-        for (i = 0; i < line.length() && line.charAt(i) == ' '; ++i) {
-        }
-        return i;
+        int i; for (i = 0; i < line.length() && line.charAt(i) == ' '; ++i) {
+        } return i;
     }
 
     private static int findLastSymbol(String pattern) {
-        int i;
-        for (i = pattern.length() - 1; i >= 0 && pattern.charAt(i) == ' '; --i) {
-        }
-        return i;
+        int i; for (i = pattern.length() - 1; i >= 0 && pattern.charAt(i) == ' '; --i) {
+        } return i;
     }
 
     @VisibleForTesting
@@ -134,43 +109,26 @@ public class ForgeRecipe extends ShapedRecipe {
             int n = ForgeRecipe.findLastSymbol(string);
             j = Math.max(j, n);
             if (n < 0) {
-                if (k == m) {
-                    ++k;
-                }
-                ++l;
-                continue;
-            }
-            l = 0;
+                if (k == m) ++k;
+                ++l; continue;
+            } l = 0;
         }
-        if (pattern.length == l) {
-            return new String[0];
-        }
+        if (pattern.length == l) return new String[0];
         String[] strings = new String[pattern.length - l - k];
-        for (int o = 0; o < strings.length; ++o) {
-            strings[o] = pattern[o + k].substring(i, j + 1);
-        }
+        for (int o = 0; o < strings.length; ++o) strings[o] = pattern[o + k].substring(i, j + 1);
         return strings;
     }
 
     static String[] getPattern(JsonArray json) {
         String[] strings = new String[json.size()];
-        if (strings.length > 3) {
-            throw new JsonSyntaxException("Invalid pattern: too many rows, 3 is maximum");
-        }
-        if (strings.length == 0) {
-            throw new JsonSyntaxException("Invalid pattern: empty pattern not allowed");
-        }
+        if (strings.length > 3) throw new JsonSyntaxException("Invalid pattern: too many rows, 3 is maximum");
+        if (strings.length == 0) throw new JsonSyntaxException("Invalid pattern: empty pattern not allowed");
         for (int i = 0; i < strings.length; ++i) {
             String string = JsonHelper.asString(json.get(i), "pattern[" + i + "]");
-            if (string.length() > 3) {
-                throw new JsonSyntaxException("Invalid pattern: too many columns, 3 is maximum");
-            }
-            if (i > 0 && strings[0].length() != string.length()) {
-                throw new JsonSyntaxException("Invalid pattern: each row must be the same width");
-            }
+            if (string.length() > 3) throw new JsonSyntaxException("Invalid pattern: too many columns, 3 is maximum");
+            if (i > 0 && strings[0].length() != string.length()) throw new JsonSyntaxException("Invalid pattern: each row must be the same width");
             strings[i] = string;
-        }
-        return strings;
+        } return strings;
     }
 
     static Map<String, Ingredient> readSymbols(JsonObject json) {
@@ -179,12 +137,9 @@ public class ForgeRecipe extends ShapedRecipe {
             if (entry.getKey().length() != 1) {
                 throw new JsonSyntaxException("Invalid key entry: '" + entry.getKey() + "' is an invalid symbol (must be 1 character only).");
             }
-            if (" ".equals(entry.getKey())) {
-                throw new JsonSyntaxException("Invalid key entry: ' ' is a reserved symbol.");
-            }
+            if (" ".equals(entry.getKey())) { throw new JsonSyntaxException("Invalid key entry: ' ' is a reserved symbol."); }
             map.put(entry.getKey(), Ingredient.fromJson(entry.getValue()));
-        }
-        map.put(" ", Ingredient.EMPTY);
+        } map.put(" ", Ingredient.EMPTY);
         return map;
     }
 
@@ -196,16 +151,12 @@ public class ForgeRecipe extends ShapedRecipe {
             for (int j = 0; j < pattern[i].length(); ++j) {
                 String string = pattern[i].substring(j, j + 1);
                 Ingredient ingredient = symbols.get(string);
-                if (ingredient == null) {
-                    throw new JsonSyntaxException("Pattern references symbol '" + string + "' but it's not defined in the key");
-                }
+                if (ingredient == null) { throw new JsonSyntaxException("Pattern references symbol '" + string + "' but it's not defined in the key"); }
                 set.remove(string);
                 defaultedList.set(j + width * i, ingredient);
             }
         }
-        if (!set.isEmpty()) {
-            throw new JsonSyntaxException("Key defines symbols that aren't used in pattern: " + set);
-        }
+        if (!set.isEmpty()) throw new JsonSyntaxException("Key defines symbols that aren't used in pattern: " + set);
         return defaultedList;
     }
 
@@ -232,9 +183,7 @@ public class ForgeRecipe extends ShapedRecipe {
             int j = packetByteBuf.readVarInt();
             String string = packetByteBuf.readString();
             DefaultedList<Ingredient> defaultedList = DefaultedList.ofSize(i * j, Ingredient.EMPTY);
-            for (int k = 0; k < defaultedList.size(); ++k) {
-                defaultedList.set(k, Ingredient.fromPacket(packetByteBuf));
-            }
+            defaultedList.replaceAll(ignored -> Ingredient.fromPacket(packetByteBuf));
             ItemStack itemStack = packetByteBuf.readItemStack();
             return new ForgeRecipe(identifier, string, CraftingRecipeCategory.MISC, i, j, defaultedList, itemStack);
         }
@@ -244,9 +193,7 @@ public class ForgeRecipe extends ShapedRecipe {
             packetByteBuf.writeVarInt(recipe.getWidth());
             packetByteBuf.writeVarInt(recipe.getHeight());
             packetByteBuf.writeString(recipe.getGroup());
-            for (Ingredient ingredient : recipe.getInput()) {
-                ingredient.write(packetByteBuf);
-            }
+            for (Ingredient ingredient : recipe.getInput()) ingredient.write(packetByteBuf);
             packetByteBuf.writeItemStack(recipe.getOutput());
         }
     }

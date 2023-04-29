@@ -63,6 +63,22 @@
     "trevorssentinels:banana_trapdoor",
     "trevorssentinels:banana_fence_gate",
     "trevorssentinels:banana_wall_sign",
-    "trevorssentinels:banana_sign"
+    "trevorssentinels:banana_sign",
+
+    "trevorssentinels:cerulii_planks",
+    "trevorssentinels:cerulii_log",
+    "trevorssentinels:stripped_cerulii_log",
+    "trevorssentinels:cerulii_wood",
+    "trevorssentinels:stripped_cerulii_wood",
+    "trevorssentinels:cerulii_slab",
+    "trevorssentinels:cerulii_fence",
+    "trevorssentinels:cerulii_stairs",
+    "trevorssentinels:cerulii_button",
+    "trevorssentinels:cerulii_pressure_plate",
+    "trevorssentinels:cerulii_door",
+    "trevorssentinels:cerulii_trapdoor",
+    "trevorssentinels:cerulii_fence_gate",
+    "trevorssentinels:cerulii_wall_sign",
+    "trevorssentinels:cerulii_sign"
   ]
 }

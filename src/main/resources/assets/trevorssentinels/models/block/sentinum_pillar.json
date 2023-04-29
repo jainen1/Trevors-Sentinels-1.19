@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "trevorssentinels:block/sentinum_pillar_top",
-    "side": "trevorssentinels:block/sentinum_pillar_side"
-  }
-}

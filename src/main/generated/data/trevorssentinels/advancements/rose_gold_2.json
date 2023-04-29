@@ -1,0 +1,77 @@
+{
+  "parent": "trevorssentinels:rose_gold",
+  "criteria": {
+    "got_something": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:rose_gold_dagger"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:rose_gold_pickaxe"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:rose_gold_axe"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:rose_gold_shovel"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:rose_gold_hoe"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:rose_gold_helmet"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:rose_gold_chestplate"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:rose_gold_leggings"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:rose_gold_boots"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.trevorssentinels.rose_gold_2.desc"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "trevorssentinels:rose_gold_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.trevorssentinels.rose_gold_2.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_something"
+    ]
+  ]
+}

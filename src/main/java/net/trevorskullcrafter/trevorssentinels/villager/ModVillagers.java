@@ -61,64 +61,47 @@ public class ModVillagers {
                 1,1, ImmutableSet.copyOf(block.getStateManager().getStates()));
     }
 
-    public static void registerVillagers(){
-        trevorssentinels.LOGGER.debug("Fixing the unemployment rate... ("+trevorssentinels.MOD_ID+")");
-    }
+    public static void registerVillagers(){ trevorssentinels.LOGGER.debug("Fixing the unemployment rate... ("+trevorssentinels.MOD_ID+")"); }
 
     public static void registerTrades(){
-        TradeOfferHelper.registerVillagerOffers(ATTENDANT,1,
-                factories -> {
-                    factories.add((entity, random) -> new TradeOffer(
-                            new ItemStack(ModItems.BLOOD_DIAMOND, 5),
-                            new ItemStack(ModItems.URANIUM_CRYSTAL,1),
-                            6,2,0.02f
-                    ));
-                    factories.add((entity, random) -> new TradeOffer(
-                            new ItemStack(ModItems.URANIUM_CRYSTAL, 3),
-                            new ItemStack(Items.MILK_BUCKET,1),
-                            new ItemStack(ModItems.ANTIMILK,1),
-                            6,2,0.02f
-                    ));
-                });
+        TradeOfferHelper.registerVillagerOffers(ATTENDANT,1, factories -> {
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(ModItems.BLOOD_DIAMOND, 5),
+                    new ItemStack(ModItems.TORBERNITE_CUBE,1),
+                    6,2,0.02f));
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(ModItems.TORBERNITE_CUBE, 3), new ItemStack(Items.MILK_BUCKET,1),
+                    new ItemStack(ModItems.ANTIMILK,1),
+                    6,2,0.02f));});
 
-        TradeOfferHelper.registerVillagerOffers(DEMOLITIONIST,1,
-                factories -> {
-                    factories.add((entity, random) -> new TradeOffer(
-                            new ItemStack(Items.EMERALD, 16),
-                            new ItemStack(Items.GUNPOWDER,64),
-                            4,2,0.02f
-                    ));
-                    factories.add((entity, random) -> new TradeOffer(
-                            new ItemStack(Items.EMERALD, 6),
-                            new ItemStack(Items.FIREWORK_STAR,2),
-                            6,2,0.02f
-                    ));
-                });
-        TradeOfferHelper.registerVillagerOffers(DEMOLITIONIST,2,
-                factories -> {
-                    factories.add((entity, random) -> new TradeOffer(
-                            new ItemStack(Items.EMERALD, 16),
-                            new ItemStack(Items.FIREWORK_ROCKET,16),
-                            4,2,0.02f
-                    ));
-                    factories.add((entity, random) -> new TradeOffer(
-                            new ItemStack(Items.EMERALD, 3),
-                            new ItemStack(Items.TNT,1),
-                            8,2,0.02f
-                    ));
-                });
-        TradeOfferHelper.registerVillagerOffers(DEMOLITIONIST,3,
-                factories -> {
-                    factories.add((entity, random) -> new TradeOffer(
-                            new ItemStack(Items.EMERALD, 16),
-                            new ItemStack(Items.FIREWORK_ROCKET,16),
-                            4,2,0.02f
-                    ));
-                    factories.add((entity, random) -> new TradeOffer(
-                            new ItemStack(Items.EMERALD, 3),
-                            new ItemStack(Items.TNT,1),
-                            8,2,0.02f
-                    ));
-                });
+        TradeOfferHelper.registerVillagerOffers(DEMOLITIONIST,1, factories -> {
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(Items.EMERALD, 16),
+                    new ItemStack(Items.GUNPOWDER,64),
+                    4,2,0.02f));
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(Items.EMERALD, 6),
+                    new ItemStack(Items.FIREWORK_STAR,2),
+                    6,2,0.02f));});
+
+        TradeOfferHelper.registerVillagerOffers(DEMOLITIONIST,2, factories -> {
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(Items.EMERALD, 16),
+                    new ItemStack(Items.FIREWORK_ROCKET,16),
+                    4,2,0.02f));
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(Items.EMERALD, 3),
+                    new ItemStack(Items.TNT,1),
+                    8,2,0.02f));});
+
+        TradeOfferHelper.registerVillagerOffers(DEMOLITIONIST,3, factories -> {
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(Items.EMERALD, 16),
+                    new ItemStack(Items.FIREWORK_ROCKET,16),
+                    4,2,0.02f));
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(Items.EMERALD, 3),
+                    new ItemStack(Items.TNT,1),
+                    8,2,0.02f));});
     }
 }

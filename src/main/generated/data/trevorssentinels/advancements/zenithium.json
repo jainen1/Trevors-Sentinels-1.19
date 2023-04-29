@@ -1,0 +1,37 @@
+{
+  "parent": "trevorssentinels:superforge",
+  "criteria": {
+    "got_cluster": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:zenithium_cluster"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.trevorssentinels.zenithium.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "trevorssentinels:zenithium_cluster"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.trevorssentinels.zenithium.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_cluster"
+    ]
+  ]
+}

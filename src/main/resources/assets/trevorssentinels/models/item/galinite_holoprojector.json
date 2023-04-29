@@ -1,0 +1,20 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "trevorssentinels:item/holoprojector"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "trevorssentinels:mode": 0.5
+      },
+      "model": "trevorssentinels:item/galinite_holoprojector_yellow"
+    },
+    {
+      "predicate": {
+        "trevorssentinels:mode": 1
+      },
+      "model": "trevorssentinels:item/galinite_holoprojector_red"
+    }
+  ]
+}

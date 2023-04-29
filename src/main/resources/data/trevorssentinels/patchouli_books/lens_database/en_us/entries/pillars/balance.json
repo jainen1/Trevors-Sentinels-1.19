@@ -1,0 +1,11 @@
+{
+  "name": "Balance",
+  "icon": "trevorssentinels:pappym_blade",
+  "category": "trevorssentinels:pillars",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Balance is the force that keeps the elements of the world bound together. Without its energy, light and darkness would consume each other until nothing remained."
+    }
+  ]
+}

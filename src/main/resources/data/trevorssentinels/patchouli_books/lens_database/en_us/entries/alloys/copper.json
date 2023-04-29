@@ -1,0 +1,13 @@
+{
+  "name": "Copper",
+  "icon": "minecraft:copper_ingot",
+  "category": "trevorssentinels:alloys",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:copper_ingot",
+      "title": "Copper",
+      "text": "A common metal used as a conductor in electronics. It is also an effective conductor of magical energy."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Netherite",
+  "icon": "minecraft:netherite_ingot",
+  "category": "trevorssentinels:alloys",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:netherite_ingot",
+      "title": "Netherite",
+      "text": "A heat-resistant superalloy forged to survive extreme conditions."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Though records of this alloy's use have long been lost to time, it seems likely that a less sophisticated version of it was used in ancient Piglin society during the Dune-Rose war."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Though raw netherite ore existed in the Chaos Realm long ago, it has degraded over the ages into debris below the realm's rocky surface. This material can be partially reconstructed into Netherite superalloy, though it still remains incomplete."
+    }
+  ]
+}

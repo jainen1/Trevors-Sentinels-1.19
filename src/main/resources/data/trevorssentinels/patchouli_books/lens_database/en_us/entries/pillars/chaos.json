@@ -1,0 +1,11 @@
+{
+  "name": "Chaos",
+  "icon": "trevorssentinels:blood_diamond",
+  "category": "trevorssentinels:pillars",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Chaos is the culmination of all discord in the universe. Heat sources, such as fire and other forms of plasma, are its usual manifestations within the physical world. However, chaos is also what forces ra"
+    }
+  ]
+}

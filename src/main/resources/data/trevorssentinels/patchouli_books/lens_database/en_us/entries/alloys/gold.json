@@ -1,0 +1,13 @@
+{
+  "name": "Gold",
+  "icon": "minecraft:gold_ingot",
+  "category": "trevorssentinels:alloys",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:gold_ingot",
+      "title": "Gold",
+      "text": "An uncommon metal used to display prestige or holy superiority. It acts as an insulator for magical energy, very useful for absorbing magic but not so useful for channeling it."
+    }
+  ]
+}

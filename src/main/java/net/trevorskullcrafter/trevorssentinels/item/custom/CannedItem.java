@@ -16,32 +16,18 @@ import net.minecraft.world.event.GameEvent;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 
 public class CannedItem extends Item {
-    public CannedItem(Settings settings) {
-        super(settings);
-    }
+    public CannedItem(Settings settings) { super(settings); }
 
-    @Override
-    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        PlayerEntity playerEntity;
-        PlayerEntity playerEntity2 = playerEntity = user instanceof PlayerEntity ? (PlayerEntity)user : null;
-        if (playerEntity instanceof ServerPlayerEntity) {
-            Criteria.CONSUME_ITEM.trigger((ServerPlayerEntity)playerEntity, stack);
-        }
-        if (playerEntity != null) {
-            playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
-        }
-        playerEntity.giveItemStack(new ItemStack(ModItems.EMPTY_CAN));
+    @Override public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        PlayerEntity playerEntity = user instanceof PlayerEntity ? (PlayerEntity)user : null;
+        if (playerEntity instanceof ServerPlayerEntity) Criteria.CONSUME_ITEM.trigger((ServerPlayerEntity)playerEntity, stack);
+        if (playerEntity != null){ playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
+        if (!playerEntity.isCreative()) playerEntity.giveItemStack(new ItemStack(ModItems.EMPTY_CAN)); }
         user.emitGameEvent(GameEvent.DRINK);
         return super.finishUsing(stack, world, user);
     }
 
-    @Override
-    public UseAction getUseAction(ItemStack stack) {
-        return UseAction.DRINK;
-    }
+    @Override public UseAction getUseAction(ItemStack stack) { return UseAction.DRINK; }
 
-    @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        return ItemUsage.consumeHeldItem(world, user, hand);
-    }
+    @Override public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) { return ItemUsage.consumeHeldItem(world, user, hand); }
 }

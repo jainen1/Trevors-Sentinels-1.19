@@ -7,19 +7,14 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 
 public class FireStatusEffect extends StatusEffect {
-    public FireStatusEffect(StatusEffectCategory statusEffectCategory, int color) {
-        super(statusEffectCategory, color);
-    }
+    public FireStatusEffect(StatusEffectCategory statusEffectCategory, int color) { super(statusEffectCategory, color); }
 
-    public boolean canApplyUpdateEffect(int duration, int amplifier) {
-        return true;
-    }
+    public boolean canApplyUpdateEffect(int duration, int amplifier) { return true; }
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        if(!entity.isWet()){
-            entity.setOnFire(true);
-        }else{
+        if(!entity.isWet()) entity.setOnFire(true);
+        else{
             entity.addStatusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, amplifier));
             entity.removeStatusEffect(ModEffects.COSMIC_FIRE);
         }

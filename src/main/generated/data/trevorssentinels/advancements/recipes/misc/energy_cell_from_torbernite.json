@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_steel_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:steel_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:energy_cell_from_torbernite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_uranium_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:uranium_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_uranium_crystal",
+      "has_steel_ingot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:energy_cell_from_torbernite"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Skullweed",
+  "icon": "trevorssentinels:skullweed",
+  "category": "trevorssentinels:flora",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "trevorssentinels:skullweed",
+      "text": "Often found in ground containing dead biomass, this herb is referred to as a weed due to its immense nutrient intake. The seeds of the plant are common to discover in dirt and mud, but only extremely well-fertilized land will cause them to take root."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Once it has begun to grow, it will absorb the nutrients in the ground surrounding it and quickly sprout its stalks. These stalks are hollow and tube-like, with vibrant green flesh to contrast the pale, flaky skin on the outside."
+    }
+  ]
+}

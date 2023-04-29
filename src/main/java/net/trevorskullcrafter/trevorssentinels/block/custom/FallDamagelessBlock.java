@@ -16,6 +16,8 @@ public class FallDamagelessBlock extends Block {
 
     @Override
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-        entity.handleFallDamage(fallDistance, damageMultiplier, DamageSource.FALL);
+        if(damageMultiplier != 1.0f){
+            entity.handleFallDamage(fallDistance, damageMultiplier, DamageSource.FALL);
+        }
     }
 }

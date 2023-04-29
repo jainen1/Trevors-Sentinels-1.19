@@ -14,26 +14,23 @@
   },
 
   "license": "MIT",
-  "icon": "assets/modid/icon.png",
+  "icon": "icon.png",
 
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "net.trevorskullcrafter.trevorssentinels.trevorssentinels"
-    ],
-    "client": [
-      "net.trevorskullcrafter.trevorssentinels.trevorssentinelsClient"
-    ]
+    "main": ["net.trevorskullcrafter.trevorssentinels.trevorssentinels"],
+    "client": ["net.trevorskullcrafter.trevorssentinels.trevorssentinelsClient"],
+    "fabric-datagen": ["net.trevorskullcrafter.trevorssentinels.trevorssentinelsDatagen"]
   },
-  "mixins": [
-    "trevorssentinels.mixins.json"
-  ],
+  "mixins": ["trevorssentinels.mixins.json"],
 
   "depends": {
     "fabricloader": ">=0.14.6",
     "fabric": "*",
     "minecraft": "~1.19",
-    "java": ">=17"
+    "java": ">=17",
+    "fabric-api": "*",
+    "geckolib": ">=4.0.6"
   },
   "suggests": {
     "another-mod": "*"

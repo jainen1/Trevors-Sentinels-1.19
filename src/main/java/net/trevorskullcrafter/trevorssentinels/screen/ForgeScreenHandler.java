@@ -30,9 +30,7 @@ public class ForgeScreenHandler extends ScreenHandler{
 
     public static void updateResult(ScreenHandler handler, World world, PlayerEntity player, CraftingInventory craftingInventory, CraftingResultInventory resultInventory) {
         ForgeRecipe recipe;
-        if (world.isClient) {
-            return;
-        }
+        if (world.isClient) return;
         ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
         ItemStack itemStack = ItemStack.EMPTY;
         Optional<ForgeRecipe> match = world.getServer().getRecipeManager().getFirstMatch(ForgeRecipe.Type.INSTANCE, craftingInventory, world);
@@ -69,13 +67,9 @@ public class ForgeScreenHandler extends ScreenHandler{
         addProperties(delegate);
     }
 
-    public boolean isCrafting() {
-        return propertyDelegate.get(0) > 0;
-    }
+    public boolean isCrafting() { return propertyDelegate.get(0) > 0; }
 
-    public boolean hasFuel(){
-        return propertyDelegate.get(2) > 0;
-    }
+    public boolean hasFuel(){ return propertyDelegate.get(2) > 0; }
 
     public int getScaledProgress(){
         int progress = this.propertyDelegate.get(0);
@@ -100,38 +94,22 @@ public class ForgeScreenHandler extends ScreenHandler{
         if (slot != null && slot.hasStack()) {
             ItemStack originalStack = slot.getStack();
             newStack = originalStack.copy();
-            if (invSlot < this.inventory.size()) {
-                if (!this.insertItem(originalStack, this.inventory.size(), this.slots.size(), true)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (!this.insertItem(originalStack, 0, this.inventory.size(), false)) {
+            if (invSlot < this.inventory.size()) if (!this.insertItem(originalStack, this.inventory.size(), this.slots.size(), true))
                 return ItemStack.EMPTY;
-            }
-            if (originalStack.isEmpty()) {
-                slot.setStack(ItemStack.EMPTY);
-            } else {
-                slot.markDirty();
-            }
-        }
-        return newStack;
+            else if (!this.insertItem(originalStack, 0, this.inventory.size(), false)) return ItemStack.EMPTY;
+            if (originalStack.isEmpty()) slot.setStack(ItemStack.EMPTY);
+            else slot.markDirty();
+        } return newStack;
     }
 
     @Override
-    public boolean canUse(PlayerEntity player){
-        return this.inventory.canPlayerUse(player);
-    }
+    public boolean canUse(PlayerEntity player){ return this.inventory.canPlayerUse(player); }
 
     private void addPlayerInventory(PlayerInventory playerInventory){
-        for (int i = 0; i < 3; i++){
-            for(int l = 0; l < 9; l++){
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 86 + i * 18));
-            }
-        }
+        for (int i = 0; i < 3; i++) for(int l = 0; l < 9; l++) this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 86 + i * 18));
     }
 
     private void addPlayerHotbar(PlayerInventory playerInventory){
-        for(int i = 0; i < 9; i++){
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 144));
-        }
+        for(int i = 0; i < 9; i++) this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 144));
     }
 }

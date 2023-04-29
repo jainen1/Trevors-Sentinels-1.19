@@ -1,0 +1,13 @@
+{
+  "name": "Ferro-Aurium",
+  "icon": "trevorssentinels:iron_gold_ingot",
+  "category": "trevorssentinels:alloys",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "trevorssentinels:iron_gold_ingot",
+      "title": "Ferro-Aurium",
+      "text": "Ferro-Aurium is an alloy formed by crystallizing gold and iron together so that the metals interconnect. Requires extreme care during synthesis, as the nanocrystalline structure is fragile while incomplete. Once completed, it is extremely durable, but also very unstable at high temperatures."
+    }
+  ]
+}

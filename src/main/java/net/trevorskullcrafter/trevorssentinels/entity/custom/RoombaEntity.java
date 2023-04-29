@@ -19,21 +19,16 @@ import software.bernie.geckolib.constant.DefaultAnimations;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class RoombaEntity extends PassiveEntity implements GeoAnimatable {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    private static final RawAnimation BUMP = RawAnimation.begin().thenPlay("bump");
 
-    public RoombaEntity(EntityType<? extends PassiveEntity> entityType, World world) {
-        super(entityType, world);
-    }
+    public RoombaEntity(EntityType<? extends PassiveEntity> entityType, World world) { super(entityType, world); }
 
-    @Nullable
-    @Override
-    public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        return null;
-    }
+    @Nullable @Override public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) { return null; }
 
     public static DefaultAttributeContainer.Builder setAttributes(){
         return PassiveEntity.createMobAttributes()
@@ -42,22 +37,10 @@ public class RoombaEntity extends PassiveEntity implements GeoAnimatable {
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 1f);
     }
 
-    @Override
-    public boolean collidesWith(Entity other) {
-        return RoombaEntity.canCollide(this, other);
-    }
+    @Override public boolean isCollidable() { return true; }
+    @Override public boolean collidesWith(Entity other) { return (other.isCollidable() || other.isPushable()) && !isConnectedThroughVehicle(other); }
 
-    public static boolean canCollide(Entity entity, Entity other) {
-        return (other.isCollidable() || other.isPushable()) && !entity.isConnectedThroughVehicle(other);
-    }
-
-    @Override
-    public boolean isCollidable() {
-        return true;
-    }
-
-    @Override
-    protected void initGoals(){
+    @Override protected void initGoals(){
         this.goalSelector.add(1, new FollowMobGoal(this, 0.1f, 3.0f,7.0f));
         this.goalSelector.add(2, new WanderAroundGoal(this, 0.1f, 1));
         this.goalSelector.add(3, new LookAroundGoal(this));
@@ -65,38 +48,16 @@ public class RoombaEntity extends PassiveEntity implements GeoAnimatable {
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
     }
 
-    @Override
-    protected SoundEvent getAmbientSound(){
-        return SoundEvents.ENTITY_SILVERFISH_AMBIENT;
+    @Override protected SoundEvent getAmbientSound(){ return SoundEvents.ENTITY_SILVERFISH_AMBIENT; }
+    @Override protected SoundEvent getHurtSound(DamageSource source){ return SoundEvents.ENTITY_SILVERFISH_HURT; }
+    @Override protected SoundEvent getDeathSound(){ return SoundEvents.ENTITY_SILVERFISH_DEATH; }
+    @Override protected void playStepSound(BlockPos pos, BlockState state){ this.playSound(SoundEvents.ENTITY_SILVERFISH_STEP, 0.15f, 1.0f); }
+
+    @Override public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        controllerRegistrar.add(DefaultAnimations.genericWalkController(this));
     }
 
-    @Override
-    protected SoundEvent getHurtSound(DamageSource source){
-        return SoundEvents.ENTITY_SILVERFISH_HURT;
-    }
+    @Override public AnimatableInstanceCache getAnimatableInstanceCache() { return this.cache; }
 
-    @Override
-    protected SoundEvent getDeathSound(){
-        return SoundEvents.ENTITY_SILVERFISH_DEATH;
-    }
-
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState state){
-        this.playSound(SoundEvents.ENTITY_SILVERFISH_STEP, 0.15f, 1.0f);
-    }
-
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        controllerRegistrar.add(new AnimationController<>(this, "walk", 5, state -> state.setAndContinue(DefaultAnimations.WALK)));
-    }
-
-    @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return this.cache;
-    }
-
-    @Override
-    public double getTick(Object o) {
-        return 0;
-    }
+    @Override public double getTick(Object o) { return 0; }
 }

@@ -1,0 +1,77 @@
+{
+  "parent": "trevorssentinels:forge",
+  "criteria": {
+    "got_something": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:trimetal_sword"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:trimetal_pickaxe"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:trimetal_axe"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:trimetal_shovel"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:trimetal_hoe"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:trimetal_helmet"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:trimetal_chestplate"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:trimetal_leggings"
+            ]
+          },
+          {
+            "items": [
+              "trevorssentinels:trimetal_boots"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.trevorssentinels.trimetal.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "trevorssentinels:copper_iron_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.trevorssentinels.trimetal.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_something"
+    ]
+  ]
+}

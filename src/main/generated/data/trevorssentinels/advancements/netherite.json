@@ -1,0 +1,42 @@
+{
+  "parent": "trevorssentinels:ferraurium",
+  "criteria": {
+    "got_chainsaw": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:netherite_ingot"
+            ]
+          },
+          {
+            "items": [
+              "minecraft:netherite_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.trevorssentinels.netherite.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.trevorssentinels.netherite.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_chainsaw"
+    ]
+  ]
+}

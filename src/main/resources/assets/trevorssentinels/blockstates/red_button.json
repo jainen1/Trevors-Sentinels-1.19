@@ -70,47 +70,47 @@
     },
     "face=wall,facing=east,powered=false": {
       "model": "trevorssentinels:block/red_button",
-      "uvlock": true,
+      "uvlock": false,
       "x": 90,
       "y": 90
     },
     "face=wall,facing=east,powered=true": {
       "model": "trevorssentinels:block/red_button_pressed",
-      "uvlock": true,
+      "uvlock": false,
       "x": 90,
       "y": 90
     },
     "face=wall,facing=north,powered=false": {
       "model": "trevorssentinels:block/red_button",
-      "uvlock": true,
+      "uvlock": false,
       "x": 90
     },
     "face=wall,facing=north,powered=true": {
       "model": "trevorssentinels:block/red_button_pressed",
-      "uvlock": true,
+      "uvlock": false,
       "x": 90
     },
     "face=wall,facing=south,powered=false": {
       "model": "trevorssentinels:block/red_button",
-      "uvlock": true,
+      "uvlock": false,
       "x": 90,
       "y": 180
     },
     "face=wall,facing=south,powered=true": {
       "model": "trevorssentinels:block/red_button_pressed",
-      "uvlock": true,
+      "uvlock": false,
       "x": 90,
       "y": 180
     },
     "face=wall,facing=west,powered=false": {
       "model": "trevorssentinels:block/red_button",
-      "uvlock": true,
+      "uvlock": false,
       "x": 90,
       "y": 270
     },
     "face=wall,facing=west,powered=true": {
       "model": "trevorssentinels:block/red_button_pressed",
-      "uvlock": true,
+      "uvlock": false,
       "x": 90,
       "y": 270
     }

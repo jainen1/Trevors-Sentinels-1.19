@@ -9,28 +9,12 @@ import net.minecraft.state.property.IntProperty;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 
 public class RiceCropBlock extends CropBlock {
-    public static final IntProperty AGE = IntProperty.of("age",0,7);
-    public RiceCropBlock(Settings settings) {
-        super(settings);
-    }
+    static final int maxAge = 7;
+    public static final IntProperty AGE = IntProperty.of("age",0,maxAge);
+    public RiceCropBlock(Settings settings) { super(settings); }
 
-    @Override
-    protected ItemConvertible getSeedsItem(){
-        return ModItems.RICE;
-    }
-
-    @Override
-    public int getMaxAge(){
-        return 7;
-    }
-
-    @Override
-    public IntProperty getAgeProperty(){
-        return AGE;
-    }
-
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder){
-        builder.add(AGE);
-    }
+    @Override protected ItemConvertible getSeedsItem(){ return ModItems.GOLDEN_RICE; }
+    @Override public int getMaxAge(){ return maxAge; }
+    @Override public IntProperty getAgeProperty(){ return AGE; }
+    @Override protected void appendProperties(StateManager.Builder<Block, BlockState> builder){ builder.add(AGE); }
 }

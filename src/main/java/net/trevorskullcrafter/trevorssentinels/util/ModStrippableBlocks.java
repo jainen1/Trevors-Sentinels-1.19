@@ -20,5 +20,8 @@ public class ModStrippableBlocks {
 
         StrippableBlockRegistry.register(ModBlocks.BANANA_LOG, ModBlocks.STRIPPED_BANANA_LOG);
         StrippableBlockRegistry.register(ModBlocks.BANANA_WOOD, ModBlocks.STRIPPED_BANANA_WOOD);
+
+        StrippableBlockRegistry.register(ModBlocks.CERULII_LOG, ModBlocks.STRIPPED_CERULII_LOG);
+        StrippableBlockRegistry.register(ModBlocks.CERULII_WOOD, ModBlocks.STRIPPED_CERULII_WOOD);
     }
 }

@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "trevorssentinels:laser_pistol",
+    "trevorssentinels:laser_taser",
+    "trevorssentinels:laser_sniper_echo",
+    "trevorssentinels:laser_minigun",
+    "trevorssentinels:laser_shotgun",
+    "trevorssentinels:laser_sniper",
+    "trevorssentinels:laser_healer",
+    "trevorssentinels:laser_spreader",
+    "trevorssentinels:laser_rifle",
+    "trevorssentinels:laser_revolver",
+    "trevorssentinels:vile_spitter"
+  ]
+}

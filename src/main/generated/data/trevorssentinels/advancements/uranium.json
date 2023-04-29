@@ -1,0 +1,37 @@
+{
+  "parent": "trevorssentinels:netherite",
+  "criteria": {
+    "got_cube": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:uranium_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.trevorssentinels.uranium.desc"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "trevorssentinels:uranium_crystal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.trevorssentinels.uranium.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_cube"
+    ]
+  ]
+}

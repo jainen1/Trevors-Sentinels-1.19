@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.0-SNAPSHOT'
+	id 'fabric-loom' version '1.2-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -11,50 +11,53 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
 	maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
 	maven {
 		name = "CurseMaven"
-		url "https://www.cursemaven.com"
+		url = "https://www.cursemaven.com"
 	}
 	maven { url 'https://maven.blamejared.com'}
 	maven { url "https://maven.shedaniel.me/" }
 	maven { url "https://maven.terraformersmc.com/releases/" }
 	maven {
-		name "KosmX's maven"
-		url 'https://maven.kosmx.dev/'
+		name = "KosmX's maven"
+		url = 'https://maven.kosmx.dev/'
 	}
 	maven { url 'https://api.modrinth.com/maven' }
+	maven {
+		name = "Resourceful Bees Maven"
+		url = "https://nexus.resourcefulbees.com/repository/maven-public/"
+	}
 }
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	testImplementation "net.fabricmc:fabric-loader-junit:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
-	// modImplementation "vazkii.patchouli:Patchouli:1.19.2-77-FABRIC"
-	modApi "software.bernie.geckolib:${project.gecko_lib}"
-	modApi "curse.maven:prism-665526:${project.prism}"
-	modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config}") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	modApi "dev.kosmx.player-anim:player-animation-lib-fabric:${project.player_anim}"
-	modApi "maven.modrinth:better-combat:${project.bettercombat}"
+	modApi("software.bernie.geckolib:${project.gecko_lib}") {exclude group: "net.fabricmc", module: "fabric-loader"}
+	modImplementation("curse.maven:prism-665526:${project.prism}") {exclude group: "net.fabricmc", module: "fabric-loader"}
+	modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config}") {exclude(group: "net.fabricmc", module: "fabric-loader")}
+	modImplementation("vazkii.patchouli:Patchouli:${project.patchouli}") {exclude group: "net.fabricmc", module: "fabric-loader"}
+	modApi("dev.kosmx.player-anim:player-animation-lib-fabric:${project.player_anim}") {exclude group: "net.fabricmc", module: "fabric-loader"}
+	modApi("maven.modrinth:better-combat:${project.bettercombat}") {exclude group: "net.fabricmc", module: "fabric-loader"}
+	//modImplementation "earth.terrarium:botarium-fabric-${project.minecraft_version}:${project.botarium}"
+}
+
+test {
+	useJUnitPlatform()
 }
 
 processResources {
 	inputs.property "version", project.version
-
-	filesMatching("fabric.mod.json") {
-		expand "version": project.version
-	}
+	filesMatching("fabric.mod.json") { expand "version": project.version }
 }
 
 def dataOutput = 'src/main/generated'
 
 loom {
+	accessWidenerPath = file("src/main/resources/trevorssentinels.accesswidener")
 	runs {
 		datagen{
 			server()
@@ -80,7 +83,7 @@ java {
 
 jar {
 	from("LICENSE") {
-		rename { "${it}_${project.archivesBaseName}"}
+		rename { "${it}_${"trevorssentinels"}"}
 	}
 }
 

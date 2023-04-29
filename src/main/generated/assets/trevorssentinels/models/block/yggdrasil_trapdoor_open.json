@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_trapdoor_open",
+  "textures": {
+    "texture": "trevorssentinels:block/yggdrasil_trapdoor"
+  }
+}

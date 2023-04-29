@@ -1,0 +1,38 @@
+{
+  "parent": "trevorssentinels:trevorssentinels",
+  "criteria": {
+    "got_chainsaw": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:galinite_chainsaw"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.trevorssentinels.chainsaw_man.desc"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "trevorssentinels:galinite_chainsaw",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.trevorssentinels.chainsaw_man.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_chainsaw"
+    ]
+  ]
+}

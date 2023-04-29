@@ -1,0 +1,13 @@
+{
+  "name": "Rose Gold",
+  "icon": "trevorssentinels:rose_gold_ingot",
+  "category": "trevorssentinels:alloys",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "trevorssentinels:rose_gold_ingot",
+      "title": "Rose Gold",
+      "text": "An alloy of gold and copper believed by many to be effective against the supernatural due to its unition of two holy metals. Experimentation has deemed this as false, however, even showing that the magical abilities of copper and gold cancel out when combined."
+    }
+  ]
+}

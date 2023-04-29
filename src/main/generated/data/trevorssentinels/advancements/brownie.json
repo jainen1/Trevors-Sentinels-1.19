@@ -1,0 +1,38 @@
+{
+  "parent": "trevorssentinels:trevorssentinels",
+  "criteria": {
+    "consumed_brownie": {
+      "conditions": {
+        "item": {
+          "items": [
+            "trevorssentinels:brownie"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.trevorssentinels.brownie.desc"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "trevorssentinels:brownie"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.trevorssentinels.brownie.title"
+    }
+  },
+  "requirements": [
+    [
+      "consumed_brownie"
+    ]
+  ],
+  "rewards": {
+    "experience": 420
+  }
+}

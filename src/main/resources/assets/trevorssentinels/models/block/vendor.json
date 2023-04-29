@@ -4,11 +4,11 @@
 	"textures": {
 		"1": "trevorssentinels:item/beetroot_soup_can",
 		"2": "trevorssentinels:block/vendor",
-		"3": "trevorssentinels:item/cyan_cola",
-		"4": "trevorssentinels:item/green_cola",
+		"3": "trevorssentinels:item/cola_cyan",
+		"4": "trevorssentinels:item/cola_green",
 		"5": "trevorssentinels:item/milk_can",
 		"6": "trevorssentinels:item/mushroom_stew_can",
-		"7": "trevorssentinels:item/orange_cola",
+		"7": "trevorssentinels:item/cola_orange",
 		"8": "trevorssentinels:item/rabbit_stew_can",
 		"particle": "trevorssentinels:block/vendor"
 	},

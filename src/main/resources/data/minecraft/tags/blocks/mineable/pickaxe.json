@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "trevorssentinels:sentinum_block",
-    "trevorssentinels:chiseled_sentinum_block",
-    "trevorssentinels:sentinum_pillar",
+    "trevorssentinels:galinite_block",
+    "trevorssentinels:chiseled_galinite_block",
+    "trevorssentinels:galinite_pillar",
     "trevorssentinels:steel_block",
     "trevorssentinels:caution_steel_block",
     "trevorssentinels:stainless_steel_block",
@@ -13,6 +13,7 @@
     "trevorssentinels:steel_fan",
     "trevorssentinels:battery",
     "trevorssentinels:fusebox",
+    "trevorssentinels:steel_ladder",
 
     "trevorssentinels:red_button",
     "trevorssentinels:red_plate",
@@ -38,6 +39,7 @@
     "trevorssentinels:rose_gold_block",
     "trevorssentinels:copper_iron_block",
     "trevorssentinels:black_agility_block",
+    "trevorssentinels:transitite_block",
 
     "trevorssentinels:uranium_ore",
     "trevorssentinels:uranium_block",

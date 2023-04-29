@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "trevorssentinels:snowstone_stairs",
+    "trevorssentinels:dirt_stairs",
+    "trevorssentinels:grass_stairs",
+    "trevorssentinels:moss_stairs"
+  ]
+}

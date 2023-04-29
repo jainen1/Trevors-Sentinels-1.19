@@ -1,0 +1,17 @@
+{
+  "name": "Galinite",
+  "icon": "trevorssentinels:galinite_shard",
+  "category": "trevorssentinels:alloys",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "trevorssentinels:galinite_shard",
+      "title": "Galinite",
+      "text": "An unusual alloy produced on the planet Utaria for use in soul technology. It is formed of a silver-rich mineral abundant in Utarian rock, and fused with an organic plastic that acts as a vessel for souls and prevents rusting."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "As the plastic is created with the humid environment of Utaria in mind, it does not react well to extreme environmental changes."
+    }
+  ]
+}

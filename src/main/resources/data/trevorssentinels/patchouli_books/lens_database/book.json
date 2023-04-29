@@ -1,16 +1,21 @@
 {
-  "name": "HoloDatabase",
-  "landing_text": "RECOMMEND FILLING MISSING DATA ENTRIES FOR ANALYSIS.",
+  "name": "trevorssentinels.database.name",
+  "landing_text": "trevorssentinels.database.desc",
   "book_texture": "trevorssentinels:textures/gui/database.png",
-  "model": "trevorssentinels:database_two",
-  "creative_tab": "trevorssentinels.sentinels",
+  "creative_tab": "trevorssentinels:sentinels",
+  "model": "trevorssentinels:database",
   "show_toasts": true,
   "text_color": "189DBB",
   "header_color": "189DBB",
   "nameplate_color": "189DBB",
   "link_color": "FFAA00",
-  "link_hover_color": "FFAA00",
+  "link_hover_color": "D31400",
   "progress_bar_color": "FFAA00",
   "progress_bar_background": "000000",
-  "subtitle": "Version 0.2"
+  "subtitle": "Version 0.4",
+  "open_sound": "trevorssentinels:database_open",
+  "flip_sound": "trevorssentinels:database_flip",
+  "advancements_tab": "trevorssentinels.sentinels",
+  "filler_texture": "trevorssentinels:page_filler_maze.png",
+  "use_blocky_font": false
 }

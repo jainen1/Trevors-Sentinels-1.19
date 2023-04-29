@@ -1,0 +1,21 @@
+{
+  "name": "Steel",
+  "icon": "trevorssentinels:steel_ingot",
+  "category": "trevorssentinels:alloys",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "trevorssentinels:steel_ingot",
+      "title": "Steel",
+      "text": "Steel is an ancient alloy that has been used by many civilizations in the past for its strength, flexibility, and durability. Formed of iron and carbon, two extremely abundant elements in the universe, it is also relatively cheap to manufacture."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "among us 2"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "among us 3: vr mode"
+    }
+  ]
+}
