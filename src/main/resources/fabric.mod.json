@@ -33,6 +33,6 @@
     "geckolib": ">=4.0.6"
   },
   "suggests": {
-    "another-mod": "*"
+    "prism": "*"
   }
 }

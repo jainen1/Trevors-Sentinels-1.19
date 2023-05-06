@@ -28,6 +28,10 @@ repositories {
 		name = "Resourceful Bees Maven"
 		url = "https://nexus.resourcefulbees.com/repository/maven-public/"
 	}
+	maven {
+		name = "Fuzs Mod Resources"
+		url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
+	}
 }
 
 dependencies {
@@ -37,12 +41,8 @@ dependencies {
 	testImplementation "net.fabricmc:fabric-loader-junit:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modApi("software.bernie.geckolib:${project.gecko_lib}") {exclude group: "net.fabricmc", module: "fabric-loader"}
-	modImplementation("curse.maven:prism-665526:${project.prism}") {exclude group: "net.fabricmc", module: "fabric-loader"}
-	modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config}") {exclude(group: "net.fabricmc", module: "fabric-loader")}
+	//modImplementation("curse.maven:prism-665526:${project.prism}") {exclude group: "net.fabricmc", module: "fabric-loader"}
 	modImplementation("vazkii.patchouli:Patchouli:${project.patchouli}") {exclude group: "net.fabricmc", module: "fabric-loader"}
-	modApi("dev.kosmx.player-anim:player-animation-lib-fabric:${project.player_anim}") {exclude group: "net.fabricmc", module: "fabric-loader"}
-	modApi("maven.modrinth:better-combat:${project.bettercombat}") {exclude group: "net.fabricmc", module: "fabric-loader"}
-	//modImplementation "earth.terrarium:botarium-fabric-${project.minecraft_version}:${project.botarium}"
 }
 
 test {
@@ -57,7 +57,6 @@ processResources {
 def dataOutput = 'src/main/generated'
 
 loom {
-	accessWidenerPath = file("src/main/resources/trevorssentinels.accesswidener")
 	runs {
 		datagen{
 			server()

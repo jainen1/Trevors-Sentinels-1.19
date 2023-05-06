@@ -23,7 +23,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
-import net.trevorskullcrafter.trevorssentinels.data.TagGenerator;
+import net.trevorskullcrafter.trevorssentinels.data.ItemTagGenerator;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
 import org.joml.Vector3f;
@@ -57,7 +57,7 @@ public class LaserEntity extends PersistentProjectileEntity {
     @Override public boolean hasNoGravity() { return true; }
     @Override protected void initDataTracker() { super.initDataTracker(); this.dataTracker.startTracking(COLOR, 16711680); }
     @Override public boolean collidesWithStateAtPos(BlockPos pos, BlockState state) {
-        return !(projectileType==1 && state.isIn(TagGenerator.LASER_PASS));
+        return !(projectileType==1 && state.isIn(ItemTagGenerator.LASER_PASS));
     }
 
     private void reflectLaser1(Direction sideHit) {
@@ -92,7 +92,7 @@ public class LaserEntity extends PersistentProjectileEntity {
                 if(collidesWithStateAtPos(blockHitResult.getBlockPos(), state)){
                     trevorssentinels.LOGGER.info("Collides with block!");
                     if(projectileType != 2) doExplosion(serverWorld);
-                    if(projectileType == 1 && state.isIn(TagGenerator.LASER_REFLECTIVE)) reflectLaser1(blockHitResult.getSide());
+                    if(projectileType == 1 && state.isIn(ItemTagGenerator.LASER_REFLECTIVE)) reflectLaser1(blockHitResult.getSide());
                     state.onProjectileHit(serverWorld, state, blockHitResult, this);
                     this.discard();
                 }

@@ -72,7 +72,8 @@ public class ModVillagers {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(ModItems.TORBERNITE_CUBE, 3), new ItemStack(Items.MILK_BUCKET,1),
                     new ItemStack(ModItems.ANTIMILK,1),
-                    6,2,0.02f));});
+                    6,2,0.02f));
+        });
 
         TradeOfferHelper.registerVillagerOffers(DEMOLITIONIST,1, factories -> {
             factories.add((entity, random) -> new TradeOffer(
@@ -82,9 +83,7 @@ public class ModVillagers {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(Items.EMERALD, 6),
                     new ItemStack(Items.FIREWORK_STAR,2),
-                    6,2,0.02f));});
-
-        TradeOfferHelper.registerVillagerOffers(DEMOLITIONIST,2, factories -> {
+                    6,2,0.02f));
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(Items.EMERALD, 16),
                     new ItemStack(Items.FIREWORK_ROCKET,16),
@@ -92,9 +91,10 @@ public class ModVillagers {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(Items.EMERALD, 3),
                     new ItemStack(Items.TNT,1),
-                    8,2,0.02f));});
+                    8,2,0.02f));
+        });
 
-        TradeOfferHelper.registerVillagerOffers(DEMOLITIONIST,3, factories -> {
+        TradeOfferHelper.registerVillagerOffers(CULTIST_MERCHANT,3, factories -> {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(Items.EMERALD, 16),
                     new ItemStack(Items.FIREWORK_ROCKET,16),
@@ -102,6 +102,7 @@ public class ModVillagers {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(Items.EMERALD, 3),
                     new ItemStack(Items.TNT,1),
-                    8,2,0.02f));});
+                    8,2,0.02f));
+        });
     }
 }

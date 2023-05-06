@@ -1,6 +1,5 @@
 package net.trevorskullcrafter.trevorssentinels.item.custom;
 
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -30,8 +29,8 @@ public class JetpackItem extends ArmorItem {
 
     @Override public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
-        if (hand == Hand.MAIN_HAND && Screen.hasControlDown()) {
-            if(!world.isClient) {
+        if (hand == Hand.MAIN_HAND) {
+            if(!world.isClient()) {
                 if (itemStack.getSubNbt("trevorssentinels:power") != null) {
                     if (Objects.requireNonNull(itemStack.getSubNbt("trevorssentinels:power")).getBoolean("trevorssentinels:powerMode")) {
                         NbtCompound nbtData = new NbtCompound(); nbtData.putBoolean("trevorssentinels:powerMode", false);
@@ -76,7 +75,7 @@ public class JetpackItem extends ArmorItem {
         }else{
             NbtCompound nbtData = new NbtCompound(); nbtData.putBoolean("trevorssentinels:powerMode", false);
             itemStack.setSubNbt("trevorssentinels:power", nbtData);
-        } tooltip.add(Text.literal("Ctrl + right click to toggle.").formatted(Formatting.DARK_GRAY));
+        } tooltip.add(Text.literal("Right click to toggle.").formatted(Formatting.DARK_GRAY));
         super.appendTooltip(itemStack, world, tooltip, context);
     }
 }

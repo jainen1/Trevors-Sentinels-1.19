@@ -42,8 +42,10 @@ public class DaggerItem extends Item {
     public DaggerItem(Settings settings, int attackDamage, float attackSpeed, int destroyChance, StatusEffectInstance... effects) {
         super(settings); this.attackDamage = attackDamage; this.destroyChance = destroyChance; this.effects = effects;
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
-        builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier", attackDamage, EntityAttributeModifier.Operation.ADDITION));
-        builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier", attackSpeed, EntityAttributeModifier.Operation.ADDITION));
+        builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier", attackDamage,
+                EntityAttributeModifier.Operation.ADDITION));
+        builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier", attackSpeed,
+                EntityAttributeModifier.Operation.ADDITION));
         this.attributeModifiers = builder.build();
     }
 
@@ -72,7 +74,7 @@ public class DaggerItem extends Item {
 
     @Override public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         //tooltip.add(Text.literal(attackDamage+" ").append(Text.translatable("attribute.name.generic.attack_damage")).formatted(Formatting.DARK_GREEN));
-        if(effects != null) { if (Screen.hasShiftDown()) for (StatusEffectInstance statusEffectInstance : effects) {
+        if(effects.length > 0) { if (Screen.hasShiftDown()) for (StatusEffectInstance statusEffectInstance : effects) {
                 MutableText mutableText = Text.translatable(statusEffectInstance.getTranslationKey());
                 StatusEffectCategory statusEffectCategory = statusEffectInstance.getEffectType().getCategory();
                 if (statusEffectInstance.getAmplifier() > 0)

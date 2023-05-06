@@ -9,7 +9,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Rarity;
 import net.minecraft.world.World;
 import net.trevorskullcrafter.trevorssentinels.data.EnglishLangGenerator;
-import net.trevorskullcrafter.trevorssentinels.data.TagGenerator;
+import net.trevorskullcrafter.trevorssentinels.data.ItemTagGenerator;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -46,7 +46,7 @@ public abstract class NamedItemMixin{
 
     @Inject(at = @At("HEAD"), method = "getItemBarColor", cancellable = true)
     public void getItemBarColor(ItemStack stack, CallbackInfoReturnable<Integer> cir) {
-        if(stack.isIn(TagGenerator.ITEM_BAR_COLOR_OVERRIDE) && stack.getName().getStyle().getColor() != null)
+        if(stack.isIn(ItemTagGenerator.ITEM_BAR_COLOR_OVERRIDE) && stack.getName().getStyle().getColor() != null)
             cir.setReturnValue(stack.getName().getStyle().getColor().getRgb());
     }
 

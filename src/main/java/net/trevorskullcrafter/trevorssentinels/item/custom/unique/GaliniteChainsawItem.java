@@ -13,8 +13,8 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.ShardEntity;
 
-public class SentinumChainsawItem extends AxeItem {
-    public SentinumChainsawItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
+public class GaliniteChainsawItem extends AxeItem {
+    public GaliniteChainsawItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
     }
 

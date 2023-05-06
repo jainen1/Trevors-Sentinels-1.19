@@ -22,7 +22,7 @@ import net.minecraft.world.event.GameEvent;
 import net.minecraft.world.explosion.Explosion;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.LaserEntity;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.NuclearChargeEntity;
-import net.trevorskullcrafter.trevorssentinels.data.TagGenerator;
+import net.trevorskullcrafter.trevorssentinels.data.ItemTagGenerator;
 import org.jetbrains.annotations.Nullable;
 
 public class NuclearChargeBlock extends Block {
@@ -64,7 +64,7 @@ public class NuclearChargeBlock extends Block {
 
     @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player2, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player2.getStackInHand(hand);
-        if (itemStack.isIn(TagGenerator.NUCLEAR_CHARGE_ACTIVATOR)) {
+        if (itemStack.isIn(ItemTagGenerator.NUCLEAR_CHARGE_ACTIVATOR)) {
             NuclearChargeBlock.primeTnt(world, pos, player2);
             world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
             Item item = itemStack.getItem();

@@ -1,6 +1,5 @@
 package net.trevorskullcrafter.trevorssentinels.item.custom.unique;
 
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -29,7 +28,7 @@ public class PappyDSwordItem extends SwordItem {
     @Override public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
         ItemStack itemStack = user.getStackInHand(hand);
         if(!world.isClient() && hand == Hand.MAIN_HAND){
-            if(!Screen.hasShiftDown()){
+            if(!user.isSneaking()){
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 5, 255,false,false,false));
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,5,3,false,false,false));
                 world.playSoundFromEntity(null, user, SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 2.0F, new java.util.Random().nextFloat());
@@ -65,7 +64,7 @@ public class PappyDSwordItem extends SwordItem {
 
     @Override public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.literal("Right click to parry!").formatted(Formatting.GRAY));
-        tooltip.add(Text.literal("Shift + right click to become enraged!").formatted(Formatting.RED));
+        tooltip.add(Text.literal("Sneak + right click to become enraged!").formatted(Formatting.RED));
         tooltip.add(Text.translatable("pillar.trevorssentinels.chaos").formatted(Formatting.ITALIC, Formatting.DARK_RED));
     }
 }

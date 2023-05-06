@@ -26,7 +26,7 @@ public class ModEffectItems {
 
     public static final Item JUMP_BOOST_ITEM = registerItem("jump_boost_item",
             new InfiniteEffectItem(new FabricItemSettings().maxCount(1),
-                    new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20, 0, false, false)));
+                    new StatusEffectInstance(StatusEffects.JUMP_BOOST, 200, 0, false, false)));
 
     public static final Item DOLPHINS_GRACE_ITEM = registerItem("dolphins_grace_item",
             new InfiniteEffectItem(new FabricItemSettings().maxCount(1),

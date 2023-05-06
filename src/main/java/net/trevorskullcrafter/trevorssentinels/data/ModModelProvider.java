@@ -114,7 +114,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerItems(itemModelGenerator, Models.GENERATED, BetaItems.BLACKSMITHS_WELDING_MASK, BetaItems.MAD_SCIENTISTS_LAB_COAT, ModArmory.ZENITHIUM_CHESTPLATE,
                 ModArmory.ZENITHIUM_LEGGINGS, ModArmory.SKYHOPPERS);
         registerItems(itemModelGenerator, Models.HANDHELD, ModArmory.ZENITHIUM_SWORD, ModArmory.ZENITHIUM_DAGGER, ModArmory.ZENITHIUM_PICKAXE,
-                ModArmory.ZENITHIUM_AXE, ModArmory.ZENITHIUM_SHOVEL, ModArmory.ZENITHIUM_HOE);
+                ModArmory.ZENITHIUM_AXE, ModArmory.ZENITHIUM_SHOVEL, ModArmory.ZENITHIUM_HOE, ModArmory.MASTER_SWORD);
 
         //food
         registerItems(itemModelGenerator, Models.GENERATED, ModItems.ANTIMILK, ModItems.ASH, ModItems.PEARFRUIT, ModItems.MIDAS_FRUIT, ModItems.BANANA,

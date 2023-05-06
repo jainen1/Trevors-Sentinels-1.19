@@ -23,7 +23,5 @@ public abstract class BlockMixin {
         onEntityLand(world, entity);
     }
 
-    public float getDamageMultiplier(){
-        return 1.0f;
-    }
+    public float getDamageMultiplier(){ return 1.0f; }
 }

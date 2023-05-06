@@ -17,7 +17,7 @@ public class trevorssentinelsDatagen implements DataGeneratorEntrypoint {
         pack.addProvider(ModWorldGenerator::new);
         pack.addProvider(AdvancementGenerator::new);
         pack.addProvider(EnglishLangGenerator::new);
-        pack.addProvider(TagGenerator::new);
+        pack.addProvider(ItemTagGenerator::new);
     }
 
     @Override public void buildRegistry(RegistryBuilder registryBuilder) {

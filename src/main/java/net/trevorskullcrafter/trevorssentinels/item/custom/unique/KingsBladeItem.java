@@ -1,6 +1,5 @@
 package net.trevorskullcrafter.trevorssentinels.item.custom.unique;
 
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -31,17 +30,15 @@ public class KingsBladeItem extends SwordItem {
     @Override public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
         ItemStack itemStack = user.getStackInHand(hand);
         if(!world.isClient() && hand == Hand.MAIN_HAND){
-            if(!Screen.hasAltDown()){
+            if(user.isSneaking()){
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 5, 255,false,false,false));
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,5,3,false,false,false));
-                world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 2.0F, getRandom());
+                world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 2.0F, Random.createLocal().nextFloat());
                 user.sendMessage(Text.literal("Parry!").formatted(Formatting.GRAY),true);
                 user.getItemCooldownManager().set(this, 100);
             } return TypedActionResult.success(itemStack);
         } return super.use(world, user, hand);
     }
-
-    public float getRandom(){ return Random.createLocal().nextFloat(); }
 
     @Override public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) { return true; }
 

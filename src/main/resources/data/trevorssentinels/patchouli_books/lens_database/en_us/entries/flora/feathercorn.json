@@ -1,0 +1,16 @@
+{
+  "name": "Feathercorn",
+  "icon": "trevorssentinels:feathercorn",
+  "category": "trevorssentinels:flora",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "trevorssentinels:feathercorn",
+      "text": "This species of maize only grows in hot, relatively dry regions. Its ears may look appetizing, but eating them raw is unwise as the seeds quickly decompress once their ear is unsealed, resulting in the suffocation of the consumer."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "For this reason, it is much wiser to cook the ears whole so that the seeds can expand without posing a health risk."
+    }
+  ]
+}

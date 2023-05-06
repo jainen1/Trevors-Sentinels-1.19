@@ -4,12 +4,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.StackReference;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.TagKey;
+import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
@@ -34,7 +36,7 @@ public class LensItem extends Item {
             if(block == ModBlocks.STEEL_BLOCK || block == ModBlocks.CAUTION_STEEL_BLOCK || block == ModBlocks.RUSTED_STEEL_BLOCK ||
                     block == ModBlocks.STAINLESS_STEEL_BLOCK || block == ModBlocks.STEEL_LAMP_BLOCK || block == ModBlocks.STEEL_FAN ||
                     block == ModBlocks.BATTERY || block == ModBlocks.FUSEBOX || block == ModBlocks.SUPERFORGE || block == ModBlocks.NUCLEAR_CHARGE) displayEntry(context, 1);
-            if(block == ModBlocks.GALINITE_BLOCK || block == ModBlocks.GALINITE_PILLAR || block == ModBlocks.CHISELED_GALINITE_BLOCK)  displayEntry(context, 2); displayEntry(context, 9);
+            if(block == ModBlocks.GALINITE_BLOCK || block == ModBlocks.GALINITE_PILLAR || block == ModBlocks.CHISELED_GALINITE_BLOCK){ displayEntry(context, 2); displayEntry(context, 9); }
             if(block == ModBlocks.URANIUM_ORE || block == ModBlocks.URANIUM_BLOCK || block == ModBlocks.NUCLEAR_CHARGE || block == ModBlocks.SUPERFORGE) displayEntry(context, 3);
             if(block == ModBlocks.LIGHT_CHAMBER_BLOCK || block == ModBlocks.DARK_CHAMBER_BLOCK) displayEntry(context, 4);
             if(block == ModBlocks.BLUE_AGILITY_BLOCK || block == ModBlocks.ORANGE_AGILITY_BLOCK)  displayEntry(context, 4); displayEntry(context, 5);
@@ -70,17 +72,13 @@ public class LensItem extends Item {
             if(block == ModBlocks.IRON_GOLD_BLOCK) displayEntry(context, 12); displayEntry(context, 10);
             if(block.getDefaultState().isIn(BlockTags.GOLD_ORES) || block == Blocks.RAW_GOLD_BLOCK) displayEntry(context, 12);
             if(block == Blocks.NETHERITE_BLOCK) displayEntry(context, 11);
-            if(block == ModBlocks.ROSE_GOLD_BLOCK) displayEntry(context, 12); displayEntry(context, 13);
+            if(block == ModBlocks.ROSE_GOLD_BLOCK){ displayEntry(context, 12); displayEntry(context, 13); }
             if(block == Blocks.NETHER_SPROUTS || block == Blocks.NETHER_WART || block == Blocks.NETHER_WART_BLOCK || block == Blocks.WARPED_FUNGUS ||
                     block.getDefaultState().isIn(BlockTags.CRIMSON_STEMS) || block.getDefaultState().isIn(BlockTags.WARPED_STEMS) ||
             block == Blocks.WARPED_NYLIUM || block == Blocks.WARPED_ROOTS || block == Blocks.WARPED_WART_BLOCK ||
             block == Blocks.CRIMSON_FUNGUS || block == Blocks.POTTED_WARPED_FUNGUS || block == Blocks.POTTED_CRIMSON_FUNGUS || block == Blocks.POTTED_WARPED_ROOTS || block == Blocks.CRIMSON_NYLIUM ||
             block == Blocks.CRIMSON_ROOTS || block == Blocks.POTTED_CRIMSON_ROOTS) displayEntry(context, 14);
         } return super.useOnBlock(context);
-    }
-
-    private boolean findBlockInTags(Block block, TagKey<Block> blockTag, TagKey<Item> itemTag){
-        return block.getDefaultState().isIn(blockTag) || block.asItem().getDefaultStack().isIn(itemTag);
     }
 
     public void displayEntry(ItemUsageContext context, int indexNum) {
@@ -150,8 +148,7 @@ public class LensItem extends Item {
                     else if ((world.getTime() & 13) == 0) tooltip.add(Text.literal("ACCESS POINT 1ex" + (world.getTime()) / 100).formatted(Formatting.RED));
                     else if ((world.getTime() % 4 == 0)) tooltip.add(Text.literal("ACCESS POINT 1ex" + (world.getTime()) / 100).formatted(Formatting.RED, Formatting.OBFUSCATED));
                     else tooltip.add(Text.literal("ACCESS POINT 1ex" + (world.getTime()) / 100).formatted(Formatting.DARK_GRAY, Formatting.OBFUSCATED));
-                } else
-                    tooltip.add(Text.literal("STATUS: NO CONNECTION").formatted(world.getTime() % 2 == 0 ? Formatting.RED : Formatting.DARK_RED));
+                } else tooltip.add(Text.literal("STATUS: NO CONNECTION").formatted(world.getTime() % 2 == 0 ? Formatting.RED : Formatting.DARK_RED));
                 tooltip.add(Text.literal("Hold shift to see missing data entries!").formatted(Formatting.DARK_AQUA));
             } else {
                 if (itemStack.getSubNbt("trevorssentinels:lens_learned") != null) {
@@ -181,6 +178,12 @@ public class LensItem extends Item {
                 }
             } super.appendTooltip(itemStack, world, tooltip, context);
         }
+    }
+
+    @Override
+    public boolean onClicked(ItemStack stack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
+        return super.onClicked(stack, otherStack, slot, clickType, player, cursorStackReference);
+
     }
 
     @Override public boolean hasGlint(ItemStack itemStack){

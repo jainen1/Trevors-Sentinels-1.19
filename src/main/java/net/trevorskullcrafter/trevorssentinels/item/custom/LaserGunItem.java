@@ -13,7 +13,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
@@ -51,29 +50,22 @@ public class LaserGunItem extends Item implements ToolSkinnable {
     }
 
     @Override public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
-        ItemStack itemStack1 = user.getStackInHand(Hand.MAIN_HAND); ItemStack itemStack2 = user.getStackInHand(Hand.OFF_HAND);
-        if(Screen.hasAltDown()){ if(user.getStackInHand(hand) == itemStack1) {
-            user.sendMessage(Text.empty().append("Automatic Reloading: ").append(getAutomaticReloading(itemStack1, true) ? Text.literal("ON")
-                    .formatted(Formatting.GREEN, Formatting.BOLD) : Text.literal("OFF").formatted(Formatting.RED, Formatting.BOLD)), true);
-            world.playSoundFromEntity(null, user, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.PLAYERS, 1.0f, 1.0f); }
-        } else if(isDualWielding(user)){
-            if(Screen.hasShiftDown()) { reloadGun(itemStack1, world, user); reloadGun(itemStack2, world, user); }
-            else { if (lastHand == Hand.OFF_HAND) { shoot(itemStack1, world, user, hand); if(!world.isClient()) lastHand = Hand.MAIN_HAND; }
-            else { shoot(itemStack2, world, user, hand); if(!world.isClient()) lastHand = Hand.OFF_HAND; }}
+        if(isDualWielding(user)) {
+            if (lastHand == Hand.OFF_HAND) { shoot(user.getMainHandStack(), world, user, hand); if(!world.isClient()) lastHand = Hand.MAIN_HAND; }
+            else { shoot(user.getOffHandStack(), world, user, hand); if(!world.isClient()) lastHand = Hand.OFF_HAND; }
         } else if(hand == Hand.MAIN_HAND || (hand == Hand.OFF_HAND && !(user.getStackInHand(Hand.MAIN_HAND).getItem() instanceof LaserGunItem))){
-            if(Screen.hasShiftDown()) reloadGun(user.getStackInHand(hand), world, user);
-            else shoot(user.getStackInHand(hand), world, user, hand);
+            shoot(user.getStackInHand(hand), world, user, hand);
         } return super.use(world, user, hand);
     }
 
-    private boolean isDualWielding(PlayerEntity user){ return user.getStackInHand(Hand.MAIN_HAND).getItem() == user.getStackInHand(Hand.OFF_HAND).getItem(); }
+    public boolean isDualWielding(PlayerEntity user){ return user.getStackInHand(Hand.MAIN_HAND).getItem() == user.getStackInHand(Hand.OFF_HAND).getItem(); }
 
     public void shoot(ItemStack itemStack, World world, PlayerEntity user, Hand hand){
         if(itemStack.getDamage() < itemStack.getMaxDamage() - 1) {
             for (int i = 1; i <= lasers; i++) {
                 LaserEntity laser = new LaserEntity(world, user, laserLifeTime, laserSpeed, laserDamage, projectileType, getItemBarColor(itemStack), statusEffectList);
                 laser.setVelocity(user, user.getPitch(), user.getYaw(), user.getRoll(), laserSpeed, laserDivergence+(isDualWielding(user)? dualPenalty: 0.0f));
-                user.addVelocity(laser.getVelocity().multiply(-recoil * (isDualWielding(user)? 1.5 : 1)));
+                user.addVelocity(laser.getVelocity().multiply(-recoil * (isDualWielding(user)? 1.3 : 1.1)));
                 world.spawnEntity(laser);
             }
             if (user instanceof ServerPlayerEntity serverPlayerEntity) serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(itemStack.getItem()));
@@ -98,7 +90,7 @@ public class LaserGunItem extends Item implements ToolSkinnable {
 
     public void reloadGun(ItemStack itemStack, World world, PlayerEntity user) {
         if (!world.isClient()) {
-            itemStack.setDamage(0);user.getItemCooldownManager().set(this, reloadCooldown + (getAutomaticReloading(itemStack, false) ? cooldownTime : 0));
+            itemStack.setDamage(0); user.getItemCooldownManager().set(this, reloadCooldown + (getAutomaticReloading(itemStack, false) ? cooldownTime : 0));
             world.playSoundFromEntity(null, user, reloadSound, SoundCategory.BLOCKS, 3.0F, 0.0F);
         }
     }
@@ -125,7 +117,8 @@ public class LaserGunItem extends Item implements ToolSkinnable {
             else if (lasers >= 6) gunclass = "Shotgun";
             else if (cooldownTime + 1 <= 4) gunclass = "Automatic";
             else gunclass = "Pistol";
-        } return gunclass; }
+        } return gunclass;
+    }
 
     @Override public void appendTooltip(ItemStack itemStack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(itemStack, world, tooltip, context); int magazine = itemStack.getMaxDamage() - itemStack.getDamage() -1;

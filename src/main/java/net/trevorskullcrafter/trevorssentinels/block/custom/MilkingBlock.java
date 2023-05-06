@@ -13,7 +13,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import net.trevorskullcrafter.trevorssentinels.data.TagGenerator;
+import net.trevorskullcrafter.trevorssentinels.data.ItemTagGenerator;
 
 public class MilkingBlock extends Block {
     //please don't ask, I didn't want to make this.
@@ -27,7 +27,7 @@ public class MilkingBlock extends Block {
 
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity){
-        if(entity instanceof LivingEntity livingEntity && livingEntity.getType().isIn(TagGenerator.MILKABLES)){
+        if(entity instanceof LivingEntity livingEntity && livingEntity.getType().isIn(ItemTagGenerator.MILKABLES)){
             livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 200));
         } super.onSteppedOn(world, pos, state, entity);
     }

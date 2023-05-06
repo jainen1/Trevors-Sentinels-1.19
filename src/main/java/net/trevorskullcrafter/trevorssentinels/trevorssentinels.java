@@ -19,12 +19,11 @@ import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.*;
 import net.trevorskullcrafter.trevorssentinels.fluid.ModFluids;
 import net.trevorskullcrafter.trevorssentinels.item.*;
+import net.trevorskullcrafter.trevorssentinels.networking.ModMessages;
 import net.trevorskullcrafter.trevorssentinels.potion.ModPotions;
 import net.trevorskullcrafter.trevorssentinels.recipe.ModRecipes;
 import net.trevorskullcrafter.trevorssentinels.screen.ModScreenHandlers;
-import net.trevorskullcrafter.trevorssentinels.util.ModFlammableBlocks;
-import net.trevorskullcrafter.trevorssentinels.util.ModLootTableModifiers;
-import net.trevorskullcrafter.trevorssentinels.util.ModStrippableBlocks;
+import net.trevorskullcrafter.trevorssentinels.util.*;
 import net.trevorskullcrafter.trevorssentinels.villager.ModVillagers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,8 +32,6 @@ import software.bernie.geckolib.GeckoLib;
 public class trevorssentinels implements ModInitializer {
 	public static final String MOD_ID = "trevorssentinels";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
-	public static final Text styleText = getColoredText("tooltip.trevorssentinels.style", rainbow);
 
 	public static ItemGroup SENTINELS = FabricItemGroup.builder(new Identifier(trevorssentinels.MOD_ID, "sentinels"))
 			.displayName(EnglishLangGenerator.getColoredText("itemGroup.trevorssentinels.sentinels", sentinel_accent))
@@ -70,6 +67,7 @@ public class trevorssentinels implements ModInitializer {
 
 		ModEffects.registerStatusEffects();
 		ModItems.registerModItems();
+		ModMessages.registerC2SPackets();
 		ModArmory.registerArmory();
 		ModEffectItems.registerModItems();
 		BetaItems.registerModItems();
@@ -83,8 +81,10 @@ public class trevorssentinels implements ModInitializer {
 		ModVillagers.registerTrades();
 
 		ModFluids.registerFluids();
-		ModFlammableBlocks.registerFlammableBlocks();
-		ModStrippableBlocks.registerStrippables();
+		ModRegistries.registerFlammableBlocks();
+		ModRegistries.registerStrippables();
+		ModRegistries.registerFuels();
+		ModRegistries.registerCommands();
 		ModLootTableModifiers.modifyLootTables();
 
 		GeckoLib.initialize();
@@ -93,5 +93,6 @@ public class trevorssentinels implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(ModEntities.FLORBUS, FlorbusEntity.setAttributes());
 
 		ModItemGroupEvents.registerAllGroupEvents();
+		ModRegistries.registerWorldLevelState();
 	}
 }

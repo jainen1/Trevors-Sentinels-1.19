@@ -123,6 +123,8 @@ public class ModItems {
 
     public static final Item CURED_BEEF = registerItem("cured_beef", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(2).saturationModifier(0.6f).build())));
+    public static final Item CURED_CHICKEN = registerItem("cured_chicken", new Item(new FabricItemSettings()
+            .food(new FoodComponent.Builder().hunger(4).saturationModifier(0.8f).build())));
 
     public static final Item SANDFISH = registerItem("sandfish", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(2)
             .saturationModifier(0.6f).build())));

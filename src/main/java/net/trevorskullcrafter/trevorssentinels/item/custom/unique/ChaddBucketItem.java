@@ -22,10 +22,9 @@ public class ChaddBucketItem extends Item {
     @Override public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (user instanceof ServerPlayerEntity serverPlayerEntity) {
             Criteria.CONSUME_ITEM.trigger(serverPlayerEntity, stack); serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
-            for(int i = 0; i < 100; i++) { user.addStatusEffect(new StatusEffectInstance(StatusEffect.byRawId(i) == null
-                    ? StatusEffects.RESISTANCE : Objects.requireNonNull(StatusEffect.byRawId(i)))); }
-        } if (user instanceof PlayerEntity playerEntity && !playerEntity.getAbilities().creativeMode) stack.decrement(1);
-        if (stack.isEmpty()) return new ItemStack(Items.BUCKET); return stack;
+            for(int i = 0; i < 100; i++) user.addStatusEffect(new StatusEffectInstance(StatusEffect.byRawId(i) == null ? StatusEffects.RESISTANCE : Objects.requireNonNull(StatusEffect.byRawId(i))));
+            if(!serverPlayerEntity.getAbilities().creativeMode) stack.decrement(1);
+        } if (stack.isEmpty()) return new ItemStack(Items.BUCKET); return stack;
     }
 
     @Override public ItemStack getRecipeRemainder(ItemStack stack) { return new ItemStack(Items.BUCKET); }

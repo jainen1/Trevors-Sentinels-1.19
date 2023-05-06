@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "trevorssentinels:nuclear_sword",
-    "trevorssentinels:nuclear_dagger",
     "trevorssentinels:nuclear_pickaxe",
     "trevorssentinels:nuclear_axe",
     "trevorssentinels:nuclear_shovel",
@@ -12,7 +11,6 @@
     "trevorssentinels:nuclear_leggings",
     "trevorssentinels:nuclear_boots",
     "trevorssentinels:nanotech_sword",
-    "trevorssentinels:nanotech_dagger",
     "trevorssentinels:nanotech_pickaxe",
     "trevorssentinels:nanotech_axe",
     "trevorssentinels:nanotech_shovel",
@@ -22,7 +20,6 @@
     "trevorssentinels:nanotech_leggings",
     "trevorssentinels:nanotech_boots",
     "trevorssentinels:zenithium_sword",
-    "trevorssentinels:zenithium_dagger",
     "trevorssentinels:zenithium_pickaxe",
     "trevorssentinels:zenithium_axe",
     "trevorssentinels:zenithium_shovel",
@@ -31,7 +28,8 @@
     "trevorssentinels:zenithium_leggings",
     "trevorssentinels:skyhoppers",
     "trevorssentinels:portkey",
-
+    "trevorssentinels:thanatu_blade",
+    "trevorssentinels:galinite_holoprojector",
     "trevorssentinels:laser_pistol",
     "trevorssentinels:laser_taser",
     "trevorssentinels:laser_sniper_echo",

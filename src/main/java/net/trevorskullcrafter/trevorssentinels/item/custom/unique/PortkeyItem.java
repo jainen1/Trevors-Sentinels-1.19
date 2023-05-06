@@ -1,6 +1,5 @@
 package net.trevorskullcrafter.trevorssentinels.item.custom.unique;
 
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -26,7 +25,7 @@ public class PortkeyItem extends Item {
     @Override public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
         ItemStack itemStack = user.getStackInHand(hand);
         if(!world.isClient() && hand == Hand.MAIN_HAND){
-            if(!Screen.hasShiftDown()){
+            if(!user.isSneaking()){
                 if (itemStack.getSubNbt("trevorssentinels:teleportData") != null) {
                     if(itemStack.getDamage() <= 0){
                         user.requestTeleportAndDismount(

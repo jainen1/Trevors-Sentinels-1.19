@@ -1,0 +1,23 @@
+{
+  "definitions": [
+    {
+      "image": "trevorssentinels:textures/gui/tooltip_borders.png",
+      "index": 0,
+      "startColor": "#47fa0c",
+      "endColor": "#47fa0c",
+      "bgStartColor": "#1d2c19-a20",
+      "bgEndColor": "#10160E-a20",
+      "priority": 3,
+      "selectors": [ "%Nuclear", "%Torbernite", "trevorssentinels:nuclear_dagger" ]
+    },
+    {
+      "image": "trevorssentinels:textures/gui/tooltip_borders.png",
+      "index": 4,
+      "startColor": "24_#FF008FCC-v25_#FF008FCC+s25+v85",
+      "endColor": "24_#FF044B8A-v30_#FF044B8A+s25+v55",
+      "bgStartColor": "#D0008FCC-v160",
+      "bgEndColor": "#F8044B8A-v75",
+      "selectors": ["sea_lantern", "heart_of_the_sea", "%Prismarine", "conduit", "nautilus_shell"]
+    }
+  ]
+}

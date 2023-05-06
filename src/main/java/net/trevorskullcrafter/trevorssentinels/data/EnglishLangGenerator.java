@@ -4,17 +4,19 @@ import com.google.common.collect.Lists;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.block.Block;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ArmorMaterials;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.Language;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.effect.ModEffects;
 import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
 import net.trevorskullcrafter.trevorssentinels.item.*;
+import net.trevorskullcrafter.trevorssentinels.sound.ModSounds;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -25,12 +27,15 @@ import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 
 public class EnglishLangGenerator extends FabricLanguageProvider {
     public EnglishLangGenerator(FabricDataOutput dataOutput) { super(dataOutput, "en_us"); }
+    //"A good hunter sees everything."
+    //"A good hunter knows how to fight."
+    //"A good hunter protects their valuables."
+    //"A good hunter shows no weakness."
 
     @Contract(pure = true) public static @NotNull Text getColoredText(String textContent, String color) { Style style = Style.EMPTY;
         try { style = style.withColor((TextColor) Class.forName("com.anthonyhilyard.prism.util.ConfigHelper").getMethod("parseColor", Object.class).invoke(null, color));} catch(Exception e) {
-            if (color != null)
-                style = style.withColor(TextColor.parse(color.substring(color.contains("#") ? color.indexOf("#") : 0, color.contains("_") ?
-                        color.indexOf("_", color.indexOf("#")) : color.length())));
+            if (color != null) style = style.withColor(TextColor.parse(color.substring(color.contains("#") ? color.indexOf("#") : 0, color.contains("_") ?
+                    color.indexOf("_", color.indexOf("#")) : color.length())));
         }
         return getStyledText(textContent, style);
     }
@@ -82,25 +87,20 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
                 ModArmory.TRANSITITE_SHOVEL, null);
         generateItem(translationBuilder, ModArmory.TRANSITITE_HOE, 0, "Unholy Scythe", null, animPurple);
 
-        /*generateItem(translationBuilder, ModArmory.HUNTERS_VISOR, 0, "Hunter's Visor", "A good hunter sees everything.", hunter);
-        generateItem(translationBuilder, ModArmory.HUNTERS_TORSO, 0, "Hunter's Torso", "A good hunter knows how to protect themselves.", hunter);
-        generateItem(translationBuilder, ModArmory.HUNTERS_LEGS, 0, "Hunter's Legs", "A good hunter protects their valuables.", hunter);
-        generateItem(translationBuilder, ModArmory.HUNTERS_BOOTS, 0, "Hunter's Boots", "A good hunter shows no weakness.", hunter);*/
-
         generateEquipmentSet(translationBuilder, "Darksteel", darksteel, ModArmory.DARKSTEEL_HELMET, ModArmory.DARKSTEEL_CHESTPLATE, ModArmory.DARKSTEEL_LEGGINGS,
                 null, ModArmory.DARKSTEEL_SWORD, ModArmory.DARKSTEEL_DAGGER, ModArmory.DARKSTEEL_PICKAXE, ModArmory.DARKSTEEL_AXE, null, null);
         generateItem(translationBuilder, ModArmory.DARKSTEEL_BOOTS, 0, "Darksteel Sabatons", null, darksteel);
         generateItem(translationBuilder, ModArmory.DARKSTEEL_SHOVEL, 0, "Darksteel Spade", null, darksteel);
         generateItem(translationBuilder, ModArmory.DARKSTEEL_HOE, 0, "Darksteel Scythe", null, darksteel);
 
-        generateEquipmentSet(translationBuilder, "Nuclear", animGreen, null, ModArmory.NUCLEAR_CHESTPLATE, ModArmory.NUCLEAR_LEGGINGS, null,
+        generateEquipmentSet(translationBuilder, "Nuclear", nuclear, null, ModArmory.NUCLEAR_CHESTPLATE, ModArmory.NUCLEAR_LEGGINGS, null,
                 null, null, null, ModArmory.NUCLEAR_AXE, ModArmory.NUCLEAR_SHOVEL, null);
-        generateItem(translationBuilder, ModArmory.NUCLEAR_HELMET, 0, "Nuclear Visor", null, animGreen);
-        generateItem(translationBuilder, ModArmory.NUCLEAR_BOOTS, 0, "Nuclear Sabatons", null, animGreen);
-        generateItem(translationBuilder, ModArmory.NUCLEAR_SWORD, 0, "Nuclear Sword", "Irradiates enemies.", animGreen);
-        generateItem(translationBuilder, ModArmory.NUCLEAR_DAGGER, 0, "Crystallized Dagger", null, animGreen);
-        generateItem(translationBuilder, ModArmory.NUCLEAR_PICKAXE, 0, "Nuclear Drill", null, animGreen);
-        generateItem(translationBuilder, ModArmory.NUCLEAR_HOE, 0, "Nuclear Scythe", null, animGreen);
+        generateItem(translationBuilder, ModArmory.NUCLEAR_HELMET, 0, "Nuclear Visor", null, nuclear);
+        generateItem(translationBuilder, ModArmory.NUCLEAR_BOOTS, 0, "Nuclear Sabatons", null, nuclear);
+        generateItem(translationBuilder, ModArmory.NUCLEAR_SWORD, 0, "Nuclear Sword", "Irradiates enemies.", nuclear);
+        generateItem(translationBuilder, ModArmory.NUCLEAR_DAGGER, 0, "Crystallized Dagger", null, nuclear);
+        generateItem(translationBuilder, ModArmory.NUCLEAR_PICKAXE, 0, "Nuclear Drill", null, nuclear);
+        generateItem(translationBuilder, ModArmory.NUCLEAR_HOE, 0, "Nuclear Scythe", null, nuclear);
 
         generateEquipmentSet(translationBuilder, "Nanotech", rainbow, ModArmory.NANOTECH_HELMET, ModArmory.NANOTECH_CHESTPLATE, ModArmory.NANOTECH_LEGGINGS,
                 ModArmory.NANOTECH_BOOTS, null, ModArmory.NANOTECH_DAGGER, ModArmory.NANOTECH_PICKAXE, ModArmory.NANOTECH_AXE, ModArmory.NANOTECH_SHOVEL, null);
@@ -124,6 +124,7 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
         generateItem(translationBuilder, BetaItems.TREVOR_BLADE, 0, "blade_null", null, sentiBlue);
         generateItem(translationBuilder, BetaItems.KINGS_BLADE, 0, "Stainless Resolve", null, null);
         generateItem(translationBuilder, ModArmory.SCARA_SHEARS, 0, "SCARA Shears", "A military-grade threat.", darksteel);
+        generateItem(translationBuilder, ModArmory.MASTER_SWORD, 0, "The Master's Sword", "From a distant universe...", animYellow);
 
         generateItem(translationBuilder, ModArmory.THANATU_SKULL, 0, "Thanatu's Exoskull", "The skull of the demon king.", animPurple);
         generateItem(translationBuilder, ModArmory.THANATU_SHOULDERPADS, 0, "Thanatu's Shoulderpads", "There's no way these protect anything", animPurple);
@@ -160,17 +161,9 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
         generateAdvancement(translationBuilder, "heretic", "Heretic", "Burn fabric in a forge");
         generateAdvancement(translationBuilder, "bacon_and_eggs", "Bacon and Eggs", "Part of a complete breakfast!");
     }
-    public void generateStatusEffects(TranslationBuilder translationBuilder){
-        translationBuilder.add(ModEffects.REDSTONED, "Redstoned");
-        translationBuilder.add(ModEffects.FLIGHT, "Flight");
-        translationBuilder.add(ModEffects.WELL_FED, "Well-Fed");
-        translationBuilder.add(ModEffects.COSMIC_FIRE, "Cosmic Flame");
-        translationBuilder.add(ModEffects.INFESTED, "☣ Infested ☣");
-        translationBuilder.add(ModEffects.IRRADIATED, "☢ Irradiated ☢");
-    }
     public void generateMisc(TranslationBuilder translationBuilder){
         translationBuilder.add("color.rarity.minecraft.uncommon", newColor("#EFFFA0", "#CCFFAA"));
-        translationBuilder.add("color.rarity.minecraft.rare", newColor(aqua, "#3BBCE9"));
+        translationBuilder.add("color.rarity.minecraft.rare", newColor("aqua", "#3BBCE9"));
         translationBuilder.add("color.rarity.minecraft.epic", rainbow);
 
         translationBuilder.add(ModEntities.GALINITE_SHARD, ModItems.GALINITE_SHARD.getTranslationKey());
@@ -194,10 +187,18 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
         generateSetBonus(translationBuilder, ArmorMaterials.NETHERITE, "Set Bonus: Fire Resistance", hellfire);
         generateSetBonus(translationBuilder, ModArmorMaterials.NUCLEAR, "Set Bonus: Sneak to Fly, Sprint to Hover", gunmetal);
         generateSetBonus(translationBuilder, ModArmorMaterials.NANOTECH, "Set Bonus: Gradual Absorption", animYellow);
+
+        translationBuilder.add("tooltip.trevorssentinels.style", "Style: ");
+        translationBuilder.add("tooltip.trevorssentinels.mode", "Mode: ");
+        generateMultiple(translationBuilder, "tooltip.trevorssentinels.style_switch.", " to switch style.", " to cycle modes.");
+        generateMultiple(translationBuilder, "style.item.trevorssentinels.pappym_blade.", "Trickster", "Paladin", "Predator", "Guardian");
+        generateMultiple(translationBuilder, "style.item.trevorssentinels.thanatu_blade.", "Riftwalker", "Riftcaller");
+        generateMultiple(translationBuilder, "style.item.trevorssentinels.lilith_blade.", "Holy Retribution", "LEAVE NOTHING ALIVE.");
+        generateMultiple(translationBuilder, "style.item.trevorssentinels.galinite_holoprojector.", "Deploy", "Recall", "Unbind");
     }
 
     @Override public void generateTranslations(TranslationBuilder translationBuilder) {
-        generateArmory(translationBuilder); generateAdvancements(translationBuilder); generateStatusEffects(translationBuilder); generateMisc(translationBuilder);
+        generateArmory(translationBuilder); generateAdvancements(translationBuilder); generateMisc(translationBuilder);
 
         generateWoodTranslations(translationBuilder, "Yggdrasil", newColor("#eae1e5", "#846977"), ModBlocks.YGGDRASIL_LOG, ModBlocks.YGGDRASIL_WOOD,
                 ModBlocks.STRIPPED_YGGDRASIL_LOG, ModBlocks.STRIPPED_YGGDRASIL_WOOD, ModBlocks.YGGDRASIL_PLANKS, ModBlocks.YGGDRASIL_LEAVES, ModBlocks.YGGDRASIL_SAPLING,
@@ -225,10 +226,17 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
                 ModBlocks.CERULII_BUTTON, ModBlocks.CERULII_PRESSURE_PLATE, ModBlocks.CERULII_DOOR, ModBlocks.CERULII_TRAPDOOR, ModItems.CERULII_SIGN,
                 ModItems.CERULII_HANGING_SIGN, ModItems.CERULII_BOAT, ModItems.CERULII_CHEST_BOAT);
 
-        generateItem(translationBuilder, ModItems.BANANA, 0, "Banana", null, gold);
+        generateStatusEffect(translationBuilder, ModEffects.REDSTONED, "Redstoned", true);
+        generateStatusEffect(translationBuilder, ModEffects.FLIGHT, "Flight", true);
+        generateStatusEffect(translationBuilder, ModEffects.WELL_FED, "Well-Fed", false);
+        generateStatusEffect(translationBuilder, ModEffects.COSMIC_FIRE, "Cosmic Flame", false);
+        generateStatusEffect(translationBuilder, ModEffects.INFESTED, "☣ Infested ☣", false);
+        generateStatusEffect(translationBuilder, ModEffects.IRRADIATED, "☢ Irradiated ☢", false);
+
+        generateItem(translationBuilder, ModItems.BANANA, 0, "Banana", null, "gold");
         generateItem(translationBuilder, ModItems.RED_BANANA, 0, "Red Banana", null, sentiRed);
         generateItem(translationBuilder, ModItems.BLUE_JAVA_BANANA, 0, "Blue Java Banana", null, sentiBlue);
-        generateItem(translationBuilder, ModItems.BANANA_BREAD, 0, "Banana Bread", null, gold);
+        generateItem(translationBuilder, ModItems.BANANA_BREAD, 0, "Banana Bread", null, "gold");
         generateItem(translationBuilder, ModItems.RED_BANANA_BREAD, 0, "Red Banana Bread", null, sentiRed);
         generateItem(translationBuilder, ModItems.BLUE_JAVA_BANANA_BREAD, 0, "Blue Java Banana Bread", null, sentiBlue);
 
@@ -261,10 +269,10 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
         generateItem(translationBuilder, ModBlocks.DARKSTEEL_BLOCK, 0, "Block of Darksteel", null, darksteel);
         generateItem(translationBuilder, ModBlocks.DARKENED_STEEL_BLOCK, 0, "Darkened Block of Steel", null, darksteel);
         generateItem(translationBuilder, ModItems.DARKSTEEL_INGOT, 0, "Darksteel Ingot", "Reflects only Tranquility's light.", darksteel);
-        generateItem(translationBuilder, ModBlocks.URANIUM_ORE, 0, "Torbernite Ore", null, animGreen);
-        generateItem(translationBuilder, ModBlocks.URANIUM_BLOCK, 0, "Block of Torbernite", "Do not touch.", animGreen);
-        generateItem(translationBuilder, ModBlocks.NUCLEAR_CHARGE, 0, "Nuclear Charge", "WARNING: Highly destructive.", animGreen);
-        generateItem(translationBuilder, ModItems.TORBERNITE_CUBE, 0, "Torbernite Cube", "Radiates a powerful aura.", animGreen);
+        generateItem(translationBuilder, ModBlocks.URANIUM_ORE, 0, "Torbernite Ore", null, nuclear);
+        generateItem(translationBuilder, ModBlocks.URANIUM_BLOCK, 0, "Block of Torbernite", "Do not touch.", nuclear);
+        generateItem(translationBuilder, ModBlocks.NUCLEAR_CHARGE, 0, "Nuclear Charge", "WARNING: Highly destructive.", nuclear);
+        generateItem(translationBuilder, ModItems.TORBERNITE_CUBE, 0, "Torbernite Cube", "Radiates a powerful aura.", nuclear);
         generateItem(translationBuilder, ModItems.ZENITHIUM_CLUSTER, 0, "Zenithium Cluster", "The concentrated essence of a galaxy.", zenithium);
 
         generateItem(translationBuilder, ModItems.ANTIMILK, 0, "Doctor Chadd's Ultimate Anti-Milk of Wondrous Effects", "Contains brief, yet unlimited, power.", null);
@@ -300,22 +308,21 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
         generateItem(translationBuilder, ModItems.COLA_GREEN, 0, "Can of Trola-Cola", null, null);
         generateItem(translationBuilder, ModItems.COLA_CYAN, 0, "Can of AquaDei Lite", null, null);
 
-        generateItem(translationBuilder, ModItems.VIOLENT_CATALYST, 0, "Violent Catalyst", "The essence of eternity.", newColor(3, aqua, green, red));
+        generateItem(translationBuilder, ModItems.VIOLENT_CATALYST, 0, "Violent Catalyst", "The essence of eternity.", newColor(3, "aqua", "green", "red"));
 
         generateItem(translationBuilder, BetaItems.PORTKEY, 0, "Amethyst Core", "Use while crouching to bind to a location!", animPurple);
         generateItem(translationBuilder, BetaItems.DISTANCE_TRACKER, 0, "Lifeform Tracker", "Right click a mob to track it.", galiniteGray);
-        generateItem(translationBuilder, ModItems.GALINITE_LENS, 0, "Galinite Lens", "Use on certain blocks and entities to gather data on them!",
-                newColor(2, sentiBlue, sentiBlue, sentiBlue, sentiBlue, sentiBlue, white, sentiRed, sentiRed, white, white, white));
+        generateItem(translationBuilder, ModItems.GALINITE_LENS, 0, "Galinite Lens", "Use on certain blocks and entities to gather data on them!", sentiBlue);
         generateItem(translationBuilder, ModItems.GALINITE_HOLOPROJECTOR, 0, "Hard Light Projector", null, sentiBlue);
-        generateItem(translationBuilder, ModItems.NUCLEAR_ROCKET, 0, "Nuclear Rocket", null, animGreen);
-        generateItem(translationBuilder, ModItems.NUCLEAR_DETONATOR, 0, "Nuclear Detonator", "Can activate nuclear charges.", animGreen);
+        generateItem(translationBuilder, ModItems.NUCLEAR_ROCKET, 0, "Nuclear Rocket", null, nuclear);
+        generateItem(translationBuilder, ModItems.NUCLEAR_DETONATOR, 0, "Nuclear Detonator", "Can activate nuclear charges.", nuclear);
         generateItem(translationBuilder, ModItems.ENERGY_CELL, 0, "Energy Cell", null, null);
         generateItem(translationBuilder, BetaItems.JUMP_DRIVE, 0, "Jump Drive", null, gunmetal);
         generateItem(translationBuilder, BetaItems.JETPACK, 0, "Jetpack", null, blood_red);
 
-        generateItem(translationBuilder, ModEffectItems.RESISTANCE_ITEM, 0, "Shield Badge", null, newColor(2, gray, davys_grey));
+        generateItem(translationBuilder, ModEffectItems.RESISTANCE_ITEM, 0, "Shield Badge", null, newColor(2, "gray", "davysgrey"));
         generateItem(translationBuilder, ModEffectItems.FIRE_RESISTANCE_ITEM, 0, "Flaming Badge", null, hellfire);
-        generateItem(translationBuilder, ModEffectItems.JUMP_BOOST_ITEM, 0, "Icarus' Gust", null, animGreen);
+        generateItem(translationBuilder, ModEffectItems.JUMP_BOOST_ITEM, 0, "Icarus' Gust", null, nuclear);
         //strength_item: Sword Badge
         generateItem(translationBuilder, ModEffectItems.WEAKNESS_ITEM, 0, "Shattered Sword", "A reminder of your past failures.", null);
         //regeneration_item: Ever-Beating Heart
@@ -325,12 +332,13 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
                 "Touching it makes you feel hydrodynamic.", "2_#cddced_#577391");
         //conduit_power_item: Eye of the Sea
         //night_vision_item: Night Vision Goggles
-        generateItem(translationBuilder, ModEffectItems.HERO_OF_THE_VILLAGE_ITEM, 0, "Hero's Emerald", "Gifted to the one who shall never be forgotten.", animGreen);
+        generateItem(translationBuilder, ModEffectItems.HERO_OF_THE_VILLAGE_ITEM, 0, "Hero's Emerald", "Gifted to the one who shall never be forgotten.", nuclear);
         //paladins_badge: Paladin's Badge
         generateItem(translationBuilder, ModEffectItems.GALINITE_STOMACH, 0, "Galinite Stomach", "Powers the body.", newColor(2, "#FF8F00", galiniteGray));
         generateItem(translationBuilder, ModEffectItems.ONE_PENCE, 0, "The One Pence", null, copper);
 
-        generateItem(translationBuilder, ModBlocks.SUPERFORGE, 0, "Nuclear Superforge", null, animGreen);
+        generateItem(translationBuilder, ModBlocks.FORGE, 0, "Forge", null, null);
+        generateItem(translationBuilder, ModBlocks.SUPERFORGE, 0, "Nuclear Superforge", null, nuclear);
         generateItem(translationBuilder, ModBlocks.MODIFICATION_TABLE, 0, "Modification Table", null, null);
         generateItem(translationBuilder, ModBlocks.RED_BUTTON, 0, "Big Red Button", "\"Whatever you do, don't press it.\"", sentiRed);
         generateItem(translationBuilder, ModBlocks.RED_PLATE, 0, "Big Red Pressure Plate", "1500 Megawatt Heavy Duty Super Colliding Super Plate", sentiRed);
@@ -340,34 +348,151 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
 
         generateItem(translationBuilder, ModItems.SENTINEL_SPAWN_EGG, 0, "Sentinel Spawn Beacon", "A mindless, yet not soulless, killing machine.", galiniteGray);
         generateItem(translationBuilder, ModItems.ROOMBA_SPAWN_EGG, 0, "Sentinel Cleaning Droid", "Once a human, now reduced to wiping away garbage.", galiniteGray);
+        generateItem(translationBuilder, ModItems.FLORBUS_SPAWN_EGG, 0, "Florbus Spawn Sac", null, null);
         generateItem(translationBuilder, ModItems.VENDOR_TOKEN, 0, "Vendor Token", null, "2_#a2afb1_#6b7779");
         generateItem(translationBuilder, ModItems.LEGENDARY_TOKEN, 0, "Legendary Token", null, null);
 
-        translationBuilder.add(new Identifier(MOD_ID, "assassination_upload"), ModItems.MUSIC_DISC_ASSASSINATION_UPLOAD.getName().getString()+" plays");
-        translationBuilder.add(new Identifier(MOD_ID, "ode_to_tranquility"), ModItems.MUSIC_DISC_ODE_TO_TRANQUILITY.getName().getString()+" plays");
-        translationBuilder.add(new Identifier(MOD_ID, "lapse_in_judgement"), ModItems.MUSIC_DISC_LAPSE_IN_JUDGEMENT.getName().getString()+" plays");
-        translationBuilder.add("trevorssentinels:recital", "Aged Cassette plays");
+        generateMusicDisc(translationBuilder, ModItems.MUSIC_DISC_ASSASSINATION_UPLOAD, 0, "Galinite Cassette", null, null,
+                "Kristoffer Kaufmann - Assassination Upload", ModSounds.ASSASSINATION_UPLOAD);
+        generateMusicDisc(translationBuilder, ModItems.MUSIC_DISC_ODE_TO_TRANQUILITY, 0, "Music Disc", null, null,
+                "Kristoffer Kaufmann - Ode to Tranquility", ModSounds.ODE_TO_TRANQUILITY);
+        generateMusicDisc(translationBuilder, ModItems.MUSIC_DISC_LAPSE_IN_JUDGEMENT, 0, "War-Torn Music Disc", null, null,
+                "Kristoffer Kaufmann - Lapse in Judgement", ModSounds.LAPSE_IN_JUDGEMENT);
+        generateMusicDisc(translationBuilder, ModItems.MUSIC_DISC_RECITAL, 0, "Aged Cassette", "It's in remarkably good condition.", null,
+                "Trevor Skullcrafter - recital", ModSounds.RECITAL);
 
-        if (dataOutput.getModContainer().findPath("assets/trevorssentinels/lang/en_us.existing.json").isPresent()) try {
-            translationBuilder.add(dataOutput.getModContainer().findPath("assets/trevorssentinels/lang/en_us.existing.json").get());
-        } catch (Exception e) { throw new RuntimeException("Failed to add existing language file!", e); }
+        translationBuilder.add("trevorssentinels:flesh_ambient", "Flesh wriggles");
+        translationBuilder.add("trevorssentinels:blaster_shoot", "Shot laser");
+        translationBuilder.add("trevorssentinels:pistol_reload", "Reloading");
+        translationBuilder.add("trevorssentinels:shotgun_reload", "Reloading");
+        translationBuilder.add("trevorssentinels:sniper_reload", "Reloading");
+        translationBuilder.add("trevorssentinels:bio_reload", "Reloading");
+        translationBuilder.add("trevorssentinels:database_open", "Codex opened");
+        translationBuilder.add("trevorssentinels:database_flip", "Codex flipped");
+        translationBuilder.add("trevorssentinels:notch_up", "Powering up");
+
+        generateItem(translationBuilder, ModItems.FERRAURIUM_DARKSTEEL_INGOT, 0, "Hallucium Ingot", "Born from both light and dark.", rainbow);
+
+        translationBuilder.add("itemGroup.trevorssentinels.sentinels", "Trevor's Sentinels");
+        translationBuilder.add("itemGroup.trevorssentinels.effects", "Trevor's Effect Items");
+        translationBuilder.add("itemGroup.trevorssentinels.beta", "Trevor's Sentinels - Beta");
+
+        translationBuilder.add("trevorssentinels.database.name", "HoloCodex");
+        translationBuilder.add("trevorssentinels.database.desc", "Your guide to this world of magic and technology, this database will store all information that may be useful on your adventure.");
+
+        translationBuilder.add("pillar.trevorssentinels.chaos", "Chaos");
+        translationBuilder.add("pillar.trevorssentinels.truth", "Truth");
+        translationBuilder.add("pillar.trevorssentinels.power", "Power");
+        translationBuilder.add("pillar.trevorssentinels.justice", "Justice");
+        translationBuilder.add("pillar.trevorssentinels.balance", "☮ Balance");
+        translationBuilder.add("pillar.trevorssentinels.wisdom", "Wisdom");
+        translationBuilder.add("pillar.trevorssentinels.tranquility", "☽ Tranquility");
+        translationBuilder.add("pillar.trevorssentinels.purity", "Purity");
+
+        translationBuilder.add("item.trevorssentinels.quicksand_bucket", "Quicksand Bucket");
+        generateItem(translationBuilder, ModBlocks.DATA_BLOCK, 0, "Data Block", null, sentiBlue);
+        generateItem(translationBuilder, ModBlocks.BLUE_AGILITY_BLOCK, 0, "Blue Agility Block", null, sentiBlue);
+        generateItem(translationBuilder, ModBlocks.ORANGE_AGILITY_BLOCK, 0, "Orange Agility Block", null, "gold");
+        generateItem(translationBuilder, ModBlocks.BLACK_AGILITY_BLOCK, 0, "Steel Magno-Repulsion Block", "Watch your step.", null);
+        generateItem(translationBuilder, ModBlocks.LIGHT_CHAMBER_BLOCK, 0, "Light Chamber Panel", null, null);
+        generateItem(translationBuilder, ModBlocks.DARK_CHAMBER_BLOCK, 0, "Dark Chamber Panel", null, null);
+
+        generateItem(translationBuilder, ModBlocks.STEEL_BLOCK, 0, "Block of Steel", null, null);
+        generateItem(translationBuilder, ModBlocks.CAUTION_STEEL_BLOCK, 0, "Caution-Pattern Block of Steel", null, null);
+        generateItem(translationBuilder, ModBlocks.RUSTED_STEEL_BLOCK, 0, "Rusted Block of Steel", null, null);
+        generateItem(translationBuilder, ModBlocks.STAINLESS_STEEL_BLOCK, 0, "Stainless Steel Block", null, null);
+        generateItem(translationBuilder, ModBlocks.WAX_INFUSED_COPPER_BLOCK, 0, "Wax-Infused Block of Copper", null, null);
+        generateItem(translationBuilder, ModBlocks.STEEL_LAMP_BLOCK, 0, "Steel Industrial Lamp", null, null);
+        generateItem(translationBuilder, ModBlocks.STEEL_FAN, 0, "Steel Industrial Fan", null, null);
+        generateItem(translationBuilder, ModBlocks.BATTERY, 0, "Battery", null, null);
+        generateItem(translationBuilder, ModBlocks.FUSEBOX, 0, "Fusebox", null, null);
+        generateItem(translationBuilder, ModBlocks.STEEL_LADDER, 0, "Steel Ladder", null, null);
+        generateItem(translationBuilder, ModBlocks.VENDOR, 0, "Vendor", null, null);
+        generateItem(translationBuilder, ModBlocks.FANCY_COMPUTER, 0, "Fancy Computer", null, null);
+        generateItem(translationBuilder, ModItems.STEEL_SIGN, 0, "Steel Sign", null, null);
+        generateItem(translationBuilder, ModItems.HOLOGRAPHIC_SIGN, 0, "Steel Holographic Sign", null, null);
+
+        generateItem(translationBuilder, ModBlocks.HOLOBARRIER, 0, "Hard Light Block", null, sentiBlue);
+
+        generateItem(translationBuilder, ModBlocks.CRACKED_END_STONE_BRICKS, 0, "Cracked End Stone Bricks", null, null);
+        generateItem(translationBuilder, ModBlocks.CHISELED_END_STONE_BRICKS, 0, "Chiseled End Stone Bricks", null, null);
+        generateItem(translationBuilder, ModBlocks.END_STONE_BRICK_COLUMN, 0, "End Stone Brick Column", null, null);
+
+        generateItem(translationBuilder, ModBlocks.SNOWSTONE, 0, "Snowstone", null, "#f0fdfd");
+        generateItem(translationBuilder, ModBlocks.CHISELED_SNOWSTONE, 0, "Chiseled Snowstone", null, "#f0fdfd");
+        generateItem(translationBuilder, ModBlocks.CUT_SNOWSTONE, 0, "Cut Snowstone", null, "#f0fdfd");
+        generateItem(translationBuilder, ModBlocks.SMOOTH_SNOWSTONE, 0, "Smooth Snowstone", null, "#f0fdfd");
+        generateItem(translationBuilder, ModBlocks.SNOWSTONE_SLAB, 0, "Snowstone Slab", null, "#f0fdfd");
+        generateItem(translationBuilder, ModBlocks.CUT_SNOWSTONE_SLAB, 0, "Cut Snowstone Slab", null, "#f0fdfd");
+        generateItem(translationBuilder, ModBlocks.SNOWSTONE_STAIRS, 0, "Snowstone Stairs", null, "#f0fdfd");
+        generateItem(translationBuilder, ModBlocks.SNOWSTONE_WALL, 0, "Snowstone Wall", null, "#f0fdfd");
+        generateItem(translationBuilder, ModBlocks.SMOOTH_SNOWSTONE_STAIRS, 0, "Smooth Snowstone Stairs", null, "#f0fdfd");
+        generateItem(translationBuilder, ModBlocks.SMOOTH_SNOWSTONE_SLAB, 0, "Smooth Snowstone Slab", null, "#f0fdfd");
+
+        generateItem(translationBuilder, ModBlocks.DIRT_STAIRS, 0, "Dirt Stairs", null, null);
+        generateItem(translationBuilder, ModBlocks.DIRT_SLAB, 0, "Dirt Slab", null, null);
+        generateItem(translationBuilder, ModBlocks.COARSE_DIRT_STAIRS, 0, "Coarse Dirt Stairs", null, null);
+        generateItem(translationBuilder, ModBlocks.COARSE_DIRT_SLAB, 0, "Coarse Dirt Slab", null, null);
+        generateItem(translationBuilder, ModBlocks.OVERGROWN_GRASS_BLOCK, 0, "Overgrown Grass Block", null, null);
+        generateItem(translationBuilder, ModBlocks.GRASS_STAIRS, 0, "Grass Stairs", null, null);
+        generateItem(translationBuilder, ModBlocks.GRASS_SLAB, 0, "Grass Slab", null, null);
+        generateItem(translationBuilder, ModBlocks.MOSS_STAIRS, 0, "Moss Stairs", null, null);
+        generateItem(translationBuilder, ModBlocks.MOSS_SLAB, 0, "Moss Slab", null, null);
+
+        generateItem(translationBuilder, ModBlocks.RICE_PLANT, 0, "Rice Plant", null, null);
+        generateItem(translationBuilder, ModBlocks.RICE_BLOCK, 0, "Rice Block", null, null);
+        generateItem(translationBuilder, ModBlocks.GOLDEN_RICE_PLANT, 0, "Golden Rice Plant", null, null);
+        generateItem(translationBuilder, ModBlocks.GOLDEN_RICE_BLOCK, 0, "Golden Rice Block", null, null);
+
+        translationBuilder.add("death.attack.redstoned", "%1$s gave into the pain");
+        translationBuilder.add("death.attack.infested", "%1$s didn't make it");
+        translationBuilder.add("death.attack.irradiated", "%1$s ate one too many bananas");
+
+        translationBuilder.add("key.category.trevorssentinels.trevorssentinels", "Trevor's Sentinels");
+        translationBuilder.add("key.trevorssentinels.style_switch", "Style Switch");
+        translationBuilder.add("key.trevorssentinels.reload", "Reload");
+
+        //"entry.trevorssentinels.name.0": "Hard Light",
+        //"entry.trevorssentinels.text.0": "A block of concentrated, frozen photons; can only be interacted with using a Hard Light Projector.",
+        //"entry.trevorssentinels.name.4": "Chamber Panels",
+        //"entry.trevorssentinels.text.4": "Lightweight panels built to protect against any amount of fall damage. Used in laboratories for experimentation, especially alongside agility gel.",
+        //"entry.trevorssentinels.name.5": "Agility Gel",
+        //"entry.trevorssentinels.text.5": "A velocity-enhancing gel used to simulate high velocity situations, typically for experimentation purposes.",
+        //"entry.trevorssentinels.name.7": "Magno-Repulsion",
+        //"entry.trevorssentinels.text.7": "A transportation method using hypermagnesis to propel the user in any direction while within a magnetic field.",
+        //"entry.trevorssentinels.warn.7": "WARNING: Lack of a functional guidance system may result in uncontrollable acceleration on magno-repulsive surfaces.",
+        //"entry.trevorssentinels.name.9": "The Fathermind",
+        //"entry.trevorssentinels.text.9": "A self-sufficient network spanning all of Utaria.",
+        //"entry.trevorssentinels.warn.9": "They made us gods, and expected us to follow their rules.",
+        //"entry.trevorssentinels.name.14": "Nether Flora",
+        //"entry.trevorssentinels.text.14": "Affected by the Nether's anomalous properties, these lifeforms are mostly resistant to heat and flame.",
+        //"entry.trevorssentinels.warn.14": "WARNING: Extended contact with this flora may result in unpredictable consequences. Destroy whenever possible.",
+
+        //if (dataOutput.getModContainer().findPath("assets/trevorssentinels/lang/en_us.existing.json").isPresent()) try {
+        //    translationBuilder.add(dataOutput.getModContainer().findPath("assets/trevorssentinels/lang/en_us.existing.json").get());
+        //} catch (Exception e) { throw new RuntimeException("Failed to add existing language file!", e); }
     }
 
-    public static final String black = "#000000"; public static final String dark_blue = "#0000AA"; public static final String dark_green = "#00AA00";
-    public static final String dark_aqua = "#00AAAA"; public static final String dark_red = "#AA0000"; public static final String dark_purple = "#AA00AA";
-    public static final String gold = "#FFAA00"; public static final String gray = "#AAAAAA"; public static final String dark_gray = "#555555";
-    public static final String blue = "#5555FF"; public static final String green = "#55FF55"; public static final String aqua = "#55FFFF";
-    public static final String red = "#FF5555"; public static final String light_purple = "#FF55FF"; public static final String yellow = "#FFFF55";
-    public static final String white = "#FFFFFF"; public static final String davys_grey = "555555"; public static final String sentiBlue = "#189DBB";
-    public static final String sentiRed = "#D31400"; public static final String galiniteGray = "#64666b";
+    //https://github.com/AHilyard/Prism/wiki/Prism-Documentation#color-format-options
 
-    public static final String animRed = newColor(red, dark_red);
-    public static final String animYellow = newColor(yellow, gold);
-    public static final String animGreen = newColor(green, dark_green);
-    public static final String animAqua = newColor(aqua, dark_aqua);
-    public static final String animBlue = newColor(blue, dark_blue);
+    public static final String sentiBlue = "#189DBB"; public static final String sentiRed = "#D31400"; public static final String galiniteGray = "#64666b";
+    public static final String nuclear = "#47fa0c";
+
+    public static final String dark_red = "#AA0000";
+    public static final String dark_green = "#00AA00";
+    public static final String dark_aqua = "#00AAAA";
+    public static final String dark_blue = "#0000AA";
+    public static final String light_purple = "#FF55FF";
+    public static final String dark_purple = "#AA00AA";
+    public static final String dark_gray = "#555555";
+
+    public static final String animRed = newColor("red", dark_red);
+    public static final String animYellow = newColor("yellow", "gold");
+    public static final String animGreen = newColor("green", dark_green);
+    public static final String animAqua = newColor("aqua", dark_aqua);
+    public static final String animBlue = newColor("blue", dark_blue);
     public static final String animPurple = newColor(light_purple, dark_purple);
-    public static final String animGray = newColor(gray, dark_gray);
+    public static final String animGray = newColor("gray", dark_gray);
 
     public static final String galinite = newColor(1.5, galiniteGray, "#4a4752", sentiBlue);
     public static final String copper = "2_#e77c56_#8a4129";
@@ -387,7 +512,7 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
     public static final String flesh_pink = "1_#bf5755_#772221";
     public static final String dune_tan = "#d4b963";
     public static final String rainbow = "1_#ed4d9c_#ed764d_#eced4d_#75ed4d_#4ded9f_#4dc3ed_#4e4ded_#c64ded";
-    public static final String sentinel_accent = newColor(3, sentiBlue, galiniteGray, gold, galiniteGray, sentiRed, galiniteGray);
+    public static final String sentinel_accent = newColor(3, sentiBlue, galiniteGray, "gold", galiniteGray, sentiRed, galiniteGray);
     public static final String patriot = "2_#b40000_#fbfbfb_#273b93_#fbfbfb";
     public static final String hellfire = "1_#f48522_#ca4e06";
 
@@ -467,9 +592,26 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
         if(color != null) translationBuilder.add("color.material." + MOD_ID + "." + material.getName(), color);
     }
 
+    public void generateStatusEffect(TranslationBuilder translationBuilder, StatusEffect statusEffect, String name, boolean potion){
+        translationBuilder.add(statusEffect, name);
+        if(potion){
+            String key = statusEffect.getTranslationKey().substring(("effect."+ MOD_ID).length()+1);
+            translationBuilder.add("item.minecraft.potion.effect."+key+"_potion", name + " Potion");
+            translationBuilder.add("item.minecraft.splash_potion.effect."+key+"_potion", "Splash Potion of " + name);
+            translationBuilder.add("item.minecraft.lingering_potion.effect."+key+"_potion", "Lingering Potion of " + name);
+            translationBuilder.add("item.minecraft.tipped_arrow.effect."+key+"_potion", "Arrow of " + name);
+        }
+    }
+
     public void generatePot(@NotNull TranslationBuilder translationBuilder, ItemConvertible r, ItemConvertible p, int custom, String name, String tooltip, String color){
         if(r!=null) generateItem(translationBuilder, r, custom, name, tooltip, color);
         if(p!=null) generateItem(translationBuilder, p, custom, "Potted "+name, tooltip, color);
+    }
+
+    public void generateMusicDisc(TranslationBuilder translationBuilder, ItemConvertible item, int custom, String name, String tooltip, String color, String desc, SoundEvent sound){
+        generateItem(translationBuilder, item, custom, name, tooltip, color);
+        translationBuilder.add(item.asItem().getTranslationKey()+".desc", desc);
+        translationBuilder.add(sound.getId(), item.asItem().getName().getString()+" plays");
     }
 
     public void generateItem(TranslationBuilder translationBuilder, ItemConvertible item, int custom, String name, String tooltip, String color) {
@@ -477,5 +619,9 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
         if(name != null) translationBuilder.add(key + (custom != 0 ? (".custom" + custom) : ""), name);
         if (tooltip != null) translationBuilder.add("tooltip." + key + (custom != 0? (".custom" + custom) : ""), tooltip);
         if (color != null) translationBuilder.add("color." + key + (custom != 0? (".custom" + custom) : ""), color);
+    }
+
+    public void generateMultiple(TranslationBuilder translationBuilder, String translationKey, String... nums){
+        for (int i = 0; i < nums.length; i++) translationBuilder.add(translationKey+(i+1), nums[i]);
     }
 }

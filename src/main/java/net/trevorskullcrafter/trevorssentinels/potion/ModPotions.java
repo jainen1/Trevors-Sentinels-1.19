@@ -12,6 +12,7 @@ import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 
 public class ModPotions {
     public static Potion REDSTONED_POTION;
+    public static Potion FLIGHT_POTION;
 
     public static Potion registerPotion(String name, StatusEffectInstance statusEffectInstance){
         return Registry.register(Registries.POTION, new Identifier(trevorssentinels.MOD_ID, name), new Potion(statusEffectInstance));
@@ -19,6 +20,7 @@ public class ModPotions {
 
     public static void registerPotions(){
         trevorssentinels.LOGGER.info("Registering potions... (" + MOD_ID + ")");
-        REDSTONED_POTION = registerPotion("redstoned_potion", new StatusEffectInstance(ModEffects.REDSTONED, 1000, 0));
+        REDSTONED_POTION = registerPotion("redstoned_potion", new StatusEffectInstance(ModEffects.REDSTONED, 600, 0));
+        FLIGHT_POTION = registerPotion("flight_potion", new StatusEffectInstance(ModEffects.REDSTONED, 9600, 0));
     }
 }

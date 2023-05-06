@@ -10,7 +10,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvents;
 import net.trevorskullcrafter.trevorssentinels.effect.ModEffects;
 import net.trevorskullcrafter.trevorssentinels.item.custom.*;
-import net.trevorskullcrafter.trevorssentinels.item.custom.unique.SentinumChainsawItem;
+import net.trevorskullcrafter.trevorssentinels.item.custom.unique.*;
 import net.trevorskullcrafter.trevorssentinels.sound.ModSounds;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
 import net.minecraft.util.Identifier;
@@ -18,7 +18,6 @@ import net.minecraft.util.Identifier;
 import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 
 public class ModArmory {
-
     public static final Item FLIMSY_GALINITE_SWORD = registerItem("flimsy_galinite_sword",
             new SwordItem(ModToolMaterials.FLIMSY_GALINITE, 1, -2.4f, new FabricItemSettings()));
     public static final Item FLIMSY_GALINITE_DAGGER = registerItem("flimsy_galinite_dagger",
@@ -47,7 +46,7 @@ public class ModArmory {
     public static final Item GALINITE_PICKAXE = registerItem("galinite_pickaxe",
             new PickaxeItem(ModToolMaterials.GALINITE, 0, -2.8f, new FabricItemSettings()));
     public static final Item GALINITE_CHAINSAW = registerItem("galinite_chainsaw",
-            new SentinumChainsawItem(ModToolMaterials.GALINITE, 3, -3f, new FabricItemSettings()));
+            new GaliniteChainsawItem(ModToolMaterials.GALINITE, 3, -3f, new FabricItemSettings()));
     public static final Item GALINITE_SHOVEL = registerItem("galinite_shovel",
             new ShovelItem(ModToolMaterials.GALINITE, 1.5f, -3f, new FabricItemSettings()));
     public static final Item GALINITE_HOE = registerItem("galinite_hoe",
@@ -214,6 +213,8 @@ public class ModArmory {
 
     public static final Item SCARA_SHEARS = registerItem("scara_shears",
             new SwordItem(ModToolMaterials.ZENITHIUM,3,-2.4f, new FabricItemSettings().fireproof()));
+    public static final Item MASTER_SWORD = registerItem("master_sword",
+            new SwordItem(ModToolMaterials.ZENITHIUM, 3, -2.4f, new FabricItemSettings().fireproof()));
 
     public static final Item LASER_PISTOL = registerItem("laser_pistol", new LaserGunItem(new FabricItemSettings().maxDamage(7), 1, 1.5f,
             4.0f, 1.0f, 0.01f, 20, 4, 9, 50, ModSounds.BLASTER_SHOOT,

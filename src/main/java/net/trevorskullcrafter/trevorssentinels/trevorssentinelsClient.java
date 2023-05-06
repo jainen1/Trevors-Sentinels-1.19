@@ -22,9 +22,10 @@ import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
 import net.trevorskullcrafter.trevorssentinels.event.KeyInputHandler;
 import net.trevorskullcrafter.trevorssentinels.fluid.ModFluids;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
+import net.trevorskullcrafter.trevorssentinels.networking.ModMessages;
 import net.trevorskullcrafter.trevorssentinels.screen.ForgeScreen;
 import net.trevorskullcrafter.trevorssentinels.screen.ModScreenHandlers;
-import net.trevorskullcrafter.trevorssentinels.util.ModModelPredicateProvider;
+import net.trevorskullcrafter.trevorssentinels.util.ModRegistries;
 
 public class trevorssentinelsClient implements ClientModInitializer {
 
@@ -45,8 +46,7 @@ public class trevorssentinelsClient implements ClientModInitializer {
                 ModBlocks.MODIFICATION_TABLE, ModBlocks.TRANQUIL_ROSE, ModBlocks.POTTED_TRANQUIL_ROSE, ModBlocks.FEATHERCORN, ModBlocks.SKULLWEED,
                 ModBlocks.POTTED_SKULLWEED, ModBlocks.RICE_PLANT, ModBlocks.GOLDEN_RICE_PLANT, ModBlocks.FLESH_VEINS);
 
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.HOLOBARRIER, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DATA_BLOCK, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), ModBlocks.HOLOBARRIER, ModBlocks.DATA_BLOCK);
 
         FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.QUICKSAND_STILL, ModFluids.QUICKSAND_FLOWING,
         new SimpleFluidRenderHandler(new Identifier("trevorssentinels:block/quicksand_still"), new Identifier("trevorssentinels:block/quicksand_flow")));
@@ -55,8 +55,9 @@ public class trevorssentinelsClient implements ClientModInitializer {
         HandledScreens.register(ModScreenHandlers.FORGE_SCREEN_HANDLER, ForgeScreen::new);
 
         KeyInputHandler.register();
+        ModMessages.registerS2CPackets();
 
-        ModModelPredicateProvider.registerModModels();
+        ModRegistries.registerModelPredicates();
         EntityRendererRegistry.register(ModEntities.SENTINEL, SentinelRenderer::new);
         EntityRendererRegistry.register(ModEntities.GALINITE_ROOMBA, RoombaRenderer::new);
         EntityRendererRegistry.register(ModEntities.FLORBUS, FlorbusRenderer::new);
