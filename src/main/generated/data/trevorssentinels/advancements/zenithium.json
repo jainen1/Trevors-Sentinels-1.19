@@ -33,5 +33,6 @@
     [
       "got_cluster"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

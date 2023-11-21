@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "trevorssentinels:block/viridescent_planks",
+    "side": "trevorssentinels:block/viridescent_planks",
+    "top": "trevorssentinels:block/viridescent_planks"
+  }
+}

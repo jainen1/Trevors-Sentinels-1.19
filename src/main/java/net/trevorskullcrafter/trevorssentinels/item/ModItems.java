@@ -13,7 +13,7 @@ import net.trevorskullcrafter.trevorssentinels.effect.ModEffects;
 import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
 import net.trevorskullcrafter.trevorssentinels.item.custom.*;
 import net.trevorskullcrafter.trevorssentinels.item.custom.unique.ChaddBucketItem;
-import net.trevorskullcrafter.trevorssentinels.item.custom.unique.HoloprojectorItem;
+import net.trevorskullcrafter.trevorssentinels.item.custom.unique.HardLightProjectorItem;
 import net.trevorskullcrafter.trevorssentinels.item.custom.unique.LensItem;
 import net.trevorskullcrafter.trevorssentinels.item.custom.unique.NuclearFireworkItem;
 import net.trevorskullcrafter.trevorssentinels.sound.ModSounds;
@@ -23,13 +23,13 @@ import net.minecraft.util.Identifier;
 import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 
 public class ModItems {
-    public static final Item GALINITE_SHARD = registerItem("galinite_shard", new Item(new FabricItemSettings()));
-    public static final Item GALINITE_INGOT = registerItem("galinite_ingot", new Item(new FabricItemSettings()));
+    public static final Item SCRAP_METAL_SHARD = registerItem("scrap_metal_shard", new Item(new FabricItemSettings()));
+    public static final Item GALLIUM_VIAL = registerItem("gallium_vial", new Item(new FabricItemSettings()));
     public static final Item GUNMETAL_INGOT = registerItem("gunmetal_ingot", new Item(new FabricItemSettings()));
     public static final Item STEEL_INGOT = registerItem("steel_ingot", new Item(new FabricItemSettings()));
     public static final Item COPPER_IRON_INGOT = registerItem("copper_iron_ingot", new Item(new FabricItemSettings()));
     public static final Item ROSE_GOLD_INGOT = registerItem("rose_gold_ingot", new Item(new FabricItemSettings()));
-    public static final Item IRON_GOLD_INGOT = registerItem("iron_gold_ingot", new Item(new FabricItemSettings()));
+    public static final Item IMPERIAL_ALLOY_INGOT = registerItem("imperial_alloy_ingot", new Item(new FabricItemSettings()));
     public static final Item TRANSITITE_SHARDS = registerItem("transitite_shards", new Item(new FabricItemSettings()));
     public static final Item ASH = registerItem("ash", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(-1).saturationModifier(0.2f).build())));
@@ -48,8 +48,7 @@ public class ModItems {
     public static final Item ZENITHIUM_CLUSTER = registerItem("zenithium_cluster", new Item(new FabricItemSettings().fireproof()));
 
     public static final Item GALINITE_LENS = registerItem("galinite_lens", new LensItem(new FabricItemSettings().maxCount(1), 1.6, 15));
-    public static final Item GALINITE_HOLOPROJECTOR = registerItem("galinite_holoprojector",
-            new HoloprojectorItem(new FabricItemSettings().maxDamage(129)));
+    public static final Item HARD_LIGHT_PROJECTOR = registerItem("hard_light_projector", new HardLightProjectorItem(new FabricItemSettings().maxDamage(129)));
     public static final Item ENERGY_CELL = registerItem("energy_cell", new Item(new FabricItemSettings()));
     public static final Item NUCLEAR_ROCKET = registerItem("nuclear_rocket", new NuclearFireworkItem(new FabricItemSettings().maxDamage(93)));
     public static final Item NUCLEAR_DETONATOR = registerItem("nuclear_detonator", new Item(new FabricItemSettings().maxCount(1)));
@@ -86,13 +85,13 @@ public class ModItems {
     public static final Item BLUE_JAVA_BANANA_BREAD = registerItem("blue_java_banana_bread", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(4).saturationModifier(0.6f).statusEffect(new StatusEffectInstance(
                     ModEffects.WELL_FED, 400, 2), 0.5f).build())));
-    public static final Item RICE = registerItem("rice", new AliasedBlockItem(ModBlocks.RICE_PLANT, new FabricItemSettings()
+    public static final Item RICE_SEEDS = registerItem("rice_seeds", new AliasedBlockItem(ModBlocks.RICE_PLANT, new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build())));
     public static final Item RICE_CAKE = registerItem("rice_cake", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(3).saturationModifier(0.6f).build())));
     public static final Item SUSHI_ROLL = registerItem("sushi_roll", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(8).saturationModifier(0.8f).build())));
-    public static final Item GOLDEN_RICE = registerItem("golden_rice", new AliasedBlockItem(ModBlocks.GOLDEN_RICE_PLANT, new FabricItemSettings()
+    public static final Item GOLDEN_RICE_SEEDS = registerItem("golden_rice_seeds", new AliasedBlockItem(ModBlocks.GOLDEN_RICE_PLANT, new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(2).saturationModifier(0.4f).build())));
     public static final Item GOLDEN_RICE_CAKE = registerItem("golden_rice_cake", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(4).saturationModifier(1f).build())));
@@ -159,28 +158,30 @@ public class ModItems {
             new SpawnEggItem(ModEntities.FLORBUS, 0xd9c996, 0xb6a269, new FabricItemSettings()));
 
     public static final Item STEEL_SIGN = registerItem("steel_sign",
-            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.STEEL_SIGN_BLOCK, ModBlocks.STEEL_WALL_SIGN_BLOCK));
-    public static final Item HOLOGRAPHIC_SIGN = registerItem("holographic_sign",
-            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.HOLOGRAPHIC_SIGN_BLOCK, ModBlocks.HOLOGRAPHIC_WALL_SIGN_BLOCK));
+            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.STEEL_SIGN, ModBlocks.STEEL_WALL_SIGN));
+    public static final Item HOLOGRAPHIC_BLUE_SIGN = registerItem("holographic_blue_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.HOLOGRAPHIC_BLUE_SIGN_BLOCK, ModBlocks.HOLOGRAPHIC_BLUE_WALL_SIGN_BLOCK));
+    public static final Item HOLOGRAPHIC_RED_SIGN = registerItem("holographic_red_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.HOLOGRAPHIC_RED_SIGN_BLOCK, ModBlocks.HOLOGRAPHIC_RED_WALL_SIGN_BLOCK));
 
     public static final Item YGGDRASIL_SIGN = registerItem("yggdrasil_sign",
-            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.YGGDRASIL_SIGN_BLOCK, ModBlocks.YGGDRASIL_WALL_SIGN_BLOCK));
+            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.YGGDRASIL_SIGN, ModBlocks.YGGDRASIL_WALL_SIGN));
     public static final Item YGGDRASIL_HANGING_SIGN = registerItem("yggdrasil_hanging_sign",
             new HangingSignItem(ModBlocks.YGGDRASIL_HANGING_SIGN, ModBlocks.YGGDRASIL_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
-    public static final Item CHARRED_OAK_SIGN = registerItem("charred_oak_sign",
-            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.CHARRED_OAK_SIGN_BLOCK, ModBlocks.CHARRED_OAK_WALL_SIGN_BLOCK));
-    public static final Item CHARRED_OAK_HANGING_SIGN = registerItem("charred_oak_hanging_sign",
-            new HangingSignItem(ModBlocks.CHARRED_OAK_HANGING_SIGN, ModBlocks.CHARRED_OAK_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
+    public static final Item CHARRED_SIGN = registerItem("charred_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.CHARRED_SIGN, ModBlocks.CHARRED_WALL_SIGN));
+    public static final Item CHARRED_HANGING_SIGN = registerItem("charred_hanging_sign",
+            new HangingSignItem(ModBlocks.CHARRED_HANGING_SIGN, ModBlocks.CHARRED_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
     public static final Item MIDAS_SIGN = registerItem("midas_sign",
-            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.MIDAS_SIGN_BLOCK, ModBlocks.MIDAS_WALL_SIGN_BLOCK));
+            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.MIDAS_SIGN, ModBlocks.MIDAS_WALL_SIGN));
     public static final Item MIDAS_HANGING_SIGN = registerItem("midas_hanging_sign",
             new HangingSignItem(ModBlocks.MIDAS_HANGING_SIGN, ModBlocks.MIDAS_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
-    public static final Item BANANA_SIGN = registerItem("banana_sign",
-            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.BANANA_SIGN_BLOCK, ModBlocks.BANANA_WALL_SIGN_BLOCK));
-    public static final Item BANANA_HANGING_SIGN = registerItem("banana_hanging_sign",
-            new HangingSignItem(ModBlocks.BANANA_HANGING_SIGN, ModBlocks.BANANA_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
+    public static final Item VIRIDESCENT_SIGN = registerItem("viridescent_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.VIRIDESCENT_SIGN, ModBlocks.VIRIDESCENT_WALL_SIGN));
+    public static final Item VIRIDESCENT_HANGING_SIGN = registerItem("viridescent_hanging_sign",
+            new HangingSignItem(ModBlocks.VIRIDESCENT_HANGING_SIGN, ModBlocks.VIRIDESCENT_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
     public static final Item CERULII_SIGN = registerItem("cerulii_sign",
-            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.CERULII_SIGN_BLOCK, ModBlocks.CERULII_WALL_SIGN_BLOCK));
+            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.CERULII_SIGN, ModBlocks.CERULII_WALL_SIGN));
     public static final Item CERULII_HANGING_SIGN = registerItem("cerulii_hanging_sign",
             new HangingSignItem(ModBlocks.CERULII_HANGING_SIGN, ModBlocks.CERULII_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
 
@@ -188,17 +189,17 @@ public class ModItems {
             new BoatItem(false, BoatEntity.Type.BIRCH, new Item.Settings().maxCount(1)));
     public static final Item YGGDRASIL_CHEST_BOAT = registerItem("yggdrasil_chest_boat",
             new BoatItem(true, BoatEntity.Type.BIRCH, new Item.Settings().maxCount(1)));
-    public static final Item CHARRED_OAK_BOAT = registerItem("charred_oak_boat",
+    public static final Item CHARRED_BOAT = registerItem("charred_oak_boat",
             new BoatItem(false, BoatEntity.Type.OAK, new Item.Settings().maxCount(1)));
-    public static final Item CHARRED_OAK_CHEST_BOAT = registerItem("charred_oak_chest_boat",
+    public static final Item CHARRED_CHEST_BOAT = registerItem("charred_oak_chest_boat",
             new BoatItem(true, BoatEntity.Type.OAK, new Item.Settings().maxCount(1)));
     public static final Item MIDAS_BOAT = registerItem("midas_boat",
             new BoatItem(false, BoatEntity.Type.DARK_OAK, new Item.Settings().maxCount(1)));
     public static final Item MIDAS_CHEST_BOAT = registerItem("midas_chest_boat",
             new BoatItem(true, BoatEntity.Type.DARK_OAK, new Item.Settings().maxCount(1)));
-    public static final Item BANANA_BOAT = registerItem("banana_boat",
+    public static final Item VIRIDESCENT_BOAT = registerItem("viridescent_boat",
             new BoatItem(false, BoatEntity.Type.JUNGLE, new Item.Settings().maxCount(1)));
-    public static final Item BANANA_CHEST_BOAT = registerItem("banana_chest_boat",
+    public static final Item VIRIDESCENT_CHEST_BOAT = registerItem("viridescent_chest_boat",
             new BoatItem(true, BoatEntity.Type.JUNGLE, new Item.Settings().maxCount(1)));
     public static final Item CERULII_BOAT = registerItem("cerulii_boat",
             new BoatItem(false, BoatEntity.Type.JUNGLE, new Item.Settings().maxCount(1)));

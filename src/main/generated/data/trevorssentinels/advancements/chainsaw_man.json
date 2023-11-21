@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "trevorssentinels:galinite_chainsaw"
+              "trevorssentinels:gallium_chainsaw"
             ]
           }
         ]
@@ -22,7 +22,7 @@
     "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "trevorssentinels:galinite_chainsaw",
+      "item": "trevorssentinels:gallium_chainsaw",
       "nbt": "{Damage:0}"
     },
     "show_toast": true,
@@ -34,5 +34,6 @@
     [
       "got_chainsaw"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

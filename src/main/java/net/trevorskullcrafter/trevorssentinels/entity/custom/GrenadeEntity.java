@@ -6,7 +6,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.particle.ItemStackParticleEffect;
@@ -24,7 +23,7 @@ public class GrenadeEntity extends ThrownItemEntity {
     public GrenadeEntity(World world, double x, double y, double z) { super(ModEntities.GRENADE, x, y, z, world); }
 
     @Override
-    protected Item getDefaultItem() { return ModItems.GALINITE_SHARD; }
+    protected Item getDefaultItem() { return ModItems.SCRAP_METAL_SHARD; }
 
     @Environment(EnvType.CLIENT)
     private ParticleEffect getParticleParameters() { // Not entirely sure, but probably has to do with the snowball's particles. (OPTIONAL)
@@ -36,7 +35,7 @@ public class GrenadeEntity extends ThrownItemEntity {
         if (status == 3) {
             ParticleEffect particleEffect = this.getParticleParameters();
             for(int i = 0; i < 8; ++i) {
-                this.world.addParticle(particleEffect, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+                getWorld().addParticle(particleEffect, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             }
         }
     }
@@ -45,7 +44,7 @@ public class GrenadeEntity extends ThrownItemEntity {
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         Entity entity = entityHitResult.getEntity();
-        entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), 3);
+        entity.damage(entity.getDamageSources().mobProjectile(this, this.getOwner() instanceof LivingEntity livingEntity? livingEntity : null), 3);
     }
 
     @Override
@@ -56,8 +55,8 @@ public class GrenadeEntity extends ThrownItemEntity {
     @Override
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
-        if (!this.world.isClient) {
-            this.world.sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES); this.discard();
+        if (!getWorld().isClient) {
+            getWorld().sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES); this.discard();
         }
     }
 }

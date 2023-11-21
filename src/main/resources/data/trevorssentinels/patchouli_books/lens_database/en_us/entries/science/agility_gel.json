@@ -1,0 +1,12 @@
+{
+  "name": "Agility Gel",
+  "icon": "trevorssentinels:orange_agility_block",
+  "category": "trevorssentinels:science",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "trevorssentinels:orange_agility_block",
+      "text": "A pair of velocity-enhancing gels used to simulate high velocity situations, typically for experimentation purposes. Orange gel allows subjects to move at high speeds, and blue gel allows subjects to jump high."
+    }
+  ]
+}

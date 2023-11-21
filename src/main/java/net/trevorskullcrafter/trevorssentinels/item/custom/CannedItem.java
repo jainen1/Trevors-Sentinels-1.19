@@ -22,7 +22,10 @@ public class CannedItem extends Item {
         PlayerEntity playerEntity = user instanceof PlayerEntity ? (PlayerEntity)user : null;
         if (playerEntity instanceof ServerPlayerEntity) Criteria.CONSUME_ITEM.trigger((ServerPlayerEntity)playerEntity, stack);
         if (playerEntity != null){ playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
-        if (!playerEntity.isCreative()) playerEntity.giveItemStack(new ItemStack(ModItems.EMPTY_CAN)); }
+            if (!playerEntity.isCreative()) {
+                playerEntity.giveItemStack(new ItemStack(ModItems.EMPTY_CAN));
+            }
+        }
         user.emitGameEvent(GameEvent.DRINK);
         return super.finishUsing(stack, world, user);
     }

@@ -36,6 +36,7 @@ public class FleshyEyeBlock extends FacingBlock {
     }
 
     public boolean hasRandomTicks(BlockState state) { return true; }
+
     @Override public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         super.randomTick(state, world, pos, random);
         if (state.get(CLICKED)) world.setBlockState(pos, state.with(CLICKED, false));
@@ -43,8 +44,7 @@ public class FleshyEyeBlock extends FacingBlock {
     }
 
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
-        if(!entity.bypassesSteppingEffects() && state.get(CLICKED) && state.get(FACING) == Direction.UP){
-            world.setBlockState(pos, state.with(CLICKED, false)); }
+        if(!entity.bypassesSteppingEffects() && state.get(CLICKED) && state.get(FACING) == Direction.UP){ world.setBlockState(pos, state.with(CLICKED, false)); }
     }
 
     public BlockState rotate(BlockState state, BlockRotation rotation) { return state.with(FACING, rotation.rotate(state.get(FACING))); }

@@ -44,18 +44,13 @@ public class VendorBlock extends DirectionalBlock {
 
     @Override public boolean hasRandomTicks(BlockState state) { return true; }
     @Override public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (timeLeft > 0) { available = false; timeLeft--;
-        } else if (timeLeft < 0) timeLeft = 0;
+        if (timeLeft > 0) { available = false; timeLeft--; }
+        else if (timeLeft < 0) timeLeft = 0;
         else{ if(!available){
-                if (state.get(FACING) == Direction.NORTH) {
-                    ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ() - 1, drop());
-                } else if (state.get(FACING) == Direction.SOUTH) {
-                    ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ() + 1, drop());
-                } else if (state.get(FACING) == Direction.EAST) {
-                    ItemScatterer.spawn(world, pos.getX() + 1, pos.getY(), pos.getZ(), drop());
-                } else if (state.get(FACING) == Direction.WEST) {
-                    ItemScatterer.spawn(world, pos.getX() - 1, pos.getY(), pos.getZ(), drop());
-                }
+                if (state.get(FACING) == Direction.NORTH) { ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ() - 1, drop()); }
+                else if (state.get(FACING) == Direction.SOUTH) { ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ() + 1, drop()); }
+                else if (state.get(FACING) == Direction.EAST) { ItemScatterer.spawn(world, pos.getX() + 1, pos.getY(), pos.getZ(), drop()); }
+                else if (state.get(FACING) == Direction.WEST) { ItemScatterer.spawn(world, pos.getX() - 1, pos.getY(), pos.getZ(), drop()); }
                 available = true;
             }
         }

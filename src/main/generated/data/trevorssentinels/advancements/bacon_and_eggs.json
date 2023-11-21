@@ -44,5 +44,6 @@
     [
       "eaten_bacon"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

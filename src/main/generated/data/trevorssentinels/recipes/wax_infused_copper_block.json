@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "trevorssentinels:wax_infused_copper_block"
-  }
+  },
+  "show_notification": true
 }

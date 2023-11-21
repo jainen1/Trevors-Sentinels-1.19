@@ -18,7 +18,7 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
-import net.trevorskullcrafter.trevorssentinels.data.EnglishLangGenerator;
+import net.trevorskullcrafter.trevorssentinels.datagen.EnglishLangGenerator;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.LaserEntity;
 import org.jetbrains.annotations.Nullable;
 
@@ -74,7 +74,7 @@ public class LaserGunItem extends Item implements ToolSkinnable {
                 world.playSoundFromEntity(null, user, shootSound, SoundCategory.BLOCKS, Math.min(3.0F, 0.5F + (lasers * 0.5F)), 1.0F);
                 itemStack.damage(1, user, p -> p.sendToolBreakStatus(hand));
                 int magazine = itemStack.getMaxDamage() - itemStack.getDamage() - 1;
-                user.sendMessage(Text.empty().append(Text.literal(String.valueOf(magazine)).formatted(EnglishLangGenerator.numTooltipFormat(magazine,
+                user.sendMessage(Text.empty().append(Text.literal(String.valueOf(magazine)).formatted(EnglishLangGenerator.quotientToolTipFormatting(magazine,
                         itemStack.getMaxDamage() - 1))).append(Text.literal(" / " + (itemStack.getMaxDamage() - 1) + " ⚡")
                         .formatted(Formatting.GRAY)), true);
                 user.getItemCooldownManager().set(this, cooldownTime);
@@ -121,21 +121,21 @@ public class LaserGunItem extends Item implements ToolSkinnable {
     }
 
     @Override public void appendTooltip(ItemStack itemStack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        super.appendTooltip(itemStack, world, tooltip, context); int magazine = itemStack.getMaxDamage() - itemStack.getDamage() -1;
+        int magazine = itemStack.getMaxDamage() - itemStack.getDamage() -1;
         //class + magazine
         tooltip.add(Text.literal("Class: "+ getGunclass()));
-        tooltip.add(Text.empty().append(Text.literal(String.valueOf(magazine)).formatted(EnglishLangGenerator.numTooltipFormat(magazine,
+        tooltip.add(Text.empty().append(Text.literal(String.valueOf(magazine)).formatted(EnglishLangGenerator.quotientToolTipFormatting(magazine,
                 itemStack.getMaxDamage()-1))).append(Text.literal(" / " + (itemStack.getMaxDamage()-1)+" ⚡ ").formatted(Formatting.GRAY))
                 .append(Text.literal("△").formatted(getAutomaticReloading(itemStack, false)? Formatting.GREEN : Formatting.RED, Formatting.BOLD)));
         //stats
         double firingRate = 20.0/(cooldownTime+1);
         Text secondParameter;
         DecimalFormat df = new DecimalFormat("#.##");
-        if(firingRate <= 1) secondParameter = Text.literal(df.format(laserSpeed)+" →").formatted(EnglishLangGenerator.numTooltipFormat(laserSpeed, 4));
-        else secondParameter = Text.literal(firingRate+" \uD83D\uDD25").formatted(EnglishLangGenerator.numTooltipFormat(firingRate, 5));
-        tooltip.add(Text.empty().append(Text.literal(lasers+" ☄").formatted(EnglishLangGenerator.numTooltipFormat(lasers, 8)))
+        if(firingRate <= 1) secondParameter = Text.literal(df.format(laserSpeed)+" →").formatted(EnglishLangGenerator.quotientToolTipFormatting(laserSpeed, 4));
+        else secondParameter = Text.literal(firingRate+" \uD83D\uDD25").formatted(EnglishLangGenerator.quotientToolTipFormatting(firingRate, 5));
+        tooltip.add(Text.empty().append(Text.literal(lasers+" ☄").formatted(EnglishLangGenerator.quotientToolTipFormatting(lasers, 8)))
                 .append(column()).append(secondParameter).append(column()).append(Text.literal(Math.abs(laserDamage)+(laserDamage < 1 ? " ✚" : " ☠"))
-                        .formatted(EnglishLangGenerator.numTooltipFormat(Math.abs(laserDamage), 20))));
+                        .formatted(EnglishLangGenerator.quotientToolTipFormatting(Math.abs(laserDamage), 20))));
         //effect
         if(statusEffectList != null) { if(Screen.hasShiftDown()) for (StatusEffectInstance statusEffectInstance : statusEffectList) {
                     MutableText mutableText = Text.translatable(statusEffectInstance.getTranslationKey());
@@ -143,7 +143,7 @@ public class LaserGunItem extends Item implements ToolSkinnable {
                     if(statusEffectInstance.getAmplifier() > 0) mutableText = Text.translatable("potion.withAmplifier", mutableText,
                             Text.translatable("potion.potency." + statusEffectInstance.getAmplifier()));
                     if(statusEffectInstance.getDuration() > 20) mutableText = Text.translatable("potion.withDuration", mutableText,
-                            StatusEffectUtil.durationToString(statusEffectInstance, 1.0f));
+                            StatusEffectUtil.getDurationText(statusEffectInstance, 1.0f));
                     tooltip.add(Text.empty().append(statusEffectCategory == StatusEffectCategory.BENEFICIAL? "☀ " : statusEffectCategory ==
                                     StatusEffectCategory.NEUTRAL? "☯ " : "☠ ").append(mutableText)
                             .formatted(statusEffectCategory == StatusEffectCategory.BENEFICIAL? Formatting.GREEN : statusEffectCategory ==
@@ -151,6 +151,7 @@ public class LaserGunItem extends Item implements ToolSkinnable {
         else tooltip.add(Text.empty().append(Text.literal("SHIFT").formatted(Formatting.YELLOW)).append(Text.literal(" to show status effects.")
                     .formatted(Formatting.DARK_GRAY)));
         }
+        super.appendTooltip(itemStack, world, tooltip, context);
     }
 
     private Text column(){ return Text.literal(" | ").formatted(Formatting.DARK_GRAY); }

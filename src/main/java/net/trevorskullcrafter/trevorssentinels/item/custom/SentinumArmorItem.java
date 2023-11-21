@@ -31,8 +31,8 @@ public class SentinumArmorItem extends ArmorItem implements GeoItem {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
 
-    public SentinumArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Item.Settings builder) {
-        super(materialIn, slot, builder);
+    public SentinumArmorItem(ArmorMaterial materialIn, Type type, Item.Settings builder) {
+        super(materialIn, type, builder);
     }
 
     @Override public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
@@ -49,8 +49,8 @@ public class SentinumArmorItem extends ArmorItem implements GeoItem {
             }
 
             // Play the animation if the full set is being worn, otherwise stop
-            return wornArmor.containsAll(ObjectArrayList.of(ModArmory.GALINITE_HELMET, ModArmory.GALINITE_CHESTPLATE, ModArmory.GALINITE_LEGGINGS,
-                    ModArmory.GALINITE_BOOTS)) ? PlayState.CONTINUE : PlayState.STOP;
+            return wornArmor.containsAll(ObjectArrayList.of(ModArmory.SPACEFARERS_HELMET, ModArmory.SPACEFARERS_CHESTPLATE, ModArmory.SPACEFARERS_LEGGINGS,
+                    ModArmory.SPACEFARERS_BOOTS)) ? PlayState.CONTINUE : PlayState.STOP;
         }));
     }
 

@@ -3,6 +3,7 @@ package net.trevorskullcrafter.trevorssentinels.item.custom;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
@@ -15,7 +16,11 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectUtil;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.BowItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ToolMaterial;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
@@ -34,19 +39,31 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class DaggerItem extends Item {
-    public int attackDamage;
-    StatusEffectInstance[] effects;
-    private final int destroyChance;
+    private final ToolMaterial material;
+    private final float attackDamage;
+    private final StatusEffectInstance[] effects;
+    private final float destroyChance;
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
-    public DaggerItem(Settings settings, int attackDamage, float attackSpeed, int destroyChance, StatusEffectInstance... effects) {
-        super(settings); this.attackDamage = attackDamage; this.destroyChance = destroyChance; this.effects = effects;
+    public DaggerItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, float destroyChance, Settings settings, StatusEffectInstance... effects) {
+        super(settings); this.material = toolMaterial; this.attackDamage = (float) attackDamage + toolMaterial.getAttackDamage();
+        this.destroyChance = destroyChance; this.effects = effects;
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier", attackDamage,
                 EntityAttributeModifier.Operation.ADDITION));
         builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier", attackSpeed,
                 EntityAttributeModifier.Operation.ADDITION));
         this.attributeModifiers = builder.build();
+    }
+
+    public ToolMaterial getMaterial() { return this.material; }
+    public int getEnchantability() { return this.material.getEnchantability(); }
+    public float getAttackDamage() { return this.attackDamage; }
+    public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) { return !miner.isCreative(); }
+    public boolean isSuitableFor(BlockState state) { return state.isOf(Blocks.COBWEB); }
+    public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
+        if (state.isOf(Blocks.COBWEB)) { return 7.5F; }
+        else { return state.isIn(BlockTags.SWORD_EFFICIENT) ? 1.25F : 1.0F; }
     }
 
     @Override public UseAction getUseAction(ItemStack stack) { return UseAction.SPEAR; }
@@ -74,24 +91,22 @@ public class DaggerItem extends Item {
 
     @Override public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         //tooltip.add(Text.literal(attackDamage+" ").append(Text.translatable("attribute.name.generic.attack_damage")).formatted(Formatting.DARK_GREEN));
-        if(effects.length > 0) { if (Screen.hasShiftDown()) for (StatusEffectInstance statusEffectInstance : effects) {
-                MutableText mutableText = Text.translatable(statusEffectInstance.getTranslationKey());
-                StatusEffectCategory statusEffectCategory = statusEffectInstance.getEffectType().getCategory();
-                if (statusEffectInstance.getAmplifier() > 0)
-                    mutableText = Text.translatable("potion.withAmplifier", mutableText,
-                            Text.translatable("potion.potency." + statusEffectInstance.getAmplifier()));
-                if (statusEffectInstance.getDuration() > 20)
-                    mutableText = Text.translatable("potion.withDuration", mutableText,
-                            StatusEffectUtil.durationToString(statusEffectInstance, 1.0f));
-                tooltip.add(mutableText.formatted(statusEffectCategory == StatusEffectCategory.BENEFICIAL ? Formatting.GREEN : statusEffectCategory ==
-                        StatusEffectCategory.NEUTRAL ? Formatting.YELLOW : Formatting.RED));
-            } else tooltip.add(Text.empty().append(Text.literal("SHIFT").formatted(Formatting.YELLOW)).append(Text.literal(" to show status effects.")
-                        .formatted(Formatting.DARK_GRAY)));
+        if(effects.length > 0) { if (Screen.hasShiftDown()) { for (StatusEffectInstance statusEffectInstance : effects) {
+            MutableText mutableText = Text.translatable(statusEffectInstance.getTranslationKey());
+            StatusEffectCategory statusEffectCategory = statusEffectInstance.getEffectType().getCategory();
+            if (statusEffectInstance.getAmplifier() > 0) { mutableText = Text.translatable("potion.withAmplifier", mutableText,
+                    Text.translatable("potion.potency." + statusEffectInstance.getAmplifier())); }
+            if (statusEffectInstance.getDuration() > 20) { mutableText = Text.translatable("potion.withDuration", mutableText,
+                    StatusEffectUtil.getDurationText(statusEffectInstance, 1.0f)); }
+            tooltip.add(mutableText.formatted(statusEffectCategory == StatusEffectCategory.BENEFICIAL ?
+                    Formatting.GREEN : statusEffectCategory == StatusEffectCategory.NEUTRAL ? Formatting.YELLOW : Formatting.RED));
+        }} else { tooltip.add(Text.empty().append(Text.literal("SHIFT").formatted(Formatting.YELLOW))
+                .append(Text.literal(" to show status effects.").formatted(Formatting.DARK_GRAY))); }
         } super.appendTooltip(stack, world, tooltip, context);
     }
 
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (destroyChance > 0 && Random.createLocal().nextBetween(0, destroyChance * 2) == 0) {
+        if((Random.createLocal().nextFloat() % 1f) < destroyChance){
             attacker.getWorld().playSoundFromEntity(null, attacker, SoundEvents.ENTITY_ITEM_BREAK, SoundCategory.PLAYERS, 1, 1);
             stack.decrement(1);
         } return true;
@@ -99,7 +114,7 @@ public class DaggerItem extends Item {
 
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
         if ((double)state.getHardness(world, pos) != 0.0) {
-            if (destroyChance > 0 && Random.createLocal().nextBetween(0, destroyChance) == 0) {
+            if ((Random.createLocal().nextFloat() % 1f) < destroyChance) {
                 miner.getWorld().playSoundFromEntity(null, miner, SoundEvents.ENTITY_ITEM_BREAK, SoundCategory.PLAYERS, 1, 1);
                 stack.decrement(1);
             }

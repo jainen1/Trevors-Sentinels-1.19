@@ -1,0 +1,6 @@
+{
+  "parent": "trevorssentinels:item/hard_light_projector",
+  "textures": {
+    "layer0": "trevorssentinels:item/hard_light_projector2"
+  }
+}

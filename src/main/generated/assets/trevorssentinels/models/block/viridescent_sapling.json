@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "trevorssentinels:block/viridescent_sapling"
+  }
+}

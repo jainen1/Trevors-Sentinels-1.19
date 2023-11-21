@@ -39,7 +39,7 @@ public class FleshBlock extends FallDamagelessBlock {
 
     @Override public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
-        if(itemStack.getItem() instanceof BoneMealItem && world.getBlockState(pos.offset(hit.getSide())).getMaterial().isReplaceable()){
+        if(itemStack.getItem() instanceof BoneMealItem && world.getBlockState(pos.offset(hit.getSide())).isReplaceable()){
             if (!world.isClient) { world.setBlockState(pos.offset(hit.getSide()), ModBlocks.FLESH_VEINS.getDefaultState()
                     .with(Properties.EAST, hit.getSide() == Direction.WEST).with(Properties.WEST, hit.getSide() == Direction.EAST)
                     .with(Properties.NORTH, hit.getSide() == Direction.SOUTH).with(Properties.SOUTH, hit.getSide() == Direction.NORTH)

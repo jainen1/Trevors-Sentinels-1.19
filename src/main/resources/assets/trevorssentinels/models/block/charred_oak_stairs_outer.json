@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "trevorssentinels:block/charred_oak_planks",
-    "side": "trevorssentinels:block/charred_oak_planks",
-    "top": "trevorssentinels:block/charred_oak_planks"
-  }
-}

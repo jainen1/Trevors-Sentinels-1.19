@@ -3,7 +3,6 @@ package net.trevorskullcrafter.trevorssentinels.block.custom;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -14,10 +13,7 @@ public class FallDamagelessBlock extends Block {
         this.damageMultiplier = damageMultiplier;
     }
 
-    @Override
-    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-        if(damageMultiplier != 1.0f){
-            entity.handleFallDamage(fallDistance, damageMultiplier, DamageSource.FALL);
-        }
+    @Override public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
+        entity.handleFallDamage(fallDistance, damageMultiplier, entity.getDamageSources().fall());
     }
 }

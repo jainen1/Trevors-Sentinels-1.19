@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "trevorssentinels:block/banana_planks",
-    "side": "trevorssentinels:block/banana_planks",
-    "top": "trevorssentinels:block/banana_planks"
-  }
-}

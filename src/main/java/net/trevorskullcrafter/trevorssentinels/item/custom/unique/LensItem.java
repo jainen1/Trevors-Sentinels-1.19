@@ -32,12 +32,12 @@ public class LensItem extends Item {
         World world = context.getWorld(); Block block = world.getBlockState(context.getBlockPos()).getBlock();
         //if(findBlockInTags(block, BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN));
         if (!world.isClient() && context.getHand() == Hand.MAIN_HAND) {
-            if(block == ModBlocks.HOLOBARRIER) displayEntry(context, 0);
+            if(block == ModBlocks.HARD_LIGHT) displayEntry(context, 0);
             if(block == ModBlocks.STEEL_BLOCK || block == ModBlocks.CAUTION_STEEL_BLOCK || block == ModBlocks.RUSTED_STEEL_BLOCK ||
                     block == ModBlocks.STAINLESS_STEEL_BLOCK || block == ModBlocks.STEEL_LAMP_BLOCK || block == ModBlocks.STEEL_FAN ||
                     block == ModBlocks.BATTERY || block == ModBlocks.FUSEBOX || block == ModBlocks.SUPERFORGE || block == ModBlocks.NUCLEAR_CHARGE) displayEntry(context, 1);
             if(block == ModBlocks.GALINITE_BLOCK || block == ModBlocks.GALINITE_PILLAR || block == ModBlocks.CHISELED_GALINITE_BLOCK){ displayEntry(context, 2); displayEntry(context, 9); }
-            if(block == ModBlocks.URANIUM_ORE || block == ModBlocks.URANIUM_BLOCK || block == ModBlocks.NUCLEAR_CHARGE || block == ModBlocks.SUPERFORGE) displayEntry(context, 3);
+            if(block == ModBlocks.NUCLEAR_ORE || block == ModBlocks.NUCLEAR_BLOCK || block == ModBlocks.NUCLEAR_CHARGE || block == ModBlocks.SUPERFORGE) displayEntry(context, 3);
             if(block == ModBlocks.LIGHT_CHAMBER_BLOCK || block == ModBlocks.DARK_CHAMBER_BLOCK) displayEntry(context, 4);
             if(block == ModBlocks.BLUE_AGILITY_BLOCK || block == ModBlocks.ORANGE_AGILITY_BLOCK)  displayEntry(context, 4); displayEntry(context, 5);
             if(block.getDefaultState().isIn(BlockTags.FLOWERS) || block.getDefaultState().isIn(BlockTags.FLOWER_POTS) || block.getDefaultState().isIn(BlockTags.LEAVES) ||

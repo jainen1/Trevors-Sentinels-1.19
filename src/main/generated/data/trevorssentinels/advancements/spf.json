@@ -6,12 +6,12 @@
         "items": [
           {
             "items": [
-              "trevorssentinels:banana_boat"
+              "trevorssentinels:viridescent_boat"
             ]
           },
           {
             "items": [
-              "trevorssentinels:banana_chest_boat"
+              "trevorssentinels:viridescent_chest_boat"
             ]
           }
         ]
@@ -27,7 +27,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "trevorssentinels:banana_boat"
+      "item": "trevorssentinels:viridescent_boat"
     },
     "show_toast": true,
     "title": {
@@ -38,5 +38,6 @@
     [
       "got_banana_boat"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

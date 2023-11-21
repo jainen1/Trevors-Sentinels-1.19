@@ -7,7 +7,7 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
-import net.minecraft.client.render.model.json.ModelTransformation;
+import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
@@ -40,7 +40,8 @@ public class LaserEntityRenderer<T extends PersistentProjectileEntity> extends E
             matrices.scale(this.scale, this.scale, this.scale);
             matrices.multiply(this.dispatcher.getRotation());
             matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0F));
-            this.itemRenderer.renderItem(Items.AIR.getDefaultStack(), ModelTransformation.Mode.GROUND, light, OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getId());
+            this.itemRenderer.renderItem(null, Items.AIR.getDefaultStack(), ModelTransformationMode.GROUND, false, matrices, vertexConsumers,
+                    null, light, OverlayTexture.DEFAULT_UV, entity.getId());
             matrices.pop();
             super.render(entity, yaw, tickDelta, matrices, vertexConsumers, light);
         }

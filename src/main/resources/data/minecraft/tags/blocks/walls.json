@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "trevorssentinels:snowstone_wall"
+    "trevorssentinels:snowstone_wall",
+    "trevorssentinels:smooth_snowstone_wall"
   ]
 }

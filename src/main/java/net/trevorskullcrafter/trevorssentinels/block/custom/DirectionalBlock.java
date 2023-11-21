@@ -14,8 +14,7 @@ public class DirectionalBlock extends HorizontalFacingBlock {
 
     public DirectionalBlock(Settings settings){ super(settings); }
 
-    @Nullable @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) { return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite()); }
+    @Nullable @Override public BlockState getPlacementState(ItemPlacementContext ctx) { return this.getDefaultState().with(FACING, ctx.getPlayerLookDirection().getOpposite()); }
 
     @Override protected void appendProperties(StateManager.Builder<Block, BlockState> builder) { builder.add(FACING); }
 }

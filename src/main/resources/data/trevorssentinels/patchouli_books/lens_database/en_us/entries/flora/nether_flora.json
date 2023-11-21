@@ -1,0 +1,12 @@
+{
+  "name": "Nether Flora",
+  "icon": "minecraft:warped_nylium",
+  "category": "trevorssentinels:flora",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:warped_nylium",
+      "text": "Affected by the Nether's anomalous properties, these lifeforms are mostly resistant to heat and flame. WARNING: Extended contact with this flora may result in unpredictable consequences. Destroy whenever possible."
+    }
+  ]
+}

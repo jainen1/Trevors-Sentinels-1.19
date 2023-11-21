@@ -6,9 +6,7 @@
   "mixins": [
     "ArmorItemMixin",
     "BlockEntityTypeMixin",
-    "BlockMixin",
-    "LivingEntityDataBlockClimbMixin",
-    "SignTypeAccessor"
+    "LivingEntityDataBlockClimbMixin"
   ],
   "client": [
     "ExampleMixin",

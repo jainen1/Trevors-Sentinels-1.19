@@ -1,0 +1,12 @@
+{
+  "name": "Chamber Panels",
+  "icon": "trevorssentinels:light_chamber_block",
+  "category": "trevorssentinels:science",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "trevorssentinels:light_chamber_block",
+      "text": "Lightweight panels built to protect against any amount of fall damage. Used in laboratories for experimentation, especially alongside agility gel."
+    }
+  ]
+}

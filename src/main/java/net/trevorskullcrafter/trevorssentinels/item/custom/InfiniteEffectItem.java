@@ -34,7 +34,7 @@ public class InfiniteEffectItem extends Item {
             if(statusEffectInstance.getAmplifier() > 0) mutableText = Text.translatable("potion.withAmplifier", mutableText,
                     Text.translatable("potion.potency." + statusEffectInstance.getAmplifier()));
             if(statusEffectInstance.getDuration() > 20) mutableText = Text.translatable("potion.withDuration", mutableText,
-                    StatusEffectUtil.durationToString(statusEffectInstance, 1.0f));
+                    StatusEffectUtil.getDurationText(statusEffectInstance, 1.0f));
             if(statusEffectInstance.getEffectType().getCategory() == StatusEffectCategory.BENEFICIAL) tooltip.add(Text.empty().append("☀ ")
                     .append(mutableText).formatted(Formatting.GREEN));
             else if(statusEffectInstance.getEffectType().getCategory() == StatusEffectCategory.NEUTRAL) tooltip.add(Text.empty().append("☯ ")

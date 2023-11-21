@@ -25,7 +25,7 @@ public class ModEntities {
             Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "nuclear_charge"),
             FabricEntityTypeBuilder.<NuclearChargeEntity>create(SpawnGroup.MISC, NuclearChargeEntity::new)
                     .dimensions(EntityDimensions.fixed(0.98f, 0.98f)).fireImmune().build());
-    public static final EntityType<ShardEntity> GALINITE_SHARD = Registry.register(
+    public static final EntityType<ShardEntity> GALLIUM_SHARD = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "galinite_shard"),
             FabricEntityTypeBuilder.<ShardEntity>create(SpawnGroup.MISC, ShardEntity::new)
                     .dimensions(EntityDimensions.fixed(0.25F, 0.25F)) // dimensions in Minecraft units of the projectile

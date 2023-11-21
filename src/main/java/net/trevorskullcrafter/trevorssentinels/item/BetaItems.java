@@ -2,7 +2,6 @@ package net.trevorskullcrafter.trevorssentinels.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -15,11 +14,11 @@ import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
 import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 
 public class BetaItems {
-    public static final Item JUMP_DRIVE = registerItem("jump_drive", new JumpItemv2(ModArmorMaterials.TRIMETAL, EquipmentSlot.CHEST,
+    public static final Item JUMP_DRIVE = registerItem("jump_drive", new JumpItemv2(ModArmorMaterials.ALLOY, ArmorItem.Type.CHESTPLATE,
             new FabricItemSettings().maxDamage(100)));
-    public static final Item JETPACK = registerItem("jetpack", new JetpackItem(ModArmorMaterials.NUCLEAR, EquipmentSlot.CHEST,
+    public static final Item JETPACK = registerItem("jetpack", new JetpackItem(ModArmorMaterials.NUCLEAR, ArmorItem.Type.CHESTPLATE,
             new FabricItemSettings().maxDamage(100)));
-    public static final Item PORTKEY = registerItem("portkey", new PortkeyItem(new FabricItemSettings().maxDamage(11)));
+    public static final Item DEMONIC_CORE = registerItem("demonic_core", new PortkeyItem(new FabricItemSettings().maxDamage(11)));
     public static final Item DISTANCE_TRACKER = registerItem("distance_tracker", new DistanceTrackerItem(new FabricItemSettings().maxCount(1)));
 
     public static final Item PAPPYM_BLADE = registerItem("pappym_blade",
@@ -51,10 +50,10 @@ public class BetaItems {
             new CopperArmItem(new FabricItemSettings().maxDamage(465)));
 
     public static final Item BLACKSMITHS_WELDING_MASK = registerItem("blacksmiths_welding_mask",
-            new ArmorItem(ModArmorMaterials.ZENITHIUM, EquipmentSlot.HEAD, new FabricItemSettings()));
+            new ArmorItem(ModArmorMaterials.ZENITHIUM, ArmorItem.Type.HELMET, new FabricItemSettings()));
 
     public static final Item MAD_SCIENTISTS_LAB_COAT = registerItem("mad_scientists_lab_coat",
-            new ArmorItem(ModArmorMaterials.ZENITHIUM, EquipmentSlot.CHEST, new FabricItemSettings()));
+            new ArmorItem(ModArmorMaterials.ZENITHIUM, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
 
     private static Item registerItem(String name, Item item){
         ItemGroupEvents.modifyEntriesEvent(trevorssentinels.BETA).register(entries -> entries.add(item));

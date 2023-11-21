@@ -7,7 +7,7 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
-import net.minecraft.client.render.model.json.ModelTransformation;
+import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -42,7 +42,7 @@ public class DaggerEntityRenderer<T extends DaggerEntity> extends EntityRenderer
             }
 
             itemRenderer.renderItem(null, entity.asItemStack() == null? ModArmory.ROSE_GOLD_DAGGER.getDefaultStack(): entity.asItemStack(),
-                    ModelTransformation.Mode.GROUND, false, matrices, vertexConsumers, null, light, OverlayTexture.DEFAULT_UV, entity.getId());
+                    ModelTransformationMode.GROUND, false, matrices, vertexConsumers, null, light, OverlayTexture.DEFAULT_UV, entity.getId());
             matrices.pop();
             super.render(entity, yaw, tickDelta, matrices, vertexConsumers, light);
         }

@@ -1,0 +1,12 @@
+{
+  "name": "Hard Light",
+  "icon": "trevorssentinels:galinite_holoprojector",
+  "category": "trevorssentinels:science",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "trevorssentinels:galinite_holoprojector",
+      "text": "A block of concentrated, frozen photons. Cannot be destroyed with normal means, and can only be interacted with using a Hard Light Projector."
+    }
+  ]
+}

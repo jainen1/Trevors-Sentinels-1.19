@@ -5,10 +5,15 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.PersistentState;
 import net.minecraft.world.PersistentStateManager;
 import net.minecraft.world.World;
-import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
+import org.jetbrains.annotations.NotNull;
+
+import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 
 public class ServerState extends PersistentState {
     public int worldLevel = 1; boolean keepingTrack = true;
+
+    private static final Type<ServerState> type = new Type<>(ServerState::new, ServerState::createFromNbt,
+            null /*Meant to be of 'DataFixTypes' enum, but accepts null*/);
 
     @Override public NbtCompound writeNbt(NbtCompound nbt) {
         nbt.putInt("trevorssentinels:worldLevel", worldLevel);
@@ -23,12 +28,10 @@ public class ServerState extends PersistentState {
         return serverState;
     }
 
-    public static ServerState getServerState(MinecraftServer server){
+    public static @NotNull ServerState getServerState(MinecraftServer server){
         PersistentStateManager persistentStateManager = server.getWorld(World.OVERWORLD).getPersistentStateManager();
-        ServerState serverState = persistentStateManager.getOrCreate(
-                ServerState::createFromNbt,
-                ServerState::new,
-                trevorssentinels.MOD_ID);
-        return serverState;
+        ServerState state = persistentStateManager.getOrCreate(type, MOD_ID);
+        state.markDirty();
+        return state;
     }
 }

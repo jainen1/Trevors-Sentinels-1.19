@@ -49,17 +49,11 @@ public class PappyDSwordItem extends SwordItem {
     }
 
     @Override public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        int stabby = Random.createLocal().nextBetween(1,12);
-        if(stabby >= 1 && stabby <= 8){
-            target.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS,20,0,false,false,false));
-            attacker.world.playSoundFromEntity(null, attacker, SoundEvents.ITEM_TRIDENT_RIPTIDE_1, SoundCategory.BLOCKS, 1.0F, 1.0F);
-        }else if(stabby >= 9 && stabby <= 11){
-            target.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS,20,1,false,false,false));
-            attacker.world.playSoundFromEntity(null, attacker, SoundEvents.ITEM_TRIDENT_RIPTIDE_1, SoundCategory.BLOCKS, 1.5F, 3.0F);
-        }else{
-            target.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS,20,2,false,false,false));
-            attacker.world.playSoundFromEntity(null, attacker, SoundEvents.ITEM_TRIDENT_RIPTIDE_1, SoundCategory.BLOCKS, 2.0F, 5.0F);
-        } return true;
+        int amp = Random.createLocal().nextBetween(1,12);
+        amp = (amp >= 1 && amp <= 8)? 0 : (amp >= 9 && amp <= 11)? 1: 2;
+        target.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS,20,amp,false,false,false));
+        attacker.getWorld().playSoundFromEntity(null, attacker, SoundEvents.ITEM_TRIDENT_RIPTIDE_1, SoundCategory.BLOCKS,1.0F + (0.5F*amp),1.0F + (2.0F*amp));
+        return true;
     }
 
     @Override public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {

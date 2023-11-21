@@ -3,6 +3,6 @@
   "textures": {
     "bottom": "trevorssentinels:block/snowstone_bottom",
     "side": "trevorssentinels:block/snowstone",
-    "top": "trevorssentinels:block/snowstone_top"
+    "top": "trevorssentinels:block/smooth_snowstone"
   }
 }

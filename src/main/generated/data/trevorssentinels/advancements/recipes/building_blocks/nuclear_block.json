@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:nuclear_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_uranium_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "trevorssentinels:uranium_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_uranium_crystal"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:nuclear_block"
+    ]
+  },
+  "sends_telemetry_event": false
+}

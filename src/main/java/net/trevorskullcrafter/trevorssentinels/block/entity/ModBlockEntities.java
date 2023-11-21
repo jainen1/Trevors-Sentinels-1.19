@@ -11,16 +11,12 @@ import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
 import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 
 public class ModBlockEntities {
-    public static BlockEntityType<ForgeBlockEntity> FORGE;
     public static BlockEntityType<VendorBlockEntity> VENDOR;
     public static BlockEntityType<SuperforgeBlockEntity> SUPERFORGE;
     public static BlockEntityType<ModificationTableBlockEntity> MODIFICATION_TABLE;
 
     public static void registerBlockEntities(){
         trevorssentinels.LOGGER.info("Registering block entities... (" + MOD_ID + ")");
-        FORGE = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(MOD_ID, "forge"),
-                FabricBlockEntityTypeBuilder.create(ForgeBlockEntity::new, ModBlocks.FORGE).build(null));
-
         VENDOR = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(MOD_ID, "vendor"),
                 FabricBlockEntityTypeBuilder.create(VendorBlockEntity::new, ModBlocks.VENDOR).build(null));
 

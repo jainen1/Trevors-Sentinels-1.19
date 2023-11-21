@@ -64,5 +64,6 @@
     [
       "got_armory"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

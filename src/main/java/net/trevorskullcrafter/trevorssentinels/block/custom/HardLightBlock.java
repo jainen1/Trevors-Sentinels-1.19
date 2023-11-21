@@ -8,5 +8,5 @@ import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 public class HardLightBlock extends GlassBlock {
     public HardLightBlock(AbstractBlock.Settings settings) { super(settings); }
 
-    @Override public Item asItem() { return ModItems.GALINITE_HOLOPROJECTOR; }
+    @Override public Item asItem() { return ModItems.HARD_LIGHT_PROJECTOR; }
 }

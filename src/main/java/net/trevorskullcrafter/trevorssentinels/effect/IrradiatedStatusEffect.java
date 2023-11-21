@@ -12,8 +12,8 @@ import net.trevorskullcrafter.trevorssentinels.entity.damage.ModDamageSources;
 public class IrradiatedStatusEffect extends StatusEffect {
     public IrradiatedStatusEffect(StatusEffectCategory statusEffectCategory, int color) { super(statusEffectCategory, color); }
 
-    @Override public void onApplied(LivingEntity entity, AttributeContainer attributes, int amplifier) {
-        super.onApplied(entity, attributes, amplifier);
+    @Override public void onApplied(LivingEntity entity, int amplifier) {
+        super.onApplied(entity, amplifier);
         if(entity instanceof PlayerEntity) ((PlayerEntity)entity).getHungerManager().add(amplifier + 1, 1.0F);
         else entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1, amplifier), entity);
     }
@@ -25,6 +25,6 @@ public class IrradiatedStatusEffect extends StatusEffect {
     }
 
     @Override public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        entity.damage(ModDamageSources.IRRADIATED, (amplifier / 2f)+0.5f);
+        entity.damage(entity.getDamageSources().generic(), (amplifier / 2f)+0.5f);
     }
 }

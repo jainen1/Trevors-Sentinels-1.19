@@ -22,7 +22,7 @@ public class LaserGunReloadC2SPacket {
             Text.literal("ON").formatted(Formatting.GREEN, Formatting.BOLD) : Text.literal("OFF").formatted(Formatting.RED, Formatting.BOLD)), true);
             player.getWorld().playSoundFromEntity(null, player, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.PLAYERS, 1.0f, 1.0f);
         } else if(player.getMainHandStack().getItem() instanceof LaserGunItem laserGun){
-            if(player.getMainHandStack().getItem() == player.getOffHandStack().getItem()){ laserGun.reloadGun(player.getOffHandStack(), player.getWorld(), player); }
+            if(player.getMainHandStack().getItem() == player.getOffHandStack().getItem()) { laserGun.reloadGun(player.getOffHandStack(), player.getWorld(), player); }
             laserGun.reloadGun(player.getMainHandStack(), player.getWorld(), player);
         }
     }

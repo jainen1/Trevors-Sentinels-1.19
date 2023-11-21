@@ -1,5 +1,5 @@
 {
-  "parent": "trevorssentinels:netherite",
+  "parent": "trevorssentinels:cerberus",
   "criteria": {
     "got_cube": {
       "conditions": {
@@ -33,5 +33,6 @@
     [
       "got_cube"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

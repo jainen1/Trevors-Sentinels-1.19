@@ -16,9 +16,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.*;
 
 public class DataBlock extends Block {
-    public DataBlock(Settings settings) {
-        super(settings);
-    }
+    public DataBlock(Settings settings) { super(settings); }
     private static final VoxelShape FALLING_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.9f, 1.0);
 
     @Override public boolean isSideInvisible(BlockState state, BlockState stateFrom, Direction direction) {

@@ -17,17 +17,18 @@ public class InfestedStatusEffect extends StatusEffect {
     }
 
     @Override public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        entity.damage(ModDamageSources.INFESTED, (float) strength / 2);
+        entity.damage(entity.getDamageSources().generic(), (float) strength / 2);
         strength++;
         super.applyUpdateEffect(entity, amplifier);
     }
 
-    @Override public void onApplied(LivingEntity entity, AttributeContainer attributes, int amplifier) {
+    @Override public void onApplied(LivingEntity entity, int amplifier) {
         strength = amplifier;
+        super.onApplied(entity, amplifier);
     }
 
-    @Override public void onRemoved(LivingEntity entity, AttributeContainer attributes, int amplifier) {
+    @Override public void onRemoved(AttributeContainer attributes) {
         strength = 0;
-        super.onRemoved(entity, attributes, amplifier);
+        super.onRemoved(attributes);
     }
 }

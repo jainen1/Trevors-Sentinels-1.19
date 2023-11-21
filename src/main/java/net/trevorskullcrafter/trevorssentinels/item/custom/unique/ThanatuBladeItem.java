@@ -91,7 +91,7 @@ public class ThanatuBladeItem extends SwordItem implements StyleUtil.StyleSwitch
                         Objects.requireNonNull(itemStack.getSubNbt("trevorssentinels:harmoniousTeleportData")).getInt("trevorssentinels:playerPosX"),
                         Objects.requireNonNull(itemStack.getSubNbt("trevorssentinels:harmoniousTeleportData")).getInt("trevorssentinels:playerPosY"),
                         Objects.requireNonNull(itemStack.getSubNbt("trevorssentinels:harmoniousTeleportData")).getInt("trevorssentinels:playerPosZ"));
-                target.world.playSound(null, target.getBlockPos(), SoundEvents.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.BLOCKS, 2.0F, 2.0F);
+                target.getWorld().playSound(null, target.getBlockPos(), SoundEvents.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.BLOCKS, 2.0F, 2.0F);
             } else target.requestTeleportAndDismount(target.getX(), target.getY() + 1, target.getZ());
         } else target.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER,60,0,true,true,false));
         return true;
@@ -119,16 +119,16 @@ public class ThanatuBladeItem extends SwordItem implements StyleUtil.StyleSwitch
         tooltip.add(Text.empty().append(StyleUtil.style).append(StyleUtil.currentStyle(itemStack)).formatted(getStyleSwitchFormatting(itemStack)));
         if (StyleUtil.getStyle(itemStack) == 1) {
             if(itemStack.getSubNbt("trevorssentinels:harmoniousTeleportData") != null) {
-                tooltip.add(Text.literal(Objects.requireNonNull(itemStack.getSubNbt("trevorssentinels:harmoniousTeleportData")).
-                        getString("trevorssentinels:boundText")).formatted(Formatting.LIGHT_PURPLE));
+                tooltip.add(Text.literal(Objects.requireNonNull(itemStack.getSubNbt("trevorssentinels:harmoniousTeleportData"))
+                        .getString("trevorssentinels:boundText")).formatted(Formatting.LIGHT_PURPLE));
 
                 tooltip.add(Text.literal("Attacks will also teleport").formatted(Formatting.ITALIC, Formatting.GRAY));
                 tooltip.add(Text.literal("the target to this location.").formatted(Formatting.ITALIC, Formatting.GRAY));
 
                 if (itemStack.getSubNbt("trevorssentinels:timerHolder") != null){
                     assert world != null;
-                    tooltip.add(Text.literal("Rift " + (Objects.requireNonNull(itemStack.getSubNbt("trevorssentinels:timerHolder")).getLong
-                            ("trevorssentinels:timer") - world.getTime()) / 2 + "% Stable"));
+                    tooltip.add(Text.literal("Rift " + (Objects.requireNonNull(itemStack.getSubNbt("trevorssentinels:timerHolder"))
+                            .getLong("trevorssentinels:timer") - world.getTime()) / 2 + "% Stable"));
                 }
             }else {
                 tooltip.add(Text.literal("Hold shift and right click").formatted(Formatting.GRAY));

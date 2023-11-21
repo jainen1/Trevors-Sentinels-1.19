@@ -6,7 +6,6 @@ import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
-import net.minecraft.loot.provider.number.LootNumberProviderTypes;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.util.Identifier;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
@@ -28,8 +27,8 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f))
-                        .with(ItemEntry.builder(ModItems.RICE))
-                        .with(ItemEntry.builder(ModItems.GALINITE_SHARD))
+                        .with(ItemEntry.builder(ModItems.RICE_SEEDS))
+                        .with(ItemEntry.builder(ModItems.SCRAP_METAL_SHARD))
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f)).build());
                 tableBuilder.pool(poolBuilder.build());
             }

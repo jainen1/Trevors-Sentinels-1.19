@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_top_right_open",
-  "textures": {
-    "bottom": "trevorssentinels:block/banana_door_bottom",
-    "top": "trevorssentinels:block/banana_door_top"
-  }
-}

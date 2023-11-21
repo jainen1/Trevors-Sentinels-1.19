@@ -1,5 +1,5 @@
 {
-  "parent": "trevorssentinels:forge",
+  "parent": "trevorssentinels:trevorssentinels",
   "criteria": {
     "got_something": {
       "conditions": {
@@ -73,5 +73,6 @@
     [
       "got_something"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

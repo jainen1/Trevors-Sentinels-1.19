@@ -20,25 +20,24 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
-import net.trevorskullcrafter.trevorssentinels.entity.damage.ModDamageSources;
 import net.trevorskullcrafter.trevorssentinels.item.ModArmory;
 import org.jetbrains.annotations.Nullable;
 
 public class DaggerEntity extends PersistentProjectileEntity {
     private static final TrackedData<ItemStack> STORED_STACK = DataTracker.registerData(DaggerEntity.class, TrackedDataHandlerRegistry.ITEM_STACK);
     private StatusEffectInstance[] effects;
-    private int destroyChance;
+    private float destroyChance;
     private boolean dealtDamage;
 
     public DaggerEntity(EntityType<? extends DaggerEntity> entityType, World world) { super(entityType, world); }
 
-    public DaggerEntity(World world, LivingEntity owner, ItemStack stack, int damageAmount, int destroyChance, StatusEffectInstance... effects) {
+    public DaggerEntity(World world, LivingEntity owner, ItemStack stack, float damage, float destroyChance, StatusEffectInstance... effects) {
         super(ModEntities.DAGGER, owner, world);
-        this.dataTracker.set(STORED_STACK, stack.copy()); this.setDamage(damageAmount); this.effects = effects; this.destroyChance = destroyChance;
+        this.dataTracker.set(STORED_STACK, stack.copy()); this.setDamage(damage); this.effects = effects; this.destroyChance = destroyChance;
     }
-    public DaggerEntity(World world, double x, double y, double z, ItemStack stack, int damageAmount, int destroyChance, StatusEffectInstance... effects) {
+    public DaggerEntity(World world, double x, double y, double z, ItemStack stack, float damage, float destroyChance, StatusEffectInstance... effects) {
         super(ModEntities.DAGGER, x, y, z, world);
-        this.dataTracker.set(STORED_STACK, stack.copy()); this.setDamage(damageAmount); this.effects = effects; this.destroyChance = destroyChance;
+        this.dataTracker.set(STORED_STACK, stack.copy()); this.setDamage(damage); this.effects = effects; this.destroyChance = destroyChance;
     }
 
     @Override public boolean isCritical() { return true; }
@@ -73,7 +72,7 @@ public class DaggerEntity extends PersistentProjectileEntity {
     protected void onEntityHit(EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
         this.dealtDamage = true;
-        if (entity.damage(ModDamageSources.dagger(this, getOwner() == null ? this : getOwner()), (float) getDamage())) {
+        if (entity.damage(getDamageSources().mobProjectile(this, getOwner() instanceof LivingEntity livingEntity? livingEntity : null), (float) getDamage())) {
             if (entity.getType() == EntityType.ENDERMAN) return;
             if (entity instanceof LivingEntity livingEntity){
                 this.onHit(livingEntity);
@@ -86,8 +85,8 @@ public class DaggerEntity extends PersistentProjectileEntity {
     }
 
     @Override protected void onCollision(HitResult hitResult) {
-        if((hitResult.getType() == HitResult.Type.ENTITY || hitResult.getType() == HitResult.Type.BLOCK) && destroyChance > 0 && random.nextBetween(0, destroyChance) == 0) {
-            if(world instanceof ServerWorld serverWorld) {
+        if((hitResult.getType() == HitResult.Type.ENTITY || hitResult.getType() == HitResult.Type.BLOCK) && (random.nextFloat() % 1f) < destroyChance) {
+            if(getWorld() instanceof ServerWorld serverWorld) {
                 ParticleEffect particleEffect = new ItemStackParticleEffect(ParticleTypes.ITEM, asItemStack());
                 serverWorld.spawnParticles(particleEffect, getX(), getY(), getZ(), 8, 0, 0, 0, 0.1);
                 serverWorld.playSound(null, getX(), getY(), getZ(), SoundEvents.ENTITY_ITEM_BREAK, SoundCategory.PLAYERS, 1, 1);
@@ -98,6 +97,6 @@ public class DaggerEntity extends PersistentProjectileEntity {
 
     protected void initDataTracker() {
         super.initDataTracker();
-        this.dataTracker.startTracking(STORED_STACK, ModArmory.GALINITE_DAGGER.getDefaultStack());
+        this.dataTracker.startTracking(STORED_STACK, ModArmory.SCRAP_DAGGER.getDefaultStack());
     }
 }

@@ -5,7 +5,7 @@
         "items": [
           {
             "items": [
-              "trevorssentinels:galinite_shard"
+              "trevorssentinels:scrap_metal_shard"
             ]
           }
         ]
@@ -22,7 +22,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "trevorssentinels:galinite_shard"
+      "item": "trevorssentinels:scrap_metal_shard"
     },
     "show_toast": true,
     "title": {
@@ -38,5 +38,6 @@
     "loot": [
       "trevorssentinels:grant_database"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

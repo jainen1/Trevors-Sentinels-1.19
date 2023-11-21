@@ -23,8 +23,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class JetpackItem extends ArmorItem {
-    public JetpackItem(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
-        super(material, slot, settings);
+    public JetpackItem(ArmorMaterial material, Type type, Settings settings) {
+        super(material, type, settings);
     }
 
     @Override public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {

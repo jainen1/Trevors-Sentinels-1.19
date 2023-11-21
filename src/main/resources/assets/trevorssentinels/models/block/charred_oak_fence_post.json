@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/fence_post",
-  "textures": {
-    "texture": "trevorssentinels:block/charred_oak_planks"
-  }
-}

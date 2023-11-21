@@ -5,10 +5,21 @@
       "index": 0,
       "startColor": "#47fa0c",
       "endColor": "#47fa0c",
-      "bgStartColor": "#1d2c19-a20",
-      "bgEndColor": "#10160E-a20",
+      "bgStartColor": "#1d2c19-a25",
+      "bgEndColor": "#10160E-a25",
       "priority": 3,
-      "selectors": [ "%Nuclear", "%Torbernite", "trevorssentinels:nuclear_dagger" ]
+      "selectors": [ "%Nuclear", "%Torbernite" ]
+    },
+    {
+      "image": "trevorssentinels:textures/gui/tooltip_borders.png",
+      "index": 1,
+      "startColor": "#622019",
+      "endColor": "#622019",
+      "bgStartColor": "#2a0b07-a25",
+      "bgEndColor": "1_#2f1c08-a30_#4c2803-a25",
+      "priority": 3,
+      "selectors": [ "trevorssentinels:flesh_block", "trevorssentinels:flesh_veins", "trevorssentinels:fleshy_eye",
+        "trevorssentinels:ruinous_gaze", "trevorssentinels:dubious_bacon" ]
     },
     {
       "image": "trevorssentinels:textures/gui/tooltip_borders.png",

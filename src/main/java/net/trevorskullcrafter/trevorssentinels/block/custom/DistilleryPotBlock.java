@@ -20,20 +20,13 @@ public class DistilleryPotBlock extends CropBlock {
         this.item = item;
     }
 
-    @Override
-    protected ItemConvertible getSeedsItem(){ return item; }
+    @Override protected ItemConvertible getSeedsItem(){ return item; }
 
-    @Override
-    public int getMaxAge(){ return maxAge; }
+    @Override public int getMaxAge(){ return maxAge; }
 
-    @Override
-    public IntProperty getAgeProperty(){ return AGE; }
+    @Override public IntProperty getAgeProperty(){ return AGE; }
 
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder){ builder.add(AGE); }
+    @Override protected void appendProperties(StateManager.Builder<Block, BlockState> builder){ builder.add(AGE); }
 
-    @Override
-    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isFullCube(world, pos);
-    }
+    @Override protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) { return floor.isFullCube(world, pos); }
 }

@@ -34,14 +34,15 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_honeycomb",
-      "has_copper_block",
-      "has_the_recipe"
+      "has_copper_block"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:wax_infused_copper_block"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

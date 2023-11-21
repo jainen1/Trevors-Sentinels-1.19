@@ -1,0 +1,12 @@
+{
+  "name": "Magno-Repulsion",
+  "icon": "trevorssentinels:black_agility_block",
+  "category": "trevorssentinels:science",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "trevorssentinels:black_agility_block",
+      "text": "A transportation method using hypermagnesis to propel the user in any direction while within a magnetic field. WARNING: Lack of a functional guidance system may result in uncontrollable acceleration on magno-repulsive surfaces."
+    }
+  ]
+}

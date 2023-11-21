@@ -1,6 +1,0 @@
-{
-  "parent": "trevorssentinels:item/galinite_holoprojector",
-  "textures": {
-    "layer0": "trevorssentinels:item/holoprojector3"
-  }
-}

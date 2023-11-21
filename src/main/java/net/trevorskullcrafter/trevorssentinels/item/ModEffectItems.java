@@ -36,7 +36,7 @@ public class ModEffectItems {
             new InfiniteEffectItem(new FabricItemSettings().maxCount(1),
                     new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 200, 0, false, false)));
 
-    public static final Item GALINITE_STOMACH = registerItem("galinite_stomach",
+    public static final Item GALLIUM_STOMACH = registerItem("gallium_stomach",
             new InfiniteEffectItem(new FabricItemSettings().maxCount(1),
                     new StatusEffectInstance(ModEffects.WELL_FED, 200, 5, false, false)));
 

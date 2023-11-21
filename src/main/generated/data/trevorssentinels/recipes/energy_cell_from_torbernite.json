@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "trevorssentinels:energy_cell"
-  }
+  },
+  "show_notification": true
 }

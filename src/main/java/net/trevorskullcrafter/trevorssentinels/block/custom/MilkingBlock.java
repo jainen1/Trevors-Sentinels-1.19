@@ -13,7 +13,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import net.trevorskullcrafter.trevorssentinels.data.ItemTagGenerator;
+import net.trevorskullcrafter.trevorssentinels.datagen.ItemTagGenerator;
 
 public class MilkingBlock extends Block {
     //please don't ask, I didn't want to make this.

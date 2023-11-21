@@ -3,7 +3,7 @@ package net.trevorskullcrafter.trevorssentinels.mixin;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
-import net.trevorskullcrafter.trevorssentinels.data.EnglishLangGenerator;
+import net.trevorskullcrafter.trevorssentinels.datagen.EnglishLangGenerator;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;

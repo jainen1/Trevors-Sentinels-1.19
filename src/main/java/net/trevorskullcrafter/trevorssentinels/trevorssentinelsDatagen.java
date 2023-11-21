@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
-import net.trevorskullcrafter.trevorssentinels.data.*;
+import net.trevorskullcrafter.trevorssentinels.datagen.*;
 import net.trevorskullcrafter.trevorssentinels.world.feature.ModConfiguredFeatures;
 
 public class trevorssentinelsDatagen implements DataGeneratorEntrypoint {
@@ -18,6 +18,7 @@ public class trevorssentinelsDatagen implements DataGeneratorEntrypoint {
         pack.addProvider(AdvancementGenerator::new);
         pack.addProvider(EnglishLangGenerator::new);
         pack.addProvider(ItemTagGenerator::new);
+        pack.addProvider(BlockTagGenerator::new);
     }
 
     @Override public void buildRegistry(RegistryBuilder registryBuilder) {

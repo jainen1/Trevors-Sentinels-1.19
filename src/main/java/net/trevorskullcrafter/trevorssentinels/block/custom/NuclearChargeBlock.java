@@ -22,7 +22,7 @@ import net.minecraft.world.event.GameEvent;
 import net.minecraft.world.explosion.Explosion;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.LaserEntity;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.NuclearChargeEntity;
-import net.trevorskullcrafter.trevorssentinels.data.ItemTagGenerator;
+import net.trevorskullcrafter.trevorssentinels.datagen.ItemTagGenerator;
 import org.jetbrains.annotations.Nullable;
 
 public class NuclearChargeBlock extends Block {

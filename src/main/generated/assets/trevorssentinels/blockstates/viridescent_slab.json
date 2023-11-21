@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "trevorssentinels:block/viridescent_slab"
+    },
+    "type=double": {
+      "model": "trevorssentinels:block/viridescent_planks"
+    },
+    "type=top": {
+      "model": "trevorssentinels:block/viridescent_slab_top"
+    }
+  }
+}

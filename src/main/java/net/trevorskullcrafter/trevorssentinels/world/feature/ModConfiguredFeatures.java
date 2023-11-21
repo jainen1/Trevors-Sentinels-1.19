@@ -56,15 +56,15 @@ public class ModConfiguredFeatures {
                 new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 3),
                 new TwoLayersFeatureSize(1, 0, 1)).build());
         register(context, VIRIDESCENT_TREE, Feature.TREE, new TreeFeatureConfig.Builder(
-                BlockStateProvider.of(ModBlocks.BANANA_LOG),
+                BlockStateProvider.of(ModBlocks.VIRIDESCENT_LOG),
                 new StraightTrunkPlacer(3, 1, 1),
-                BlockStateProvider.of(ModBlocks.BANANA_LEAVES),
+                BlockStateProvider.of(ModBlocks.VIRIDESCENT_LEAVES),
                 new PineFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), ConstantIntProvider.create(2)),
                 new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(BlockStateProvider.of(Blocks.COARSE_DIRT)).forceDirt().build());
         register(context, FANCY_VIRIDESCENT_TREE, Feature.TREE, new TreeFeatureConfig.Builder(
-                BlockStateProvider.of(ModBlocks.BANANA_LOG),
+                BlockStateProvider.of(ModBlocks.VIRIDESCENT_LOG),
                 new StraightTrunkPlacer(4, 2, 1),
-                BlockStateProvider.of(ModBlocks.BANANA_LEAVES),
+                BlockStateProvider.of(ModBlocks.VIRIDESCENT_LEAVES),
                 new PineFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(2), ConstantIntProvider.create(4)),
                 new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(BlockStateProvider.of(Blocks.COARSE_DIRT)).forceDirt().build());
         register(context, YGGDRASIL_TREE, Feature.TREE, new TreeFeatureConfig.Builder(

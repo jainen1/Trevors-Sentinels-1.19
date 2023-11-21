@@ -1,21 +1,19 @@
 package net.trevorskullcrafter.trevorssentinels.recipe;
 
-import net.minecraft.inventory.CraftingInventory;
+import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
-import net.minecraft.util.Identifier;
+import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.world.World;
 import net.trevorskullcrafter.trevorssentinels.item.custom.PaintPack;
 import net.trevorskullcrafter.trevorssentinels.item.custom.ToolSkinnable;
 
 public class ToolSkinRecipe extends SpecialCraftingRecipe {
-    public ToolSkinRecipe(Identifier id, CraftingRecipeCategory category) {
-        super(id, category);
-    }
+    public ToolSkinRecipe(CraftingRecipeCategory category) { super(category); }
 
-    @Override public boolean matches(CraftingInventory inventory, World world) {
+    @Override public boolean matches(RecipeInputInventory inventory, World world) {
         ItemStack tool = ItemStack.EMPTY; ItemStack skin = ItemStack.EMPTY;
         for(int i = 0; i < inventory.size(); ++i) {
             ItemStack test = inventory.getStack(i);
@@ -31,8 +29,7 @@ public class ToolSkinRecipe extends SpecialCraftingRecipe {
         } return !tool.isEmpty() && !skin.isEmpty();
     }
 
-    @Override
-    public ItemStack craft(CraftingInventory inventory) {
+    @Override public ItemStack craft(RecipeInputInventory inventory, DynamicRegistryManager registryManager) {
         ItemStack tool = ItemStack.EMPTY; ItemStack skin = ItemStack.EMPTY;
         for(int i = 0; i < inventory.size(); ++i) {
             ItemStack test = inventory.getStack(i);
@@ -46,15 +43,11 @@ public class ToolSkinRecipe extends SpecialCraftingRecipe {
                 }
             }
         }
-
         if (!tool.isEmpty() && !skin.isEmpty()) return ToolSkinnable.newCustomModelStack(tool, ((PaintPack) skin.getItem()).getItemSkinData(tool.getItem()));
         else return ItemStack.EMPTY;
     }
 
     @Override public boolean fits(int width, int height) { return width * height >= 2; }
 
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return RecipeSerializer.ARMOR_DYE;
-    }
+    @Override public RecipeSerializer<?> getSerializer() { return RecipeSerializer.ARMOR_DYE; }
 }

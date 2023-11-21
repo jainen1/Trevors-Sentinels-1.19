@@ -27,8 +27,8 @@ public class JumpItemv2 extends ArmorItem {
     long cooldownTime = 0;
     float velocity = 0f;
     boolean dirty = false;
-    public JumpItemv2(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
-        super(material, slot, settings);
+    public JumpItemv2(ArmorMaterial material, Type type, Settings settings) {
+        super(material, type, settings);
     }
 
     @Override public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
