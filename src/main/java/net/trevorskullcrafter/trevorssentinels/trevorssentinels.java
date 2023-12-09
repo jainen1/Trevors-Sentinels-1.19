@@ -19,8 +19,6 @@ import net.minecraft.util.Identifier;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
 import net.trevorskullcrafter.trevorssentinels.datagen.BlockTagGenerator;
-import net.trevorskullcrafter.trevorssentinels.datagen.EnglishLangGenerator;
-import static net.trevorskullcrafter.trevorssentinels.datagen.EnglishLangGenerator.*;
 import net.trevorskullcrafter.trevorssentinels.effect.ModEffects;
 import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.*;
@@ -35,7 +33,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import software.bernie.geckolib.GeckoLib;
 
+import java.awt.*;
 import java.util.Objects;
+
+import static net.trevorskullcrafter.trevorssentinels.util.TextUtil.*;
 
 public class trevorssentinels implements ModInitializer {
 	public static final String MOD_ID = "trevorssentinels";
@@ -68,8 +69,8 @@ public class trevorssentinels implements ModInitializer {
 			else { requiredLevel = 1; }
 			if(requiredLevel > Objects.requireNonNull(ServerState.getServerState(Objects.requireNonNull(world.getServer()))).worldLevel){
 				Identifier tooLow = new Identifier(trevorssentinels.MOD_ID, "worldLevelTooLow");
-				if(Objects.equals(Text.translatable(tooLow.toTranslationKey()).toString(), tooLow.toTranslationKey())) { player.sendMessage(
-						getColoredText(tooLow + "." + requiredLevel, Text.translatable("color" + tooLow + "." + requiredLevel).toString()), true);
+				if(TextUtil.translationDiffersFromKey(tooLow.toTranslationKey())) {
+					player.sendMessage(coloredText(tooLow + "." + requiredLevel, Color.decode(Text.translatable("color" + tooLow + "." + requiredLevel).toString())), true);
 				} else { player.sendMessage(Text.translatable(tooLow + ".other").formatted(Formatting.GRAY), true); }
 				return false;
 			} return true;
@@ -111,13 +112,13 @@ public class trevorssentinels implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(ModEntities.FLORBUS, FlorbusEntity.setAttributes());
 
 		Registry.register(Registries.ITEM_GROUP, SENTINELS, FabricItemGroup.builder()
-				.displayName(EnglishLangGenerator.getColoredText("itemGroup.trevorssentinels.sentinels", sentiBlue))
+				.displayName(TextUtil.coloredText("itemGroup.trevorssentinels.sentinels", SENTINEL_AQUA))
 				.icon(() -> new ItemStack(ModItems.HARD_LIGHT_PROJECTOR)).build());
 		Registry.register(Registries.ITEM_GROUP, EFFECTS, FabricItemGroup.builder()
-				.displayName(EnglishLangGenerator.getColoredText("itemGroup.trevorssentinels.effects", copper))
+				.displayName(TextUtil.coloredText("itemGroup.trevorssentinels.effects", COPPER))
 				.icon(() -> new ItemStack(ModEffectItems.ONE_PENCE)).build());
 		Registry.register(Registries.ITEM_GROUP, BETA, FabricItemGroup.builder()
-				.displayName(EnglishLangGenerator.getColoredText("itemGroup.trevorssentinels.beta", dark_green))
+				.displayName(TextUtil.coloredText("itemGroup.trevorssentinels.beta", DARK_GREEN))
 				.icon(() -> new ItemStack(ModItems.RUINOUS_GAZE)).build());
 		ModItemGroupEvents.registerAllGroupEvents();
 		ModRegistries.registerWorldLevelState();

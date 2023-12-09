@@ -12,10 +12,7 @@ import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.effect.ModEffects;
 import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
 import net.trevorskullcrafter.trevorssentinels.item.custom.*;
-import net.trevorskullcrafter.trevorssentinels.item.custom.unique.ChaddBucketItem;
-import net.trevorskullcrafter.trevorssentinels.item.custom.unique.HardLightProjectorItem;
-import net.trevorskullcrafter.trevorssentinels.item.custom.unique.LensItem;
-import net.trevorskullcrafter.trevorssentinels.item.custom.unique.NuclearFireworkItem;
+import net.trevorskullcrafter.trevorssentinels.item.custom.unique.*;
 import net.trevorskullcrafter.trevorssentinels.sound.ModSounds;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
 import net.minecraft.util.Identifier;
@@ -47,9 +44,14 @@ public class ModItems {
     public static final Item TORBERNITE_CUBE = registerItem("uranium_crystal", new Item(new FabricItemSettings().fireproof()));
     public static final Item ZENITHIUM_CLUSTER = registerItem("zenithium_cluster", new Item(new FabricItemSettings().fireproof()));
 
+    public static final Item HARD_LIGHT_PROJECTOR = registerItem("hard_light_projector", new HardLightProjectorItem(ModBlocks.HARD_LIGHT, new FabricItemSettings().maxDamage(129)));
+    public static final Item CAUTION_HARD_LIGHT_PROJECTOR = registerItem("caution_hard_light_projector", new HardLightProjectorItem(ModBlocks.CAUTION_HARD_LIGHT, new FabricItemSettings().maxDamage(129)));
+    public static final Item SENTINEL_HARD_LIGHT_PROJECTOR = registerItem("sentinel_hard_light_projector", new HardLightProjectorItem(ModBlocks.SENTINEL_HARD_LIGHT, new FabricItemSettings().maxDamage(129)));
+
     public static final Item GALINITE_LENS = registerItem("galinite_lens", new LensItem(new FabricItemSettings().maxCount(1), 1.6, 15));
-    public static final Item HARD_LIGHT_PROJECTOR = registerItem("hard_light_projector", new HardLightProjectorItem(new FabricItemSettings().maxDamage(129)));
     public static final Item ENERGY_CELL = registerItem("energy_cell", new Item(new FabricItemSettings()));
+    public static final Item GAS_CAPSULE = registerItem("gas_capsule", new GasCapsuleItem(new FabricItemSettings(),
+            new StatusEffectInstance(StatusEffects.WITHER, 100, 1), new StatusEffectInstance(StatusEffects.BLINDNESS, 40)));
     public static final Item NUCLEAR_ROCKET = registerItem("nuclear_rocket", new NuclearFireworkItem(new FabricItemSettings().maxDamage(93)));
     public static final Item NUCLEAR_DETONATOR = registerItem("nuclear_detonator", new Item(new FabricItemSettings().maxCount(1)));
 

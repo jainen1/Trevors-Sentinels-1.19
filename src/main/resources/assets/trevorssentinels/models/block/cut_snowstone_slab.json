@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/slab",
   "textures": {
-    "bottom": "trevorssentinels:block/snowstone_top",
+    "bottom": "trevorssentinels:block/smooth_snowstone",
     "side": "trevorssentinels:block/cut_snowstone",
-    "top": "trevorssentinels:block/snowstone_top"
+    "top": "trevorssentinels:block/smooth_snowstone"
   }
 }

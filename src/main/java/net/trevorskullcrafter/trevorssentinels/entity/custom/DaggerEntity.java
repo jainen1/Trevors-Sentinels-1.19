@@ -8,6 +8,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
@@ -15,12 +16,15 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
 import net.trevorskullcrafter.trevorssentinels.item.ModArmory;
+import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
 import org.jetbrains.annotations.Nullable;
 
 public class DaggerEntity extends PersistentProjectileEntity {
@@ -42,9 +46,15 @@ public class DaggerEntity extends PersistentProjectileEntity {
 
     @Override public boolean isCritical() { return true; }
     @Override public boolean isCollidable() { return inGround; }
-
-    @Override public void onPlayerCollision(PlayerEntity player) {
-        if(player.isSneaking()) super.onPlayerCollision(player);
+    @Override public ActionResult interact(PlayerEntity player, Hand hand) {
+        trevorssentinels.LOGGER.info("trying to pick up dagger!");
+        if (!this.getWorld().isClient && (this.inGround || this.isNoClip()) && this.shake <= 0 && this.tryPickup(player)) {
+            trevorssentinels.LOGGER.info("success!");
+            player.sendPickup(this, 1);
+            this.discard();
+            return ActionResult.SUCCESS;
+        } trevorssentinels.LOGGER.info("fail.");
+        return ActionResult.PASS;
     }
 
     @Override protected float getDragInWater() { return 0.8f; }
@@ -54,8 +64,6 @@ public class DaggerEntity extends PersistentProjectileEntity {
     protected boolean tryPickup(PlayerEntity player) {
         return super.tryPickup(player) || (this.isNoClip() && player.getInventory().insertStack(asItemStack()));
     }
-
-    @Override public ItemStack asItemStack() { return dataTracker.get(STORED_STACK); }
 
     @Override public void tick() {
         if(this.inGroundTime > 4) this.dealtDamage = true; if(this.inGroundTime > 6000){
@@ -95,8 +103,21 @@ public class DaggerEntity extends PersistentProjectileEntity {
         } super.onCollision(hitResult);
     }
 
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(STORED_STACK, ModArmory.SCRAP_DAGGER.getDefaultStack());
+    protected void initDataTracker() { super.initDataTracker(); this.dataTracker.startTracking(STORED_STACK, ModArmory.SCRAP_DAGGER.getDefaultStack()); }
+    @Override public ItemStack asItemStack() { return dataTracker.get(STORED_STACK); }
+    public void setItem(ItemStack item) {
+        if (!item.isOf(asItemStack().getItem()) || item.hasNbt()) { this.getDataTracker().set(STORED_STACK, item.copyWithCount(1)); }
+    }
+
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        ItemStack itemStack = this.asItemStack();
+        if (!itemStack.isEmpty()) { nbt.put("StoredStack", itemStack.writeNbt(new NbtCompound())); }
+    }
+
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        ItemStack itemStack = ItemStack.fromNbt(nbt.getCompound("StoredStack"));
+        this.setItem(itemStack);
     }
 }

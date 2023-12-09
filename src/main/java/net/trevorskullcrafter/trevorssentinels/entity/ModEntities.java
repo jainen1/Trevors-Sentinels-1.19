@@ -29,22 +29,27 @@ public class ModEntities {
             Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "galinite_shard"),
             FabricEntityTypeBuilder.<ShardEntity>create(SpawnGroup.MISC, ShardEntity::new)
                     .dimensions(EntityDimensions.fixed(0.25F, 0.25F)) // dimensions in Minecraft units of the projectile
-                    .trackRangeBlocks(8).trackedUpdateRate(10) // necessary for all thrown projectiles (as it prevents it from breaking, lol)
-                    .build());
+                    .trackRangeBlocks(8).trackedUpdateRate(10)/*necessary for all thrown projectiles (as it prevents it from breaking, lol)*/.build());
     public static final EntityType<DaggerEntity> DAGGER = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "dagger"),
             FabricEntityTypeBuilder.<DaggerEntity>create(SpawnGroup.MISC, DaggerEntity::new)
                     .dimensions(EntityDimensions.fixed(0.35F, 0.15F)) // dimensions in Minecraft units of the projectile
-                    .trackRangeBlocks(8).trackedUpdateRate(10) // necessary for all thrown projectiles (as it prevents it from breaking, lol)
-                    .build());
+                    .trackRangeBlocks(8).trackedUpdateRate(10)/*necessary for all thrown projectiles (as it prevents it from breaking, lol)*/.build());
     public static final EntityType<GrenadeEntity> GRENADE = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "grenade"),
             FabricEntityTypeBuilder.<GrenadeEntity>create(SpawnGroup.MISC, GrenadeEntity::new)
                     .dimensions(EntityDimensions.fixed(0.25F, 0.25F)) // dimensions in Minecraft units of the projectile
-                    .trackRangeBlocks(8).trackedUpdateRate(10) // necessary for all thrown projectiles (as it prevents it from breaking, lol)
-                    .build());
+                    .trackRangeBlocks(8).trackedUpdateRate(10)/*necessary for all thrown projectiles (as it prevents it from breaking, lol)*/.build());
     public static final EntityType<LaserEntity> LASER = Registry.register(
-            Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "laser_bolt"),
+            Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "laser"),
             FabricEntityTypeBuilder.<LaserEntity>create(SpawnGroup.MISC, LaserEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.1F, 0.1F)).trackRangeBlocks(32).trackedUpdateRate(20).build());
+    public static final EntityType<GasEntity> GAS = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "gas"),
+            FabricEntityTypeBuilder.<GasEntity>create(SpawnGroup.MISC, GasEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.1F, 0.1F)).trackRangeBlocks(32).trackedUpdateRate(20).build());
+    public static final EntityType<BulletEntity> BULLET = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "bullet"),
+            FabricEntityTypeBuilder.<BulletEntity>create(SpawnGroup.MISC, BulletEntity::new)
                     .dimensions(EntityDimensions.fixed(0.1F, 0.1F)).trackRangeBlocks(32).trackedUpdateRate(20).build());
 }

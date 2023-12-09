@@ -18,20 +18,19 @@ import net.minecraft.world.World;
 import net.trevorskullcrafter.trevorssentinels.item.ModArmorMaterials;
 import net.trevorskullcrafter.trevorssentinels.sound.ModSounds;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
+import net.trevorskullcrafter.trevorssentinels.util.TextUtil;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Objects;
-
-import static net.trevorskullcrafter.trevorssentinels.datagen.EnglishLangGenerator.getColoredText;
 
 @Mixin(ArmorItem.class)
 public abstract class ArmorItemMixin extends NamedItemMixin{
     @Unique private PlayerEntity playerEntity;
-    @Unique private Text setBonusText = null;
 
     @Unique public void galinite_set_bonus(ItemStack stack, World world, PlayerEntity player){
         giveEffect(player, StatusEffects.NIGHT_VISION, 1, 0, false);
@@ -81,7 +80,8 @@ public abstract class ArmorItemMixin extends NamedItemMixin{
     }
 
     @Override public void tickHandler(ItemStack stack, World world, Entity entity, int slot, boolean selected, CallbackInfo ci) {
-        if (entity instanceof PlayerEntity player){ playerEntity = player;
+        if (entity instanceof PlayerEntity player){
+            playerEntity = player;
             if(hasFullSuitOfArmorOn(player) && player.getInventory().getArmorStack(3).getItem() == stack.getItem()) {
                 if (correctArmorSet(ModArmorMaterials.GUNMETAL, player) == 4) { galinite_set_bonus(stack, world, player); }
                 if (correctArmorSet(ArmorMaterials.IRON, player) == 4) { iron_set_bonus(stack, world, player); }
@@ -96,12 +96,13 @@ public abstract class ArmorItemMixin extends NamedItemMixin{
 
     @Override public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context, CallbackInfo ci) {
         ArmorMaterial material = ((ArmorItem) stack.getItem()).getMaterial();
-        if (setBonusText == null) setBonusText = getColoredText("tooltip.material."+ trevorssentinels.MOD_ID+"."+material.getName(),
-                Text.translatable("color.material."+trevorssentinels.MOD_ID+"."+material.getName()).getString());
-        if(!setBonusText.getString().equals("tooltip.material." + trevorssentinels.MOD_ID + "." + material.getName())) {
-            if (correctArmorSet(material, playerEntity) == 4) tooltip.add(setBonusText);
-            else tooltip.add(Text.literal("Set bonus inactive!").append(Text.literal(" (" + correctArmorSet(material, playerEntity) + "/4)"))
-                    .formatted(Formatting.DARK_GRAY));
+        String tooltipColor = "color.material."+ trevorssentinels.MOD_ID+"."+material.getName();
+        String tooltipString = "tooltip.material." + trevorssentinels.MOD_ID + "." + material.getName();
+        Color setBonusColor = TextUtil.translationDiffersFromKey(tooltipColor) ? Color.decode(Text.translatable(tooltipColor).getString()) : null;
+        if(TextUtil.translationDiffersFromKey(tooltipString)) {
+            if (correctArmorSet(material, playerEntity) == 4) { tooltip.add(TextUtil.coloredText(tooltipString, setBonusColor)); }
+            else { tooltip.add(Text.literal("Set bonus inactive!").append(Text.literal(" (" + correctArmorSet(material, playerEntity) + "/4)"))
+                    .formatted(Formatting.DARK_GRAY)); }
         } super.appendTooltip(stack, world, tooltip, context, ci);
     }
 

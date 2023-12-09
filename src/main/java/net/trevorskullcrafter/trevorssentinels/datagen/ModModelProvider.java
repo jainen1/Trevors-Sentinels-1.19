@@ -5,11 +5,13 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
 import net.minecraft.item.Item;
+import net.minecraft.util.Identifier;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.item.BetaItems;
 import net.trevorskullcrafter.trevorssentinels.item.ModArmory;
 import net.trevorskullcrafter.trevorssentinels.item.ModEffectItems;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
+import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) { super(output); }
@@ -27,8 +29,6 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateGenerator.registerSimpleCubeAll(ModBlocks.STEEL_FAN);
         blockStateGenerator.registerSimpleCubeAll(ModBlocks.LIGHT_CHAMBER_BLOCK);
         blockStateGenerator.registerSimpleCubeAll(ModBlocks.DARK_CHAMBER_BLOCK);
-        blockStateGenerator.registerSimpleCubeAll(ModBlocks.HARD_LIGHT);
-        blockStateGenerator.registerSimpleCubeAll(ModBlocks.HARD_LIGHT_BARRIER);
 
         blockStateGenerator.registerSimpleCubeAll(ModBlocks.IRON_GOLD_BLOCK);
         blockStateGenerator.registerSimpleCubeAll(ModBlocks.COPPER_IRON_BLOCK);
@@ -75,6 +75,12 @@ public class ModModelProvider extends FabricModelProvider {
         BlockStateModelGenerator.BlockTexturePool yggdrasilPool = blockStateGenerator.registerCubeAllModelTexturePool(ModBlocks.YGGDRASIL_PLANKS);
         yggdrasilPool.family(ModBlocks.YGGDRASIL_FAMILY);
     }
+
+    private TextureMap hardLightTextureMap(Block block) {
+        return (new TextureMap()).put(TextureKey.of("base"), new Identifier(trevorssentinels.MOD_ID, "hard_light_base"))
+                .put(TextureKey.of("overlay"), new Identifier(trevorssentinels.MOD_ID, "hard_light_overlay"));
+    }
+
     @Override public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         registerItems(itemModelGenerator, Models.GENERATED, ModArmory.SCRAP_HELMET, ModArmory.SCRAP_CHESTPLATE, ModArmory.SCRAP_LEGGINGS,
                 ModArmory.SCRAP_BOOTS);
@@ -144,13 +150,15 @@ public class ModModelProvider extends FabricModelProvider {
 
         //progression materials
         registerItems(itemModelGenerator, Models.GENERATED, ModItems.SCRAP_METAL_SHARD, ModItems.COPPER_IRON_INGOT, ModItems.ROSE_GOLD_INGOT, ModItems.IMPERIAL_ALLOY_INGOT,
-                ModItems.GUNMETAL_INGOT, ModItems.STEEL_INGOT, ModItems.REDSTONE_CRYSTAL, ModItems.BLOOD_DIAMOND, ModItems.DARKSTEEL_INGOT, ModItems.TORBERNITE_CUBE,
-                ModItems.FERRAURIUM_DARKSTEEL_INGOT, ModItems.ZENITHIUM_CLUSTER);
+                ModItems.GUNMETAL_INGOT, ModItems.GALLIUM_VIAL, ModItems.STEEL_INGOT, ModItems.REDSTONE_CRYSTAL, ModItems.BLOOD_DIAMOND, ModItems.DARKSTEEL_INGOT,
+                ModItems.TORBERNITE_CUBE, ModItems.FERRAURIUM_DARKSTEEL_INGOT, ModItems.ZENITHIUM_CLUSTER);
 
         //misc
         registerItems(itemModelGenerator, Models.GENERATED, ModItems.EMPTY_CAN, ModItems.RUINOUS_GAZE, ModItems.ENERGY_CELL, ModItems.NUCLEAR_DETONATOR,
                 ModItems.NUCLEAR_ROCKET, BetaItems.JETPACK, ModItems.MUSIC_DISC_ASSASSINATION_UPLOAD, ModItems.MUSIC_DISC_LAPSE_IN_JUDGEMENT,
-                ModItems.MUSIC_DISC_ODE_TO_TRANQUILITY, ModItems.MUSIC_DISC_RECITAL);
+                ModItems.MUSIC_DISC_ODE_TO_TRANQUILITY, ModItems.MUSIC_DISC_RECITAL, ModItems.CAUTION_HARD_LIGHT_PROJECTOR, ModItems.SENTINEL_HARD_LIGHT_PROJECTOR);
+
+        registerItems(itemModelGenerator, Models.HANDHELD, ModItems.HARD_LIGHT_PROJECTOR);
 
         itemModelGenerator.register(ModItems.VENDOR_TOKEN, Models.GENERATED);
         itemModelGenerator.register(BetaItems.DEMONIC_CORE, Models.GENERATED);

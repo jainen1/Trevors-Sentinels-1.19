@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "trevorssentinels:item/caution_hard_light_projector"
+  }
+}

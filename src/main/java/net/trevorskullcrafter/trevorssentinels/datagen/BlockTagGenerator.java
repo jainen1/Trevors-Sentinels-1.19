@@ -18,7 +18,8 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider {
     public BlockTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) { super(output, completableFuture); }
 
     public static final TagKey<Block> LASER_REFLECTIVE = TagKey.of(RegistryKeys.BLOCK, new Identifier(trevorssentinels.MOD_ID, "laser_reflective"));
-    public static final TagKey<Block> LASER_PASS = TagKey.of(RegistryKeys.BLOCK, new Identifier(trevorssentinels.MOD_ID, "laser_pass"));
+    public static final TagKey<Block> LASER_PROJECTILE_PASS = TagKey.of(RegistryKeys.BLOCK, new Identifier(trevorssentinels.MOD_ID, "laser_projectile_pass"));
+    public static final TagKey<Block> SOLID_PROJECTILE_PASS = TagKey.of(RegistryKeys.BLOCK, new Identifier(trevorssentinels.MOD_ID, "solid_projectile_pass"));
 
     public static final TagKey<Block> CERULII_LOGS = TagKey.of(RegistryKeys.BLOCK, new Identifier(trevorssentinels.MOD_ID, "cerulii_logs"));
     public static final TagKey<Block> CHARRED_LOGS = TagKey.of(RegistryKeys.BLOCK, new Identifier(trevorssentinels.MOD_ID, "charred_logs"));
@@ -35,10 +36,12 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.STEEL_BLOCK, ModBlocks.CAUTION_STEEL_BLOCK, ModBlocks.STAINLESS_STEEL_BLOCK, ModBlocks.STEEL_LAMP_BLOCK, ModBlocks.STEEL_FAN,
                         ModBlocks.BATTERY, ModBlocks.FUSEBOX, ModBlocks.STEEL_LADDER, ModBlocks.RED_BUTTON, ModBlocks.RED_PLATE, ModBlocks.SUPERFORGE)
                 .add(ModBlocks.DARKENED_STEEL_BLOCK, ModBlocks.DARKSTEEL_BLOCK, ModBlocks.IRON_GOLD_BLOCK, ModBlocks.ROSE_GOLD_BLOCK, ModBlocks.COPPER_IRON_BLOCK);
-        getOrCreateTagBuilder(LASER_PASS)
-                .addOptionalTag(new Identifier("c", "glass_blocks"))
+        getOrCreateTagBuilder(SOLID_PROJECTILE_PASS)
                 .addOptionalTag(BlockTags.LEAVES)
                 .add(Blocks.IRON_BARS);
+        getOrCreateTagBuilder(LASER_PROJECTILE_PASS)
+                .addOptionalTag(new Identifier("c", "glass_blocks"))
+                .addTag(SOLID_PROJECTILE_PASS);
 
         getOrCreateTagBuilder(CERULII_LOGS).add(ModBlocks.CERULII_LOG, ModBlocks.CERULII_WOOD, ModBlocks.STRIPPED_CERULII_LOG, ModBlocks.STRIPPED_CERULII_WOOD);
         getOrCreateTagBuilder(CHARRED_LOGS).add(ModBlocks.CHARRED_LOG, ModBlocks.CHARRED_WOOD, ModBlocks.STRIPPED_CHARRED_LOG, ModBlocks.STRIPPED_CHARRED_WOOD);

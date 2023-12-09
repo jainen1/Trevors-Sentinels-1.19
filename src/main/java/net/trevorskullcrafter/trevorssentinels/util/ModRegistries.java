@@ -21,7 +21,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.command.WorldLevelCommand;
-import net.trevorskullcrafter.trevorssentinels.datagen.EnglishLangGenerator;
 import net.trevorskullcrafter.trevorssentinels.item.BetaItems;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 import net.trevorskullcrafter.trevorssentinels.item.custom.unique.LensItem;
@@ -30,7 +29,6 @@ import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
 
 import java.util.Objects;
 
-import static net.trevorskullcrafter.trevorssentinels.datagen.EnglishLangGenerator.getColoredText;
 import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 
 public class ModRegistries {
@@ -63,11 +61,6 @@ public class ModRegistries {
 
     public static void registerModelPredicates() {
         trevorssentinels.LOGGER.info("Registering model predicates... ("+ MOD_ID + ")");
-        ModelPredicateProviderRegistry.register(ModItems.HARD_LIGHT_PROJECTOR, new Identifier(trevorssentinels.MOD_ID, "mode"), (stack, world, entity, seed) -> {
-            switch (StyleUtil.getStyle(stack)){
-                case 2 -> { return 0.5f; }
-                case 3 -> { return 1.0f; }
-                default -> { return 0.0f; } }});
         ModelPredicateProviderRegistry.register(BetaItems.PAPPYM_BLADE, new Identifier(trevorssentinels.MOD_ID, "bad"), (stack, world, entity, seed) -> {
             if (StyleUtil.getStyle(stack) == 1 || StyleUtil.getStyle(stack) == 3) return 0.2f; return 0f;});
         ModelPredicateProviderRegistry.register(ModItems.GALINITE_LENS, new Identifier(trevorssentinels.MOD_ID, "on"), (stack, world, entity, seed) -> {
@@ -162,7 +155,7 @@ public class ModRegistries {
                 world.createExplosion(entity, entity.getX(), entity.getY(), entity.getZ(), 8f, false, World.ExplosionSourceType.MOB);
                 WitherSkeletonEntity leftovers = new WitherSkeletonEntity(EntityType.WITHER_SKELETON, world);
                 leftovers.setPosition(witherEntity.getPos());
-                leftovers.setCustomName(getColoredText("Cerberus, Darkness Incarnate", EnglishLangGenerator.dark_purple));
+                leftovers.setCustomName(TextUtil.coloredText("Cerberus, Darkness Incarnate", TextUtil.DARK_PURPLE));
                 witherEntity.getWorld().spawnEntity(leftovers);
                 for (PlayerEntity player:world.getPlayers()) {
                     player.sendMessage(Text.literal(witherEntity.getName().getString() + " grows restless!").formatted(Formatting.RED));
@@ -182,7 +175,7 @@ public class ModRegistries {
 
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             server.getCommandManager();
-            handler.player.sendMessage(Text.literal("Welcome back, "+handler.player.getEntityName()+"!").formatted(Formatting.GREEN));
+            handler.player.sendMessage(Text.literal("Welcome back, " + handler.player.getEntityName()+"!").formatted(Formatting.GREEN));
             //handler.player.sendMessage(Text.translatable(new Identifier(MOD_ID, "join.");
         });
     }

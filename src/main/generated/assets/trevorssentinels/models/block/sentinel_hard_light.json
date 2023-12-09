@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "trevorssentinels:block/hard_light_barrier"
+    "all": "trevorssentinels:block/sentinel_hard_light"
   }
 }

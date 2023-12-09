@@ -195,7 +195,8 @@ public class ModItemGroupEvents {
         //items
         addToGroup(group, ModItems.SCRAP_METAL_SHARD);
         addToGroup(group, ModItems.GALINITE_LENS);
-        addToGroup(group, ModItems.HARD_LIGHT_PROJECTOR);
+        addToGroup(group, ModItems.HARD_LIGHT_PROJECTOR, ModItems.CAUTION_HARD_LIGHT_PROJECTOR, ModItems.SENTINEL_HARD_LIGHT_PROJECTOR,
+                ModBlocks.HARD_LIGHT_BARRIER, ModBlocks.CAUTION_HARD_LIGHT_BARRIER, ModBlocks.SENTINEL_HARD_LIGHT_BARRIER);
         addToGroup(group, ModItems.ENERGY_CELL);
 
         addToGroup(group, ModItems.MUSIC_DISC_ASSASSINATION_UPLOAD, ModItems.MUSIC_DISC_ODE_TO_TRANQUILITY, ModItems.MUSIC_DISC_LAPSE_IN_JUDGEMENT,
@@ -275,9 +276,9 @@ public class ModItemGroupEvents {
                 ModArmory.LASER_MINIGUN, ModArmory.LASER_SHOTGUN, ModArmory.LASER_SPREADER, ModArmory.LASER_SNIPER, ModArmory.LASER_REVOLVER, ModArmory.VILE_SPITTER);
     }
 
-    public static void logInstall(RegistryKey<ItemGroup> group){ trevorssentinels.LOGGER.info("Installing unit [" + group.getValue().toTranslationKey() + "]... (" + MOD_ID + ")"); }
+    public static void logInstall(RegistryKey<ItemGroup> group){ trevorssentinels.LOGGER.info("Filling unit [" + group.getValue().toTranslationKey() + "]... (" + MOD_ID + ")"); }
     public static void logInstall(RegistryKey<ItemGroup> group, String subunitName){
-        trevorssentinels.LOGGER.info("Installing subunit [" + subunitName + "] in unit [" + group.toString() + "]... (" + MOD_ID + ")");
+        trevorssentinels.LOGGER.info("Filling subunit [" + subunitName + "] in unit [" + group.getValue().toTranslationKey() + "]... (" + MOD_ID + ")");
     }
 
     public static void addToGroup(RegistryKey<ItemGroup> group, ItemConvertible... items){

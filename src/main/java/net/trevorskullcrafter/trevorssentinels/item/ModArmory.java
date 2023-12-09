@@ -13,6 +13,9 @@ import net.trevorskullcrafter.trevorssentinels.item.custom.unique.*;
 import net.trevorskullcrafter.trevorssentinels.sound.ModSounds;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
 import net.minecraft.util.Identifier;
+import net.trevorskullcrafter.trevorssentinels.util.TextUtil;
+
+import java.awt.*;
 
 import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 
@@ -284,51 +287,51 @@ public class ModArmory {
     public static final Item MASTER_SWORD = registerItem("master_sword",
             new SwordItem(ModToolMaterials.ZENITHIUM, 3, -2.4f, new FabricItemSettings().fireproof()));
 
-    public static final Item LASER_PISTOL = registerItem("laser_pistol", new LaserGunItem(new FabricItemSettings().maxDamage(7), 1, 1.5f,
-            4.0f, 1.0f, 0.01f, 20, 4, 9, 50, ModSounds.BLASTER_SHOOT,
-            ModSounds.PISTOL_RELOAD, 1, 16711680));
+    public static final Item LASER_PISTOL = registerItem("laser_pistol", new GunItem(new FabricItemSettings().maxDamage(7), 1, 1.5f,
+            4.0f, 1.0f, 0.01f, 10, 50, ModSounds.BLASTER_SHOOT, ModSounds.PISTOL_RELOAD,
+            20, 4, 1, TextUtil.BLOOD_RED));
 
-    public static final Item LASER_TASER = registerItem("laser_taser", new LaserGunItem(new FabricItemSettings().maxDamage(5), 1, 2.0f,
-            3.0f, 0.5f, 0.01f, 10, 1, 99, 20, ModSounds.BLASTER_SHOOT,
-            ModSounds.PISTOL_RELOAD, 1, -1, new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 9)));
+    public static final Item LASER_TASER = registerItem("laser_taser", new GunItem(new FabricItemSettings().maxDamage(5), 1, 2.0f,
+            3.0f, 0.5f, 0.01f, 100, 20, ModSounds.BLASTER_SHOOT, ModSounds.PISTOL_RELOAD,
+            10, 1, 3, TextUtil.BLOOD_RED, new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 9)));
 
-    public static final Item LASER_SNIPER_ECHO = registerItem("laser_sniper_echo", new LaserGunItem(new FabricItemSettings().maxDamage(4), 1, 2.0f,
-            1.0f, 5.0f, 0.09f,  52, 10, 19, 120, ModSounds.BLASTER_SHOOT,
-            ModSounds.SNIPER_RELOAD, 1, 16711680));
+    public static final Item LASER_SNIPER_ECHO = registerItem("laser_sniper_echo", new GunItem(new FabricItemSettings().maxDamage(4), 1, 2.0f,
+            1.0f, 5.0f, 0.09f,  20, 120, ModSounds.BLASTER_SHOOT, ModSounds.SNIPER_RELOAD,
+            52,  10, 1, TextUtil.BLOOD_RED));
 
-    public static final Item LASER_MINIGUN = registerItem("laser_minigun", new LaserGunItem(new FabricItemSettings().maxDamage(65), 2, 2.0f,
-            12.0f, 5.0f, 0.04f, 40, 1.5F, 3, 200, ModSounds.BLASTER_SHOOT,
-            ModSounds.SHOTGUN_RELOAD, 1, 16711680));
+    public static final Item LASER_MINIGUN = registerItem("laser_minigun", new GunItem(new FabricItemSettings().maxDamage(65), 2, 2.0f,
+            12.0f, 5.0f, 0.04f, 3, 200, ModSounds.BLASTER_SHOOT, ModSounds.SHOTGUN_RELOAD,
+            40,  2, 1, TextUtil.BLOOD_RED));
 
-    public static final Item LASER_SHOTGUN = registerItem("laser_shotgun", new LaserGunItem(new FabricItemSettings().maxDamage(5), 6, 2.5f,
-            15.0f, 5.0f, 0.035f, 7,12,19, 100, ModSounds.BLASTER_SHOOT,
-            ModSounds.SHOTGUN_RELOAD, 1, -1));
+    public static final Item LASER_SHOTGUN = registerItem("laser_shotgun", new GunItem(new FabricItemSettings().maxDamage(5), 6, 2.5f,
+            15.0f, 5.0f, 0.035f, 20, 100, ModSounds.BLASTER_SHOOT, ModSounds.SHOTGUN_RELOAD,
+            7, 12, 1, TextUtil.BLOOD_RED));
 
-    public static final Item LASER_SNIPER = registerItem("laser_sniper", new LaserGunItem(new FabricItemSettings().maxDamage(2), 1, 4.0f,
-            0.1f, 20.0f, 0.18f, 96, 20, 19, 200, ModSounds.BLASTER_SHOOT,
-            ModSounds.SNIPER_RELOAD, 1, -1));
+    public static final Item LASER_SNIPER = registerItem("laser_sniper", new GunItem(new FabricItemSettings().maxDamage(2), 1, 4.0f,
+            0.1f, 20.0f, 0.18f, 19, 200, ModSounds.BLASTER_SHOOT, ModSounds.SNIPER_RELOAD,
+            96, 20, 1, TextUtil.BLOOD_RED));
 
-    public static final Item LASER_HEALER = registerItem("laser_healer", new LaserGunItem(new FabricItemSettings().maxDamage(8), 1, 1.5f,
-            2.5f, 2.5f, 0.05f, 16, -1, 39, 150, ModSounds.BLASTER_SHOOT,
-            ModSounds.BIO_RELOAD, 1, -1, new StatusEffectInstance(StatusEffects.REGENERATION, 60, 1),
-            new StatusEffectInstance(StatusEffects.GLOWING, 60)));
+    public static final Item LASER_HEALER = registerItem("laser_healer", new GunItem(new FabricItemSettings().maxDamage(8), 1, 1.5f,
+            2.5f, 2.5f, 0.05f, 40, 150, ModSounds.BLASTER_SHOOT, ModSounds.BIO_RELOAD,
+            16, -1, 2, TextUtil.BLOOD_RED,
+            new StatusEffectInstance(StatusEffects.REGENERATION, 60, 1), new StatusEffectInstance(StatusEffects.GLOWING, 60)));
 
-    public static final Item LASER_SPREADER = registerItem("laser_spreader", new LaserGunItem(new FabricItemSettings().maxDamage(13), 8, 0.25f,
-            10.0f, 5.0f, 0.05f, 32, 2, 3, 150, SoundEvents.BLOCK_FIRE_EXTINGUISH,
-            ModSounds.BIO_RELOAD, 2, -1, new StatusEffectInstance(StatusEffects.WITHER, 100, 1),
-            new StatusEffectInstance(StatusEffects.BLINDNESS, 40)));
+    public static final Item LASER_SPREADER = registerItem("laser_spreader", new GunItem(new FabricItemSettings().maxDamage(13), 1, 0.25f,
+            10.0f, 5.0f, 0.05f, 3, 150, SoundEvents.BLOCK_FIRE_EXTINGUISH, ModSounds.BIO_RELOAD,
+            32, 2, 2, TextUtil.NUCLEAR,
+            new StatusEffectInstance(StatusEffects.WITHER, 100, 1), new StatusEffectInstance(StatusEffects.BLINDNESS, 40)));
 
-    public static final Item LASER_RIFLE = registerItem("laser_rifle", new LaserGunItem(new FabricItemSettings().maxDamage(21), 1, 2.0f,
-            2.5f, 2.5f, 0.035f, 48, 3, 3, 30, ModSounds.BLASTER_SHOOT,
-            ModSounds.SHOTGUN_RELOAD, 1, 16711680));
+    public static final Item LASER_RIFLE = registerItem("laser_rifle", new GunItem(new FabricItemSettings().maxDamage(21), 1, 2.0f,
+            2.5f, 2.5f, 0.035f, 3, 30, ModSounds.BLASTER_SHOOT, ModSounds.SHOTGUN_RELOAD,
+            48, 3, 1, TextUtil.BLOOD_RED));
 
-    public static final Item LASER_REVOLVER = registerItem("laser_revolver", new LaserGunItem(new FabricItemSettings().maxDamage(7), 1, 3.0f,
-            15.0f, 5.0f, 0.075f, 48, 12, 3, 90, ModSounds.BLASTER_SHOOT,
-            ModSounds.SHOTGUN_RELOAD, 3, 11184810));
+    public static final Item LASER_REVOLVER = registerItem("laser_revolver", new GunItem(new FabricItemSettings().maxDamage(7), 1, 3.0f,
+            15.0f, 5.0f, 0.075f, 3, 90, ModSounds.BLASTER_SHOOT, ModSounds.SHOTGUN_RELOAD,
+            48, 12, 3, Color.decode("11184810")));
 
-    public static final Item VILE_SPITTER = registerItem("vile_spitter", new LaserGunItem(new FabricItemSettings().maxDamage(8), 1, 2.0f,
-            4.0f, 2.0f, 0.035f, 48, 8, 11, 60, ModSounds.FLESH_BREAK,
-            ModSounds.FLESH_AMBIENT, 3, 13164900, new StatusEffectInstance(ModEffects.INFESTED, 20)));
+    public static final Item VILE_SPITTER = registerItem("vile_spitter", new GunItem(new FabricItemSettings().maxDamage(8), 1, 2.0f,
+            4.0f, 2.0f, 0.035f, 11, 60, ModSounds.FLESH_BREAK, ModSounds.FLESH_AMBIENT,
+            48, 8, 3, Color.decode("13164900"), new StatusEffectInstance(ModEffects.INFESTED, 20)));
 
     private static Item registerItem(String name, Item item){ return Registry.register(Registries.ITEM, new Identifier(trevorssentinels.MOD_ID, name), item); }
     public static void registerArmory(){ trevorssentinels.LOGGER.info("Registering armory... (" + MOD_ID + ")"); }

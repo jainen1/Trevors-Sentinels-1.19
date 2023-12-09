@@ -1,5 +1,7 @@
 package net.trevorskullcrafter.trevorssentinels.mixin;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
@@ -9,8 +11,8 @@ import net.minecraft.text.TextColor;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Rarity;
 import net.minecraft.world.World;
-import net.trevorskullcrafter.trevorssentinels.datagen.EnglishLangGenerator;
 import net.trevorskullcrafter.trevorssentinels.datagen.ItemTagGenerator;
+import net.trevorskullcrafter.trevorssentinels.util.TextUtil;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -22,49 +24,51 @@ import java.util.List;
 
 @Mixin(Item.class)
 public abstract class NamedItemMixin{
-    //@Shadow public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {}
     @Shadow public abstract String getTranslationKey(ItemStack stack);
     @Shadow @Final private Rarity rarity;
+    @Unique int modelData;
 
+    @Unique private String customTranslationKey(String type, ItemStack stack){
+        String typeKey = (type != null? type + "." : "") + getTranslationKey(stack);
+        return typeKey + ((modelData > 0 && TextUtil.translationDiffersFromKey(typeKey + ".custom" + modelData))? ".custom" + modelData : "");
+    }
+
+    @Environment(EnvType.CLIENT)
+    @Inject(at = @At("TAIL"), method = "getName(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/text/Text;", cancellable = true)
+    void getName(ItemStack stack, CallbackInfoReturnable<Text> cir) {
+        String colorKey = customTranslationKey("color", stack);
+        boolean b1 = TextUtil.translationDiffersFromKey(colorKey);
+        if(b1 || rarity != Rarity.COMMON){ cir.setReturnValue(TextUtil.coloredText(customTranslationKey(null, stack),
+                TextUtil.decodedColorKey((b1)? colorKey : "color.rarity.minecraft." + rarity.name().toLowerCase()))); }
+    }
+
+    @Environment(EnvType.CLIENT)
     @Inject(at = @At("HEAD"), method = "appendTooltip")
     public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context, CallbackInfo ci) {
-        String tooltipRaw = "tooltip." + stack.getTranslationKey();
-        if(stack.getNbt() != null){ int data = stack.getNbt().getInt("CustomModelData"); String newTooltip = tooltipRaw + ".custom" + data;
-            if(data != 0 && !newTooltip.equals(Text.translatable(newTooltip).getString())) { tooltipRaw = newTooltip; }}
+        String tooltipRaw = customTranslationKey("tooltip", stack);
         String tooltipText = Text.translatable(tooltipRaw).getString();
         if(!tooltipRaw.equals(tooltipText)) {
-            if (tooltipText.contains(" ") && tooltipText.length() > stack.getName().getString().length() * 1.75) { //if tooltip is very long, split it in half
+            Formatting[] formattings = new Formatting[]{Formatting.ITALIC, Formatting.GRAY};
+            if (tooltipText.contains(" ") && tooltipText.length() >= 24) { //if tooltip is very long, split it in half
                 int halfPoint = tooltipText.indexOf(" ", (int) (tooltipText.length() / 2.0)) + 1;
-                tooltip.add(Text.literal(tooltipText.substring(0, halfPoint)).formatted(Formatting.ITALIC, Formatting.GRAY));
-                tooltip.add(Text.literal(tooltipText.substring(halfPoint)).formatted(Formatting.ITALIC, Formatting.GRAY));
-            } else { tooltip.add(Text.literal(tooltipText).formatted(Formatting.ITALIC, Formatting.GRAY)); }
+                tooltip.add(Text.literal(tooltipText.substring(0, halfPoint)).formatted(formattings));
+                tooltip.add(Text.literal(tooltipText.substring(halfPoint)).formatted(formattings));
+            } else { tooltip.add(Text.literal(tooltipText).formatted(formattings)); }
         }
     }
 
+    @Environment(EnvType.CLIENT)
     @Inject(at = @At("HEAD"), method = "getItemBarColor", cancellable = true)
     public void getItemBarColor(ItemStack stack, CallbackInfoReturnable<Integer> cir) {
         TextColor styleColor = stack.getName().getStyle().getColor();
         if(stack.isIn(ItemTagGenerator.ITEM_BAR_COLOR_OVERRIDE) && styleColor != null) { cir.setReturnValue(styleColor.getRgb()); }
     }
 
-    @Unique private String customTranslationKey(String type, ItemStack stack){
-        String typeKey = (type != null? type + "." : "") + getTranslationKey(stack);
-        if(stack.getNbt() != null) { int data = stack.getNbt().getInt("CustomModelData"); String customKey = typeKey + ".custom" + data;
-            if(data != 0 && !customKey.equals(Text.translatable(customKey).getString())) { return customKey; }} return typeKey;
-    }
-
-    @Inject(at = @At("TAIL"), method = "getName(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/text/Text;", cancellable = true)
-    void getName(ItemStack stack, CallbackInfoReturnable<Text> cir) {
-        Text name; String translationKey = customTranslationKey(null, stack); String nameColor = customTranslationKey("color", stack);
-        String colorString = Text.translatable(nameColor).getString();
-        if (!nameColor.equals(colorString)) { name = EnglishLangGenerator.getColoredText(translationKey, colorString); }
-        else if (rarity != Rarity.COMMON) { name = EnglishLangGenerator.getColoredText(translationKey,
-                Text.translatable("color.rarity.minecraft." + rarity.name().toLowerCase()).getString()); }
-        else { name = Text.translatable(translationKey); }
-        cir.setReturnValue(name);
-    }
-
+    @Environment(EnvType.SERVER)
     @Inject(method = "inventoryTick", at = @At("HEAD"))
-    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected, CallbackInfo ci) { tickHandler(stack, world, entity, slot, selected, ci); }
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected, CallbackInfo ci) {
+        tickHandler(stack, world, entity, slot, selected, ci);
+        if(stack.getNbt() != null) { modelData = stack.getNbt().getInt("CustomModelData"); }
+    }
     @Unique public void tickHandler(ItemStack stack, World world, Entity entity, int slot, boolean selected, CallbackInfo ci) {}
 }

@@ -36,8 +36,8 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
                         ModArmory.NANOTECH_AXE, ModArmory.NANOTECH_SHOVEL, ModArmory.NANOTECH_HOE, ModArmory.NANOTECH_HELMET, ModArmory.NANOTECH_CHESTPLATE,
                         ModArmory.NANOTECH_LEGGINGS, ModArmory.NANOTECH_BOOTS, ModArmory.ZENITHIUM_SWORD, ModArmory.ZENITHIUM_PICKAXE, ModArmory.ZENITHIUM_AXE,
                         ModArmory.ZENITHIUM_SHOVEL, ModArmory.ZENITHIUM_HOE, ModArmory.ZENITHIUM_CHESTPLATE, ModArmory.ZENITHIUM_LEGGINGS, ModArmory.ZENITHIUM_BOOTS,
-                        BetaItems.DEMONIC_CORE, BetaItems.THANATU_BLADE, ModItems.HARD_LIGHT_PROJECTOR, ModArmory.LASER_PISTOL, ModArmory.LASER_TASER,
-                        ModArmory.LASER_SNIPER_ECHO, ModArmory.LASER_MINIGUN, ModArmory.LASER_SHOTGUN, ModArmory.LASER_SNIPER, ModArmory.LASER_HEALER,
-                        ModArmory.LASER_SPREADER, ModArmory.LASER_RIFLE, ModArmory.LASER_REVOLVER, ModArmory.VILE_SPITTER);
+                        BetaItems.DEMONIC_CORE, BetaItems.THANATU_BLADE, ModItems.HARD_LIGHT_PROJECTOR, ModItems.CAUTION_HARD_LIGHT_PROJECTOR, ModItems.SENTINEL_HARD_LIGHT_PROJECTOR,
+                        ModArmory.LASER_PISTOL, ModArmory.LASER_TASER, ModArmory.LASER_SNIPER_ECHO, ModArmory.LASER_MINIGUN, ModArmory.LASER_SHOTGUN, ModArmory.LASER_SNIPER,
+                        ModArmory.LASER_HEALER, ModArmory.LASER_SPREADER, ModArmory.LASER_RIFLE, ModArmory.LASER_REVOLVER, ModArmory.VILE_SPITTER);
     }
 }

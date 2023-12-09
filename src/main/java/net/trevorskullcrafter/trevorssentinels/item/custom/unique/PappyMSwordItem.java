@@ -33,8 +33,8 @@ public class PappyMSwordItem extends SwordItem implements StyleUtil.StyleSwitche
     @Override public boolean hasGlint(ItemStack stack){ return getCharge(stack) == 6; }
     StatusEffectInstance[] effects = new StatusEffectInstance[]{
             new StatusEffectInstance(StatusEffects.SPEED, 1, 0),
-            new StatusEffectInstance(StatusEffects.SLOWNESS, 1, 1),
-            new StatusEffectInstance(StatusEffects.HUNGER, 1, 2),
+            new StatusEffectInstance(StatusEffects.SLOWNESS, 10, 1),
+            new StatusEffectInstance(StatusEffects.HUNGER, 100, 2),
             new StatusEffectInstance(StatusEffects.RESISTANCE, 1, 0) };
     Text[] paladinText = new Text[]{
             Text.literal("◇ ◇ ◇ ◇ ◇ ◇").formatted(Formatting.GRAY),

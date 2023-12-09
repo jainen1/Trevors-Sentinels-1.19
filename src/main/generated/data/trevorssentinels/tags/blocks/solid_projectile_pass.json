@@ -2,10 +2,6 @@
   "replace": false,
   "values": [
     {
-      "id": "#c:glass_blocks",
-      "required": false
-    },
-    {
       "id": "#minecraft:leaves",
       "required": false
     },

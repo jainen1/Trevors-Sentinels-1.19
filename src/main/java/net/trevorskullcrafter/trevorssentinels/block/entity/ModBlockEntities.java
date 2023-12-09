@@ -14,6 +14,7 @@ public class ModBlockEntities {
     public static BlockEntityType<VendorBlockEntity> VENDOR;
     public static BlockEntityType<SuperforgeBlockEntity> SUPERFORGE;
     public static BlockEntityType<ModificationTableBlockEntity> MODIFICATION_TABLE;
+    public static BlockEntityType<HardLightBlockEntity> HARD_LIGHT;
 
     public static void registerBlockEntities(){
         trevorssentinels.LOGGER.info("Registering block entities... (" + MOD_ID + ")");
@@ -25,5 +26,8 @@ public class ModBlockEntities {
 
         MODIFICATION_TABLE = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(MOD_ID, "modification_table"),
                 FabricBlockEntityTypeBuilder.create(ModificationTableBlockEntity::new, ModBlocks.MODIFICATION_TABLE).build(null));
+
+        HARD_LIGHT = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(MOD_ID, "hard_light"),
+                FabricBlockEntityTypeBuilder.create(HardLightBlockEntity::new, ModBlocks.HARD_LIGHT, ModBlocks.CAUTION_HARD_LIGHT, ModBlocks.SENTINEL_HARD_LIGHT).build(null));
     }
 }

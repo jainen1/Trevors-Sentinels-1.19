@@ -11,7 +11,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.trevorskullcrafter.trevorssentinels.item.custom.LaserGunItem;
+import net.trevorskullcrafter.trevorssentinels.item.custom.GunItem;
 
 import java.util.Objects;
 
@@ -21,7 +21,7 @@ public class LaserGunReloadC2SPacket {
             player.sendMessage(Text.empty().append("Automatic Reloading: ").append(getAutomaticReloading(player.getMainHandStack(), true) ?
             Text.literal("ON").formatted(Formatting.GREEN, Formatting.BOLD) : Text.literal("OFF").formatted(Formatting.RED, Formatting.BOLD)), true);
             player.getWorld().playSoundFromEntity(null, player, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.PLAYERS, 1.0f, 1.0f);
-        } else if(player.getMainHandStack().getItem() instanceof LaserGunItem laserGun){
+        } else if(player.getMainHandStack().getItem() instanceof GunItem laserGun){
             if(player.getMainHandStack().getItem() == player.getOffHandStack().getItem()) { laserGun.reloadGun(player.getOffHandStack(), player.getWorld(), player); }
             laserGun.reloadGun(player.getMainHandStack(), player.getWorld(), player);
         }

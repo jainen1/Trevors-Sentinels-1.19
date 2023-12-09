@@ -6,12 +6,14 @@
   "mixins": [
     "ArmorItemMixin",
     "BlockEntityTypeMixin",
-    "LivingEntityDataBlockClimbMixin"
+    "FallDamageMixin",
+    "LivingEntityDataBlockClimbMixin",
+    "NamedItemMixin"
   ],
   "client": [
     "ExampleMixin",
     "LaserGunHoldMixin",
-    "NamedItemMixin",
+    "SpawnNoiseMixin",
     "StatusEffectMixin"
   ],
   "injectors": {

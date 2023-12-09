@@ -1,12 +1,44 @@
 package net.trevorskullcrafter.trevorssentinels.block.custom;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.GlassBlock;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
+import net.trevorskullcrafter.trevorssentinels.block.entity.HardLightBlockEntity;
+import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
+import org.jetbrains.annotations.Nullable;
 
-public class HardLightBlock extends GlassBlock {
-    public HardLightBlock(AbstractBlock.Settings settings) { super(settings); }
+public class HardLightBlock extends BlockWithEntity {
+    public HardLightBlock(Item item, Settings settings) { super(settings); }
+
+    @Override public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        world.playSound(null, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+        super.onPlaced(world, pos, state, placer, itemStack);
+    }
+
+    @Override public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return world.isClient ? null : validateTicker(type, ModBlockEntities.HARD_LIGHT, HardLightBlockEntity::tick);
+    }
 
     @Override public Item asItem() { return ModItems.HARD_LIGHT_PROJECTOR; }
+    @Nullable @Override public BlockEntity createBlockEntity(BlockPos pos, BlockState state) { return new HardLightBlockEntity(pos, state); }
+    @Override public BlockRenderType getRenderType(BlockState state) { return BlockRenderType.MODEL; }
+    public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) { return VoxelShapes.empty(); }
+    public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) { return 1.0F; }
+    public boolean isTransparent(BlockState state, BlockView world, BlockPos pos) { return true; }
+    public boolean isSideInvisible(BlockState state, BlockState stateFrom, Direction direction) {
+        return stateFrom.isOf(this) || super.isSideInvisible(state, stateFrom, direction);
+    }
 }

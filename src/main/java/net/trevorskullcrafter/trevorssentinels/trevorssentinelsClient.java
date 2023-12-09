@@ -3,6 +3,7 @@ package net.trevorskullcrafter.trevorssentinels;
 import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
@@ -13,6 +14,8 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.entity.EntityType;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.util.Identifier;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
@@ -26,13 +29,27 @@ import net.trevorskullcrafter.trevorssentinels.fluid.ModFluids;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 import net.trevorskullcrafter.trevorssentinels.networking.ModMessages;
 import net.trevorskullcrafter.trevorssentinels.util.ModRegistries;
+import net.trevorskullcrafter.trevorssentinels.util.TextUtil;
 
 public class trevorssentinelsClient implements ClientModInitializer {
 
     @Override public void onInitializeClient(){
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xCFF8FF, ModItems.VENDOR_TOKEN);
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xaa00aa, ModItems.LEGENDARY_TOKEN);
-        //ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> , ModBlocks.HARD_LIGHT);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> TextUtil.DARK_PURPLE.getRGB(), ModItems.LEGENDARY_TOKEN);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> TextUtil.tintByIndex(tintIndex, TextUtil.GAS_TEST, TextUtil.WHITE), ModItems.GAS_CAPSULE); //0x71ff7c
+
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> TextUtil.tintByIndex(tintIndex, TextUtil.SENTINEL_AQUA, TextUtil.SENTINEL_DARK_AQUA),
+                ModBlocks.HARD_LIGHT, ModBlocks.HARD_LIGHT_BARRIER);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> TextUtil.tintByIndex(tintIndex, TextUtil.SENTINEL_AQUA, TextUtil.SENTINEL_DARK_AQUA),
+                ModBlocks.HARD_LIGHT_BARRIER);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> TextUtil.tintByIndex(tintIndex, TextUtil.GOLD, TextUtil.SENTINEL_DARK_GOLD),
+                ModBlocks.CAUTION_HARD_LIGHT, ModBlocks.CAUTION_HARD_LIGHT_BARRIER);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> TextUtil.tintByIndex(tintIndex, TextUtil.GOLD, TextUtil.SENTINEL_DARK_GOLD),
+                ModBlocks.CAUTION_HARD_LIGHT_BARRIER);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> TextUtil.tintByIndex(tintIndex, TextUtil.SENTINEL_CRIMSON, TextUtil.SENTINEL_DARK_CRIMSON),
+                ModBlocks.SENTINEL_HARD_LIGHT, ModBlocks.SENTINEL_HARD_LIGHT_BARRIER);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> TextUtil.tintByIndex(tintIndex, TextUtil.SENTINEL_CRIMSON, TextUtil.SENTINEL_DARK_CRIMSON),
+                ModBlocks.SENTINEL_HARD_LIGHT_BARRIER);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ModBlocks.YGGDRASIL_LEAVES, ModBlocks.YGGDRASIL_SAPLING, ModBlocks.POTTED_YGGDRASIL_SAPLING,
                 ModBlocks.YGGDRASIL_DOOR, ModBlocks.YGGDRASIL_TRAPDOOR);
@@ -46,8 +63,8 @@ public class trevorssentinelsClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ModBlocks.FANCY_COMPUTER, ModBlocks.TRANSITITE_BLOCK, ModBlocks.SUPERFORGE,
                 ModBlocks.MODIFICATION_TABLE, ModBlocks.TRANQUIL_ROSE, ModBlocks.POTTED_TRANQUIL_ROSE, ModBlocks.FEATHERCORN, ModBlocks.SKULLWEED,
                 ModBlocks.POTTED_SKULLWEED, ModBlocks.RICE_PLANT, ModBlocks.GOLDEN_RICE_PLANT, ModBlocks.FLESH_VEINS);
-
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), ModBlocks.HARD_LIGHT, ModBlocks.HARD_LIGHT_BARRIER, ModBlocks.DATA_BLOCK);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), ModBlocks.HARD_LIGHT, ModBlocks.CAUTION_HARD_LIGHT, ModBlocks.SENTINEL_HARD_LIGHT,
+                ModBlocks.HARD_LIGHT_BARRIER, ModBlocks.CAUTION_HARD_LIGHT_BARRIER, ModBlocks.SENTINEL_HARD_LIGHT_BARRIER, ModBlocks.DATA_BLOCK);
 
         FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.QUICKSAND_STILL, ModFluids.QUICKSAND_FLOWING,
         new SimpleFluidRenderHandler(new Identifier("trevorssentinels:block/quicksand_still"), new Identifier("trevorssentinels:block/quicksand_flow")));
@@ -65,6 +82,8 @@ public class trevorssentinelsClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.DAGGER, DaggerEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.GRENADE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.LASER, LaserEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.GAS, LaserEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.BULLET, LaserEntityRenderer::new);
         EntityRendererRegistry.register(EntityType.ENDERMAN, ReplacedEndermanRenderer::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.SUPERFORGE, context -> new SuperforgeRenderer("superforge"));
