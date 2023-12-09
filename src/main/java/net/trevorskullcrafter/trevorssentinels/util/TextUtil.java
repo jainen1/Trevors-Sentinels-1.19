@@ -27,7 +27,7 @@ public class TextUtil {
     public static final Color SENTINEL_DARK_AQUA = new Color(0, 103, 113); //#189DBB
     public static final Color SENTINEL_DARK_GOLD = new Color(130, 87, 0); //#189DBB
     public static final Color SENTINEL_CRIMSON = new Color(211, 20, 0); //#D31400
-    public static final Color SENTINEL_DARK_CRIMSON = new Color(211, 20, 0); //#D31400
+    public static final Color SENTINEL_DARK_CRIMSON = new Color(113, 0, 0); //#710000
     public static final Color galliumGray = new Color(100, 102, 107); //#64666B
 
     public static final Color SCRAP = new Color(172, 67, 19); //#AC4313

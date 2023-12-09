@@ -80,18 +80,14 @@ public class ModBlocks {
             .mapColor(MapColor.LIGHT_GRAY)));
     public static final Block WAX_INFUSED_COPPER_BLOCK = registerBlock("wax_infused_copper_block", new DirectionalBlock(FabricBlockSettings.copy(Blocks.COPPER_BLOCK).mapColor(MapColor.ORANGE)));
 
-    public static final Block HARD_LIGHT = registerBlockWithoutBlockItem("hard_light", new HardLightBlock(ModItems.HARD_LIGHT_PROJECTOR, FabricBlockSettings.create().mapColor(MapColor.CYAN).sounds(BlockSoundGroup.AMETHYST_BLOCK)
-            .luminance((state) -> 5).emissiveLighting(Blocks::always).noBlockBreakParticles().nonOpaque().dynamicBounds().allowsSpawning(Blocks::never).blockVision(Blocks::never).pistonBehavior(PistonBehavior.IGNORE).strength(-1f, 3600000f)));
-    public static final Block CAUTION_HARD_LIGHT = registerBlockWithoutBlockItem("caution_hard_light", new HardLightBlock(ModItems.CAUTION_HARD_LIGHT_PROJECTOR, FabricBlockSettings.create().mapColor(MapColor.GOLD).sounds(BlockSoundGroup.AMETHYST_BLOCK)
-            .luminance((state) -> 5).emissiveLighting(Blocks::always).noBlockBreakParticles().nonOpaque().dynamicBounds().allowsSpawning(Blocks::never).blockVision(Blocks::never).pistonBehavior(PistonBehavior.IGNORE).strength(-1f, 3600000f)));
-    public static final Block SENTINEL_HARD_LIGHT = registerBlockWithoutBlockItem("sentinel_hard_light", new HardLightBlock(ModItems.SENTINEL_HARD_LIGHT_PROJECTOR, FabricBlockSettings.create().mapColor(MapColor.RED).sounds(BlockSoundGroup.AMETHYST_BLOCK)
-            .luminance((state) -> 5).emissiveLighting(Blocks::always).noBlockBreakParticles().nonOpaque().dynamicBounds().allowsSpawning(Blocks::never).blockVision(Blocks::never).pistonBehavior(PistonBehavior.IGNORE).strength(-1f, 3600000f)));
-    public static final Block HARD_LIGHT_BARRIER = registerBlock("hard_light_barrier", new GlassBlock(FabricBlockSettings.create().mapColor(MapColor.CYAN).sounds(BlockSoundGroup.AMETHYST_BLOCK)
-            .luminance((state) -> 5).emissiveLighting(Blocks::always).noBlockBreakParticles().nonOpaque().dynamicBounds().allowsSpawning(Blocks::never).blockVision(Blocks::never).pistonBehavior(PistonBehavior.IGNORE).strength(-1f, 3600000f)));
-    public static final Block CAUTION_HARD_LIGHT_BARRIER = registerBlock("caution_hard_light_barrier", new GlassBlock(FabricBlockSettings.create().mapColor(MapColor.GOLD).sounds(BlockSoundGroup.AMETHYST_BLOCK)
-            .luminance((state) -> 5).emissiveLighting(Blocks::always).noBlockBreakParticles().nonOpaque().dynamicBounds().allowsSpawning(Blocks::never).blockVision(Blocks::never).pistonBehavior(PistonBehavior.IGNORE).strength(-1f, 3600000f)));
-    public static final Block SENTINEL_HARD_LIGHT_BARRIER = registerBlock("sentinel_hard_light_barrier", new GlassBlock(FabricBlockSettings.create().mapColor(MapColor.RED).sounds(BlockSoundGroup.AMETHYST_BLOCK)
-            .luminance((state) -> 5).emissiveLighting(Blocks::always).noBlockBreakParticles().nonOpaque().dynamicBounds().allowsSpawning(Blocks::never).blockVision(Blocks::never).pistonBehavior(PistonBehavior.IGNORE).strength(-1f, 3600000f)));
+    public static final Block HARD_LIGHT = registerBlockWithoutBlockItem("hard_light", new HardLightBlock(ModItems.HARD_LIGHT_PROJECTOR, FabricBlockSettings.create().mapColor(MapColor.CYAN)
+            .sounds(ModSounds.HARD_LIGHT_SOUNDS).luminance((state) -> 5).emissiveLighting(Blocks::always).noBlockBreakParticles().nonOpaque().dynamicBounds().allowsSpawning(Blocks::never)
+            .blockVision(Blocks::never).pistonBehavior(PistonBehavior.IGNORE).strength(-1f, 3600000f)));
+    public static final Block CAUTION_HARD_LIGHT = registerBlockWithoutBlockItem("caution_hard_light", new HardLightBlock(ModItems.CAUTION_HARD_LIGHT_PROJECTOR, FabricBlockSettings.copy(HARD_LIGHT).mapColor(MapColor.GOLD)));
+    public static final Block SENTINEL_HARD_LIGHT = registerBlockWithoutBlockItem("sentinel_hard_light", new HardLightBlock(ModItems.SENTINEL_HARD_LIGHT_PROJECTOR, FabricBlockSettings.copy(HARD_LIGHT).mapColor(MapColor.RED)));
+    public static final Block HARD_LIGHT_BARRIER = registerBlock("hard_light_barrier", new GlassBlock(FabricBlockSettings.copy(HARD_LIGHT)));
+    public static final Block CAUTION_HARD_LIGHT_BARRIER = registerBlock("caution_hard_light_barrier", new GlassBlock(FabricBlockSettings.copy(CAUTION_HARD_LIGHT)));
+    public static final Block SENTINEL_HARD_LIGHT_BARRIER = registerBlock("sentinel_hard_light_barrier", new GlassBlock(FabricBlockSettings.copy(SENTINEL_HARD_LIGHT)));
 
     public static final Block NUCLEAR_BLOCK = registerBlock("nuclear_block", new NuclearBlock(FabricBlockSettings.create()
             .sounds(BlockSoundGroup.AMETHYST_BLOCK).strength(50f,1200f).mapColor(MapColor.EMERALD_GREEN).requiresTool()),

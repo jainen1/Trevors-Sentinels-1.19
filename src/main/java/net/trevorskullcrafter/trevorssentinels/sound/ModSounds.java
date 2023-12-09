@@ -23,6 +23,12 @@ public class ModSounds {
     public static SoundEvent FLESH_FALL = registerSoundEvent("flesh_fall");
     public static SoundEvent FLESH_AMBIENT = registerSoundEvent("flesh_ambient");
 
+    public static SoundEvent HARD_LIGHT_BREAK = registerSoundEvent("hard_light_break");
+    public static SoundEvent HARD_LIGHT_STEP = registerSoundEvent("hard_light_step");
+    public static SoundEvent HARD_LIGHT_PLACE = registerSoundEvent("hard_light_place");
+    public static SoundEvent HARD_LIGHT_HIT = registerSoundEvent("hard_light_hit");
+    public static SoundEvent HARD_LIGHT_FALL = registerSoundEvent("hard_light_fall");
+
     public static SoundEvent BLASTER_SHOOT = registerSoundEvent("blaster_shoot");
     public static SoundEvent PISTOL_RELOAD = registerSoundEvent("pistol_reload");
     public static SoundEvent SHOTGUN_RELOAD = registerSoundEvent("shotgun_reload");
@@ -45,6 +51,9 @@ public class ModSounds {
 
     public static final BlockSoundGroup FLESH_SOUNDS = new BlockSoundGroup(1.2f, 1f,
             ModSounds.FLESH_BREAK, ModSounds.FLESH_STEP, ModSounds.FLESH_PLACE, ModSounds.FLESH_HIT, ModSounds.FLESH_FALL);
+
+    public static final BlockSoundGroup HARD_LIGHT_SOUNDS = new BlockSoundGroup(1.0f, 5f,
+            ModSounds.HARD_LIGHT_BREAK, ModSounds.HARD_LIGHT_STEP, ModSounds.HARD_LIGHT_PLACE, ModSounds.HARD_LIGHT_HIT, ModSounds.HARD_LIGHT_FALL);
 
     private static SoundEvent registerSoundEvent(String name){
         trevorssentinels.LOGGER.info("Registering sound "+ name +"... ("+ MOD_ID +")");

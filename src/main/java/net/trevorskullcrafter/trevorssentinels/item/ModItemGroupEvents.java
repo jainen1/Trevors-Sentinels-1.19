@@ -195,8 +195,9 @@ public class ModItemGroupEvents {
         //items
         addToGroup(group, ModItems.SCRAP_METAL_SHARD);
         addToGroup(group, ModItems.GALINITE_LENS);
-        addToGroup(group, ModItems.HARD_LIGHT_PROJECTOR, ModItems.CAUTION_HARD_LIGHT_PROJECTOR, ModItems.SENTINEL_HARD_LIGHT_PROJECTOR,
-                ModBlocks.HARD_LIGHT_BARRIER, ModBlocks.CAUTION_HARD_LIGHT_BARRIER, ModBlocks.SENTINEL_HARD_LIGHT_BARRIER);
+        addToGroup(group, ModItems.HARD_LIGHT_PROJECTOR, ModBlocks.HARD_LIGHT_BARRIER,
+                ModItems.CAUTION_HARD_LIGHT_PROJECTOR, ModBlocks.CAUTION_HARD_LIGHT_BARRIER,
+                ModItems.SENTINEL_HARD_LIGHT_PROJECTOR, ModBlocks.SENTINEL_HARD_LIGHT_BARRIER);
         addToGroup(group, ModItems.ENERGY_CELL);
 
         addToGroup(group, ModItems.MUSIC_DISC_ASSASSINATION_UPLOAD, ModItems.MUSIC_DISC_ODE_TO_TRANQUILITY, ModItems.MUSIC_DISC_LAPSE_IN_JUDGEMENT,

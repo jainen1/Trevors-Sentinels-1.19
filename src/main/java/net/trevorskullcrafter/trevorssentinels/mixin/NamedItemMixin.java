@@ -1,7 +1,5 @@
 package net.trevorskullcrafter.trevorssentinels.mixin;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
@@ -33,7 +31,6 @@ public abstract class NamedItemMixin{
         return typeKey + ((modelData > 0 && TextUtil.translationDiffersFromKey(typeKey + ".custom" + modelData))? ".custom" + modelData : "");
     }
 
-    @Environment(EnvType.CLIENT)
     @Inject(at = @At("TAIL"), method = "getName(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/text/Text;", cancellable = true)
     void getName(ItemStack stack, CallbackInfoReturnable<Text> cir) {
         String colorKey = customTranslationKey("color", stack);
@@ -42,7 +39,6 @@ public abstract class NamedItemMixin{
                 TextUtil.decodedColorKey((b1)? colorKey : "color.rarity.minecraft." + rarity.name().toLowerCase()))); }
     }
 
-    @Environment(EnvType.CLIENT)
     @Inject(at = @At("HEAD"), method = "appendTooltip")
     public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context, CallbackInfo ci) {
         String tooltipRaw = customTranslationKey("tooltip", stack);
@@ -57,14 +53,12 @@ public abstract class NamedItemMixin{
         }
     }
 
-    @Environment(EnvType.CLIENT)
     @Inject(at = @At("HEAD"), method = "getItemBarColor", cancellable = true)
     public void getItemBarColor(ItemStack stack, CallbackInfoReturnable<Integer> cir) {
         TextColor styleColor = stack.getName().getStyle().getColor();
         if(stack.isIn(ItemTagGenerator.ITEM_BAR_COLOR_OVERRIDE) && styleColor != null) { cir.setReturnValue(styleColor.getRgb()); }
     }
 
-    @Environment(EnvType.SERVER)
     @Inject(method = "inventoryTick", at = @At("HEAD"))
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected, CallbackInfo ci) {
         tickHandler(stack, world, entity, slot, selected, ci);

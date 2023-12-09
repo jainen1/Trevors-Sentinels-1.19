@@ -9,8 +9,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
@@ -40,7 +40,8 @@ public class HardLightProjectorItem extends Item {
                     if (world.canPlace(state, blockPos.offset(context.getSide()), ShapeContext.absent())) {
                         context.getWorld().setBlockState(blockPos.offset(context.getSide()), state, 11);
                         itemStack.damage(1, user, p -> p.sendToolBreakStatus(context.getHand()));
-                        world.playSoundFromEntity(null, user, SoundEvents.BLOCK_RESPAWN_ANCHOR_CHARGE, SoundCategory.BLOCKS, 0.5F, 2.0F);
+                        BlockSoundGroup blockSoundGroup = state.getSoundGroup();
+                        world.playSound(user, blockPos, blockSoundGroup.getPlaceSound(), SoundCategory.BLOCKS, (blockSoundGroup.getVolume() + 1.0F) / 2.0F, blockSoundGroup.getPitch() * 0.8F);
                         actionResult = ActionResult.SUCCESS;
                     } else user.sendMessage(Text.literal("Block placement failed!").formatted(Formatting.GOLD), true);
                 } else user.sendMessage(TextUtil.coloredText("Out of charges!", TextUtil.SENTINEL_CRIMSON), true);

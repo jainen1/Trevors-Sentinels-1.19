@@ -2,6 +2,8 @@ package net.trevorskullcrafter.trevorssentinels;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -16,6 +18,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.GameRules;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
 import net.trevorskullcrafter.trevorssentinels.datagen.BlockTagGenerator;
@@ -45,6 +48,9 @@ public class trevorssentinels implements ModInitializer {
 	public static final RegistryKey<ItemGroup> SENTINELS = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(trevorssentinels.MOD_ID, "sentinels"));
 	public static final RegistryKey<ItemGroup> EFFECTS = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(trevorssentinels.MOD_ID, "effects"));
 	public static final RegistryKey<ItemGroup> BETA = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(trevorssentinels.MOD_ID, "beta"));
+
+	public static final GameRules.Key<GameRules.BooleanRule> USE_VELOCITY_FALL_DAMAGE =
+			GameRuleRegistry.register("trevorssentinels:use_velocity_fall_damage", GameRules.Category.MOBS, GameRuleFactory.createBooleanRule(false));
 
 	@Override public void onInitialize() {
         /*EntityElytraEvents.CUSTOM.register((entity, tickElytra) -> {
