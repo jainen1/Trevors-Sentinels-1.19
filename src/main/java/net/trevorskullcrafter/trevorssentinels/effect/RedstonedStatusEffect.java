@@ -1,12 +1,12 @@
 package net.trevorskullcrafter.trevorssentinels.effect;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.sound.SoundEvents;
 
 public class RedstonedStatusEffect extends StatusEffect {
-    float storedHealth; float changeInHealth;
+    float storedHealth; float changeInHealth; LivingEntity bearer;
     public RedstonedStatusEffect(StatusEffectCategory statusEffectCategory, int color) { super(statusEffectCategory, color); }
 
     @Override public boolean canApplyUpdateEffect(int duration, int amplifier) { return true; }
@@ -18,17 +18,11 @@ public class RedstonedStatusEffect extends StatusEffect {
         }
     }
 
-    @Override public void onApplied(LivingEntity entity, int amplifier) {
-        super.onApplied(entity, amplifier); storedHealth = entity.getHealth();
-        if(entity.getWorld().isClient()){ entity.playSound(SoundEvents.ENTITY_WARDEN_SONIC_CHARGE, 1.0f, 5.0f); }
-    }
-
-    /*@Override public void onRemoved(AttributeContainer attributes) {
+    @Override public void onApplied(LivingEntity entity, int amplifier) { super.onApplied(entity, amplifier); storedHealth = entity.getHealth(); bearer = entity; }
+    @Override public void onRemoved(AttributeContainer attributes) {
         super.onRemoved(attributes);
-        LivingEntity entity = attributes
-        if (changeInHealth < 0) entity.damage(entity.getDamageSources().generic(), Math.abs(changeInHealth));
-        else if(changeInHealth > 0) entity.heal(changeInHealth);
+        if (changeInHealth < 0) bearer.damage(bearer.getDamageSources().generic(), Math.abs(changeInHealth));
+        else if(changeInHealth > 0) bearer.heal(changeInHealth);
         storedHealth = 0; changeInHealth = 0;
-        if(entity.getWorld().isClient()){ entity.playSound(SoundEvents.ENTITY_WARDEN_SONIC_BOOM, 1.0f, 5.0f); }
-    }*/
+    }
 }

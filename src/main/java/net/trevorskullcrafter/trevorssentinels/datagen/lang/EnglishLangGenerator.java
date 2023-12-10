@@ -215,8 +215,8 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
         generateItem(translationBuilder, ModItems.COPPER_IRON_INGOT, 0, "Dnilvar Ingot", null, null);
         generateItem(translationBuilder, ModBlocks.ROSE_GOLD_BLOCK, 0, "Block of Rose Gold", null, ROSE_GOLD);
         generateItem(translationBuilder, ModItems.ROSE_GOLD_INGOT, 0, null, null, ROSE_GOLD);
-        generateItem(translationBuilder, ModBlocks.IRON_GOLD_BLOCK, 0, "Block of Ferro-Aurium", null, IMPERIAL_ALLOY);
-        generateItem(translationBuilder, ModItems.IMPERIAL_ALLOY_INGOT, 0, "Ferro-Aurium Ingot", null, IMPERIAL_ALLOY);
+        generateItem(translationBuilder, ModBlocks.IRON_GOLD_BLOCK, 0, "Block of Imperial Alloy", null, IMPERIAL_ALLOY);
+        generateItem(translationBuilder, ModItems.IMPERIAL_ALLOY_INGOT, 0, null, null, IMPERIAL_ALLOY);
         generateItem(translationBuilder, ModBlocks.TRANSITITE_BLOCK, 0, "Block of Unholy Alloy", null, LIGHT_PURPLE);
         generateItem(translationBuilder, ModItems.TRANSITITE_SHARDS, 0, "Unholy Shards", null, LIGHT_PURPLE);
         generateItem(translationBuilder, ModItems.REDSTONE_CRYSTAL, 0, "Crystallized Redstone", "Sparkles with potential.", BLOOD_RED);
