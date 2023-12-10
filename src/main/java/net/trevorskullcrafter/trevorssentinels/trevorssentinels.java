@@ -50,7 +50,9 @@ public class trevorssentinels implements ModInitializer {
 	public static final RegistryKey<ItemGroup> BETA = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(trevorssentinels.MOD_ID, "beta"));
 
 	public static final GameRules.Key<GameRules.BooleanRule> USE_VELOCITY_FALL_DAMAGE =
-			GameRuleRegistry.register("trevorssentinels:use_velocity_fall_damage", GameRules.Category.MOBS, GameRuleFactory.createBooleanRule(false));
+			GameRuleRegistry.register("trevorssentinels:useVelocityFallDamage", GameRules.Category.MOBS, GameRuleFactory.createBooleanRule(false));
+	public static final GameRules.Key<GameRules.BooleanRule> MILK_CURES_POTION_EFFECTS =
+			GameRuleRegistry.register("trevorssentinels:milkCuresPotionEffects", GameRules.Category.PLAYER, GameRuleFactory.createBooleanRule(false));
 
 	@Override public void onInitialize() {
         /*EntityElytraEvents.CUSTOM.register((entity, tickElytra) -> {
@@ -75,7 +77,7 @@ public class trevorssentinels implements ModInitializer {
 			else { requiredLevel = 1; }
 			if(requiredLevel > Objects.requireNonNull(ServerState.getServerState(Objects.requireNonNull(world.getServer()))).worldLevel){
 				Identifier tooLow = new Identifier(trevorssentinels.MOD_ID, "worldLevelTooLow");
-				if(TextUtil.translationDiffersFromKey(tooLow.toTranslationKey())) {
+				if(TextUtil.translationDiffersFromKey(tooLow.toTranslationKey()) != null) {
 					player.sendMessage(coloredText(tooLow + "." + requiredLevel, Color.decode(Text.translatable("color" + tooLow + "." + requiredLevel).toString())), true);
 				} else { player.sendMessage(Text.translatable(tooLow + ".other").formatted(Formatting.GRAY), true); }
 				return false;

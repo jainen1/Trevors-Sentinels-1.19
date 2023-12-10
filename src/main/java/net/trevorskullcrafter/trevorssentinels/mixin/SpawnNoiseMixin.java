@@ -17,8 +17,8 @@ public class SpawnNoiseMixin extends ClientImplementerMixin {
 
     @Inject(method = "playSpawnSound", at = @At("TAIL"))
     private void playSpawnSound(Entity entity, CallbackInfo ci){
-        @Nullable TickableSoundInstance soundInstance = null;
-        if (entity instanceof BoatEntity boat) { soundInstance = new EntitySoundInstance(boat, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS); }
-        this.client.getSoundManager().play(soundInstance);
+        //@Nullable TickableSoundInstance soundInstance = null;
+        //if (entity instanceof BoatEntity boat) { soundInstance = new EntitySoundInstance(boat, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS); }
+        //this.client.getSoundManager().play(soundInstance);
     }
 }

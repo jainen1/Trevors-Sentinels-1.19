@@ -1,4 +1,4 @@
-package net.trevorskullcrafter.trevorssentinels.datagen;
+package net.trevorskullcrafter.trevorssentinels.datagen.lang;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -426,8 +426,10 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
         generateSetBonus(translationBuilder, ModArmorMaterials.NUCLEAR, "Set Bonus: Sneak to Fly, Sprint to Hover", GUNMETAL);
         generateSetBonus(translationBuilder, ModArmorMaterials.JETBLACK, "Set Bonus: Gradual Absorption", GOLD);
 
-        translationBuilder.add("gamerule.trevorssentinels:use_velocity_fall_damage", "Use velocity-based fall damage");
-        translationBuilder.add("gamerule.trevorssentinels:use_velocity_fall_damage.description", "If enabled, fall damage will be calculated based on velocity.");
+        translationBuilder.add("gamerule.trevorssentinels:useVelocityFallDamage", "Use velocity-based fall damage");
+        translationBuilder.add("gamerule.trevorssentinels:useVelocityFallDamage.description", "If enabled, fall damage will be calculated based on velocity.");
+        translationBuilder.add("gamerule.trevorssentinels:milkCuresPotionEffects", "Drinking milk cures potion effects");
+        //translationBuilder.add("gamerule.trevorssentinels:milkCuresPotionEffects.description", "If enabled, fall damage will be calculated based on velocity.");
 
         translationBuilder.add("tooltip." + MOD_ID + ".style", "Style: ");
         translationBuilder.add("tooltip." + MOD_ID + ".mode", "Mode: ");

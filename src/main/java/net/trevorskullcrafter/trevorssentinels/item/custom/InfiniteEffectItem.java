@@ -6,13 +6,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffectUtil;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
+import net.trevorskullcrafter.trevorssentinels.util.TextUtil;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -30,16 +29,11 @@ public class InfiniteEffectItem extends Item {
 
     @Override public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if(effects != null) { if(Screen.hasShiftDown()){ for (StatusEffectInstance statusEffectInstance : effects) {
-            MutableText mutableText = Text.translatable(statusEffectInstance.getTranslationKey());
-            if(statusEffectInstance.getAmplifier() > 0) mutableText = Text.translatable("potion.withAmplifier", mutableText,
-                    Text.translatable("potion.potency." + statusEffectInstance.getAmplifier()));
-            if(statusEffectInstance.getDuration() > 20) mutableText = Text.translatable("potion.withDuration", mutableText,
-                    StatusEffectUtil.getDurationText(statusEffectInstance, 1.0f));
             if(statusEffectInstance.getEffectType().getCategory() == StatusEffectCategory.BENEFICIAL) tooltip.add(Text.empty().append("☀ ")
-                    .append(mutableText).formatted(Formatting.GREEN));
+                    .append(TextUtil.potionText(statusEffectInstance, false)).formatted(Formatting.GREEN));
             else if(statusEffectInstance.getEffectType().getCategory() == StatusEffectCategory.NEUTRAL) tooltip.add(Text.empty().append("☯ ")
-                    .append(mutableText).formatted(Formatting.YELLOW));
-            else tooltip.add(Text.empty().append("☠ ").append(mutableText).formatted(Formatting.RED));
+                    .append(TextUtil.potionText(statusEffectInstance, false)).formatted(Formatting.YELLOW));
+            else tooltip.add(Text.empty().append("☠ ").append(TextUtil.potionText(statusEffectInstance, false)).formatted(Formatting.RED));
         }} else tooltip.add(Text.empty().append(Text.literal("SHIFT").formatted(Formatting.YELLOW))
                 .append(Text.literal(" to show effects.").formatted(Formatting.DARK_GRAY)));
         } super.appendTooltip(stack, world, tooltip, context);

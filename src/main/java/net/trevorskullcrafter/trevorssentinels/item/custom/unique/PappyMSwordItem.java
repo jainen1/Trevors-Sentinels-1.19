@@ -18,6 +18,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.trevorskullcrafter.trevorssentinels.util.StyleUtil;
+import net.trevorskullcrafter.trevorssentinels.util.TextUtil;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -101,10 +102,7 @@ public class PappyMSwordItem extends SwordItem implements StyleUtil.StyleSwitche
     @Override public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.empty().append(StyleUtil.style).append(StyleUtil.currentStyle(stack)).formatted(getStyleSwitchFormatting(stack)));
         StatusEffectInstance sEI = effects[StyleUtil.getStyle(stack)-1];
-        tooltip.add(Text.empty().append(Text.literal("< ").formatted(Formatting.GRAY))
-                .append(Text.translatable("potion.withAmplifier", Text.translatable(sEI.getTranslationKey()),
-                        Text.translatable("potion.potency." + sEI.getAmplifier())).formatted(sEI.getEffectType().getCategory() == StatusEffectCategory.BENEFICIAL?
-                        Formatting.GREEN : sEI.getEffectType().getCategory() == StatusEffectCategory.NEUTRAL? Formatting.YELLOW : Formatting.RED))
+        tooltip.add(Text.empty().append(Text.literal("< ").formatted(Formatting.GRAY)).append(TextUtil.potionText(sEI, true))
                 .append(Text.literal((sEI.getAmplifier() > 0? " ": "") + ">").formatted(Formatting.GRAY)));
         switch (StyleUtil.getStyle(stack)){
             case 1 -> tooltip.add(Text.literal("Right click to become energized!").formatted(Formatting.GRAY));

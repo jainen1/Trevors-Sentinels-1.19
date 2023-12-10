@@ -7,7 +7,8 @@
     "ArmorItemMixin",
     "BlockEntityTypeMixin",
     "FallDamageMixin",
-    "LivingEntityDataBlockClimbMixin"
+    "LivingEntityDataBlockClimbMixin",
+    "MilkBucketMixin"
   ],
   "client": [
     "ClientImplementerMixin",

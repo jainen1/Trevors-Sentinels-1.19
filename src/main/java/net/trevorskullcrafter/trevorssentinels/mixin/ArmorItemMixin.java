@@ -98,8 +98,8 @@ public abstract class ArmorItemMixin extends NamedItemMixin{
         ArmorMaterial material = ((ArmorItem) stack.getItem()).getMaterial();
         String tooltipColor = "color.material."+ trevorssentinels.MOD_ID+"."+material.getName();
         String tooltipString = "tooltip.material." + trevorssentinels.MOD_ID + "." + material.getName();
-        Color setBonusColor = TextUtil.translationDiffersFromKey(tooltipColor) ? Color.decode(Text.translatable(tooltipColor).getString()) : null;
-        if(TextUtil.translationDiffersFromKey(tooltipString)) {
+        Color setBonusColor = TextUtil.translationDiffersFromKey(tooltipColor) != null ? Color.decode(Text.translatable(tooltipColor).getString()) : null;
+        if(TextUtil.translationDiffersFromKey(tooltipString) != null) {
             if (correctArmorSet(material, playerEntity) == 4) { tooltip.add(TextUtil.coloredText(tooltipString, setBonusColor)); }
             else { tooltip.add(Text.literal("Set bonus inactive!").append(Text.literal(" (" + correctArmorSet(material, playerEntity) + "/4)"))
                     .formatted(Formatting.DARK_GRAY)); }

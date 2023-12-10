@@ -1,7 +1,11 @@
 package net.trevorskullcrafter.trevorssentinels.util;
 
+import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffectUtil;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
+import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 
@@ -65,8 +69,6 @@ public class TextUtil {
 
     public static final Color GAS_TEST = new Color(113, 255, 124); //#71ff7c
 
-    //public static final Color rainbow = "1_#ed4d9c_#ed764d_#eced4d_#75ed4d_#4ded9f_#4dc3ed_#4e4ded_#c64ded";
-
     public static Text coloredText(String textContent, Color color) { return Text.translatable(textContent).fillStyle(customStyle(color)); }
     public static Text coloredText(Text textContent, Color color) { return textContent.copy().fillStyle(customStyle(color)); }
     public static Style customStyle(Color color){ if(color != null) { return Style.EMPTY.withColor(color.getRGB()); } return Style.EMPTY; }
@@ -81,8 +83,21 @@ public class TextUtil {
         return test >= 0 ? formattings[test] : Formatting.GRAY;
     }
 
+    public static Text potionText(StatusEffectInstance effect, boolean categorize){
+        MutableText mutableText = Text.translatable(effect.getTranslationKey());
+        StatusEffectCategory category = effect.getEffectType().getCategory();
+        if (effect.getAmplifier() > 0) { mutableText = Text.translatable("potion.withAmplifier", mutableText, Text.translatable("potion.potency." + effect.getAmplifier())); }
+        if (effect.getDuration() > 20) { mutableText = Text.translatable("potion.withDuration", mutableText, StatusEffectUtil.getDurationText(effect, 1.0f)); }
+        Color color;
+        if(categorize){ color = (category == StatusEffectCategory.BENEFICIAL? TextUtil.GREEN : category == StatusEffectCategory.NEUTRAL? TextUtil.YELLOW : TextUtil.RED); }
+        else { color = Color.decode(String.valueOf(effect.getEffectType().getColor())); }
+        return TextUtil.coloredText(mutableText, color);
+    }
+
     public static int tintByIndex(int tintIndex, int... tints){ return tints[tintIndex]; }
     public static int tintByIndex(int tintIndex, Color... tints){ return tints[tintIndex].getRGB(); }
-    public static boolean translationDiffersFromKey(String translationKey){ return !Text.translatable(translationKey).getString().equals(translationKey); }
     public static Color decodedColorKey(String string){ return Color.decode(Text.translatable(string).getString()); }
+    @Nullable public static String translationDiffersFromKey(String translationKey){
+        String translation = Text.translatable(translationKey).getString(); return translation.equals(translationKey)? null : translation;
+    }
 }

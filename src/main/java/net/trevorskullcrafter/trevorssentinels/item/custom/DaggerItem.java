@@ -11,9 +11,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffectUtil;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.BowItem;
@@ -24,7 +22,6 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
-import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
@@ -34,6 +31,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.DaggerEntity;
+import net.trevorskullcrafter.trevorssentinels.util.TextUtil;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -91,15 +89,8 @@ public class DaggerItem extends Item {
 
     @Override public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         //tooltip.add(Text.literal(attackDamage+" ").append(Text.translatable("attribute.name.generic.attack_damage")).formatted(Formatting.DARK_GREEN));
-        if(effects.length > 0) { if (Screen.hasShiftDown()) { for (StatusEffectInstance statusEffectInstance : effects) {
-            MutableText mutableText = Text.translatable(statusEffectInstance.getTranslationKey());
-            StatusEffectCategory statusEffectCategory = statusEffectInstance.getEffectType().getCategory();
-            if (statusEffectInstance.getAmplifier() > 0) { mutableText = Text.translatable("potion.withAmplifier", mutableText,
-                    Text.translatable("potion.potency." + statusEffectInstance.getAmplifier())); }
-            if (statusEffectInstance.getDuration() > 20) { mutableText = Text.translatable("potion.withDuration", mutableText,
-                    StatusEffectUtil.getDurationText(statusEffectInstance, 1.0f)); }
-            tooltip.add(mutableText.formatted(statusEffectCategory == StatusEffectCategory.BENEFICIAL ?
-                    Formatting.GREEN : statusEffectCategory == StatusEffectCategory.NEUTRAL ? Formatting.YELLOW : Formatting.RED));
+        if(effects.length > 0) {if (Screen.hasShiftDown()) {
+            for (StatusEffectInstance statusEffectInstance : effects) { tooltip.add(TextUtil.potionText(statusEffectInstance, true));
         }} else { tooltip.add(Text.empty().append(Text.literal("SHIFT").formatted(Formatting.YELLOW))
                 .append(Text.literal(" to show status effects.").formatted(Formatting.DARK_GRAY))); }
         } super.appendTooltip(stack, world, tooltip, context);
@@ -113,12 +104,10 @@ public class DaggerItem extends Item {
     }
 
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
-        if ((double)state.getHardness(world, pos) != 0.0) {
-            if ((Random.createLocal().nextFloat() % 1f) < destroyChance) {
-                miner.getWorld().playSoundFromEntity(null, miner, SoundEvents.ENTITY_ITEM_BREAK, SoundCategory.PLAYERS, 1, 1);
-                stack.decrement(1);
-            }
-        } return true;
+        if ((double)state.getHardness(world, pos) != 0.0) { if ((Random.createLocal().nextFloat() % 1f) < destroyChance) {
+            miner.getWorld().playSoundFromEntity(null, miner, SoundEvents.ENTITY_ITEM_BREAK, SoundCategory.PLAYERS, 1, 1);
+            stack.decrement(1);
+        }} return true;
     }
 
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot) {

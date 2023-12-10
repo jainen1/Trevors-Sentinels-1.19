@@ -5,7 +5,6 @@ import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffectUtil;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,7 +13,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.stat.Stats;
-import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
@@ -100,25 +98,6 @@ public class GunItem extends Item implements ToolSkinnable {
         } return Objects.requireNonNull(stack.getSubNbt("trevorssentinels:autoReload")).getBoolean("isOn");
     }
 
-    /*public String getGunclass(){
-        if(gunclass == null) {
-            String class1 = switch(type){
-                case 2 -> "Gas";
-                case 3 -> "Slug";
-                default -> "Laser";
-            };
-
-            String class2;
-            if (damage < 1) { class2 = "Support"; }
-            else if (damage >= 5 && getMaxDamage() <= 5 && lasers == 1 && laserSpeed >= 2) { class2 = "Sniper"; }
-            else if (lasers >= 6) { class2 = "Shotgun"; }
-            else if (cooldownTime + 1 <= 4) { class2 = "Rifle"; }
-            else { class2 = "Pistol"; }
-
-            gunclass = class1 + " " + class2;
-        } return gunclass;
-    }*/
-
     public String getGunclass(){
         if(gunclass == null) {
             gunclass = switch(type){
@@ -153,19 +132,14 @@ public class GunItem extends Item implements ToolSkinnable {
                         .formatted(TextUtil.quotientToolTipFormatting(Math.abs(damage), 20))));
         //effect
         if(effects.length > 0) { if(Screen.hasShiftDown()) {
-                for (StatusEffectInstance statusEffectInstance : effects) {
-                    MutableText mutableText = Text.translatable(statusEffectInstance.getTranslationKey());
-                    StatusEffectCategory statusEffectCategory = statusEffectInstance.getEffectType().getCategory();
-                    if (statusEffectInstance.getAmplifier() > 0)
-                        mutableText = Text.translatable("potion.withAmplifier", mutableText, Text.translatable("potion.potency." + statusEffectInstance.getAmplifier()));
-                    if (statusEffectInstance.getDuration() > 20)
-                        mutableText = Text.translatable("potion.withDuration", mutableText, StatusEffectUtil.getDurationText(statusEffectInstance, 1.0f));
+            for (StatusEffectInstance statusEffectInstance : effects) {
+                StatusEffectCategory statusEffectCategory = statusEffectInstance.getEffectType().getCategory();
                 tooltip.add(Text.empty().append(statusEffectCategory == StatusEffectCategory.BENEFICIAL ? "☀ " :
-                                statusEffectCategory == StatusEffectCategory.NEUTRAL ? "☯ " : "☠ ").append(mutableText)
+                                statusEffectCategory == StatusEffectCategory.NEUTRAL ? "☯ " : "☠ ").append(TextUtil.potionText(statusEffectInstance, false))
                         .formatted(statusEffectCategory == StatusEffectCategory.BENEFICIAL ? Formatting.GREEN :
                                 statusEffectCategory == StatusEffectCategory.NEUTRAL ? Formatting.YELLOW : Formatting.RED)); }
         } else { tooltip.add(Text.empty().append(Text.literal("SHIFT").formatted(Formatting.YELLOW)).append(Text.literal(" to show status effects.")
-                    .formatted(Formatting.DARK_GRAY))); }}
+                .formatted(Formatting.DARK_GRAY))); }}
         super.appendTooltip(itemStack, world, tooltip, context);
     }
 
