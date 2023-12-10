@@ -331,7 +331,7 @@ public class ModArmory {
 
     public static final Item VILE_SPITTER = registerItem("vile_spitter", new GunItem(new FabricItemSettings().maxDamage(8), 1, 2.0f,
             4.0f, 2.0f, 0.035f, 11, 60, ModSounds.FLESH_BREAK, ModSounds.FLESH_AMBIENT,
-            48, 8, 3, Color.decode("13164900"), new StatusEffectInstance(ModEffects.INFESTED, 20)));
+            48, 8, 3, TextUtil.FLESH_PUS, new StatusEffectInstance(ModEffects.INFESTED, 20)));
 
     private static Item registerItem(String name, Item item){ return Registry.register(Registries.ITEM, new Identifier(trevorssentinels.MOD_ID, name), item); }
     public static void registerArmory(){ trevorssentinels.LOGGER.info("Registering armory... (" + MOD_ID + ")"); }

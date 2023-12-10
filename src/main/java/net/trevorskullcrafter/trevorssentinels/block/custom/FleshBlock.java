@@ -17,6 +17,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
+import net.trevorskullcrafter.trevorssentinels.util.ModRegistries;
 
 public class FleshBlock extends FallDamagelessBlock {
     SoundEvent randomSound;
@@ -32,7 +33,7 @@ public class FleshBlock extends FallDamagelessBlock {
         for(int l = 0; l < 3; ++l) {
             mutable.set(pos.getX() + MathHelper.nextInt(random, -1, 1), pos.getY() + MathHelper.nextInt(random, -1, 1), pos.getZ() + MathHelper.nextInt(random, -1, 1));
             BlockState blockState = world.getBlockState(mutable);
-            if (!blockState.isFullCube(world, mutable)) world.addParticle(ParticleTypes.MYCELIUM, (double)mutable.getX() + random.nextDouble(),
+            if (!blockState.isFullCube(world, mutable)) world.addParticle(ModRegistries.FLESH_PUS, (double)mutable.getX() + random.nextDouble(),
                     (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
         }
     }

@@ -3,6 +3,7 @@ package net.trevorskullcrafter.trevorssentinels;
 import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
@@ -13,6 +14,8 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.entity.EntityType;
+import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.ParticleEffect;
 import net.minecraft.util.Identifier;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
@@ -25,6 +28,7 @@ import net.trevorskullcrafter.trevorssentinels.event.KeyInputHandler;
 import net.trevorskullcrafter.trevorssentinels.fluid.ModFluids;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
 import net.trevorskullcrafter.trevorssentinels.networking.ModMessages;
+import net.trevorskullcrafter.trevorssentinels.particle.ModSuspendParticle;
 import net.trevorskullcrafter.trevorssentinels.util.ModRegistries;
 import net.trevorskullcrafter.trevorssentinels.util.TextUtil;
 
@@ -85,6 +89,8 @@ public class trevorssentinelsClient implements ClientModInitializer {
 
         BlockEntityRendererFactories.register(ModBlockEntities.SUPERFORGE, context -> new SuperforgeRenderer("superforge"));
         BlockEntityRendererFactories.register(ModBlockEntities.MODIFICATION_TABLE, context -> new ModificationTableRenderer("modification_table"));
+
+        ParticleFactoryRegistry.getInstance().register(ModRegistries.FLESH_PUS, ModSuspendParticle.FleshPusFactory::new);
 
         SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, ModBlocks.YGGDRASIL_SIGN_TEXTURE));
         SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, ModBlocks.YGGDRASIL_HANGING_SIGN_TEXTURE));

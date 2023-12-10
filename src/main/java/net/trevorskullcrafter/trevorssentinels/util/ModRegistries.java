@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerEntityCombatEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
@@ -15,6 +16,9 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.mob.WitherSkeletonEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
@@ -58,6 +62,8 @@ public class ModRegistries {
     public static final WoodType STEEL_WOOD = WoodTypeBuilder.copyOf(WoodType.ACACIA).hangingSignSoundGroup(ModSounds.STEEL_SOUNDS).build(steel, STEEL_SET);
     public static final WoodType HOLOGRAPHIC_BLUE_WOOD = WoodTypeBuilder.copyOf(STEEL_WOOD).build(holographic_blue, HOLOGRAPHIC_BLUE_SET);
     public static final WoodType HOLOGRAPHIC_RED_WOOD = WoodTypeBuilder.copyOf(STEEL_WOOD).build(holographic_red, HOLOGRAPHIC_RED_SET);
+
+    public static final DefaultParticleType FLESH_PUS = FabricParticleTypes.simple();
 
     public static void registerModelPredicates() {
         trevorssentinels.LOGGER.info("Registering model predicates... ("+ MOD_ID + ")");
@@ -181,4 +187,8 @@ public class ModRegistries {
     }
 
     public static void registerCommands(){ CommandRegistrationCallback.EVENT.register(WorldLevelCommand::register); }
+
+    public static void registerParticles(){
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(trevorssentinels.MOD_ID, "flesh_pus"), FLESH_PUS);
+    }
 }

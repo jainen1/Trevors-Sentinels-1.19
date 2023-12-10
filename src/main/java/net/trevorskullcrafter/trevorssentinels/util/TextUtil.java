@@ -68,6 +68,7 @@ public class TextUtil {
     public static final Color HELLFIRE = new Color(244, 133, 34); //#F48522
 
     public static final Color GAS_TEST = new Color(113, 255, 124); //#71ff7c
+    public static final Color FLESH_PUS = new Color(200, 225, 100, 255); //#C8E164
 
     public static Text coloredText(String textContent, Color color) { return Text.translatable(textContent).fillStyle(customStyle(color)); }
     public static Text coloredText(Text textContent, Color color) { return textContent.copy().fillStyle(customStyle(color)); }

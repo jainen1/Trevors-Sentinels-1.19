@@ -112,6 +112,7 @@ public class trevorssentinels implements ModInitializer {
 		ModRegistries.registerStrippables();
 		ModRegistries.registerFuels();
 		ModRegistries.registerCommands();
+		ModRegistries.registerParticles();
 		ModLootTableModifiers.modifyLootTables();
 
 		GeckoLib.initialize();
