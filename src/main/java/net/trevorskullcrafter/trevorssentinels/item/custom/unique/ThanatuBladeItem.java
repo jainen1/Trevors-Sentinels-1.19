@@ -116,7 +116,7 @@ public class ThanatuBladeItem extends SwordItem implements StyleUtil.StyleSwitch
     }
 
     @Override public void appendTooltip(ItemStack itemStack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.empty().append(StyleUtil.style).append(StyleUtil.currentStyle(itemStack)).formatted(getStyleSwitchFormatting(itemStack)));
+        tooltip.add(Text.empty().append(StyleUtil.style).append(getCurrentStyleTranslation(itemStack)).formatted(getStyleSwitchFormatting(itemStack)));
         if (StyleUtil.getStyle(itemStack) == 1) {
             if(itemStack.getSubNbt("trevorssentinels:harmoniousTeleportData") != null) {
                 tooltip.add(Text.literal(Objects.requireNonNull(itemStack.getSubNbt("trevorssentinels:harmoniousTeleportData"))
@@ -135,7 +135,6 @@ public class ThanatuBladeItem extends SwordItem implements StyleUtil.StyleSwitch
                 tooltip.add(Text.literal("to bind to a location!").formatted(Formatting.GRAY));
             }
         } else {
-            //tooltip.add(Text.empty().append(StyleUtil.styleText).append(Text.literal("Riftcaller").formatted(Formatting.DARK_PURPLE)));
             tooltip.add(Text.literal("Right click to summon allies! (WIP)").formatted(Formatting.LIGHT_PURPLE));
 
             tooltip.add(Text.literal("Attacks will also apply").formatted(Formatting.ITALIC, Formatting.GRAY));

@@ -100,7 +100,7 @@ public class PappyMSwordItem extends SwordItem implements StyleUtil.StyleSwitche
     }
 
     @Override public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.empty().append(StyleUtil.style).append(StyleUtil.currentStyle(stack)).formatted(getStyleSwitchFormatting(stack)));
+        tooltip.add(Text.empty().append(StyleUtil.style).append(getCurrentStyleTranslation(stack)).formatted(getStyleSwitchFormatting(stack)));
         StatusEffectInstance sEI = effects[StyleUtil.getStyle(stack)-1];
         tooltip.add(Text.empty().append(Text.literal("< ").formatted(Formatting.GRAY)).append(TextUtil.potionText(sEI, true))
                 .append(Text.literal((sEI.getAmplifier() > 0? " ": "") + ">").formatted(Formatting.GRAY)));

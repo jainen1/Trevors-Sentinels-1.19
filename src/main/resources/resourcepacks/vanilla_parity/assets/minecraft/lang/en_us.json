@@ -199,19 +199,19 @@
 
   "item.minecraft.ender_pearl": "Damaged Amethyst Core",
   "tooltip.item.minecraft.ender_pearl": "Will teleport the user when smashed.",
-  "color.item.minecraft.ender_pearl": "1.5_#FF55FF_#AA00AA",
+  "color.item.minecraft.ender_pearl": "-43521",
 
   "item.minecraft.ender_pearl.custom1": "Warp Core",
   "tooltip.item.minecraft.ender_pearl.custom1": "Commissioned by Utaricorp.",
-  "color.item.minecraft.ender_pearl.custom1": "#189DBB",
+  "color.item.minecraft.ender_pearl.custom1": "-15163973",
 
   "tooltip.item.minecraft.nether_star": "A catalyst for biological fusion.",
-  "color.item.minecraft.nether_star": "1.5_#FF55FF_#AA00AA",
+  "color.item.minecraft.nether_star": "-5635926",
 
-  "color.item.minecraft.chorus_plant": "1_#ba9bba_#a381a2",
-  "color.item.minecraft.chorus_flower": "1_#ba9bba_#a381a2",
-  "color.item.minecraft.chorus_fruit": "1_#ba9bba_#a381a2",
-  "color.item.minecraft.popped_chorus_fruit": "1_#ba9bba_#a381a2",
+  "color.item.minecraft.chorus_plant": "-4547654",
+  "color.item.minecraft.chorus_flower": "-4547654",
+  "color.item.minecraft.chorus_fruit": "-4547654",
+  "color.item.minecraft.popped_chorus_fruit": "-4547654",
 
   "tooltip.item.minecraft.trident": "Channels the rage of Poseidon!",
   "tooltip.item.minecraft.enchanted_golden_apple": "\"What's a Notch?\"",

@@ -51,7 +51,7 @@ public class LilithBladeItem extends SwordItem implements StyleUtil.StyleSwitche
     }
 
     @Override public void appendTooltip(ItemStack itemStack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.empty().append(StyleUtil.style).append(StyleUtil.currentStyle(itemStack)).formatted(getStyleSwitchFormatting(itemStack)));
+        tooltip.add(Text.empty().append(StyleUtil.style).append(getCurrentStyleTranslation(itemStack)).formatted(getStyleSwitchFormatting(itemStack)));
         if (StyleUtil.getStyle(itemStack) == 1)  tooltip.add(Text.literal("Hits heal those blessed by the sun!").formatted(Formatting.GOLD));
         else {
             tooltip.add(Text.literal("Hits deal a huge amount of damage.").formatted(Formatting.GOLD));

@@ -1,6 +1,7 @@
 package net.trevorskullcrafter.trevorssentinels.entity.custom;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.data.DataTracker;
@@ -18,6 +19,7 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
@@ -37,6 +39,13 @@ public class LaserEntity extends ThrownEntity {
 
     public LaserEntity(EntityType<? extends LaserEntity> type, World world, LivingEntity owner, int lifetime, float speed, float damage, int color, StatusEffectInstance... effects) {
         this(type, owner.getX(), owner.getEyeY() /* - 0.10000000149011612 */, owner.getZ(), world, lifetime, speed, damage, color, effects); setOwner(owner);
+    }
+
+    @Override public void setVelocity(Entity shooter, float pitch, float yaw, float roll, float speed, float divergence) {
+        float x = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
+        float y = -MathHelper.sin((pitch + roll) * 0.017453292F);
+        float z = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
+        this.setVelocity(x, y, z, speed, divergence);
     }
 
     @Override public void tick() {

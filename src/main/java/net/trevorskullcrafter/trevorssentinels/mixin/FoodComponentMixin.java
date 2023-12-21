@@ -6,7 +6,6 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.trevorskullcrafter.trevorssentinels.effect.ModEffects;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -25,11 +24,11 @@ public class FoodComponentMixin {
         return settings.food(new FoodComponent.Builder().statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 200), 0.85f).build());
     }
 
-    //@ModifyArg(method= "<clinit>", slice= @Slice(from= @At(value= "CONSTANT", args = "stringValue=redstone"), to = @At(value = "CONSTANT", args = "stringValue=saddle")),
-    //        at= @At(value= "INVOKE", target= "Lnet/minecraft/item/AliasedBlockItem;<init>(Lnet/minecraft/block/Block;Lnet/minecraft/item/Item$Settings;)V"))
-    //private static Item.Settings redstone(Item.Settings settings){
-    //    return settings.food(new FoodComponent.Builder().statusEffect(new StatusEffectInstance(ModEffects.REDSTONED, 200), 0.85f).build());
-    //}
+    @ModifyArg(method= "<clinit>", slice= @Slice(from= @At(value= "CONSTANT", args = "stringValue=redstone"), to = @At(value = "CONSTANT", args = "stringValue=saddle")),
+            at= @At(value= "INVOKE", target= "Lnet/minecraft/item/AliasedBlockItem;<init>(Lnet/minecraft/block/Block;Lnet/minecraft/item/Item$Settings;)V"))
+    private static Item.Settings redstone(Item.Settings settings){
+        return settings.food(new FoodComponent.Builder().statusEffect(new StatusEffectInstance(StatusEffects.HASTE, 200), 0.85f).build());
+    }
 
     @Unique private static FoodComponent copyWithEffect(FoodComponent foodComponent, StatusEffectInstance statusEffectInstance, float f){
         FoodComponent.Builder foodComponentBuilder = new FoodComponent.Builder().hunger(foodComponent.getHunger()).saturationModifier(foodComponent.getSaturationModifier());

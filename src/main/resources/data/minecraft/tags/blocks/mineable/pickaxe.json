@@ -41,9 +41,8 @@
     "trevorssentinels:black_agility_block",
     "trevorssentinels:transitite_block",
 
-    "trevorssentinels:uranium_ore",
-    "trevorssentinels:uranium_block",
-    "trevorssentinels:forge",
+    "trevorssentinels:nuclear_ore",
+    "trevorssentinels:nuclear_block",
     "trevorssentinels:superforge"
   ]
 }

@@ -289,7 +289,7 @@ public class ModArmory {
 
     public static final Item LASER_PISTOL = registerItem("laser_pistol", new GunItem(new FabricItemSettings().maxDamage(7), 1, 1.5f,
             4.0f, 1.0f, 0.01f, 10, 50, ModSounds.BLASTER_SHOOT, ModSounds.PISTOL_RELOAD,
-            20, 4, 1, TextUtil.BLOOD_RED));
+            20, 5, 1, TextUtil.BLOOD_RED));
 
     public static final Item LASER_TASER = registerItem("laser_taser", new GunItem(new FabricItemSettings().maxDamage(5), 1, 2.0f,
             3.0f, 0.5f, 0.01f, 100, 20, ModSounds.BLASTER_SHOOT, ModSounds.PISTOL_RELOAD,

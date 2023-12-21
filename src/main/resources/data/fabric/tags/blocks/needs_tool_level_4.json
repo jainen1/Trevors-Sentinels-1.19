@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "trevorssentinels:uranium_ore",
-    "trevorssentinels:uranium_block",
+    "trevorssentinels:nuclear_ore",
+    "trevorssentinels:nuclear_block",
     "trevorssentinels:superforge"
   ]
 }

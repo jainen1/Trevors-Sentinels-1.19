@@ -14,8 +14,6 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.entity.EntityType;
-import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.particle.ParticleEffect;
 import net.minecraft.util.Identifier;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
@@ -38,6 +36,7 @@ public class trevorssentinelsClient implements ClientModInitializer {
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xCFF8FF, ModItems.VENDOR_TOKEN);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> TextUtil.DARK_PURPLE.getRGB(), ModItems.LEGENDARY_TOKEN);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> TextUtil.tintByIndex(tintIndex, TextUtil.WHITE, TextUtil.GAS_TEST), ModItems.GAS_CAPSULE); //0x71ff7c
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> stack.getOrCreateNbt().getInt("Color"), ModItems.LASER); //0x71ff7c
 
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> TextUtil.tintByIndex(tintIndex, TextUtil.SENTINEL_AQUA, TextUtil.SENTINEL_DARK_AQUA),
                 ModBlocks.HARD_LIGHT, ModBlocks.HARD_LIGHT_BARRIER);

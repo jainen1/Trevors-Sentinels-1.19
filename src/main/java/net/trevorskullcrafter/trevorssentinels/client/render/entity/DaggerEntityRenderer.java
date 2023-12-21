@@ -14,7 +14,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
 import net.trevorskullcrafter.trevorssentinels.entity.custom.DaggerEntity;
-import net.trevorskullcrafter.trevorssentinels.item.ModArmory;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
 
 @Environment(EnvType.CLIENT)
@@ -28,7 +27,6 @@ public class DaggerEntityRenderer<T extends DaggerEntity> extends EntityRenderer
     public DaggerEntityRenderer(EntityRendererFactory.Context context) { this(context, 1.7F, false); }
 
     protected int getBlockLight(T entity, BlockPos pos) { return this.lit ? 15 : super.getBlockLight(entity, pos); }
-
     public void render(T entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
         if (entity.age >= 2) {
             matrices.push();
@@ -41,8 +39,8 @@ public class DaggerEntityRenderer<T extends DaggerEntity> extends EntityRenderer
                 matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(t));
             }
 
-            itemRenderer.renderItem(null, entity.asItemStack() == null? ModArmory.ROSE_GOLD_DAGGER.getDefaultStack(): entity.asItemStack(),
-                    ModelTransformationMode.GROUND, false, matrices, vertexConsumers, null, light, OverlayTexture.DEFAULT_UV, entity.getId());
+            itemRenderer.renderItem(null, entity.asItemStack(), ModelTransformationMode.GROUND,
+                    false, matrices, vertexConsumers, null, light, OverlayTexture.DEFAULT_UV, entity.getId());
             matrices.pop();
             super.render(entity, yaw, tickDelta, matrices, vertexConsumers, light);
         }

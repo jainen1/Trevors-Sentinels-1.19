@@ -132,16 +132,16 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
         generateItem(translationBuilder, ModArmory.THANATU_SKULL, 0, "Thanatu's Exoskull", "The skull of the demon king.", LIGHT_PURPLE);
         generateItem(translationBuilder, ModArmory.THANATU_SHOULDERPADS, 0, "Thanatu's Shoulderpads", "There's no way these protect anything", LIGHT_PURPLE);
 
-        generateItem(translationBuilder, ModArmory.LASER_PISTOL, 0, "UNMA-28 Comet", "\"Fast and portable!\"", GUNMETAL);
-        generateItem(translationBuilder, ModArmory.LASER_TASER, 0, "CCPD-23 Taser", "\"Non-lethal!\"", AQUA);
-        generateItem(translationBuilder, ModArmory.LASER_SNIPER_ECHO, 0, "UNMA-52 Echo", "\"They'll never see it coming!\"", DUNE_TAN);
+        generateItem(translationBuilder, ModArmory.LASER_PISTOL, 0, "NUMA-28 Comet", "\"Fast and portable!\"", GUNMETAL);
+        generateItem(translationBuilder, ModArmory.LASER_TASER, 0, "Enforcer-Standard Taser", "\"Non-lethal.\"", AQUA);
+        generateItem(translationBuilder, ModArmory.LASER_SNIPER_ECHO, 0, "NUMA-52 Echo", "\"They'll never see it coming!\"", DUNE_TAN);
         generateItem(translationBuilder, ModArmory.LASER_MINIGUN, 0, "UTARI-91 Serenity", "\"Keep the peace!\"", BLUE);
         generateItem(translationBuilder, ModArmory.LASER_MINIGUN, 1, "UTARI-91 Serenity", "\"America! Hell yeah!\"", PATRIOT_1);
-        generateItem(translationBuilder, ModArmory.LASER_RIFLE, 0, "UNMA-63 Agnostyk", "\"Packs a punch!\"", MOSS);
+        generateItem(translationBuilder, ModArmory.LASER_RIFLE, 0, "NUMA-63 Agnostyk", "\"Packs a punch!\"", MOSS);
         generateItem(translationBuilder, ModArmory.LASER_SHOTGUN, 0, "KHAOS-66 Tremor", "\"Rip and tear!\"", HELLFIRE);
-        generateItem(translationBuilder, ModArmory.LASER_HEALER, 0, "UTARI-49 Firebird", "\"Those who can't do, heal!\"", SHINY_GOLD);
-        generateItem(translationBuilder, ModArmory.LASER_SNIPER, 0, "MW88 Shadow", "\"The assassin's weapon of choice!\"", DARK_PURPLE);
-        generateItem(translationBuilder, ModArmory.LASER_SPREADER, 0, "MW76 Pandemic", "\"Filled with a toxic bioweapon.\"", GREEN);
+        generateItem(translationBuilder, ModArmory.LASER_HEALER, 0, "PW49 Firebird", "\"Those who can't do, heal!\"", SHINY_GOLD);
+        generateItem(translationBuilder, ModArmory.LASER_SNIPER, 0, "PW88 Shadow", "\"The assassin's weapon of choice!\"", DARK_PURPLE);
+        generateItem(translationBuilder, ModArmory.LASER_SPREADER, 0, "PW76 Pandemic", "\"Filled with a toxic bioweapon.\"", GREEN);
         generateItem(translationBuilder, ModArmory.LASER_REVOLVER, 0, "Drunkard's Handcannon", "\"But you have heard of me!\"", null);
         generateItem(translationBuilder, ModArmory.VILE_SPITTER, 0, "Vile Spitter", "\"Behold, the wrath of Xirang!\"", FLESH_PINK);
 
@@ -437,6 +437,7 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
         generateNumbered(translationBuilder, "style.item." + MOD_ID + ".pappym_blade.", "Trickster", "Paladin", "Predator", "Guardian");
         generateNumbered(translationBuilder, "style.item." + MOD_ID + ".thanatu_blade.", "Riftwalker", "Riftcaller");
         generateNumbered(translationBuilder, "style.item." + MOD_ID + ".lilith_blade.", "Holy Retribution", "LEAVE NOTHING ALIVE.");
+        generateNumbered(translationBuilder, "style.item." + MOD_ID + ".gun.", "Manual", "Semi-Auto ▽", "Automatic ▽△");
 
         if (dataOutput.getModContainer().findPath("assets/trevorssentinels/lang/en_us.existing.json").isPresent()) try {
             translationBuilder.add(dataOutput.getModContainer().findPath("assets/trevorssentinels/lang/en_us.existing.json").get());

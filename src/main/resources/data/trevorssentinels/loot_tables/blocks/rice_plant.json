@@ -19,7 +19,7 @@
                   }
                 }
               ],
-              "name": "trevorssentinels:rice"
+              "name": "trevorssentinels:rice_seeds"
             }
           ]
         }
@@ -42,7 +42,7 @@
               }
             }
           ],
-          "name": "trevorssentinels:rice"
+          "name": "trevorssentinels:rice_seeds"
         }
       ],
       "conditions": [

@@ -108,7 +108,8 @@ public class ModItemGroupEvents {
 
     public static void installFoods(RegistryKey<ItemGroup> group){
         logInstall(group);
-        addToGroupAfter(group, Items.GOLDEN_APPLE, ModItems.PEARFRUIT, ModItems.BANANA, ModItems.RED_BANANA, ModItems.BLUE_JAVA_BANANA, ModItems.MIDAS_FRUIT);
+        addToGroupAfter(group, Items.GOLDEN_APPLE, ModItems.PEARFRUIT);
+        addToGroupAfter(group, Items.ENCHANTED_GOLDEN_APPLE, ModItems.BANANA, ModItems.RED_BANANA, ModItems.BLUE_JAVA_BANANA, ModItems.MIDAS_FRUIT);
         addToGroupBefore(group, Items.CARROT, ModItems.RICE_SEEDS, ModItems.GOLDEN_RICE_SEEDS);
         addToGroupAfter(group, Items.BREAD, ModItems.RICE_CAKE, ModItems.GOLDEN_RICE_CAKE, ModItems.TORTILLA, ModItems.BURRITO, ModItems.BANANA_BREAD,
                 ModItems.RED_BANANA_BREAD, ModItems.BLUE_JAVA_BANANA_BREAD);

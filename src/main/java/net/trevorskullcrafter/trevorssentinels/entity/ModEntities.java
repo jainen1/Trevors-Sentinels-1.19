@@ -43,13 +43,13 @@ public class ModEntities {
     public static final EntityType<LaserEntity> LASER = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "laser"),
             FabricEntityTypeBuilder.<LaserEntity>create(SpawnGroup.MISC, LaserEntity::new)
-                    .dimensions(EntityDimensions.fixed(0.1F, 0.1F)).trackRangeBlocks(32).trackedUpdateRate(20).build());
+                    .dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackRangeBlocks(32).trackedUpdateRate(20).build());
     public static final EntityType<GasEntity> GAS = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "gas"),
             FabricEntityTypeBuilder.<GasEntity>create(SpawnGroup.MISC, GasEntity::new)
-                    .dimensions(EntityDimensions.fixed(0.1F, 0.1F)).trackRangeBlocks(32).trackedUpdateRate(20).build());
+                    .dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackRangeBlocks(32).trackedUpdateRate(20).build());
     public static final EntityType<BulletEntity> BULLET = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(trevorssentinels.MOD_ID, "bullet"),
             FabricEntityTypeBuilder.<BulletEntity>create(SpawnGroup.MISC, BulletEntity::new)
-                    .dimensions(EntityDimensions.fixed(0.1F, 0.1F)).trackRangeBlocks(32).trackedUpdateRate(20).build());
+                    .dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackRangeBlocks(32).trackedUpdateRate(20).build());
 }

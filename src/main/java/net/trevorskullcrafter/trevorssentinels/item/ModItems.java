@@ -214,6 +214,7 @@ public class ModItems {
     public static final Item LEGENDARY_TOKEN = registerItem("legendary_token", new Item(new FabricItemSettings().rarity(Rarity.EPIC)));
 
     public static final Item COMMON_SKIN_PACK = registerItem("common_skin_pack", new PaintPack(1, new FabricItemSettings()));
+    public static final Item LASER = registerItem("laser", new Item(new FabricItemSettings()));
 
     private static Item registerItem(String name, Item item){return Registry.register(Registries.ITEM, new Identifier(trevorssentinels.MOD_ID, name), item);}
     public static void registerModItems(){ trevorssentinels.LOGGER.info("Registering items... ("+ MOD_ID + ")"); }

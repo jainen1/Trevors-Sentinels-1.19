@@ -7,13 +7,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import net.trevorskullcrafter.trevorssentinels.event.KeyInputHandler;
-
-import java.util.Objects;
 
 import static net.trevorskullcrafter.trevorssentinels.util.TextUtil.*;
 
@@ -27,28 +26,30 @@ public class StyleUtil {
         return Text.literal("ERROR LOADING KEYBIND").formatted(Formatting.RED);
     }
 
-    public static Text currentStyle(ItemStack stack) { return Text.translatable("style."+stack.getTranslationKey()+"."+StyleUtil.getStyle(stack)); }
-
     public static int getStyle(ItemStack stack){
-        if(stack.getSubNbt("trevorssentinels:style") == null){ setStyle(stack, 1); }
-        return Objects.requireNonNull(stack.getSubNbt("trevorssentinels:style")).getInt("trevorssentinels:styleInt");
+        NbtCompound nbt = stack.getOrCreateNbt();
+        if (!nbt.contains("trevorssentinels:Style")) { setStyle(stack, 1); }
+        return nbt.getInt("trevorssentinels:Style");
     }
-
-    public static void setStyle(ItemStack stack, int newStyle){
-        NbtCompound style = new NbtCompound();
-        style.putInt("trevorssentinels:styleInt", newStyle);
-        stack.setSubNbt("trevorssentinels:style", style);
-    }
+    public static void setStyle(ItemStack stack, int newStyle){ stack.getOrCreateNbt().putInt("trevorssentinels:Style", newStyle); }
 
     public interface StyleSwitcher {
-        default void onStyleSwitch(ServerPlayerEntity player){
-            player.getWorld().playSoundFromEntity(null, player, SoundEvents.BLOCK_END_PORTAL_FRAME_FILL, SoundCategory.BLOCKS, 1.0F,
-                    (StyleUtil.getStyle(player.getMainHandStack()) & 2) == 0? 1.0F : 1.2F);
-            player.sendMessage(Text.empty().append(StyleUtil.style).append(StyleUtil.currentStyle(player.getMainHandStack()))
-                    .formatted(getStyleSwitchFormatting(player.getMainHandStack())), true);
+        default SoundEvent getSwitchSoundEvent(ItemStack stack){ return SoundEvents.BLOCK_END_PORTAL_FRAME_FILL; }
+        default float getSwitchSoundVolume(ItemStack stack){ return 1.0f; }
+        default float getSwitchSoundPitch(ItemStack stack){ return (StyleUtil.getStyle(stack) % 2) == 0? 1.0F : 1.2F; }
+        default int getStyles() { return 2; }
+        default Formatting getStyleSwitchFormatting(ItemStack stack){ return StyleUtil.getStyle(stack) == 2? Formatting.GREEN : Formatting.RED; }
+        default Text getSwitchMessagePrefix(ItemStack stack) { return StyleUtil.style; }
+        default Text getCurrentStyleTranslation(ItemStack stack) { return Text.translatable("style."+stack.getTranslationKey()+"."+StyleUtil.getStyle(stack)); }
+
+        default void sendSwitchSound(ServerPlayerEntity player, ItemStack stack){
+            player.getServerWorld().playSoundFromEntity(null, player, getSwitchSoundEvent(stack), SoundCategory.BLOCKS, getSwitchSoundVolume(stack), getSwitchSoundPitch(stack));
         }
 
-        default int getStyles() { return 2; }
-        default Formatting getStyleSwitchFormatting(ItemStack stack){ return Formatting.RESET; }
+        default void sendSwitchMessage(ServerPlayerEntity player, ItemStack stack){
+            player.sendMessage(Text.empty().append(getSwitchMessagePrefix(stack)).append(getCurrentStyleTranslation(stack)).formatted(getStyleSwitchFormatting(stack)), true);
+        }
+
+        default void onStyleSwitch(ServerPlayerEntity player){ ItemStack stack = player.getMainHandStack(); sendSwitchSound(player, stack); sendSwitchMessage(player, stack); }
     }
 }
