@@ -5,7 +5,11 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.registry.RegistryKey;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
+import net.trevorskullcrafter.trevorssentinels.item.custom.NewGunItem;
 import net.trevorskullcrafter.trevorssentinels.trevorssentinels;
+import net.trevorskullcrafter.trevorssentinels.util.TextUtil;
+
+import java.awt.*;
 
 import static net.trevorskullcrafter.trevorssentinels.trevorssentinels.MOD_ID;
 
@@ -276,6 +280,15 @@ public class ModItemGroupEvents {
         logInstall(group, "Ballistics");
         addToGroup(group, ModArmory.LASER_PISTOL, ModArmory.LASER_TASER, ModArmory.LASER_SNIPER_ECHO, ModArmory.LASER_RIFLE, ModArmory.LASER_HEALER,
                 ModArmory.LASER_MINIGUN, ModArmory.LASER_SHOTGUN, ModArmory.LASER_SPREADER, ModArmory.LASER_SNIPER, ModArmory.LASER_REVOLVER, ModArmory.VILE_SPITTER);
+
+        addStackToGroup(group, NewGunItem.laserGunFromTags(ModArmory.AGNOSTYK, "Agnostyk Laser Rifle", Color.BLACK,
+                1, 3, 30, 0.035f, 2f, 2.5f, 48, 3, 2, 20));
+        addStackToGroup(group, NewGunItem.laserGunFromTags(ModArmory.AGNOSTYK, "Agnostyk Laser Sniper", TextUtil.GOLD,
+                1, 3, 30, 0.035f, 3f, 2.5f, 48, 5, 2, 2));
+        addStackToGroup(group, NewGunItem.laserGunFromTags(ModArmory.AGNOSTYK, "Agnostyk Laser Barrage", TextUtil.HELLFIRE,
+                6, 3, 30, 0.035f, 2f, 3f, 48, 8, 2, 20));
+        addStackToGroup(group, NewGunItem.laserGunFromTags(ModArmory.AGNOSTYK, "Agnostyk Laser Grappler", TextUtil.SENTINEL_DARK_GOLD,
+                1, 5, 0, -1f, 2f, 0.1f, 48, 0, 2, 1));
     }
 
     public static void logInstall(RegistryKey<ItemGroup> group){ trevorssentinels.LOGGER.info("Filling unit [" + group.getValue().toTranslationKey() + "]... (" + MOD_ID + ")"); }
@@ -285,6 +298,10 @@ public class ModItemGroupEvents {
 
     public static void addToGroup(RegistryKey<ItemGroup> group, ItemConvertible... items){
         for (ItemConvertible itemConvertible : items) { ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(itemConvertible)); }
+    }
+
+    public static void addStackToGroup(RegistryKey<ItemGroup> group, ItemStack... stacks){
+        for (ItemStack stack : stacks) { ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(stack)); }
     }
 
     public static void addToGroupAfter(RegistryKey<ItemGroup> group, ItemConvertible after, ItemConvertible... items){

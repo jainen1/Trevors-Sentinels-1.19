@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -16,7 +17,6 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.GameRules;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
@@ -24,19 +24,23 @@ import net.trevorskullcrafter.trevorssentinels.block.entity.ModBlockEntities;
 import net.trevorskullcrafter.trevorssentinels.datagen.BlockTagGenerator;
 import net.trevorskullcrafter.trevorssentinels.effect.ModEffects;
 import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
-import net.trevorskullcrafter.trevorssentinels.entity.custom.*;
+import net.trevorskullcrafter.trevorssentinels.entity.custom.FlorbusEntity;
+import net.trevorskullcrafter.trevorssentinels.entity.custom.RoombaEntity;
+import net.trevorskullcrafter.trevorssentinels.entity.custom.SentinelEntity;
 import net.trevorskullcrafter.trevorssentinels.fluid.ModFluids;
 import net.trevorskullcrafter.trevorssentinels.item.*;
 import net.trevorskullcrafter.trevorssentinels.networking.ModMessages;
 import net.trevorskullcrafter.trevorssentinels.potion.ModPotions;
 import net.trevorskullcrafter.trevorssentinels.recipe.ModRecipes;
-import net.trevorskullcrafter.trevorssentinels.util.*;
+import net.trevorskullcrafter.trevorssentinels.util.ModLootTableModifiers;
+import net.trevorskullcrafter.trevorssentinels.util.ModRegistries;
+import net.trevorskullcrafter.trevorssentinels.util.ServerState;
+import net.trevorskullcrafter.trevorssentinels.util.TextUtil;
 import net.trevorskullcrafter.trevorssentinels.villager.ModVillagers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import software.bernie.geckolib.GeckoLib;
 
-import java.awt.*;
 import java.util.Objects;
 
 import static net.trevorskullcrafter.trevorssentinels.util.TextUtil.*;
@@ -54,6 +58,12 @@ public class trevorssentinels implements ModInitializer {
 	public static final GameRules.Key<GameRules.BooleanRule> MILK_CURES_POTION_EFFECTS =
 			GameRuleRegistry.register("trevorssentinels:milkCuresPotionEffects", GameRules.Category.PLAYER, GameRuleFactory.createBooleanRule(false));
 
+	public static int getBlockWorldLevelRequirement(BlockState state){
+		if(state.isIn(BlockTagGenerator.REQUIRES_LEVEL_3)) { return 3; }
+		else if(state.isIn(BlockTagGenerator.REQUIRES_LEVEL_2)) { return 2; }
+		else { return 1; }
+	}
+
 	@Override public void onInitialize() {
         /*EntityElytraEvents.CUSTOM.register((entity, tickElytra) -> {
 			if (entity instanceof PlayerEntity player && !player.isOnGround() &&
@@ -69,28 +79,18 @@ public class trevorssentinels implements ModInitializer {
 			} return true; } return false;
 		});*/
 
-		PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, entity) -> {
+		PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, blockEntity) -> {
 			if(player.isCreative()) { return true; }
-			int requiredLevel;
-			if(state.isIn(BlockTagGenerator.REQUIRES_LEVEL_3)) { requiredLevel = 3; }
-			else if(state.isIn(BlockTagGenerator.REQUIRES_LEVEL_2)) { requiredLevel = 2; }
-			else { requiredLevel = 1; }
-			if(requiredLevel > Objects.requireNonNull(ServerState.getServerState(Objects.requireNonNull(world.getServer()))).worldLevel){
-				Identifier tooLow = new Identifier(trevorssentinels.MOD_ID, "worldLevelTooLow");
-				if(TextUtil.translationDiffersFromKey(tooLow.toTranslationKey()) != null) {
-					player.sendMessage(coloredText(tooLow + "." + requiredLevel, Color.decode(Text.translatable("color" + tooLow + "." + requiredLevel).toString())), true);
-				} else { player.sendMessage(Text.translatable(tooLow + ".other").formatted(Formatting.GRAY), true); }
-				return false;
-			} return true;
-		});
+            return trevorssentinels.getBlockWorldLevelRequirement(state) <= ServerState.getServerState(Objects.requireNonNull(world.getServer())).worldLevel;
+        });
 
 		FabricLoader.getInstance().getModContainer(trevorssentinels.MOD_ID).ifPresent(modContainer -> {
 			ResourceManagerHelper.registerBuiltinResourcePack(new Identifier(trevorssentinels.MOD_ID, "hologui"), modContainer,
-					Text.literal("Sentinel HoloGUI"), ResourcePackActivationType.NORMAL);
-			ResourceManagerHelper.registerBuiltinResourcePack(new Identifier(trevorssentinels.MOD_ID, "vanilla_parity"), modContainer,
-					Text.literal("Vanilla Parity"), ResourcePackActivationType.DEFAULT_ENABLED);
+					Text.translatable(new Identifier(trevorssentinels.MOD_ID, "hologui").toTranslationKey()), ResourcePackActivationType.NORMAL);
+			ResourceManagerHelper.registerBuiltinResourcePack(new Identifier(trevorssentinels.MOD_ID, "vanilla_extensions"), modContainer,
+					Text.translatable(new Identifier(trevorssentinels.MOD_ID, "vanilla_extensions").toTranslationKey()), ResourcePackActivationType.DEFAULT_ENABLED);
 			ResourceManagerHelper.registerBuiltinResourcePack(new Identifier(trevorssentinels.MOD_ID, "legacy"), modContainer,
-					Text.literal("Legacy Resources"), ResourcePackActivationType.NORMAL);
+					Text.translatable(new Identifier(trevorssentinels.MOD_ID, "legacy").toTranslationKey()), ResourcePackActivationType.NORMAL);
 		});
 
 		ModEffects.registerStatusEffects();

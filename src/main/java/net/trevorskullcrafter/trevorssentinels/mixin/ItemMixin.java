@@ -3,7 +3,7 @@ package net.trevorskullcrafter.trevorssentinels.mixin;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.effect.*;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,16 +19,17 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.*;
-import org.spongepowered.asm.mixin.injection.callback.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
 @Mixin(Item.class)
-public abstract class NamedItemMixin{
+public abstract class ItemMixin {
     @Shadow public abstract String getTranslationKey(ItemStack stack);
     @Shadow @Final private Rarity rarity;
-    @Shadow public abstract boolean isFood();
     @Shadow @Nullable public abstract FoodComponent getFoodComponent();
     @Unique int modelData;
 
@@ -47,7 +48,8 @@ public abstract class NamedItemMixin{
 
     @Inject(at = @At("HEAD"), method = "appendTooltip")
     public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context, CallbackInfo ci) {
-        if(this.isFood() && getFoodComponent().getStatusEffects() != null){ for(Pair<StatusEffectInstance, Float> effect : getFoodComponent().getStatusEffects()){
+        FoodComponent foodComponent = getFoodComponent();
+        if(foodComponent != null && foodComponent.getStatusEffects() != null){ for(Pair<StatusEffectInstance, Float> effect : getFoodComponent().getStatusEffects()){
             tooltip.add(Text.empty().append(TextUtil.potionText(effect.getFirst(), false)).append(Text.literal(" ["+String.format("%.0f",effect.getSecond()*100)+"%]")
                     .formatted(Formatting.YELLOW)));
         }}
@@ -60,6 +62,8 @@ public abstract class NamedItemMixin{
                 tooltip.add(Text.literal(text.substring(halfPoint)).formatted(formattings));
             } else { tooltip.add(Text.literal(text).formatted(formattings)); }
         }
+        //if(stack.getItem() instanceof MilkBucketItem && !world.getGameRules().getBoolean(MILK_CURES_POTION_EFFECTS)) {
+        //    tooltip.add(Text.translatable("tooltip.trevorssentinels:milkCuresPotionEffects").formatted(Formatting.RED)); }
     }
 
     @Inject(at = @At("HEAD"), method = "getItemBarColor", cancellable = true)

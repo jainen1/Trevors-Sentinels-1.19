@@ -10,8 +10,7 @@ public class FlightStatusEffect extends StatusEffect {
 
     public boolean canApplyUpdateEffect(int duration, int amplifier) { return true; }
 
-    @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+    @Override public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         float fallVelocity = (float) Math.abs(entity.getVelocity().y * 5);
         if (entity instanceof PlayerEntity playerEntity) {
             if(playerEntity.isSprinting()){

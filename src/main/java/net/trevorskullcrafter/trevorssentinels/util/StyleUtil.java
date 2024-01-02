@@ -37,7 +37,7 @@ public class StyleUtil {
         default SoundEvent getSwitchSoundEvent(ItemStack stack){ return SoundEvents.BLOCK_END_PORTAL_FRAME_FILL; }
         default float getSwitchSoundVolume(ItemStack stack){ return 1.0f; }
         default float getSwitchSoundPitch(ItemStack stack){ return (StyleUtil.getStyle(stack) % 2) == 0? 1.0F : 1.2F; }
-        default int getStyles() { return 2; }
+        default int getStyles(ItemStack stack) { return 2; }
         default Formatting getStyleSwitchFormatting(ItemStack stack){ return StyleUtil.getStyle(stack) == 2? Formatting.GREEN : Formatting.RED; }
         default Text getSwitchMessagePrefix(ItemStack stack) { return StyleUtil.style; }
         default Text getCurrentStyleTranslation(ItemStack stack) { return Text.translatable("style."+stack.getTranslationKey()+"."+StyleUtil.getStyle(stack)); }

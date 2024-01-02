@@ -11,8 +11,8 @@ import net.trevorskullcrafter.trevorssentinels.util.StyleUtil;
 public class StyleSwitchC2SPacket {
     public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender){
         ItemStack stack = player.getMainHandStack();
-        if (stack.getItem() instanceof StyleUtil.StyleSwitcher styledItem){
-            StyleUtil.setStyle(stack, StyleUtil.getStyle(stack) == styledItem.getStyles()? 1 : StyleUtil.getStyle(stack)+1);
+        if (stack.getItem() instanceof StyleUtil.StyleSwitcher styledItem && styledItem.getStyles(stack) > 1){
+            StyleUtil.setStyle(stack, StyleUtil.getStyle(stack) == styledItem.getStyles(stack)? 1 : StyleUtil.getStyle(stack)+1);
             styledItem.onStyleSwitch(player);
         }
     }

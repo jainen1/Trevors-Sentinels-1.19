@@ -29,7 +29,7 @@ public class PappyMSwordItem extends SwordItem implements StyleUtil.StyleSwitche
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
-    @Override public int getStyles(){ return 4; }
+    @Override public int getStyles(ItemStack stack){ return 4; }
     @Override public Formatting getStyleSwitchFormatting(ItemStack stack){ return StyleUtil.getStyle(stack) % 2 == 0? Formatting.GREEN : Formatting.RED; }
     @Override public boolean hasGlint(ItemStack stack){ return getCharge(stack) == 6; }
     StatusEffectInstance[] effects = new StatusEffectInstance[]{

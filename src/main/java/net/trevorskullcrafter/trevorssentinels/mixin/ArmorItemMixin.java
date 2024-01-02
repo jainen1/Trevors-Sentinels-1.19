@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Mixin(ArmorItem.class)
-public abstract class ArmorItemMixin extends NamedItemMixin{
+public abstract class ArmorItemMixin extends ItemMixin {
     @Unique private PlayerEntity playerEntity;
 
     @Unique public void galinite_set_bonus(ItemStack stack, World world, PlayerEntity player){

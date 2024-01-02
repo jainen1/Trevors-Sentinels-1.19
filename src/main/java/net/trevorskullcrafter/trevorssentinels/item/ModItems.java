@@ -28,14 +28,11 @@ public class ModItems {
     public static final Item ROSE_GOLD_INGOT = registerItem("rose_gold_ingot", new Item(new FabricItemSettings()));
     public static final Item IMPERIAL_ALLOY_INGOT = registerItem("imperial_alloy_ingot", new Item(new FabricItemSettings()));
     public static final Item TRANSITITE_SHARDS = registerItem("transitite_shards", new Item(new FabricItemSettings()));
-    public static final Item ASH = registerItem("ash", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(-1).saturationModifier(0.2f).build())));
-    public static final Item TRANQUIL_DUST = registerItem("tranquil_dust", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(1).saturationModifier(0.2f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 200, 0), 0.6f).build())));
+    public static final Item ASH = registerItem("ash", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(-1).saturationModifier(0.2f).build())));
+    public static final Item TRANQUIL_DUST = registerItem("tranquil_dust", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(1).saturationModifier(0.2f)
+            .statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 200, 0), 0.6f).build())));
     public static final Item RUINOUS_GAZE = registerItem("ruinous_gaze", new Item(new FabricItemSettings()));
-    public static final Item SALT = registerItem("salt", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(1).saturationModifier(-0.5f).build())));
+    public static final Item SALT = registerItem("salt", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(1).saturationModifier(-0.5f).build())));
     public static final Item DARKSTEEL_INGOT = registerItem("darksteel_ingot", new Item(new FabricItemSettings()));
     public static final Item REDSTONE_CRYSTAL = registerItem("redstone_crystal", new Item(new FabricItemSettings()));
     public static final Item BLOOD_DIAMOND = registerItem("blood_diamond", new Item(new FabricItemSettings().fireproof()));
@@ -45,8 +42,10 @@ public class ModItems {
     public static final Item ZENITHIUM_CLUSTER = registerItem("zenithium_cluster", new Item(new FabricItemSettings().fireproof()));
 
     public static final Item HARD_LIGHT_PROJECTOR = registerItem("hard_light_projector", new HardLightProjectorItem(ModBlocks.HARD_LIGHT, new FabricItemSettings().maxDamage(129)));
-    public static final Item CAUTION_HARD_LIGHT_PROJECTOR = registerItem("caution_hard_light_projector", new HardLightProjectorItem(ModBlocks.CAUTION_HARD_LIGHT, new FabricItemSettings().maxDamage(129)));
-    public static final Item SENTINEL_HARD_LIGHT_PROJECTOR = registerItem("sentinel_hard_light_projector", new HardLightProjectorItem(ModBlocks.SENTINEL_HARD_LIGHT, new FabricItemSettings().maxDamage(129)));
+    public static final Item CAUTION_HARD_LIGHT_PROJECTOR = registerItem("caution_hard_light_projector", new HardLightProjectorItem(ModBlocks.CAUTION_HARD_LIGHT,
+            new FabricItemSettings().maxDamage(129)));
+    public static final Item SENTINEL_HARD_LIGHT_PROJECTOR = registerItem("sentinel_hard_light_projector", new HardLightProjectorItem(ModBlocks.SENTINEL_HARD_LIGHT,
+            new FabricItemSettings().maxDamage(129)));
 
     public static final Item GALINITE_LENS = registerItem("galinite_lens", new LensItem(new FabricItemSettings().maxCount(1), 1.6, 15));
     public static final Item ENERGY_CELL = registerItem("energy_cell", new Item(new FabricItemSettings()));
@@ -64,77 +63,55 @@ public class ModItems {
     public static final Item MUSIC_DISC_RECITAL = registerItem("music_disc_recital", new MusicDiscItem
             (7, ModSounds.RECITAL, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 114));
 
-    public static final Item FRIED_EGG = registerItem("fried_egg", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(2).saturationModifier(0.3f).build())));
-    public static final Item DUBIOUS_BACON = registerItem("dubious_bacon", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(3).saturationModifier(0.4f).statusEffect(new StatusEffectInstance(
-                    ModEffects.INFESTED, 200, 0), 0.1f).build())));
-    public static final Item BANANA = registerItem("banana", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(3).saturationModifier(0.3f).statusEffect(new StatusEffectInstance(
-                    ModEffects.IRRADIATED, 20, 0), 0.3f).build())));
-    public static final Item RED_BANANA = registerItem("red_banana", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(4).saturationModifier(0.5f).statusEffect(new StatusEffectInstance(
-                    ModEffects.IRRADIATED, 40, 1), 0.4f).build())));
-    public static final Item BLUE_JAVA_BANANA = registerItem("blue_java_banana", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(5).saturationModifier(0.6f).statusEffect(new StatusEffectInstance(
-                    ModEffects.IRRADIATED, 80, 2), 0.5f).build())));
-    public static final Item BANANA_BREAD = registerItem("banana_bread", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(3).saturationModifier(0.3f).statusEffect(new StatusEffectInstance(
-                    ModEffects.WELL_FED, 100, 0), 0.3f).build())));
-    public static final Item RED_BANANA_BREAD = registerItem("red_banana_bread", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(4).saturationModifier(0.5f).statusEffect(new StatusEffectInstance(
-                    ModEffects.WELL_FED, 200, 1), 0.4f).build())));
+    public static final Item FRIED_EGG = registerItem("fried_egg", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(2).saturationModifier(0.3f).build())));
+    public static final Item DUBIOUS_BACON = registerItem("dubious_bacon", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.4f)
+            .statusEffect(new StatusEffectInstance(ModEffects.INFESTED, 200, 0), 0.1f).build())));
+    public static final Item BANANA = registerItem("banana", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.3f)
+            .statusEffect(new StatusEffectInstance(ModEffects.IRRADIATED, 20, 0), 0.3f).build())));
+    public static final Item RED_BANANA = registerItem("red_banana", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(4).saturationModifier(0.5f)
+            .statusEffect(new StatusEffectInstance(ModEffects.IRRADIATED, 40, 1), 0.4f).build())));
+    public static final Item BLUE_JAVA_BANANA = registerItem("blue_java_banana", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(5).saturationModifier(0.6f)
+            .statusEffect(new StatusEffectInstance(ModEffects.IRRADIATED, 80, 2), 0.5f).build())));
+    public static final Item BANANA_BREAD = registerItem("banana_bread", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.3f)
+            .statusEffect(new StatusEffectInstance(ModEffects.WELL_FED, 100, 0), 0.3f).build())));
+    public static final Item RED_BANANA_BREAD = registerItem("red_banana_bread", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(4).saturationModifier(0.5f)
+            .statusEffect(new StatusEffectInstance(ModEffects.WELL_FED, 200, 1), 0.4f).build())));
     public static final Item BLUE_JAVA_BANANA_BREAD = registerItem("blue_java_banana_bread", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(4).saturationModifier(0.6f).statusEffect(new StatusEffectInstance(
-                    ModEffects.WELL_FED, 400, 2), 0.5f).build())));
+            .food(new FoodComponent.Builder().hunger(4).saturationModifier(0.6f).statusEffect(new StatusEffectInstance(ModEffects.WELL_FED, 400, 2), 0.5f).build())));
     public static final Item RICE_SEEDS = registerItem("rice_seeds", new AliasedBlockItem(ModBlocks.RICE_PLANT, new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build())));
-    public static final Item RICE_CAKE = registerItem("rice_cake", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(3).saturationModifier(0.6f).build())));
-    public static final Item SUSHI_ROLL = registerItem("sushi_roll", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(8).saturationModifier(0.8f).build())));
+    public static final Item RICE_CAKE = registerItem("rice_cake", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.6f).build())));
+    public static final Item SUSHI_ROLL = registerItem("sushi_roll", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(8).saturationModifier(0.8f).build())));
     public static final Item GOLDEN_RICE_SEEDS = registerItem("golden_rice_seeds", new AliasedBlockItem(ModBlocks.GOLDEN_RICE_PLANT, new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(2).saturationModifier(0.4f).build())));
     public static final Item GOLDEN_RICE_CAKE = registerItem("golden_rice_cake", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(4).saturationModifier(1f).build())));
-    public static final Item TORTILLA = registerItem("tortilla", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(6).saturationModifier(0.8f).build())));
-    public static final Item BURRITO = registerItem("burrito", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(12).saturationModifier(2.4f).build())));
-    public static final Item PEARFRUIT = registerItem("pearfruit", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(4).saturationModifier(1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 2400, 1), 1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 2400, 1), 1.0f).alwaysEdible().build())));
-    public static final Item MIDAS_FRUIT = registerItem("midas_fruit", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(2).saturationModifier(1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 120, 1), 1.0f).alwaysEdible().build())));
-    public static final Item APPLE_JUICE = registerItem("apple_juice", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).build())));
+    public static final Item TORTILLA = registerItem("tortilla", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(6).saturationModifier(0.8f).build())));
+    public static final Item BURRITO = registerItem("burrito", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(12).saturationModifier(2.4f).build())));
+    public static final Item PEARFRUIT = registerItem("pearfruit", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(4).saturationModifier(1.0f)
+            .statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 2400, 1), 1.0f)
+            .statusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 2400, 1), 1.0f).alwaysEdible().build())));
+    public static final Item MIDAS_FRUIT = registerItem("midas_fruit", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(2).saturationModifier(1.0f)
+            .statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 120, 1), 1.0f).alwaysEdible().build())));
+    public static final Item APPLE_JUICE = registerItem("apple_juice", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).build())));
     public static final Item GOLDEN_APPLE_JUICE = registerItem("golden_apple_juice", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).build())));
     public static final Item PEARFRUIT_JUICE = registerItem("pearfruit_juice", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).build())));
     public static final Item SWEET_BERRY_JUICE = registerItem("sweet_berry_juice", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(3).saturationModifier(1.0f).build())));
-    public static final Item BROWNIE = registerItem("brownie", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(6).saturationModifier(0.5f).build())));
-    public static final Item CHORUS_COBBLER = registerItem("chorus_cobbler", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(4).saturationModifier(1.0f)
-                    .statusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 120, 0), 1.0f).build())));
+    public static final Item BROWNIE = registerItem("brownie", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(6).saturationModifier(0.5f).build())));
+    public static final Item CHORUS_COBBLER = registerItem("chorus_cobbler", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(4).saturationModifier(1.0f)
+            .statusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 120, 0), 1.0f).build())));
 
-    public static final Item CURED_BEEF = registerItem("cured_beef", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(2).saturationModifier(0.6f).build())));
-    public static final Item CURED_CHICKEN = registerItem("cured_chicken", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(4).saturationModifier(0.8f).build())));
+    public static final Item CURED_BEEF = registerItem("cured_beef", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(2).saturationModifier(0.6f).build())));
+    public static final Item CURED_CHICKEN = registerItem("cured_chicken", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(4).saturationModifier(0.8f).build())));
 
-    public static final Item SANDFISH = registerItem("sandfish", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(2)
-            .saturationModifier(0.6f).build())));
+    public static final Item SANDFISH = registerItem("sandfish", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(2).saturationModifier(0.6f).build())));
     public static final Item COOKED_SANDFISH = registerItem("cooked_sandfish", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder().hunger(5).saturationModifier(0.6f).build())));
-    public static final Item DUNE_EEL = registerItem("dune_eel", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(6).saturationModifier(0.6f).build())));
-    public static final Item SMOKED_FISH = registerItem("smoked_fish", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder().hunger(3).saturationModifier(0f).build())));
+    public static final Item DUNE_EEL = registerItem("dune_eel", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(6).saturationModifier(0.6f).build())));
+    public static final Item SMOKED_FISH = registerItem("smoked_fish", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0f).build())));
     public static final Item ANTIMILK = registerItem("antimilk", new ChaddBucketItem(new FabricItemSettings().rarity(Rarity.EPIC)));
     public static final Item EMPTY_CAN = registerItem("empty_can", new Item(new FabricItemSettings()));
     public static final Item BEETROOT_SOUP_CAN = registerItem("beetroot_soup_can", new CannedItem(new FabricItemSettings()
@@ -187,26 +164,16 @@ public class ModItems {
     public static final Item CERULII_HANGING_SIGN = registerItem("cerulii_hanging_sign",
             new HangingSignItem(ModBlocks.CERULII_HANGING_SIGN, ModBlocks.CERULII_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
 
-    public static final Item YGGDRASIL_BOAT = registerItem("yggdrasil_boat",
-            new BoatItem(false, BoatEntity.Type.BIRCH, new Item.Settings().maxCount(1)));
-    public static final Item YGGDRASIL_CHEST_BOAT = registerItem("yggdrasil_chest_boat",
-            new BoatItem(true, BoatEntity.Type.BIRCH, new Item.Settings().maxCount(1)));
-    public static final Item CHARRED_BOAT = registerItem("charred_oak_boat",
-            new BoatItem(false, BoatEntity.Type.OAK, new Item.Settings().maxCount(1)));
-    public static final Item CHARRED_CHEST_BOAT = registerItem("charred_oak_chest_boat",
-            new BoatItem(true, BoatEntity.Type.OAK, new Item.Settings().maxCount(1)));
-    public static final Item MIDAS_BOAT = registerItem("midas_boat",
-            new BoatItem(false, BoatEntity.Type.DARK_OAK, new Item.Settings().maxCount(1)));
-    public static final Item MIDAS_CHEST_BOAT = registerItem("midas_chest_boat",
-            new BoatItem(true, BoatEntity.Type.DARK_OAK, new Item.Settings().maxCount(1)));
-    public static final Item VIRIDESCENT_BOAT = registerItem("viridescent_boat",
-            new BoatItem(false, BoatEntity.Type.JUNGLE, new Item.Settings().maxCount(1)));
-    public static final Item VIRIDESCENT_CHEST_BOAT = registerItem("viridescent_chest_boat",
-            new BoatItem(true, BoatEntity.Type.JUNGLE, new Item.Settings().maxCount(1)));
-    public static final Item CERULII_BOAT = registerItem("cerulii_boat",
-            new BoatItem(false, BoatEntity.Type.JUNGLE, new Item.Settings().maxCount(1)));
-    public static final Item CERULII_CHEST_BOAT = registerItem("cerulii_chest_boat",
-            new BoatItem(true, BoatEntity.Type.JUNGLE, new Item.Settings().maxCount(1)));
+    public static final Item YGGDRASIL_BOAT = registerItem("yggdrasil_boat", new BoatItem(false, BoatEntity.Type.BIRCH, new Item.Settings().maxCount(1)));
+    public static final Item YGGDRASIL_CHEST_BOAT = registerItem("yggdrasil_chest_boat", new BoatItem(true, BoatEntity.Type.BIRCH, new Item.Settings().maxCount(1)));
+    public static final Item CHARRED_BOAT = registerItem("charred_oak_boat", new BoatItem(false, BoatEntity.Type.OAK, new Item.Settings().maxCount(1)));
+    public static final Item CHARRED_CHEST_BOAT = registerItem("charred_oak_chest_boat", new BoatItem(true, BoatEntity.Type.OAK, new Item.Settings().maxCount(1)));
+    public static final Item MIDAS_BOAT = registerItem("midas_boat", new BoatItem(false, BoatEntity.Type.DARK_OAK, new Item.Settings().maxCount(1)));
+    public static final Item MIDAS_CHEST_BOAT = registerItem("midas_chest_boat", new BoatItem(true, BoatEntity.Type.DARK_OAK, new Item.Settings().maxCount(1)));
+    public static final Item VIRIDESCENT_BOAT = registerItem("viridescent_boat", new BoatItem(false, BoatEntity.Type.JUNGLE, new Item.Settings().maxCount(1)));
+    public static final Item VIRIDESCENT_CHEST_BOAT = registerItem("viridescent_chest_boat", new BoatItem(true, BoatEntity.Type.JUNGLE, new Item.Settings().maxCount(1)));
+    public static final Item CERULII_BOAT = registerItem("cerulii_boat", new BoatItem(false, BoatEntity.Type.JUNGLE, new Item.Settings().maxCount(1)));
+    public static final Item CERULII_CHEST_BOAT = registerItem("cerulii_chest_boat", new BoatItem(true, BoatEntity.Type.JUNGLE, new Item.Settings().maxCount(1)));
 
     public static final Item FEATHERCORN = registerItem("feathercorn", new TallBlockItem(ModBlocks.FEATHERCORN, new FabricItemSettings()));
 
@@ -214,7 +181,6 @@ public class ModItems {
     public static final Item LEGENDARY_TOKEN = registerItem("legendary_token", new Item(new FabricItemSettings().rarity(Rarity.EPIC)));
 
     public static final Item COMMON_SKIN_PACK = registerItem("common_skin_pack", new PaintPack(1, new FabricItemSettings()));
-    public static final Item LASER = registerItem("laser", new Item(new FabricItemSettings()));
 
     private static Item registerItem(String name, Item item){return Registry.register(Registries.ITEM, new Identifier(trevorssentinels.MOD_ID, name), item);}
     public static void registerModItems(){ trevorssentinels.LOGGER.info("Registering items... ("+ MOD_ID + ")"); }

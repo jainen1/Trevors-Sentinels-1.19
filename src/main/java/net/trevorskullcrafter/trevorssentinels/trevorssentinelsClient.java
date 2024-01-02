@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
@@ -22,6 +23,7 @@ import net.trevorskullcrafter.trevorssentinels.client.render.block.SuperforgeRen
 import net.trevorskullcrafter.trevorssentinels.client.render.entity.*;
 import net.trevorskullcrafter.trevorssentinels.client.render.block.entity.NuclearChargeEntityRenderer;
 import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
+import net.trevorskullcrafter.trevorssentinels.entity.client.ModEntityLayers;
 import net.trevorskullcrafter.trevorssentinels.event.KeyInputHandler;
 import net.trevorskullcrafter.trevorssentinels.fluid.ModFluids;
 import net.trevorskullcrafter.trevorssentinels.item.ModItems;
@@ -36,7 +38,6 @@ public class trevorssentinelsClient implements ClientModInitializer {
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xCFF8FF, ModItems.VENDOR_TOKEN);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> TextUtil.DARK_PURPLE.getRGB(), ModItems.LEGENDARY_TOKEN);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> TextUtil.tintByIndex(tintIndex, TextUtil.WHITE, TextUtil.GAS_TEST), ModItems.GAS_CAPSULE); //0x71ff7c
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> stack.getOrCreateNbt().getInt("Color"), ModItems.LASER); //0x71ff7c
 
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> TextUtil.tintByIndex(tintIndex, TextUtil.SENTINEL_AQUA, TextUtil.SENTINEL_DARK_AQUA),
                 ModBlocks.HARD_LIGHT, ModBlocks.HARD_LIGHT_BARRIER);
@@ -72,6 +73,7 @@ public class trevorssentinelsClient implements ClientModInitializer {
 
         KeyInputHandler.register();
         ModMessages.registerS2CPackets();
+        EntityModelLayerRegistry.registerModelLayer(ModEntityLayers.LASER, LaserEntityModel::getTexturedModelData);
 
         ModRegistries.registerModelPredicates();
         EntityRendererRegistry.register(ModEntities.SENTINEL, SentinelRenderer::new);
@@ -90,6 +92,7 @@ public class trevorssentinelsClient implements ClientModInitializer {
         BlockEntityRendererFactories.register(ModBlockEntities.MODIFICATION_TABLE, context -> new ModificationTableRenderer("modification_table"));
 
         ParticleFactoryRegistry.getInstance().register(ModRegistries.FLESH_PUS, ModSuspendParticle.FleshPusFactory::new);
+        ParticleFactoryRegistry.getInstance().register(ModRegistries.MUZZLE_FLASH, ModSuspendParticle.MuzzleFlashFactory::new);
 
         SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, ModBlocks.YGGDRASIL_SIGN_TEXTURE));
         SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, ModBlocks.YGGDRASIL_HANGING_SIGN_TEXTURE));

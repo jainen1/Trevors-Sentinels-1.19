@@ -17,12 +17,12 @@ public class BulletEntity extends LaserEntity{
         super(type, world);
     }
 
-    public BulletEntity(EntityType<? extends LaserEntity> type, double x, double y, double z, World world, int lifetime, float speed, float damage, int color, StatusEffectInstance... effects) {
-        super(type, x, y, z, world, lifetime, speed, damage, color, effects);
+    public BulletEntity(EntityType<? extends LaserEntity> type, double x, double y, double z, World world, int lifetime, float damage, int color, StatusEffectInstance... effects) {
+        super(type, x, y, z, world, lifetime, damage, color, effects);
     }
 
-    public BulletEntity(EntityType<? extends LaserEntity> type, World world, LivingEntity owner, int lifetime, float speed, float damage, int color, StatusEffectInstance... effects) {
-        super(type, world, owner, lifetime, speed, damage, color, effects);
+    public BulletEntity(EntityType<? extends LaserEntity> type, World world, LivingEntity owner, int lifetime, float damage, int color, StatusEffectInstance... effects) {
+        super(type, world, owner, lifetime, damage, color, effects);
     }
 
     @Override protected float getGravity() { return 0.025F; }

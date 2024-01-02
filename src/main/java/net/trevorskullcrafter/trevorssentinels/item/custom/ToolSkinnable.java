@@ -9,13 +9,10 @@ public interface ToolSkinnable {
         return nbtCompound != null && nbtCompound.contains("CustomModelData") ? nbtCompound.getInt("CustomModelData") : 0;
     }
 
-    default void setCustomModelData(ItemStack stack, int data) {
-        stack.getOrCreateNbt().putInt("CustomModelData", data);
-    }
-
+    static void setCustomModelData(ItemStack stack, int data) { stack.getOrCreateNbt().putInt("CustomModelData", data); }
     static ItemStack newCustomModelStack(ItemStack stack, int data){
         ItemStack newStack = stack.copy();
-        if(newStack.getItem() instanceof ToolSkinnable newNewStack) newNewStack.setCustomModelData(stack, data);
+        if(newStack.getItem() instanceof ToolSkinnable) { setCustomModelData(newStack, data); }
         return stack;
     }
 }

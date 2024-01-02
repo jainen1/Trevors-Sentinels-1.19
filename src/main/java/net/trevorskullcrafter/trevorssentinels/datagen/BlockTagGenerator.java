@@ -50,5 +50,6 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(YGGDRASIL_LOGS).add(ModBlocks.YGGDRASIL_LOG, ModBlocks.YGGDRASIL_WOOD, ModBlocks.STRIPPED_YGGDRASIL_LOG, ModBlocks.STRIPPED_YGGDRASIL_WOOD);
 
         getOrCreateTagBuilder(REQUIRES_LEVEL_2).add(ModBlocks.NUCLEAR_ORE, ModBlocks.NUCLEAR_BLOCK);
+        getOrCreateTagBuilder(REQUIRES_LEVEL_3).add(ModBlocks.CAUTION_HARD_LIGHT_BARRIER);
     }
 }

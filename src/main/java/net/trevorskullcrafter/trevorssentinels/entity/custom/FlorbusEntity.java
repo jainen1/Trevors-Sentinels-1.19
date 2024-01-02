@@ -6,6 +6,7 @@ import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -22,11 +23,11 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class FlorbusEntity extends PassiveEntity implements GeoEntity {
+public class FlorbusEntity extends AnimalEntity implements GeoEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private static final RawAnimation BLINK = RawAnimation.begin().thenPlay("blink");
 
-    public FlorbusEntity(EntityType<? extends PassiveEntity> entityType, World world) { super(entityType, world); }
+    public FlorbusEntity(EntityType<? extends AnimalEntity> entityType, World world) { super(entityType, world); }
 
     @Nullable @Override public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
         return ModEntities.FLORBUS.create(world);

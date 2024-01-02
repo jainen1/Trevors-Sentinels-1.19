@@ -16,7 +16,7 @@ public class TextUtil {
     public static final Color YELLOW = new Color(Formatting.YELLOW.getColorValue()); //#FFFF55
     public static final Color DARK_GREEN = new Color(Formatting.DARK_GREEN.getColorValue()); //#00AA00
     public static final Color GREEN = new Color(Formatting.GREEN.getColorValue()); //#55FF55
-    public static final Color AQUA = new Color(Formatting.AQUA.getColorIndex()); //#55FFFF
+    public static final Color AQUA = new Color(Formatting.AQUA.getColorValue()); //#55FFFF
     public static final Color DARK_AQUA = new Color(Formatting.DARK_AQUA.getColorValue()); //#00AAAA
     public static final Color DARK_BLUE = new Color(Formatting.DARK_BLUE.getColorValue()); //#0000AA
     public static final Color BLUE = new Color(Formatting.BLUE.getColorValue()); //#5555FF
@@ -28,8 +28,8 @@ public class TextUtil {
     public static final Color BLACK = new Color(Formatting.BLACK.getColorValue()); //#000000
 
     public static final Color SENTINEL_AQUA = new Color(24, 157, 187); //#189DBB
-    public static final Color SENTINEL_DARK_AQUA = new Color(0, 103, 113); //#189DBB
-    public static final Color SENTINEL_DARK_GOLD = new Color(130, 87, 0); //#189DBB
+    public static final Color SENTINEL_DARK_AQUA = new Color(0, 103, 113); //#006771
+    public static final Color SENTINEL_DARK_GOLD = new Color(130, 87, 0); //#825700
     public static final Color SENTINEL_CRIMSON = new Color(211, 20, 0); //#D31400
     public static final Color SENTINEL_DARK_CRIMSON = new Color(113, 0, 0); //#710000
     public static final Color galliumGray = new Color(100, 102, 107); //#64666B
@@ -68,11 +68,11 @@ public class TextUtil {
     public static final Color HELLFIRE = new Color(244, 133, 34); //#F48522
 
     public static final Color GAS_TEST = new Color(113, 255, 124); //#71ff7c
+    public static final Color PURE = new Color(249, 231, 159); //#FEF9E7
     public static final Color FLESH_PUS = new Color(200, 225, 100, 255); //#C8E164
 
-    public static Text coloredText(String textContent, Color color) { return Text.translatable(textContent).fillStyle(customStyle(color)); }
-    public static Text coloredText(Text textContent, Color color) { return textContent.copy().fillStyle(customStyle(color)); }
-    public static Style customStyle(Color color){ if(color != null) { return Style.EMPTY.withColor(color.getRGB()); } return Style.EMPTY; }
+    public static MutableText coloredText(String textContent, Color color) { return coloredText(Text.translatable(textContent), color); }
+    public static MutableText coloredText(Text textContent, Color color) { return textContent.copy().fillStyle(color == null? Style.EMPTY : Style.EMPTY.withColor(color.getRGB())); }
 
     public static Formatting[] defaultFormattings = { Formatting.RED, Formatting.YELLOW, Formatting.GREEN, Formatting.AQUA, Formatting.LIGHT_PURPLE };
     public static Formatting[] reverseFormattings = { Formatting.LIGHT_PURPLE, Formatting.AQUA, Formatting.GREEN, Formatting.YELLOW, Formatting.RED };
@@ -80,8 +80,9 @@ public class TextUtil {
     //Returns a Formatting based on the dividend / divisor.
     public static Formatting quotientToolTipFormatting(double dividend, double divisor) { return quotientToolTipFormatting(dividend, divisor, defaultFormattings); }
     public static Formatting quotientToolTipFormatting(double dividend, double divisor, Formatting... formattings) {
-        int test = (int) Math.floor((dividend * formattings.length - 1) / divisor);
-        return test >= 0 ? formattings[test] : Formatting.GRAY;
+        double a = Math.abs(dividend * formattings.length - 1);
+        int test = (int) Math.floor(a / divisor);
+        return test >= 0 ? formattings[Math.min(test, formattings.length - 1)] : Formatting.GRAY;
     }
 
     public static Text potionText(StatusEffectInstance effect, boolean categorize){

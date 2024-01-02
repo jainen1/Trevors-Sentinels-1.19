@@ -78,7 +78,7 @@ public class ModBlocks {
 
     public static final Block TRANSITITE_BLOCK = registerBlock("transitite_block", new Block(FabricBlockSettings.copy(Blocks.DIAMOND_BLOCK).nonOpaque()
             .mapColor(MapColor.LIGHT_GRAY)));
-    public static final Block WAX_INFUSED_COPPER_BLOCK = registerBlock("wax_infused_copper_block", new DirectionalBlock(FabricBlockSettings.copy(Blocks.COPPER_BLOCK).mapColor(MapColor.ORANGE)));
+    public static final Block WAX_INFUSED_COPPER_BLOCK = registerBlock("wax_infused_copper_block", new Block(FabricBlockSettings.copy(Blocks.COPPER_BLOCK).mapColor(MapColor.ORANGE)));
 
     public static final Block HARD_LIGHT = registerBlockWithoutBlockItem("hard_light", new HardLightBlock(ModItems.HARD_LIGHT_PROJECTOR, FabricBlockSettings.create().mapColor(MapColor.CYAN)
             .sounds(ModSounds.HARD_LIGHT_SOUNDS).luminance((state) -> 5).emissiveLighting(Blocks::always).noBlockBreakParticles().nonOpaque().dynamicBounds().allowsSpawning(Blocks::never)

@@ -3,6 +3,7 @@ package net.trevorskullcrafter.trevorssentinels.datagen.lang;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.item.ArmorMaterials;
+import net.minecraft.util.Identifier;
 import net.trevorskullcrafter.trevorssentinels.block.ModBlocks;
 import net.trevorskullcrafter.trevorssentinels.effect.ModEffects;
 import net.trevorskullcrafter.trevorssentinels.entity.ModEntities;
@@ -114,6 +115,7 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
                 ModArmory.ZENITHIUM_AXE, ModArmory.ZENITHIUM_SHOVEL, ModArmory.ZENITHIUM_HOE);
         generateItem(translationBuilder, BetaItems.BLACKSMITHS_WELDING_MASK, 0, "Blacksmith's Welding Mask", null, DARK_GREEN);
         generateItem(translationBuilder, BetaItems.MAD_SCIENTISTS_LAB_COAT, 0, "Mad Scientist's Lab Coat", null, DARK_GREEN);
+        generateItem(translationBuilder, ModArmory.ZENITHIUM_HELMET, 0, "Zenithium Helmet", "Thickens your skull by at least 40%.", DARK_GREEN);
         generateItem(translationBuilder, ModArmory.ZENITHIUM_CHESTPLATE, 0, "Zenithium Chestplate", "\"Honey, where's my super suit?\"", DARK_GREEN);
         generateItem(translationBuilder, ModArmory.ZENITHIUM_LEGGINGS, 0, "Zenithium Leggings", "Gaming pants!", DARK_GREEN);
         generateItem(translationBuilder, ModArmory.ZENITHIUM_BOOTS, 0, "Utaricorp™ SkyHoppers", "Get your head into the clouds!", DARK_GREEN);
@@ -138,6 +140,7 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
         generateItem(translationBuilder, ModArmory.LASER_MINIGUN, 0, "UTARI-91 Serenity", "\"Keep the peace!\"", BLUE);
         generateItem(translationBuilder, ModArmory.LASER_MINIGUN, 1, "UTARI-91 Serenity", "\"America! Hell yeah!\"", PATRIOT_1);
         generateItem(translationBuilder, ModArmory.LASER_RIFLE, 0, "NUMA-63 Agnostyk", "\"Packs a punch!\"", MOSS);
+        generateItem(translationBuilder, ModArmory.AGNOSTYK, 0, "NUMA-63 Agnostyk", "\"Packs a punch!\"", MOSS);
         generateItem(translationBuilder, ModArmory.LASER_SHOTGUN, 0, "KHAOS-66 Tremor", "\"Rip and tear!\"", HELLFIRE);
         generateItem(translationBuilder, ModArmory.LASER_HEALER, 0, "PW49 Firebird", "\"Those who can't do, heal!\"", SHINY_GOLD);
         generateItem(translationBuilder, ModArmory.LASER_SNIPER, 0, "PW88 Shadow", "\"The assassin's weapon of choice!\"", DARK_PURPLE);
@@ -399,6 +402,10 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("color.rarity.minecraft.rare", String.valueOf(AQUA.getRGB()));
         translationBuilder.add("color.rarity.minecraft.epic", String.valueOf(GREEN.getRGB()));
 
+        translationBuilder.add(new Identifier(MOD_ID, "hologui").toTranslationKey(), "Sentinel HoloGUI");
+        translationBuilder.add(new Identifier(MOD_ID, "vanilla_extensions").toTranslationKey(), "Vanilla Extensions");
+        translationBuilder.add(new Identifier(MOD_ID, "legacy").toTranslationKey(), "Legacy Resources");
+
         generateNumbered(translationBuilder, MOD_ID+".worldLevelTooLow.", "",
                 "Demonic power has too much of a hold over the world!", "The power is too strong!");
         generateNumbered(translationBuilder, "color."+MOD_ID+".worldLevelTooLow.", "", String.valueOf(LIGHT_PURPLE.getRGB()), String.valueOf(BLUE.getRGB()));
@@ -429,6 +436,7 @@ public class EnglishLangGenerator extends FabricLanguageProvider {
         translationBuilder.add("gamerule.trevorssentinels:useVelocityFallDamage", "Use velocity-based fall damage");
         translationBuilder.add("gamerule.trevorssentinels:useVelocityFallDamage.description", "If enabled, fall damage will be calculated based on velocity.");
         translationBuilder.add("gamerule.trevorssentinels:milkCuresPotionEffects", "Drinking milk cures potion effects");
+        translationBuilder.add("tooltip.trevorssentinels:milkCuresPotionEffects", "Effects will not be cured!");
         //translationBuilder.add("gamerule.trevorssentinels:milkCuresPotionEffects.description", "If enabled, fall damage will be calculated based on velocity.");
 
         translationBuilder.add("tooltip." + MOD_ID + ".style", "Style: ");

@@ -64,6 +64,7 @@ public class ModRegistries {
     public static final WoodType HOLOGRAPHIC_RED_WOOD = WoodTypeBuilder.copyOf(STEEL_WOOD).build(holographic_red, HOLOGRAPHIC_RED_SET);
 
     public static final DefaultParticleType FLESH_PUS = FabricParticleTypes.simple();
+    public static final DefaultParticleType MUZZLE_FLASH = FabricParticleTypes.simple();
 
     public static void registerModelPredicates() {
         trevorssentinels.LOGGER.info("Registering model predicates... ("+ MOD_ID + ")");

@@ -1,4 +1,9 @@
-// 1.20.2	2023-12-10T23:07:05.0119208	Trevor's Sentinels/Tags for minecraft:item
-1bdc23814017526391e88a8088dd4f01e2997ef3 data\trevorssentinels\tags\items\crossbow_hold.json
+// 1.20.2	2024-01-01T20:50:54.2205811	Trevor's Sentinels/Tags for minecraft:item
 395914f6ebf6bfe2e1ba51994948ebace4fe8bc5 data\trevorssentinels\tags\items\nuclear_charge_activator.json
+1bdc23814017526391e88a8088dd4f01e2997ef3 data\trevorssentinels\tags\items\crossbow_hold.json
+724a57e30620bcf22728c20697b79be09baa4c2d data\trevorssentinels\tags\items\charred_logs.json
 8920a64a23c53a281ab4c875da5d5cd7aac8ce38 data\trevorssentinels\tags\items\item_bar_color_override.json
+c92799c57975e02092df57befa869032bf1b44cc data\trevorssentinels\tags\items\viridescent_logs.json
+90bff5f4f665fd87a680431d6022bc29eee56a2d data\trevorssentinels\tags\items\yggdrasil_logs.json
+c5d17b1044eff3087608c8155d279e49260d2499 data\trevorssentinels\tags\items\cerulii_logs.json
+ec4a04cf2c353570b4542c915eff6a9362e34bca data\trevorssentinels\tags\items\midas_logs.json

@@ -10,7 +10,7 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.projectile.thrown.ThrownEntity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.particle.*;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -20,25 +20,23 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import net.trevorskullcrafter.trevorssentinels.datagen.BlockTagGenerator;
 import net.trevorskullcrafter.trevorssentinels.util.TextUtil;
-import org.joml.Vector3f;
 
 public class LaserEntity extends ThrownEntity {
     private static final TrackedData<Integer> COLOR = DataTracker.registerData(LaserEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    float damage; float laserSpeed; int lifetime; StatusEffectInstance[] effects;
+    float damage; int lifetime; StatusEffectInstance[] effects;
 
     public LaserEntity(EntityType<? extends LaserEntity> type, World world) { super(type, world); }
 
-    public LaserEntity(EntityType<? extends LaserEntity> type, double x, double y, double z, World world, int lifetime, float speed, float damage, int color, StatusEffectInstance... effects) {
-        this(type, world); this.setPosition(x, y, z); this.damage = damage; this.laserSpeed = speed; this.lifetime = lifetime; this.effects = effects; this.dataTracker.set(COLOR, color);
+    public LaserEntity(EntityType<? extends LaserEntity> type, double x, double y, double z, World world, int lifetime, float damage, int color, StatusEffectInstance... effects) {
+        this(type, world); this.setPosition(x, y, z); this.damage = damage; this.lifetime = lifetime; this.effects = effects; this.dataTracker.set(COLOR, color);
     }
 
-    public LaserEntity(EntityType<? extends LaserEntity> type, World world, LivingEntity owner, int lifetime, float speed, float damage, int color, StatusEffectInstance... effects) {
-        this(type, owner.getX(), owner.getEyeY() /* - 0.10000000149011612 */, owner.getZ(), world, lifetime, speed, damage, color, effects); setOwner(owner);
+    public LaserEntity(EntityType<? extends LaserEntity> type, World world, LivingEntity owner, int lifetime, float damage, int color, StatusEffectInstance... effects) {
+        this(type, owner.getX(), owner.getEyeY(), owner.getZ(), world, lifetime, damage, color, effects); setOwner(owner);
     }
 
     @Override public void setVelocity(Entity shooter, float pitch, float yaw, float roll, float speed, float divergence) {
@@ -48,13 +46,7 @@ public class LaserEntity extends ThrownEntity {
         this.setVelocity(x, y, z, speed, divergence);
     }
 
-    @Override public void tick() {
-        super.tick(); if(!getWorld().isClient()) { if(this.lifetime < 1 || this.laserSpeed <= 0.2f) { this.discard(); } else { this.lifetime--; }}
-        if(getWorld().isClient()) { for(int i = 0; i <= 4; i++) {
-            getWorld().addParticle(new DustParticleEffect(new Vector3f(Vec3d.unpackRgb(getColor()).toVector3f().x(), Vec3d.unpackRgb(getColor()).toVector3f().y(),
-                    Vec3d.unpackRgb(getColor()).toVector3f().z()), 1.0f), true, getX(), getY(), getZ(), 0.0, 0.0, 0.0);
-        }}
-    }
+    @Override public void tick() { super.tick(); if(!getWorld().isClient()) { if(this.lifetime < 1 || getVelocity().length() <= 0.2f) { this.discard(); } else { this.lifetime--; }}}
 
     @Override protected void onCollision(HitResult hitResult) {
         HitResult.Type type = hitResult.getType();
@@ -68,8 +60,8 @@ public class LaserEntity extends ThrownEntity {
                     entity.damage(entity.getDamageSources().mobProjectile(this, getOwner() instanceof LivingEntity livingEntity? livingEntity : null), damage);
                     doExplosion(serverWorld);
                 }
-                if (effects != null) for (StatusEffectInstance sEI : effects) entity.addStatusEffect(new StatusEffectInstance(sEI.getEffectType(),
-                        sEI.getDuration(), sEI.getAmplifier(), sEI.isAmbient(), sEI.shouldShowParticles(), sEI.shouldShowIcon()));
+                if (effects != null) { for (StatusEffectInstance sEI : effects) { entity.addStatusEffect(new StatusEffectInstance(sEI.getEffectType(),
+                        sEI.getDuration(), sEI.getAmplifier(), sEI.isAmbient(), sEI.shouldShowParticles(), sEI.shouldShowIcon())); }}
                 entity.addVelocity((getVelocity().multiply(0.1)));
                 this.discard();
             } else if (type == HitResult.Type.BLOCK) {
@@ -96,11 +88,10 @@ public class LaserEntity extends ThrownEntity {
 
     public void reflect(BlockState state, BlockHitResult blockHitResult){
         if(state.isIn(BlockTagGenerator.LASER_REFLECTIVE)){
-            lifetime--; laserSpeed -= 0.2f;
             Direction sideHit = blockHitResult.getSide();
             setVelocity(this.getVelocity().x * ((sideHit == Direction.EAST || sideHit == Direction.WEST)? -1: 0),
                     (this.getVelocity().y * ((sideHit == Direction.UP || sideHit == Direction.DOWN)? -1: 0)),
-                    (this.getVelocity().z * ((sideHit == Direction.NORTH || sideHit == Direction.SOUTH)? -1: 0)), laserSpeed-0.2f, 0);
+                    (this.getVelocity().z * ((sideHit == Direction.NORTH || sideHit == Direction.SOUTH)? -1: 0)), (float) getVelocity().length()-0.2f, 0);
         } else { this.discard(); }
     }
 
@@ -121,8 +112,7 @@ public class LaserEntity extends ThrownEntity {
         nbt.putInt("Color", getColor());
     }
 
-    @Override
-    protected void readCustomDataFromNbt(NbtCompound nbt) {
+    @Override protected void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         this.setColor(nbt.getInt("Color"));
     }
