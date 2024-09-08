@@ -1,4 +1,4 @@
--- Trevor's Sentinels --
+*-- Trevor's Sentinels ~~*
 
 A WIP Minecraft content mod for Fabric that is meant to provide new environments, enemies, equipment, and blocks, based on the (also WIP) machinima series, The Apotheosis Project.
 
